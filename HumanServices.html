@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRASA Business — Human Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.brasa.world">
+<link rel="preconnect" href="https://assets.brasa.world">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brasa-black:#1B1A17; --brasa-soft:#6B6862; --brasa-accent:#8C3A1F; --brasa-green:#0D6E5C;
+  --brasa-callout:#F2EDE0; --brasa-page:#FBF9F4; --brasa-cream:#F5F0E5; --brasa-rule:#E5DFD0; --brasa-hover:#6B280F;
+  --serif:'Fraunces','Times New Roman',serif; --sans:'Geist','Helvetica Neue',system-ui,sans-serif;
+  --max-w:1480px; --gutter:clamp(1.25rem,4vw,2.75rem);
+  --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.16,1,.3,1);
+  --bg:var(--brasa-page); --bg-deep:var(--brasa-callout); --ink:var(--brasa-black);
+  --ink-soft:var(--brasa-soft); --ink-faint:#A19E97; --ink-mute:var(--brasa-soft);
+  --paper:var(--brasa-cream); --line:rgba(27,26,23,.12); --line-strong:rgba(27,26,23,.22); --accent:var(--brasa-accent);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:var(--max-w);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+.site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:.85rem var(--gutter);background:rgba(251,249,244,.92);backdrop-filter:blur(8px);border-bottom:.5px solid var(--line)}
+.wordmark{display:flex;align-items:center;cursor:pointer}
+.wordmark-img{height:50px;width:auto}
+.nav{display:flex;gap:1.9rem;align-items:center}
+.nav a{font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--ink-soft);position:relative;padding:.2rem 0;transition:color .3s var(--ease);cursor:pointer}
+.nav a:hover,.nav a.active{color:var(--ink)}
+.nav a::after{content:'';position:absolute;bottom:-2px;left:0;height:1px;width:0;background:currentColor;transition:width .36s var(--ease)}
+.nav a:hover::after,.nav a.active::after{width:100%}
+
+main{padding-bottom:3rem;min-height:60vh}
+.page{padding-top:clamp(2rem,5vh,3.4rem)}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:16px}
+.cat-title{font-family:var(--serif);font-size:clamp(40px,7vw,58px);font-weight:400;letter-spacing:-.025em;line-height:1;margin-bottom:10px}
+.cat-line{font-size:14px;color:var(--ink-soft);margin-bottom:30px;letter-spacing:.005em}
+.lede{font-family:var(--serif);font-size:clamp(20px,3vw,27px);font-weight:300;line-height:1.32;letter-spacing:-.01em;color:var(--ink);max-width:36ch;margin-bottom:8px}
+
+.vertical{margin-bottom:54px}
+.vertical:last-of-type{margin-bottom:72px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tile{position:relative;aspect-ratio:4/3;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:#ECE6D8;border:.5px solid rgba(27,26,23,.06);cursor:pointer;transition:background .25s var(--ease),transform .25s var(--ease)}
+.tile:hover{background:#E4DCC9;transform:translateY(-2px)}
+.tile .tl{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--ink);letter-spacing:-.015em;text-align:center;padding:0 14px;line-height:1.2}
+.tile .sub{position:absolute;bottom:11px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint)}
+
+.back-link{display:inline-block;font-size:14px;color:var(--ink-mute);margin:6px 0 20px;cursor:pointer;transition:color .18s,transform .18s}
+.back-link:hover{color:var(--ink);transform:translateX(-3px)}
+.cat-hero{position:relative;aspect-ratio:16/6;background:#ECE6D8;display:flex;align-items:center;justify-content:center;margin-bottom:26px;overflow:hidden}
+.cat-hero .h{font-family:var(--serif);font-size:clamp(40px,9vw,90px);font-weight:300;color:#D8CFBC;letter-spacing:-.03em}
+
+.rows{border-top:.5px solid var(--line)}
+.line{display:flex;align-items:center;gap:1rem;padding:14px 0;border-bottom:.5px solid var(--line)}
+.line .dish-thumb{flex:0 0 auto;width:56px;height:56px;border-radius:7px;object-fit:cover;background:#ECE6D8;border:.5px solid rgba(27,26,23,.06)}
+.dtile{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#ECE6D8;border:.5px solid rgba(27,26,23,.06);cursor:pointer;text-decoration:none;transition:transform .22s var(--ease),box-shadow .22s var(--ease)}
+.dtile:hover{transform:translateY(-2px);box-shadow:0 18px 36px -24px rgba(20,16,12,.55)}
+.dtile-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.dtile.has-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,14,10,.92),rgba(18,14,10,.3) 56%,rgba(18,14,10,0));z-index:1}
+.dtile .dt-in{position:relative;z-index:2;padding:13px 14px}
+.dtile .dt-nm{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.16;letter-spacing:-.01em;color:var(--ink)}
+.dtile.has-photo .dt-nm{color:#FBF9F4}
+.dtile .dt-pr{font-size:12px;letter-spacing:.02em;margin-top:5px;color:var(--ink-soft)}
+.dtile.has-photo .dt-pr{color:rgba(245,240,229,.86)}
+.dtile .dt-add,.dtile .dt-86{position:absolute;top:9px;right:9px;z-index:3;height:24px;min-width:24px;padding:0 7px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1}
+.dtile .dt-add{background:var(--brasa-accent);color:#fff}
+.dtile .dt-86{background:rgba(140,58,31,.16);color:var(--brasa-accent);font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.dtile .pill.green{margin-left:5px;vertical-align:middle}
+.dtile .dt-toggle{position:absolute;top:9px;left:9px;z-index:4;height:22px;padding:0 9px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(251,249,244,.94);color:var(--brasa-accent);border:1px solid rgba(140,58,31,.45);opacity:1;cursor:pointer}
+.dtile .dt-toggle:hover{background:var(--brasa-accent);color:#fff}
+.dtile .dt-compose{position:absolute;bottom:9px;right:9px;z-index:4;height:24px;padding:0 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.02em;background:var(--brasa-accent);color:#fff;cursor:pointer;box-shadow:0 4px 12px -4px rgba(20,16,12,.5)}
+.dtile .dt-compose:hover{filter:brightness(1.08)}
+.dtile .dt-special{position:absolute;top:9px;left:9px;z-index:4;height:22px;padding:0 9px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--brasa-accent);color:#fff;box-shadow:0 4px 12px -5px rgba(20,16,12,.5)}
+.ar-search{display:flex;gap:8px;margin:6px 0 4px}
+.ar-search input{flex:1;min-width:0;padding:11px 14px;border:1px solid #E5DFD0;border-radius:8px;font:inherit;background:#fff;color:#1B1A17}
+.ar-search input:focus{outline:none;border-color:var(--brasa-accent)}
+.ar-search .btn{white-space:nowrap;margin:0}
+#composeBar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:60;display:flex;gap:14px;align-items:center;background:#1B1A17;color:#FBF9F4;padding:9px 10px 9px 18px;border-radius:30px;box-shadow:0 16px 40px -16px rgba(0,0,0,.55);font-size:13px}
+#composeBar .btn{margin:0}
+.line .m{flex:1;min-width:0}
+.line .nm{font-weight:500}
+.line .meta{font-size:13px;color:var(--ink-soft);margin-top:2px}
+.line .v{font-family:var(--serif);font-size:18px;white-space:nowrap;text-align:right}
+.pill{font-size:11px;letter-spacing:.03em;padding:2px 9px;border:.5px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);white-space:nowrap}
+.pill.accent{color:var(--accent);border-color:rgba(140,58,31,.45)}
+.pill.green{color:var(--brasa-green);border-color:rgba(13,110,92,.45)}
+
+.stats{display:flex;gap:2.6rem;flex-wrap:wrap;margin:6px 0 30px}
+.stat .n{font-family:var(--serif);font-size:42px;font-weight:300;letter-spacing:-.02em;line-height:1}
+.stat .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
+
+.split{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:.5px solid var(--line);font-size:15px;color:var(--ink-soft)}
+.split b{color:var(--ink);font-weight:500}
+.split.grand{border-bottom:none;padding-top:16px}
+.split.grand .a{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--ink);letter-spacing:-.02em}
+
+.note{font-size:14px;color:var(--ink-soft);line-height:1.65;max-width:62ch;margin-top:6px}
+.pull-quote{font-family:var(--serif);font-size:clamp(20px,3.4vw,26px);font-style:italic;font-weight:300;text-align:center;
+  padding:34px 0;border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);margin:32px 0;letter-spacing:-.01em;line-height:1.35}
+.section{margin-bottom:36px}
+.section-h{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-.015em;margin-bottom:6px}
+.section-sub{font-size:13px;color:var(--ink-soft);margin-bottom:14px}
+
+.banner{background:var(--brasa-callout);border:.5px solid var(--line);padding:18px 20px;margin-bottom:26px}
+.banner .bt{font-family:var(--serif);font-size:18px;margin-bottom:4px}
+.banner .bs{font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.banner .br{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;padding-top:10px;border-top:.5px solid var(--line)}
+.banner .br .a{font-family:var(--serif);font-size:24px}
+.miss{font-size:13px;color:var(--accent);margin-top:8px}
+
+.kv{display:flex;justify-content:space-between;gap:1rem;padding:9px 0;border-bottom:.5px solid var(--line);font-size:14px}
+.kv:last-child{border-bottom:none}
+.kv .k{color:var(--ink-soft)} .kv .v{font-family:var(--serif);text-align:right} .kv .v.mono{font-family:var(--sans);font-size:13px;color:var(--ink-soft)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;font-family:var(--sans);font-size:13.5px;font-weight:500;
+  padding:9px 16px;border-radius:2px;border:.5px solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer;transition:.18s}
+.btn:hover{border-color:var(--ink)}
+.btn.solid{background:var(--accent);color:#fff;border-color:var(--accent)} .btn.solid:hover{background:var(--brasa-hover);border-color:var(--brasa-hover)}
+.btn.green{background:var(--brasa-green);color:#fff;border-color:var(--brasa-green)} .btn.green:hover{background:#0a5848}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn:disabled{opacity:.38;cursor:not-allowed;border-color:var(--line-strong);background:transparent;color:var(--ink-faint)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+.scrim{position:fixed;inset:0;background:rgba(27,26,23,.5);backdrop-filter:blur(3px);display:none;align-items:flex-end;justify-content:center;z-index:100}
+.scrim.show{display:flex;animation:fade .2s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.sheet{background:var(--bg);width:100%;max-width:580px;border-radius:14px 14px 0 0;padding:26px var(--gutter) 30px;max-height:92vh;overflow-y:auto;box-shadow:0 -20px 60px rgba(27,26,23,.18)}
+@media(min-width:600px){.scrim{align-items:center}.sheet{border-radius:14px}}
+.sheet h3{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-.02em;margin-bottom:4px}
+.sheet .sub{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+.field input,.field select{width:100%;padding:11px 12px;border:.5px solid var(--line-strong);border-radius:2px;background:#fff;font-size:15px;font-family:var(--sans);color:var(--ink);outline:none}
+.field input:focus,.field select:focus{border-color:var(--accent)}
+.doc{border:.5px solid var(--line);background:#fff;padding:20px}
+.doc .dh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px}
+.doc .dt{font-family:var(--serif);font-size:21px;margin-bottom:2px}
+.doc .dm{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+.doc table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.doc th{text-align:left;font-weight:500;color:var(--ink-faint);border-bottom:.5px solid var(--line);padding:6px 8px 6px 0;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+.doc td{padding:7px 8px 7px 0;border-bottom:.5px solid var(--line)}
+.doc td.r,.doc th.r{text-align:right}
+.doc .tot td{border-bottom:none;font-weight:600;border-top:1px solid var(--line-strong)}
+
+.qrwrap{display:flex;justify-content:center;margin:8px 0 16px}
+.qrwrap canvas{width:200px;height:200px;image-rendering:pixelated;border:.5px solid var(--line);background:#fff;border-radius:4px}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--brasa-black);color:var(--brasa-cream);
+  padding:11px 20px;border-radius:3px;font-size:14px;opacity:0;pointer-events:none;transition:.25s var(--ease-out);z-index:300}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+footer{border-top:.5px solid var(--line);padding:30px var(--gutter);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+footer .b{font-family:var(--serif)}
+
+@media(max-width:900px){ .wordmark-img{height:46px} .nav{gap:1.25rem} }
+@media(max-width:560px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:6px}
+  .tile .tl{font-size:18px} .tile .sub{font-size:9px} .ptile .tl{font-size:17px}
+  .nav a:not(.nav-home){display:none}
+  .wordmark-img{height:40px}
+  .stats{gap:1.6rem} .stat .n{font-size:34px}
+  .doc{padding:14px} .doc table{font-size:12px}
+}
+
+.hero{position:relative;overflow:hidden;min-height:clamp(400px,58vh,560px);display:flex;align-items:flex-end;background:#16110e center/cover no-repeat}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(18,14,10,.5) 0%,rgba(18,14,10,0) 20%,rgba(18,14,10,0) 50%,rgba(18,14,10,.88) 100%);z-index:1}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter) clamp(32px,4vw,56px)}
+.hero .back-link{display:inline-block;color:rgba(245,240,229,.8);margin-bottom:14px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.hero .back-link:hover{color:#FBF9F4}
+.hero .eyebrow{color:rgba(245,240,229,.74);margin-bottom:14px}
+.hero .cat-title{color:#FBF9F4;font-size:clamp(44px,8.4vw,76px);margin-bottom:12px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero .cat-line{color:rgba(245,240,229,.9)}
+.hero .lede{color:rgba(245,240,229,.82);max-width:34ch}
+.ptile{position:relative;display:flex;align-items:flex-end;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:#211c17;box-shadow:0 16px 36px -22px rgba(20,16,12,.5);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
+.ptile:hover{transform:translateY(-3px);box-shadow:0 24px 48px -22px rgba(20,16,12,.6)}
+.ptile-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ptile::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,6,.30) 0%,rgba(12,9,6,0) 42%);z-index:1}
+.ptile .pt-in{position:relative;z-index:2;padding:16px 16px 15px;width:100%}
+.ptile .tl{display:block;font-family:var(--serif);font-size:21px;font-weight:400;letter-spacing:-.012em;color:#fff;line-height:1.08;overflow-wrap:break-word;hyphens:auto;text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.6)}
+.ptile .sub{display:block;font-size:11px;letter-spacing:.03em;color:#fff;margin-top:6px;text-shadow:0 1px 3px rgba(0,0,0,.85),0 2px 12px rgba(0,0,0,.55)}
+/* hero-mode: nav floats transparent over the hero, turns solid on scroll (brasa.world style) */
+body.hero-mode .site-header{position:fixed;left:0;right:0;top:0;background:rgba(251,249,244,0);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent;transition:background .35s var(--ease),border-color .35s var(--ease)}
+body.hero-mode .nav a{color:rgba(245,240,229,.86);text-shadow:0 1px 10px rgba(0,0,0,.45)}
+body.hero-mode .nav a:hover,body.hero-mode .nav a.active{color:#FBF9F4}
+body.hero-mode .wordmark-img{filter:drop-shadow(0 2px 10px rgba(0,0,0,.6))}
+body.hero-mode.scrolled .site-header{background:rgba(251,249,244,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom-color:var(--line)}
+body.hero-mode.scrolled .nav a{color:var(--ink-soft);text-shadow:none}
+body.hero-mode.scrolled .nav a:hover,body.hero-mode.scrolled .nav a.active{color:var(--ink)}
+body.hero-mode.scrolled .wordmark-img{filter:none}
+
+/* --- BRASA join card in hero --- */
+.hero-in-split{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(20px,4vw,48px)}
+.hero-copy{flex:1 1 auto;min-width:0}
+.hero-join{flex:0 0 auto;width:min(360px,42vw);background:var(--brasa-page);color:var(--ink);border-radius:14px;padding:20px 20px 22px;box-shadow:0 30px 80px -28px rgba(0,0,0,.72);text-align:left}
+.hero-join .hj-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 4px}
+.hero-join .hj-title{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.02em;color:var(--ink);margin:0 0 14px;text-shadow:none;line-height:1.05}
+.hero-join .hj-in{width:100%;box-sizing:border-box;padding:.6rem .75rem;margin:0 0 8px;font:400 14px var(--sans);border:1px solid var(--line-strong);border-radius:9px;background:#fff;color:var(--ink)}
+.hero-join .hj-btn{width:100%;margin-top:12px;padding:.7rem 1rem;font:600 14px var(--sans);color:var(--brasa-cream);background:var(--accent);border:0;border-radius:9px;cursor:pointer}
+.hero-join .hj-btn.dark{background:var(--ink)}
+.hero-join .hj-sub{font-size:13px;line-height:1.55;color:var(--ink-soft);margin:0}
+.hero-join .hj-amt{font-family:var(--serif);font-size:30px;color:var(--ink);margin:0 0 8px;line-height:1}
+.hero-join .hj-err{color:var(--accent);font-size:12px;margin:8px 0 0}
+@media(max-width:860px){.hero-in-split{flex-direction:column;align-items:stretch}.hero-join{width:auto}}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" data-route="" aria-label="BRASA CR — Business">
+    <img class="wordmark-img" src="https://assets.brasa.world/Photos/brasa-cr-logo_8.png" alt="BRASA CR"
+         onerror="this.outerHTML='&lt;span style=&quot;font-family:var(--serif);font-weight:800;font-size:1.4rem&quot;&gt;BRASA &lt;b style=&quot;color:var(--accent)&quot;&gt;CR&lt;/b&gt;&lt;/span&gt;'">
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="https://brasa.education/">Education</a>
+    <a href="https://brasagovernment.net/">Government</a>
+    <a class="active nav-home" data-route="">Business</a>
+    <a href="https://brasa.world/">BRASA</a>
+  </nav>
+</header>
+
+<main><div id="view"></div></main>
+
+<footer>
+  <span class="b">BRASA CR™ · brasa.world</span>
+</footer>
+
+<div class="scrim" id="scrim"><div class="sheet" id="sheet"></div></div>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.getElementById(s);
+const fmt=n=>'₡'+Math.round(n).toLocaleString('en-US');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){ const t=$('toast'); t.textContent=m; t.className='show'; clearTimeout(window._tt); window._tt=setTimeout(()=>t.className='',2800); }
+function openSheet(html){ $('sheet').innerHTML=html; $('scrim').classList.add('show'); }
+function closeSheet(){ $('scrim').classList.remove('show'); }
+$('scrim').addEventListener('click',e=>{ if(e.target===$('scrim'))closeSheet(); });
+const QR=(function(){
+  const EXP=new Array(512),LOG=new Array(256);let x=1;for(let i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&0x100)x^=0x11d;}for(let i=255;i<512;i++)EXP[i]=EXP[i-255];
+  const mul=(a,b)=>(a===0||b===0)?0:EXP[LOG[a]+LOG[b]];
+  function genPoly(n){let g=[1];for(let i=0;i<n;i++){const ng=new Array(g.length+1).fill(0);for(let j=0;j<g.length;j++){ng[j]^=mul(g[j],EXP[i]);ng[j+1]^=g[j];}g=ng;}return g;}
+  function eccCalc(data,n){const g=genPoly(n),r=data.concat(new Array(n).fill(0));for(let i=0;i<data.length;i++){const c=r[i];if(c!==0)for(let j=0;j<g.length;j++)r[i+j]^=mul(g[j],c);}return r.slice(data.length);}
+  const V={1:[21,26,7,19],2:[25,44,10,34],3:[29,70,15,55],4:[33,100,20,80]},ALIGN={1:[],2:[18],3:[22],4:[26]};
+  function fmtBits(){let data=0b01000,d=data<<10;const g=0b10100110111;for(let i=4;i>=0;i--){if((d>>>(10+i))&1)d^=g<<i;}return(((data<<10)|d)^0b101010000010010)&0x7fff;}
+  function encode(str){
+    const bytes=[];for(let i=0;i<str.length;i++){const c=str.charCodeAt(i);if(c<128)bytes.push(c);else{const e=unescape(encodeURIComponent(str.charAt(i)));for(let j=0;j<e.length;j++)bytes.push(e.charCodeAt(j));}}
+    let ver=1;for(const v of[1,2,3,4]){ver=v;if(bytes.length<=V[v][3]-2)break;}
+    const[size,total,ec,dataCW]=V[ver];let bs='';const put=(val,len)=>{bs+=val.toString(2).padStart(len,'0');};
+    put(0b0100,4);put(bytes.length,8);bytes.forEach(b=>put(b,8));
+    if(bs.length+4<=dataCW*8)bs+='0000';while(bs.length%8)bs+='0';
+    const db=[];for(let i=0;i<bs.length;i+=8)db.push(parseInt(bs.substr(i,8),2));const pads=[0xEC,0x11];let pi=0;while(db.length<dataCW)db.push(pads[pi++%2]);
+    const all=db.concat(eccCalc(db,ec));const bits=[];all.forEach(b=>{for(let i=7;i>=0;i--)bits.push((b>>i)&1);});
+    const m=Array.from({length:size},()=>new Array(size).fill(null)),fn=Array.from({length:size},()=>new Array(size).fill(false));
+    const setF=(r,c,v)=>{m[r][c]=v?1:0;fn[r][c]=true;};
+    const finder=(r,c)=>{for(let i=-1;i<=7;i++)for(let j=-1;j<=7;j++){const rr=r+i,cc=c+j;if(rr<0||cc<0||rr>=size||cc>=size)continue;const inb=(i>=0&&i<=6&&(j===0||j===6))||(j>=0&&j<=6&&(i===0||i===6))||(i>=2&&i<=4&&j>=2&&j<=4);setF(rr,cc,inb);}};
+    finder(0,0);finder(0,size-7);finder(size-7,0);
+    for(let i=8;i<size-8;i++){setF(6,i,i%2===0);setF(i,6,i%2===0);}
+    setF(size-8,8,true);
+    ALIGN[ver].forEach(p=>{for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++)setF(p+i,p+j,Math.max(Math.abs(i),Math.abs(j))!==1);});
+    for(let i=0;i<9;i++){if(!fn[8][i]){fn[8][i]=true;m[8][i]=0;}if(!fn[i][8]){fn[i][8]=true;m[i][8]=0;}}
+    for(let i=0;i<8;i++){if(!fn[8][size-1-i]){fn[8][size-1-i]=true;m[8][size-1-i]=0;}if(!fn[size-1-i][8]){fn[size-1-i][8]=true;m[size-1-i][8]=0;}}
+    let bi=0,up=true;
+    for(let col=size-1;col>0;col-=2){if(col===6)col--;for(let t=0;t<size;t++){const row=up?size-1-t:t;for(let c2=0;c2<2;c2++){const cc=col-c2;if(fn[row][cc])continue;let bit=bi<bits.length?bits[bi++]:0;if((row+cc)%2===0)bit^=1;m[row][cc]=bit;}}up=!up;}
+    const fb=fmtBits(),fbits=[];for(let i=14;i>=0;i--)fbits.push((fb>>i)&1);
+    const tl=[[8,0],[8,1],[8,2],[8,3],[8,4],[8,5],[8,7],[8,8],[7,8],[5,8],[4,8],[3,8],[2,8],[1,8],[0,8]];tl.forEach((p,i)=>{m[p[0]][p[1]]=fbits[i];});
+    for(let i=0;i<8;i++)m[8][size-1-i]=fbits[i];for(let i=0;i<7;i++)m[size-1-i][8]=fbits[14-i];
+    return m;
+  }
+  return {encode};
+})();
+function drawQR(canvas,str,scale){const m=QR.encode(str),n=m.length,q=4,px=scale||6,dim=(n+q*2)*px;canvas.width=dim;canvas.height=dim;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,dim,dim);ctx.fillStyle='#1B1A17';for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(m[r][c])ctx.fillRect((c+q)*px,(r+q)*px,px,px);}
+
+/* ============================================================================
+   RATES (CR, configurable & approximate) + official portals
+   ============================================================================ */
+const HERO_PHOTO="https://images.brasa.world/Photos/vecteezy_dove-soars-against-a-bright-sun-symbolizing-freedom-hope_57342378.jpg?w=1600&q=82";
+const SVC="https://assets.brasa.world/Menus/";
+const PHOTOS="https://assets.brasa.world/Photos/";
+const HERO_IMG="data:image/jpeg;base64,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";
+const CFG={ vat:.13,
+  workweekHours:48, dayHours:8, otMultiplier:1.5,
+  ccssEmployee:.1067, ccssEmployer:.2667, insWC:.02,
+  aguinaldoRate:1/12, vacDaysPerYear:12, minWageMonthly:365000,
+  rentaBrackets:[[929000,0],[1363000,.10],[2392000,.15],[4783000,.20],[Infinity,.25]],
+  loyaltyEarnPer:100, redeemValue:1 };
+const VAC_FRACTION=CFG.vacDaysPerYear/300;
+const DAY=864e5;
+const PORTALS={
+  ccss:{label:'CCSS · Virtual Office (SICERE)', url:'https://www.ccss.sa.cr/patronos'},
+  hacienda:{label:'Hacienda · TRIBU-CR (ATV)', url:'https://ovitribucr.hacienda.go.cr/home/'},
+  ins:{label:'INS · RT-Virtual', url:'https://rtvirtual.grupoins.com/'},
+  renta:{label:'Hacienda · Renta — Serie 100 (TRIBU-CR)', url:'https://ovitribucr.hacienda.go.cr/home/'},
+};
+const ST={held:'On hold',sold:'Done',paid:'Paid',open:'Open'};
+const stPill=s=>(s==='sold')?'green':(s==='held')?'accent':'';
+const collectable=j=>(j.status==='sold')&&!j.paid;
+
+/* ---- one business, many boards, same instruments ---- */
+const D={ co:{
+  label:'Human Services', biz:'Human Services CR', owner:'Laura Méndez', sinpe:'8800-1234', back:'Human Services',
+  patrono:{ razonSocial:'Human Services CR S.A.', cedula:'3-101-234567', patronalCCSS:'0-00987654-001-001', polizaINS:'RT-45-9988776', ciiu:'8121', ciiuName:'Building & grounds maintenance services' },
+  team:[
+    {id:'w1', n:'Andrés Rojas', role:'owner', rel:'Owner', v:'Gerente / técnico', cedula:'1-1234-5678', niss:'8801', fechaNac:'1981-03-11', nac:'CR', seg:true, wageType:'monthly', wage:0, hired:Date.now()-1100*864e5, vacTaken:0, status:'Active'},
+    {id:'w2', n:'María Vargas', role:'staff', rel:'Sister', v:'Limpieza', cedula:'1-1500-0202', niss:'9902', fechaNac:'1990-05-10', nac:'CR', seg:true, wageType:'monthly', wage:420000, hired:Date.now()-520*864e5, vacTaken:3, status:'Active'},
+    {id:'w3', n:'José Mora', role:'staff', rel:'Cousin', v:'Jardinería', cedula:'1-1600-0303', niss:'', fechaNac:'', nac:'CR', seg:false, wageType:'monthly', wage:380000, hired:Date.now()-150*864e5, vacTaken:0, status:'Active'},
+    {id:'w4', n:'Laura Campos', role:'staff', rel:'Cousin', v:'Cuadrilla', cedula:'1-1402-0505', niss:'1402', fechaNac:'1996-07-22', nac:'CR', seg:true, wageType:'monthly', wage:400000, hired:Date.now()-620*864e5, vacTaken:5, status:'Active'},
+    {id:'w5', n:'Diego Soto', role:'staff', rel:'Brother-in-law', v:'Plomería / bombas', cedula:'1-1700-0404', niss:'', fechaNac:'', nac:'CR', seg:false, wageType:'monthly', wage:410000, hired:Date.now()-240*864e5, vacTaken:0, status:'Active'},
+  ],
+  jobs:[
+    {id:'j1', kind:'lawyers', label:'Legal consultation → María Vargas', cliente:'María Vargas', fee:35000, status:'sold', paid:true},
+    {id:'j2', kind:'landscaping', label:'Mantenimiento de jardín (reserva) → Rebeca Soto', cliente:'Rebeca Soto', fee:20000, status:'held', paid:false},
+    {id:'j3', kind:'pools', label:'Limpieza + balance químico → Luis Cordero', cliente:'Luis Cordero', fee:25000, status:'sold', paid:true},
+    {id:'j4', kind:'pest', label:'Fumigación general → Sofía Mora', cliente:'Sofía Mora', fee:25000, status:'sold', paid:false},
+    {id:'j5', kind:'pressurewash', label:'Lavado de fachada → Don Carlos', cliente:'Carlos Mora', fee:45000, status:'sold', paid:true},
+    {id:'j6', kind:'lawncare', label:'Corte + orilla → Carmen Ruiz', cliente:'Carmen Ruiz', fee:12000, status:'sold', paid:true},
+    {id:'j7', kind:'gutterclean', label:'Limpieza de canoas (reserva) → Marco Díaz', cliente:'Marco Díaz', fee:18000, status:'held', paid:false},
+    {id:'j8', kind:'septicpump', label:'Bombeo de tanque séptico → Doña Rosa', cliente:'Rosa Vargas', fee:65000, status:'sold', paid:false},
+    {id:'j9', kind:'fencing', label:'Reparación de portón → Pedro Alfaro', cliente:'Pedro Alfaro', fee:18000, status:'sold', paid:true},
+    {id:'j10', kind:'windowwash', label:'Lavado de ventanas → Walk-in', cliente:'Walk-in', fee:18000, status:'sold', paid:true},
+  ],
+  clientes:[
+    {id:'c1',n:'Ana Rojas',phone:'8888-0001',tag:'Plan mensual',points:95,history:[{n:101,total:1600,ts:Date.now()-2*DAY},{n:96,total:2100,ts:Date.now()-9*DAY}]},
+    {id:'c2',n:'Rebeca Soto',phone:'8888-0002',tag:'Recurring',points:66,history:[{n:102,total:2200,ts:Date.now()-3*DAY}]},
+    {id:'c3',n:'Luis Cordero',phone:'8888-0003',tag:'',points:31,history:[{n:104,total:3100,ts:Date.now()-1*DAY}]},
+    {id:'c4',n:'Sofía Mora',phone:'8700-0001',tag:'Repeat',points:300,history:[{n:201,total:4000,ts:Date.now()-1*DAY},{n:188,total:4000,ts:Date.now()-2*DAY}]},
+    {id:'c5',n:'Carlos Mora',phone:'8700-0002',tag:'Senior',points:119,history:[{n:202,total:3000,ts:Date.now()-1*DAY}]},
+    {id:'c6',n:'Rosa Vargas',phone:'8700-0003',tag:'Repeat',points:72,history:[{n:203,total:2500,ts:Date.now()-2*DAY}]} ],
+  inventory:[
+    {n:'Cleaning supplies', qty:40, unit:'sets', reorder:20},
+    {n:'Trash bags', qty:200, unit:'units', reorder:100},
+    {n:'Pool chemicals', qty:6, unit:'pails', reorder:8},
+    {n:'Pesticide / treatment', qty:5, unit:'liters', reorder:6},
+    {n:'Mulch / soil', qty:12, unit:'bags', reorder:10},
+    {n:'Fuel (mowers / equipment)', qty:2, unit:'cans', reorder:3},
+  ],
+  remittance:[], filings:[], comprobantes:[], comprobanteSeq:{}, feedback:[], sucursal:'001', terminal:'00001', _n:0,
+} };
+
+/* ============================================================================
+   ENGINE — SINPE payment, automatic per-transaction VAT remittance to Hacienda
+   (the 13% VAT is the State's money the instant it is collected; the business
+   never holds it). HR payroll -> CCSS / INS as monthly planillas.
+   ============================================================================ */
+const subs=b=>D[b].team.filter(t=>t.role!=='owner');
+const period=()=>new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+const paidJobs=b=>D[b].jobs.filter(j=>j.paid);
+/* HR is HR — the same Costa Rica labor engine the restaurant uses. The owner sets the
+   wage (their arrangement); BRASA computes the statutory charges, renta, and accruals. */
+const monthsSince=ts=>(Date.now()-(ts||Date.now()))/(30.44*DAY);
+const monthlyWage=w=>w.wageType==='hourly'?(w.wage*CFG.workweekHours*4.33):(w.wage||0);
+const rentaMonthly=g=>{ let tax=0,prev=0; for(const [cap,rate] of CFG.rentaBrackets){ const amt=Math.min(g,cap)-prev; if(amt>0)tax+=amt*rate; prev=cap; if(g<=cap)break; } return tax; };
+const vacAccrued=w=>monthsSince(w.hired)*(CFG.vacDaysPerYear/12);
+const vacBalance=w=>Math.max(0,vacAccrued(w)-(w.vacTaken||0));
+function aguinaldoAccrued(w){ const n=new Date(); let dec=new Date(n.getFullYear(),11,1); if(n<dec)dec=new Date(n.getFullYear()-1,11,1);
+  const m=Math.min(12,Math.min((Date.now()-dec.getTime())/(30.44*DAY),monthsSince(w.hired))); return monthlyWage(w)*(m/12); }
+function planilla(b){ return subs(b).map(w=>{ const base=monthlyWage(w); if(!(base>0))return null;
+  const employee=base*CFG.ccssEmployee, renta=rentaMonthly(base), net=base-employee-renta;
+  const employer=base*CFG.ccssEmployer, premium=base*CFG.insWC, agui=base*CFG.aguinaldoRate, vac=base*VAC_FRACTION, cost=base+employer+premium+agui+vac;
+  return { w, base, employee, renta, net, employer, premium, agui, vac, cost }; }).filter(Boolean); }
+function hrIssues(b){ const out=[]; subs(b).forEach(w=>{ const mw=monthlyWage(w);
+  if(!w.cedula)out.push([w.n,'Missing ID']);
+  if(!w.niss)out.push([w.n,'Missing CCSS social no. — blocks SICERE']);
+  if(!w.fechaNac)out.push([w.n,'Missing birth date — blocks INS']);
+  if(mw>0 && mw<CFG.minWageMonthly)out.push([w.n,'Wage below reference minimum']); }); return out; }
+const revenue=b=>paidJobs(b).reduce((a,j)=>a+j.fee,0);
+function ivaSummary(b){ const R=D[b].remittance; const collected=R.reduce((a,r)=>a+r.iva,0); return { collected, calculated:collected, transmitted:R.filter(r=>r.status==='transmitted').reduce((a,r)=>a+r.iva,0), count:R.length }; }
+const vatOf=b=>ivaSummary(b).collected;
+/* remitToHacienda — split VAT off a paid sale, book it to the remittance ledger,
+   hand it to the factura-electronica rail. The business never owns it. */
+function remit(b,j){ const iva=j.fee-j.fee/(1+CFG.vat), base=j.fee-iva, ref='IVA-'+(j.n||0)+'-'+Date.now().toString(36).toUpperCase().slice(-5);
+  j._iva=iva; j.remitRef=ref; j.remitStatus='pending';
+  D[b].remittance.push({ n:j.n, ts:j.ts, cliente:j.cliente, base, iva, rate:CFG.vat, cedula:D[b].patrono.cedula, status:'pending', ref }); return iva; }
+function ready(b,e){ const p=D[b].patrono, L=planilla(b), miss=[];
+  if(e==='ccss'){ if(!p.patronalCCSS)miss.push('CCSS employer number'); L.forEach(x=>{ if(!x.w.niss)miss.push('social no. for '+x.w.n.split(' ')[0]); if(!x.w.cedula)miss.push('ID for '+x.w.n.split(' ')[0]); }); }
+  if(e==='hacienda'){ if(!p.cedula)miss.push('Tax ID (ATV)'); if(!p.ciiu)miss.push('CIIU activity'); }
+  if(e==='ins'){ if(!p.polizaINS)miss.push('INS policy (WC)'); L.forEach(x=>{ if(!x.w.cedula)miss.push('ID for '+x.w.n.split(' ')[0]); if(!x.w.fechaNac)miss.push('birth date for '+x.w.n.split(' ')[0]); }); }
+  if(e==='renta'){ if(!p.cedula)miss.push('Tax ID (ATV)'); L.forEach(x=>{ if(!x.w.cedula)miss.push('ID for '+x.w.n.split(' ')[0]); }); }
+  return { ok:miss.length===0, miss:[...new Set(miss)] }; }
+
+/* ===== Hacienda factura electrónica v4.4 — Tiquete Electrónico (B2C) =====
+   BRASA composes the comprobante on the business's behalf and reports the VAT.
+   It never settles money. Sealing (sello BCCR / .p12) + transmission to TRIBU-CR
+   are the backend step; here the tiquete is composed and shown exactly as structured. */
+/* Forty-eight front-of-house boards over ONE business, across six groups —
+   Professional Services, Finance & Money, and Community & Organizations. Goods boards sell stock; Solar,
+   EV charging and Hydropower are service boards. Each kind carries its own tax activity (CIIU), CABYS
+   placeholder, VAT note, who-pays, permit need and handling flags. All boards
+   bill from a job / service menu (visits, jobs, materials). CIIU/CABYS are
+   indicative placeholders — confirm per service in production. */
+const KIND={
+  lawyers:{op:'Lawyers', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6910', actName:'Legal activities', cabys:'6910000000000', vat:.13, vatNote:'standard 13%; Colegio de Abogados registration required', payer:'Customer', permit:true, det:'Legal services', photo:'https://images.brasa.world/Photos/vecteezy_law-firm-law-an-justice-concept_13152421.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  accountants:{op:'Accountants', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6920', actName:'Accounting & auditing', cabys:'6920000000000', vat:.13, vatNote:'standard 13%; Colegio de Contadores registration required', payer:'Customer', permit:true, det:'Accounting', photo:'https://images.brasa.world/Photos/vecteezy_calculator-on-chart-and-graph-paper-finance-account_2885314.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  architects:{op:'Architects', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'7110', actName:'Architecture & engineering', cabys:'7110000000000', vat:.13, vatNote:'standard 13%; CFIA registration required', payer:'Customer', permit:true, det:'Architecture', photo:'https://images.brasa.world/Photos/vecteezy_workplace-of-architect-and-engineer-in-construction-corporate_6174224.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  engineers:{op:'Engineers', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'7110', actName:'Architecture & engineering', cabys:'7110000000000', vat:.13, vatNote:'standard 13%; CFIA registration required', payer:'Customer', permit:true, det:'Engineering', photo:'https://images.brasa.world/Photos/vecteezy_metallic-components-and-gears-on-engineering-blueprint_71442464.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  itservices:{op:'IT services', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6202', actName:'Computer consultancy', cabys:'6202000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'IT services', photo:'https://images.brasa.world/Photos/vecteezy_it-engineer-man-laptop-and-server-for-inspection-thinking_75976905.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  marketing:{op:'Marketing', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'7310', actName:'Advertising', cabys:'7310000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Marketing', photo:'https://images.brasa.world/Photos/vecteezy_mock-up-of-business-stuff-on-wooden-board_45600293.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  notaries:{op:'Notaries', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6910', actName:'Legal activities', cabys:'6910000000000', vat:.13, vatNote:'standard 13%; Notariado registration required', payer:'Customer', permit:true, det:'Notary services', photo:'https://images.brasa.world/Photos/vecteezy_business-financing-accounting-banking-concept-businesswoman_33948035.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  taxprep:{op:'Tax preparation', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6920', actName:'Accounting & auditing', cabys:'6920000000000', vat:.13, vatNote:'standard 13%; Colegio de Contadores registration required', payer:'Customer', permit:true, det:'Tax preparation', photo:'https://images.brasa.world/Photos/vecteezy_calculator-and-papers-on-a-desk-with-pencils_75031867.jpg?w=900&q=82', flags:['Clients','Billing','Matters']},
+  realestate:{op:'Real estate', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6820', actName:'Real estate on a fee/contract basis', cabys:'6820000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Real estate', photo:'https://images.brasa.world/Photos/vecteezy_real-estate-agent-preparing-contract-for-house-sale_56164131.jpg?w=900&q=82', flags:['Listings','Clients','Closings']},
+  banks:{op:'Banks', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6419', actName:'Monetary intermediation', cabys:'6419000000000', vat:.13, vatNote:'standard 13%; SUGEF supervision required', payer:'Customer', permit:true, det:'Banking', photo:'https://images.brasa.world/Photos/vecteezy_dark-image-of-a-steel-bank-vault_25272729.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  moneytransfer:{op:'Money transfer', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6619', actName:'Other financial services', cabys:'6619000000000', vat:.13, vatNote:'standard 13%; SUGEF / financial registration required', payer:'Customer', permit:true, det:'Money transfer', photo:'https://images.brasa.world/Photos/vecteezy_money-transfer-concept_5390590.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  creditunions:{op:'Credit unions', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6419', actName:'Monetary intermediation', cabys:'6419000000000', vat:.13, vatNote:'standard 13%; SUGEF supervision required', payer:'Customer', permit:true, det:'Credit union', photo:'https://images.brasa.world/Photos/vecteezy_pink-piggy-bank-wooden-houses-wooden-human-figures-and_69584655.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  insurance:{op:'Insurance', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6512', actName:'Non-life insurance', cabys:'6512000000000', vat:.13, vatNote:'standard 13%; SUGESE authorization required', payer:'Customer', permit:true, det:'Insurance', photo:'https://images.brasa.world/Photos/vecteezy_insurance-company-client-take-out-complete-insurance_8255104.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  microfinance:{op:'Microfinance', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6492', actName:'Other credit granting', cabys:'6492000000000', vat:.13, vatNote:'standard 13%; SUGEF / financial registration required', payer:'Customer', permit:true, det:'Microfinance', photo:'https://images.brasa.world/Photos/vecteezy_plant-growing-out-of-silver-coins-isolated-on-white_10098347.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  pawn:{op:'Pawn shops', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6492', actName:'Other credit granting', cabys:'6492000000000', vat:.13, vatNote:'standard 13%; SUGEF / financial registration required', payer:'Customer', permit:true, det:'Pawn shop', photo:'https://images.brasa.world/Photos/vecteezy_jewelry-store-indoors_11330891.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  forex:{op:'Forex', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6619', actName:'Other financial services', cabys:'6619000000000', vat:.13, vatNote:'standard 13%; SUGEVAL authorization required', payer:'Customer', permit:true, det:'Currency exchange', photo:'https://images.brasa.world/Photos/vecteezy_digital-stock-market-or-forex-trading-graph-and-candlestick_6654402.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  atms:{op:'ATM operators', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6619', actName:'Other financial services', cabys:'6619000000000', vat:.13, vatNote:'standard 13%; SUGEF / financial registration required', payer:'Customer', permit:true, det:'ATM operator', photo:'https://images.brasa.world/Photos/vecteezy_atm-machine-on-concrete-wall_15633464.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  crypto:{op:'Crypto', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6619', actName:'Other financial services', cabys:'6619000000000', vat:.13, vatNote:'standard 13%; SUGEF / financial registration required', payer:'Customer', permit:true, det:'Crypto assets', photo:'https://images.brasa.world/Photos/vecteezy_a-captivating-image-shows-shiny-gold-coins-cascading-over-a_52073244.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  wealth:{op:'Wealth & asset management', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6630', actName:'Fund management', cabys:'6630000000000', vat:.13, vatNote:'standard 13%; SUGEVAL authorization required', payer:'Customer', permit:true, det:'Wealth management', photo:'https://images.brasa.world/Photos/vecteezy_a-tree-growing-from-gold-coins-on-the-ground_75883313.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  reinsurance:{op:'Reinsurance & risk', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6520', actName:'Reinsurance', cabys:'6520000000000', vat:.13, vatNote:'standard 13%; SUGESE authorization required', payer:'Customer', permit:true, det:'Reinsurance & risk', photo:'https://images.brasa.world/Photos/vecteezy_high-risk-high-return-concept-businessman-holding-coin-with_22719435.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  commodities:{op:'Commodities trading', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'6612', actName:'Security & commodity contracts', cabys:'6612000000000', vat:.13, vatNote:'standard 13%; SUGEVAL authorization required', payer:'Customer', permit:true, det:'Commodities trading', photo:'https://images.brasa.world/Photos/vecteezy_commodities-including-crude-oil-gold-silver-copper_52436815.jpg?w=900&q=82', flags:['Clients','Compliance','Transactions']},
+  churches:{op:'Churches', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9491', actName:'Religious organizations', cabys:'9491000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Church', photo:'https://images.brasa.world/Photos/vecteezy_open-holy-bible-book-with-glowing-lights-in-church_26781679.jpg?w=900&q=82', flags:['Members','Donations','Events']},
+  synagogues:{op:'Synagogues', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9491', actName:'Religious organizations', cabys:'9491000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Synagogue', photo:'https://images.brasa.world/Photos/vecteezy_a-gold-star-of-david-on-a-wooden-stand_70499291.jpg?w=900&q=82', flags:['Members','Donations','Events']},
+  mosques:{op:'Mosques', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9491', actName:'Religious organizations', cabys:'9491000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Mosque', photo:'https://images.brasa.world/Photos/vecteezy_beautiful-islamic-mosque-landscape-crescent-moon_23817597.jpg?w=900&q=82', flags:['Members','Donations','Events']},
+  temples:{op:'Temples', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9491', actName:'Religious organizations', cabys:'9491000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Temple', photo:'https://images.brasa.world/Photos/vecteezy_ulun-danu-beratan-temple-at-sunrise-on-bali-indonesia_2050648.jpg?w=900&q=82', flags:['Members','Donations','Events']},
+  ministries:{op:'Faith ministries', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9491', actName:'Religious organizations', cabys:'9491000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Faith ministry', photo:'https://images.brasa.world/Photos/vecteezy_a-group-of-young-christians-working-together-to-pray-and_54398678.jpg?w=900&q=82', flags:['Members','Donations','Events']},
+  ngos:{op:'NGOs', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'NGO', photo:'https://images.brasa.world/Photos/vecteezy_a-young-boy-holds-a-small-tree-with-roots-in-his-hands_71810409.jpeg?w=900&q=82', flags:['Donors','Programs','Events']},
+  charities:{op:'Charities & foundations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8899', actName:'Social work without accommodation', cabys:'8899000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Charity & foundation', photo:'https://images.brasa.world/Photos/vecteezy_two-hands-holding-a-box-with-a-heart-inside_69381215.jpg?w=900&q=82', flags:['Donors','Programs','Events']},
+  foodbanks:{op:'Food banks', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8899', actName:'Social work without accommodation', cabys:'8899000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Food bank', photo:'https://images.brasa.world/Photos/vecteezy_volunteers-packing-food-boxes-at-a-food-bank_70863239.jpg?w=900&q=82', flags:['Donors','Programs','Events']},
+  shelters:{op:'Homeless shelters', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8790', actName:'Other residential care', cabys:'8790000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Shelter', photo:'https://images.brasa.world/Photos/vecteezy_homeless-person-sleeping-in-a-tent-on-the-street_55154479.jpg?w=900&q=82', flags:['Donors','Programs','Events']},
+  crisiscenter:{op:'Crisis centers', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8899', actName:'Social work without accommodation', cabys:'8899000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Crisis center', photo:'https://images.brasa.world/Photos/vecteezy_two-professionals-analyze-data-on-computer-screens-in-dim_72545664.jpeg?w=900&q=82', flags:['Donors','Programs','Events']},
+  animalshelter:{op:'Animal shelters & rescue', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Animal shelter', photo:'https://images.brasa.world/Photos/vecteezy_rescuer-carrying-a-wet-dog-through-floodwaters-during-a_77797935.jpg?w=900&q=82', flags:['Donors','Programs','Events']},
+  envgroups:{op:'Environmental groups', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Environmental group', photo:'https://images.brasa.world/Photos/vecteezy_enivronment-group-and-volunteer-on-earth-day-teamwork-and_77961809.jpg?w=900&q=82', flags:['Donors','Programs','Events']},
+  serviceclubs:{op:'Service clubs', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Service club', photo:'https://images.brasa.world/Photos/vecteezy_young-volunteers-help-cleaning-public-park-collecting_75214480.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  fraternal:{op:'Fraternal orders', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Fraternal order', photo:'https://images.brasa.world/Photos/vecteezy_the-23rd-police-precinct-station-house-at-138-west-30th_16677033.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  veterans:{op:'Veterans organizations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Veterans organization', photo:'https://images.brasa.world/Photos/vecteezy_several-older-people-standing-together-and-having-a_66242244.jpeg?w=900&q=82', flags:['Members','Dues','Events']},
+  alumni:{op:'Alumni associations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Alumni association', photo:'https://images.brasa.world/Photos/vecteezy_ai-generated-large-group-of-people-in-graduation-caps-and-gowns_40294514.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  profassoc:{op:'Professional associations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9412', actName:'Professional membership organizations', cabys:'9412000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Professional association', photo:'https://images.brasa.world/Photos/vecteezy_diverse-workforce-celebrating-success-showcasing-happy-and_55521498.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  tradeassoc:{op:'Trade associations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9411', actName:'Business & employers organizations', cabys:'9411000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Trade association', photo:'https://images.brasa.world/Photos/vecteezy_silhouettes-of-business-people-standing-in-front-of-a-world-map_65703296.jpeg?w=900&q=82', flags:['Members','Dues','Events']},
+  unions:{op:'Labor unions', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9420', actName:'Trade unions', cabys:'9420000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Labor union', photo:'https://images.brasa.world/Photos/vecteezy_symbol-of-unity-and-defiance-clenched-fist-in-foreground_46857447.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  political:{op:'Political organizations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9492', actName:'Political organizations', cabys:'9492000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Political organization', photo:'https://images.brasa.world/Photos/vecteezy_elegant-auditorium-stage-with-wooden-podium-and-dramatic_71051254.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  cultural:{op:'Cultural associations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Cultural association', photo:'https://images.brasa.world/Photos/vecteezy_a-group-of-people-in-traditional-clothing-and-some-with_68733178.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  coops:{op:'Cooperatives', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%; INFOCOOP registration required', payer:'Customer', permit:true, det:'Cooperative', photo:'https://images.brasa.world/Photos/vecteezy_diverse-business-people-managing-fresh-produce-logistics-in_78723829.jpg?w=900&q=82', flags:['Members','Dues','Events']},
+  communitycenter:{op:'Community centers', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Community center', photo:'https://images.brasa.world/Photos/vecteezy_ai-generated-a-group-of-seniors-doing-yoga-in-a-community_40247050.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+  youthorgs:{op:'Youth organizations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Youth organization', photo:'https://images.brasa.world/Photos/vecteezy_diverse-group-of-smiling-young-adults-gathered-together_71616981.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+  seniorcenter:{op:'Senior centers', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8810', actName:'Social work for the elderly & disabled', cabys:'8810000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Senior center', photo:'https://images.brasa.world/Photos/vecteezy_elderly-residents-enjoy-a-communal-dining-experience-in-a_71428227.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+  hoa:{op:'HOAs & neighborhood associations', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'HOA / neighborhood association', photo:'https://images.brasa.world/Photos/vecteezy_aerial-view-of-populated-neigborhood-of-houses-with_16425711.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+  volfire:{op:'Volunteer fire & SAR', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'9499', actName:'Other membership organizations', cabys:'9499000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Volunteer fire & SAR', photo:'https://images.brasa.world/Photos/vecteezy_smoke-forest-and-firefighter-team-with-emergency-disaster_72036926.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+  mentoring:{op:'Mentoring programs', nounP:'jobs', noun:'job', done:'sold', group:'service', ciiu:'8899', actName:'Social work without accommodation', cabys:'8899000000000', vat:.13, vatNote:'standard 13%', payer:'Customer', permit:false, det:'Mentoring program', photo:'https://images.brasa.world/Photos/vecteezy_students-group-standing-together-as-team_31048816.jpg?w=900&q=82', flags:['Enrollment','Programs','Events']},
+};
+const PRO=['lawyers','accountants','architects','engineers','itservices','marketing','notaries','taxprep','realestate'];
+const FIN=['banks','moneytransfer','creditunions','insurance','microfinance','pawn','forex','atms','crypto','wealth','reinsurance','commodities'];
+const FAITH=['churches','synagogues','mosques','temples','ministries'];
+const RELIEF=['ngos','charities','foodbanks','shelters','crisiscenter','animalshelter','envgroups'];
+const CIVIC=['serviceclubs','fraternal','veterans','alumni','profassoc','tradeassoc','unions','political','cultural','coops'];
+const PROG=['communitycenter','youthorgs','seniorcenter','hoa','volfire','mentoring'];
+const BOARDS=[...PRO,...FIN,...FAITH,...RELIEF,...CIVIC,...PROG];
+const CATALOG={
+  lawyers:[{s:'LAW-01',n:'Legal consultation',p:35000},{s:'LAW-02',n:'Professional hour',p:65000},{s:'LAW-03',n:'Contract / deed',p:250000},{s:'LAW-04',n:'Representation (case)',p:850000},{s:'LAW-05',n:'Monthly retainer',p:350000}],
+  accountants:[{s:'ACC-01',n:'Consultation',p:25000},{s:'ACC-02',n:'Monthly close',p:85000},{s:'ACC-03',n:'Financial statements',p:250000},{s:'ACC-04',n:'Income tax return',p:180000},{s:'ACC-05',n:'Audit',p:650000}],
+  architects:[{s:'ARC-01',n:'Consultation',p:35000},{s:'ARC-02',n:'Preliminary design (m²)',p:4500},{s:'ARC-03',n:'Construction drawings (m²)',p:12000},{s:'ARC-04',n:'Site supervision (mo)',p:450000},{s:'ARC-05',n:'Permit (handling)',p:150000}],
+  engineers:[{s:'ENG-01',n:'Consultation',p:35000},{s:'ENG-02',n:'Structural design (m²)',p:9000},{s:'ENG-03',n:'Inspection',p:85000},{s:'ENG-04',n:'Technical direction (mo)',p:450000},{s:'ENG-05',n:'Report / appraisal',p:180000}],
+  itservices:[{s:'ITS-01',n:'Support (hour)',p:25000},{s:'ITS-02',n:'Support plan (mo)',p:120000},{s:'ITS-03',n:'Development (hour)',p:45000},{s:'ITS-04',n:'Cloud migration',p:850000},{s:'ITS-05',n:'Cybersecurity audit',p:450000}],
+  marketing:[{s:'MAR-01',n:'Consultation',p:25000},{s:'MAR-02',n:'Social media (mo)',p:180000},{s:'MAR-03',n:'Digital campaign',p:450000},{s:'MAR-04',n:'Brand design',p:350000},{s:'MAR-05',n:'SEO (mo)',p:150000}],
+  notaries:[{s:'NOT-01',n:'Authentication',p:8000},{s:'NOT-02',n:'Public deed',p:120000},{s:'NOT-03',n:'Power of attorney',p:45000},{s:'NOT-04',n:'Protocolization',p:85000},{s:'NOT-05',n:'Notarial act',p:65000}],
+  taxprep:[{s:'TAX-01',n:'Personal return',p:45000},{s:'TAX-02',n:'Business return',p:180000},{s:'TAX-03',n:'D-151 / informational',p:85000},{s:'TAX-04',n:'Tax advisory (hour)',p:35000},{s:'TAX-05',n:'Representation before Hacienda',p:250000}],
+  realestate:[{s:'REA-01',n:'Property valuation',p:85000},{s:'REA-02',n:'Listing & marketing (mo)',p:120000},{s:'REA-03',n:'Sale commission (reference)',p:2500000},{s:'REA-04',n:'Rental management (mo)',p:85000},{s:'REA-05',n:'Closing & transfer',p:250000}],
+  banks:[{s:'BAN-01',n:'Transfer fee',p:2500},{s:'BAN-02',n:'Card issuance',p:12000},{s:'BAN-03',n:'Loan processing',p:85000},{s:'BAN-04',n:'Account certification',p:8000},{s:'BAN-05',n:'Currency exchange (fee)',p:5000}],
+  moneytransfer:[{s:'MON-01',n:'Domestic transfer',p:3000},{s:'MON-02',n:'International transfer',p:12000},{s:'MON-03',n:'Receipt / pickup',p:2000},{s:'MON-04',n:'FX commission',p:4000},{s:'MON-05',n:'Bill payment',p:1500}],
+  creditunions:[{s:'CRE-01',n:'Membership',p:10000},{s:'CRE-02',n:'Monthly contribution',p:15000},{s:'CRE-03',n:'Loan processing',p:65000},{s:'CRE-04',n:'Certificate',p:6000},{s:'CRE-05',n:'Scheduled savings (opening)',p:5000}],
+  insurance:[{s:'INS-01',n:'Auto policy (mo)',p:35000},{s:'INS-02',n:'Life policy (mo)',p:18000},{s:'INS-03',n:'Home policy (mo)',p:22000},{s:'INS-04',n:'Claim handling',p:45000},{s:'INS-05',n:'Advisory (consultation)',p:25000}],
+  microfinance:[{s:'MIC-01',n:'Microloan application',p:8000},{s:'MIC-02',n:'Loan processing',p:35000},{s:'MIC-03',n:'Financial training',p:15000},{s:'MIC-04',n:'Renewal',p:12000},{s:'MIC-05',n:'Credit insurance',p:9000}],
+  pawn:[{s:'PAW-01',n:'Appraisal',p:5000},{s:'PAW-02',n:'Pawn (fee)',p:12000},{s:'PAW-03',n:'Contract renewal',p:8000},{s:'PAW-04',n:'Redemption',p:15000},{s:'PAW-05',n:'Item sale (commission)',p:10000}],
+  forex:[{s:'FOR-01',n:'Currency exchange (fee)',p:5000},{s:'FOR-02',n:'International transfer',p:12000},{s:'FOR-03',n:'Futures contract',p:45000},{s:'FOR-04',n:'FX advisory',p:25000},{s:'FOR-05',n:'Multi-currency account (opening)',p:18000}],
+  atms:[{s:'ATM-01',n:'Withdrawal (fee)',p:1500},{s:'ATM-02',n:'Balance inquiry',p:500},{s:'ATM-03',n:'Top-up',p:1000},{s:'ATM-04',n:'Bill payment',p:1500},{s:'ATM-05',n:'Deposit',p:1000}],
+  crypto:[{s:'CRY-01',n:'Buy / sell (fee)',p:5000},{s:'CRY-02',n:'Custody (mo)',p:12000},{s:'CRY-03',n:'Conversion to colones',p:4000},{s:'CRY-04',n:'Wallet (opening)',p:8000},{s:'CRY-05',n:'Advisory',p:35000}],
+  wealth:[{s:'WEA-01',n:'Portfolio review',p:85000},{s:'WEA-02',n:'Asset management (mo)',p:250000},{s:'WEA-03',n:'Investment plan',p:350000},{s:'WEA-04',n:'Wealth advisory',p:450000},{s:'WEA-05',n:'Quarterly report',p:120000}],
+  reinsurance:[{s:'REI-01',n:'Reinsurance quote',p:250000},{s:'REI-02',n:'Reinsurance contract',p:1500000},{s:'REI-03',n:'Risk analysis',p:450000},{s:'REI-04',n:'Renewal',p:850000},{s:'REI-05',n:'Actuarial advisory',p:350000}],
+  commodities:[{s:'COM-01',n:'Account opening',p:25000},{s:'COM-02',n:'Per-trade commission',p:8000},{s:'COM-03',n:'Futures contract',p:45000},{s:'COM-04',n:'Market advisory',p:85000},{s:'COM-05',n:'Position report',p:35000}],
+  churches:[{s:'CHU-01',n:'Tithe / offering',p:10000},{s:'CHU-02',n:'Wedding (service)',p:150000},{s:'CHU-03',n:'Funeral (service)',p:120000},{s:'CHU-04',n:'Baptism',p:45000},{s:'CHU-05',n:'Hall rental',p:85000}],
+  synagogues:[{s:'SYN-01',n:'Membership (mo)',p:25000},{s:'SYN-02',n:'Wedding service',p:150000},{s:'SYN-03',n:'Bar/Bat Mitzvah',p:120000},{s:'SYN-04',n:'Hall rental',p:85000},{s:'SYN-05',n:'Donation',p:10000}],
+  mosques:[{s:'MOS-01',n:'Donation / Zakat',p:10000},{s:'MOS-02',n:'Wedding service (Nikah)',p:120000},{s:'MOS-03',n:'Classes (mo)',p:15000},{s:'MOS-04',n:'Hall rental',p:85000},{s:'MOS-05',n:'Funeral (service)',p:100000}],
+  temples:[{s:'TEM-01',n:'Donation',p:10000},{s:'TEM-02',n:'Ceremony',p:85000},{s:'TEM-03',n:'Classes / retreat',p:15000},{s:'TEM-04',n:'Hall rental',p:85000},{s:'TEM-05',n:'Special service',p:120000}],
+  ministries:[{s:'MIN-01',n:'Donation',p:10000},{s:'MIN-02',n:'Event / conference',p:45000},{s:'MIN-03',n:'Material / resource',p:12000},{s:'MIN-04',n:'Mission (contribution)',p:25000},{s:'MIN-05',n:'Equipment rental',p:35000}],
+  ngos:[{s:'NGO-01',n:'Donation',p:10000},{s:'NGO-02',n:'Membership (mo)',p:15000},{s:'NGO-03',n:'Program (enrollment)',p:25000},{s:'NGO-04',n:'Consulting',p:85000},{s:'NGO-05',n:'Event (ticket)',p:12000}],
+  charities:[{s:'CHA-01',n:'Donation',p:10000},{s:'CHA-02',n:'Recurring donation (mo)',p:5000},{s:'CHA-03',n:'Charity event (ticket)',p:25000},{s:'CHA-04',n:'Sponsorship',p:250000},{s:'CHA-05',n:'Child sponsorship (mo)',p:18000}],
+  foodbanks:[{s:'FOO-01',n:'Donation',p:10000},{s:'FOO-02',n:'Food contribution (box)',p:12000},{s:'FOO-03',n:'Sponsorship',p:180000},{s:'FOO-04',n:'Volunteer fee',p:5000},{s:'FOO-05',n:'Distribution (service)',p:8000}],
+  shelters:[{s:'SHE-01',n:'Donation',p:10000},{s:'SHE-02',n:'Sponsor a bed (mo)',p:35000},{s:'SHE-03',n:'Sponsorship',p:25000},{s:'SHE-04',n:'Event (ticket)',p:12000},{s:'SHE-05',n:'Social service',p:8000}],
+  crisiscenter:[{s:'CRI-01',n:'Donation',p:10000},{s:'CRI-02',n:'Helpline contribution',p:5000},{s:'CRI-03',n:'Training',p:25000},{s:'CRI-04',n:'Sponsorship',p:180000},{s:'CRI-05',n:'Support service',p:8000}],
+  animalshelter:[{s:'ANI-01',n:'Adoption (fee)',p:25000},{s:'ANI-02',n:'Donation',p:10000},{s:'ANI-03',n:'Sponsor an animal (mo)',p:12000},{s:'ANI-04',n:'Spay / neuter',p:18000},{s:'ANI-05',n:'Vaccination',p:9000}],
+  envgroups:[{s:'ENV-01',n:'Membership (mo)',p:12000},{s:'ENV-02',n:'Donation',p:10000},{s:'ENV-03',n:'Reforestation program',p:45000},{s:'ENV-04',n:'Workshop (ticket)',p:15000},{s:'ENV-05',n:'Sponsorship',p:180000}],
+  serviceclubs:[{s:'SER-01',n:'Membership (yr)',p:85000},{s:'SER-02',n:'Monthly dues',p:12000},{s:'SER-03',n:'Event (ticket)',p:15000},{s:'SER-04',n:'Donation',p:10000},{s:'SER-05',n:'Badge / material',p:8000}],
+  fraternal:[{s:'FRA-01',n:'Membership (yr)',p:85000},{s:'FRA-02',n:'Monthly dues',p:12000},{s:'FRA-03',n:'Event',p:15000},{s:'FRA-04',n:'Donation',p:10000},{s:'FRA-05',n:'Initiation',p:45000}],
+  veterans:[{s:'VET-01',n:'Membership (yr)',p:45000},{s:'VET-02',n:'Monthly dues',p:8000},{s:'VET-03',n:'Commemorative event',p:15000},{s:'VET-04',n:'Donation',p:10000},{s:'VET-05',n:'Support service',p:8000}],
+  alumni:[{s:'ALU-01',n:'Membership (yr)',p:35000},{s:'ALU-02',n:'Donation',p:10000},{s:'ALU-03',n:'Event / reunion',p:25000},{s:'ALU-04',n:'Networking (ticket)',p:15000},{s:'ALU-05',n:'Sponsorship',p:180000}],
+  profassoc:[{s:'PRO-01',n:'Membership (yr)',p:120000},{s:'PRO-02',n:'Professional dues (mo)',p:18000},{s:'PRO-03',n:'Certification',p:85000},{s:'PRO-04',n:'Continuing education',p:45000},{s:'PRO-05',n:'Congress (ticket)',p:65000}],
+  tradeassoc:[{s:'TRA-01',n:'Membership (yr)',p:250000},{s:'TRA-02',n:'Dues (mo)',p:35000},{s:'TRA-03',n:'Industry event',p:85000},{s:'TRA-04',n:'Training',p:45000},{s:'TRA-05',n:'Sponsorship',p:350000}],
+  unions:[{s:'UNI-01',n:'Affiliation',p:10000},{s:'UNI-02',n:'Union dues (mo)',p:8000},{s:'UNI-03',n:'Labor advisory',p:25000},{s:'UNI-04',n:'Training',p:15000},{s:'UNI-05',n:'Solidarity fund (contribution)',p:5000}],
+  political:[{s:'POL-01',n:'Affiliation',p:5000},{s:'POL-02',n:'Campaign donation',p:25000},{s:'POL-03',n:'Event (ticket)',p:15000},{s:'POL-04',n:'Member dues (mo)',p:6000},{s:'POL-05',n:'Material',p:8000}],
+  cultural:[{s:'CUL-01',n:'Membership (yr)',p:25000},{s:'CUL-02',n:'Workshop (mo)',p:15000},{s:'CUL-03',n:'Cultural event (ticket)',p:12000},{s:'CUL-04',n:'Donation',p:10000},{s:'CUL-05',n:'Space rental',p:65000}],
+  coops:[{s:'COO-01',n:'Affiliation',p:15000},{s:'COO-02',n:'Monthly contribution',p:12000},{s:'COO-03',n:'Loan processing',p:65000},{s:'COO-04',n:'Surplus distribution',p:5000},{s:'COO-05',n:'Training',p:15000}],
+  communitycenter:[{s:'COM-01',n:'Program registration',p:15000},{s:'COM-02',n:'Hall rental',p:65000},{s:'COM-03',n:'Class / workshop (mo)',p:18000},{s:'COM-04',n:'Event (ticket)',p:12000},{s:'COM-05',n:'Membership (mo)',p:8000}],
+  youthorgs:[{s:'YOU-01',n:'Registration',p:15000},{s:'YOU-02',n:'Monthly dues',p:12000},{s:'YOU-03',n:'Camp',p:45000},{s:'YOU-04',n:'Workshop',p:15000},{s:'YOU-05',n:'Donation',p:10000}],
+  seniorcenter:[{s:'SEN-01',n:'Registration',p:12000},{s:'SEN-02',n:'Monthly dues',p:18000},{s:'SEN-03',n:'Activity / outing',p:25000},{s:'SEN-04',n:'Meal (service)',p:4500},{s:'SEN-05',n:'Donation',p:10000}],
+  hoa:[{s:'HOA-01',n:'Maintenance fee (mo)',p:25000},{s:'HOA-02',n:'Special assessment',p:85000},{s:'HOA-03',n:'Common-area rental',p:35000},{s:'HOA-04',n:'Certificate',p:8000},{s:'HOA-05',n:'Fine / charge',p:15000}],
+  volfire:[{s:'VOL-01',n:'Donation',p:10000},{s:'VOL-02',n:'Equipment sponsorship',p:180000},{s:'VOL-03',n:'First-aid course',p:25000},{s:'VOL-04',n:'Volunteer membership',p:8000},{s:'VOL-05',n:'Emergency contribution',p:5000}],
+  mentoring:[{s:'MEN-01',n:'Registration',p:15000},{s:'MEN-02',n:'Mentoring session',p:25000},{s:'MEN-03',n:'Program (mo)',p:18000},{s:'MEN-04',n:'Workshop',p:15000},{s:'MEN-05',n:'Donation',p:10000}],
+};
+const SINPE_MEDIO={codigo:'06',nombre:'SINPE Móvil'};   // MediosPago catálogo v4.4
+const FE_SISTEMA='BRASA · brasa.world';                 // Identificación de Sistema (required in v4.4)
+const zp=(n,l)=>String(n).padStart(l,'0');
+function nextConsec(b,tipo){ const d=D[b]; d.comprobanteSeq[tipo]=(d.comprobanteSeq[tipo]||0)+1; return d.sucursal+d.terminal+tipo+zp(d.comprobanteSeq[tipo],10); }
+function claveFor(b,consec){ const p=D[b].patrono, d=new Date(); const ced=zp(p.cedula.replace(/\D/g,''),12); return '506'+zp(d.getDate(),2)+zp(d.getMonth()+1,2)+zp(d.getFullYear()%100,2)+ced+consec+'1'+zp(Math.floor(Math.random()*1e8),8); }
+function buildTiquete(b,job){ const tipo='04', consec=nextConsec(b,tipo), clave=claveFor(b,consec);
+  const K=KIND[job.kind]||KIND.lawyers, rate=(K.vat!=null?K.vat:CFG.vat);
+  const detalle=K.det+' · '+job.label;
+  const tl=job.fee, base=tl/(1+rate), iva=tl-base;
+  const lines=[{ n:1, cabys:K.cabys, detalle, cantidad:1, precioUnitario:base, montoTotal:base, subTotal:base, impuesto:iva, montoTotalLinea:tl }];
+  return { clave, consec, tipo, fecha:job.ts||Date.now(), emisorSnap:{cedula:D[b].patrono.cedula,nombre:D[b].biz,actividad:K.ciiu}, medio:SINPE_MEDIO, sistema:FE_SISTEMA, sinpeRef:job.remitRef||'', cliente:job.cliente||'', lines, totalVentaNeta:base, totalImpuesto:iva, totalComprobante:tl, estado:'generado' }; }
+function feXML(c){ const e=c.emisorSnap, f=new Date(c.fecha).toISOString();
+  const L=c.lines.map(l=>'  <LineaDetalle>\n    <NumeroLinea>'+l.n+'</NumeroLinea>\n    <CodigoCABYS>'+l.cabys+'</CodigoCABYS>\n    <Cantidad>'+l.cantidad+'</Cantidad>\n    <UnidadMedida>Sp</UnidadMedida>\n    <Detalle>'+l.detalle+'</Detalle>\n    <PrecioUnitario>'+l.precioUnitario.toFixed(5)+'</PrecioUnitario>\n    <MontoTotal>'+l.montoTotal.toFixed(5)+'</MontoTotal>\n    <SubTotal>'+l.subTotal.toFixed(5)+'</SubTotal>\n    <Impuesto>\n      <Codigo>01</Codigo><CodigoTarifaIVA>08</CodigoTarifaIVA><Tarifa>13.00</Tarifa><Monto>'+l.impuesto.toFixed(5)+'</Monto>\n    </Impuesto>\n    <ImpuestoNeto>'+l.impuesto.toFixed(5)+'</ImpuestoNeto>\n    <MontoTotalLinea>'+l.montoTotalLinea.toFixed(5)+'</MontoTotalLinea>\n  </LineaDetalle>').join('\n');
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<TiqueteElectronico xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.4/tiqueteElectronico">\n  <Clave>'+c.clave+'</Clave>\n  <ProveedorSistemas>'+c.sistema+'</ProveedorSistemas>\n  <NumeroConsecutivo>'+c.consec+'</NumeroConsecutivo>\n  <FechaEmision>'+f+'</FechaEmision>\n  <Emisor>\n    <Nombre>'+e.nombre+'</Nombre>\n    <Identificacion><Tipo>02</Tipo><Numero>'+e.cedula.replace(/\D/g,'')+'</Numero></Identificacion>\n    <CodigoActividadEmisor>'+e.actividad+'</CodigoActividadEmisor>\n  </Emisor>\n  <CondicionVenta>01</CondicionVenta>\n'+L+'\n  <ResumenFactura>\n    <CodigoTipoMoneda><CodigoMoneda>CRC</CodigoMoneda><TipoCambio>1.00000</TipoCambio></CodigoTipoMoneda>\n    <TotalVentaNeta>'+c.totalVentaNeta.toFixed(5)+'</TotalVentaNeta>\n    <TotalImpuesto>'+c.totalImpuesto.toFixed(5)+'</TotalImpuesto>\n    <TotalComprobante>'+c.totalComprobante.toFixed(5)+'</TotalComprobante>\n    <MedioPago><TipoMedioPago>'+c.medio.codigo+'</TipoMedioPago></MedioPago>\n  </ResumenFactura>\n  <!-- XAdES-EPES ds:Signature — sellado con la llave/sello del BCCR y transmitido a TRIBU-CR (backend) -->\n</TiqueteElectronico>'; }
+function signTransmit(b,clave){ const c=D[b].comprobantes.find(x=>x.clave===clave); if(!c||c.estado==='aceptado')return; c.estado='aceptado'; c.simulado=true; render(); openComprobante(b,clave); toast('Tiquete '+c.consec.slice(-6)+' aceptado (simulado) · sello BCCR + TRIBU-CR pendiente de backend'); }
+function toggleXML(clave){ const el=$('xml-'+clave); if(el)el.style.display=el.style.display==='none'?'block':'none'; }
+function openComprobante(b,clave){ const c=D[b].comprobantes.find(x=>x.clave===clave); if(c)openSheet(comprobanteHTML(b,c)); }
+function comprobanteHTML(b,c){ const fdate=new Date(c.fecha).toLocaleString('es-CR');
+  const pill=c.estado==='aceptado'?`<span class="pill green">Aceptado${c.simulado?' (simulado)':''}</span>`:'<span class="pill accent">Generado · sin firmar</span>';
+  return `<h3>Tiquete electrónico</h3><div class="sub">Hacienda Costa Rica · v4.4</div>
+    <div class="kv"><span class="k">Clave (50)</span><span class="v mono" style="font-size:11px;word-break:break-all">${c.clave}</span></div>
+    <div class="kv"><span class="k">Consecutivo (20)</span><span class="v mono">${c.consec}</span></div>
+    <div class="kv"><span class="k">Emisor</span><span class="v">${esc(c.emisorSnap.nombre)} · ${esc(c.emisorSnap.cedula)}</span></div>
+    <div class="kv"><span class="k">Actividad (CIIU)</span><span class="v">${esc(c.emisorSnap.actividad)}</span></div>
+    <div class="kv"><span class="k">Fecha</span><span class="v">${fdate}</span></div>
+    <div class="kv"><span class="k">Medio de pago</span><span class="v">${esc(c.medio.nombre)} (cód. ${c.medio.codigo})${c.sinpeRef?' · '+esc(c.sinpeRef):''}</span></div>
+    <div class="kv"><span class="k">Sistema</span><span class="v">${esc(c.sistema)}</span></div>
+    <div class="rows" style="margin:12px 0">${c.lines.map(l=>`<div class="line"><div class="m"><div class="nm">${l.cantidad}× ${esc(l.detalle)}</div><div class="meta">CAByS ${l.cabys} · neto ${fmt(l.subTotal)} · IVA ${fmt(l.impuesto)}</div></div><span class="v">${fmt(l.montoTotalLinea)}</span></div>`).join('')}</div>
+    <div class="kv"><span class="k">Venta neta</span><span class="v">${fmt(c.totalVentaNeta)}</span></div>
+    <div class="kv"><span class="k">IVA 13%</span><span class="v">${fmt(c.totalImpuesto)}</span></div>
+    <div class="kv"><span class="k">Total</span><span class="v">${fmt(c.totalComprobante)}</span></div>
+    <div style="margin:10px 0">${pill}</div>
+    <p class="note">${c.estado==='aceptado'?'Structured to Hacienda v4.4. Real acceptance needs sealing with the business\u2019s BCCR credential and transmission to TRIBU-CR — that runs in the backend, not this preview.':'Composed and ready to seal. Sealing (sello/.p12 from BCCR) and transmission to TRIBU-CR run in the backend; this models that step. Not yet legally issued.'}</p>
+    <div class="btnrow">${c.estado!=='aceptado'?`<button class="btn solid" onclick="signTransmit('${b}','${c.clave}')">Sign & transmit (TRIBU-CR)</button>`:''}<button class="btn" onclick="toggleXML('${c.clave}')">View XML</button><button class="btn" onclick="closeSheet()">Close</button></div>
+    <pre id="xml-${c.clave}" class="mono" style="display:none;white-space:pre-wrap;font-size:10px;background:var(--brasa-cream);padding:12px;border:1px solid var(--brasa-rule);border-radius:8px;margin-top:12px;max-height:320px;overflow:auto">${esc(feXML(c))}</pre>`; }
+/* ---- end tiquete v4.4 block ---- */
+
+/* seed: compose the VAT tiquete for jobs already paid by SINPE */
+['co'].forEach(b=>{ paidJobs(b).forEach(j=>{ j.method='sinpe'; j.n=++D[b]._n; j.ts=Date.now()-D[b]._n*36e5; remit(b,j); const c=buildTiquete(b,j); j.clave=c.clave; j.consec=c.consec; j.remitRef=c.consec; D[b].comprobantes.push(c); }); });
+const _NAMES=['Ana Rojas','Luis Cordero','Sofía Mora','Carlos Mora','Carmen Ruiz','Rosa Vargas','Marco Jiménez','Patricia Vega','José Ramírez','Laura Solís','Diego Castro','María Fernández','Óscar Núñez','Gabriela Soto'];
+const _NOTES=['Excellent service, very professional.','Punctual and attentive, will return.','Exactly what we needed, great care.','Friendly team, solid handling.','Fast response and everything clear.','Highly recommended, no complaints.','Clear communication start to finish.','Went above and beyond, thank you.'];
+D.co.feedback=[];
+BOARDS.forEach((k,i)=>{ const c=1+(i%2); for(let j=0;j<c;j++){ const idx=i*2+j; D.co.feedback.push({id:'fb'+k+j, kind:k, n:_NAMES[idx%_NAMES.length], stars:(idx%6===0?4:5), note:_NOTES[idx%_NOTES.length], ts:Date.now()-(idx+1)*DAY}); } });
+
+/* ---- SINPE collection: pay -> auto-remit VAT ---- */
+function collect(b,id){ const j=D[b].jobs.find(x=>x.id===id); if(!j||j.paid)return;
+  const ref='BRASA-'+Date.now().toString(36).toUpperCase(); const payload='SINPE|'+D[b].biz+'|'+Math.round(j.fee)+'|CRC|'+ref;
+  const vat=j.fee-j.fee/(1+CFG.vat);
+  openSheet(`<h3>Collect ${fmt(j.fee)}</h3><div class="sub">${esc(j.label)} · SINPE Móvil</div>
+    <div class="qrwrap"><canvas id="qrc"></canvas></div>
+    <div class="kv"><span class="k">SINPE Móvil</span><span class="v mono">${esc(D[b].sinpe)}</span></div>
+    <div class="kv"><span class="k">Amount</span><span class="v">${fmt(j.fee)}</span></div>
+    <div class="kv"><span class="k">Reference</span><span class="v mono">${ref}</span></div>
+    <p class="note" style="margin:12px 0">The customer pays by SINPE Móvil — straight to your account. On payment BRASA composes a Tiquete Electrónico v4.4 (IVA ${fmt(vat)}) as the business; sealing with the BCCR key and transmission to Hacienda (TRIBU-CR) are the backend step, pending. BRASA never touches the money.</p>
+    <div class="btnrow"><button class="btn solid" onclick="confirmCollect('${b}','${id}')">Confirm payment received</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`);
+  const c=$('qrc'); if(c) drawQR(c,payload,5); }
+function confirmCollect(b,id){ const j=D[b].jobs.find(x=>x.id===id); if(!j||j.paid)return;
+  j.paid=true; j.method='sinpe'; j.status=(KIND[j.kind]||KIND.lawyers).done; j.ts=Date.now(); j.n=++D[b]._n;
+  const iva=remit(b,j); const c=buildTiquete(b,j); j.clave=c.clave; j.consec=c.consec; j.remitRef=c.consec; D[b].comprobantes.push(c); const pts=accrue(b,j); closeSheet(); render(); toast('Paid by SINPE → your account · Tiquete '+c.consec.slice(-6)+' composed (pending signature) · IVA '+fmt(iva)+' · +'+pts+' pts'); }
+
+/* ---- HR actions ---- */
+function registerBenefits(b,id){ const w=D[b].team.find(t=>t.id===id); if(!w)return;
+  w.seg=true; if(!w.niss)w.niss='99'+Math.floor(100+Math.random()*899); if(!w.fechaNac)w.fechaNac='1990-01-01'; if(!w.nac)w.nac='CR';
+  render(); toast(w.n.split(' ')[0]+' registered with CCSS and INS'); }
+function hireForm(b){ openSheet(`<h3>Hire</h3><div class="sub">Add to your team — your business, your people</div>
+  <div class="field"><label>Name</label><input id="hN"></div>
+  <div class="field"><label>Relationship</label><input id="hR" placeholder="Sister, cousin, friend…"></div>
+  <div class="field"><label>Station / role</label><input id="hV" placeholder="Limpieza, jardinería, cuadrilla, técnico…"></div>
+  <div class="field"><label>ID</label><input id="hC" placeholder="0-0000-0000"></div>
+  <div class="btnrow"><button class="btn solid" onclick="hire('${b}')">Hire</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function hire(b){ const n=$('hN').value.trim(); if(!n){toast("Name is required");return;}
+  D[b].team.push({ id:'w'+Date.now(), n, role:'staff', rel:$('hR').value.trim()||'Staff', v:$('hV').value.trim()||'—', cedula:$('hC').value.trim(), niss:'', fechaNac:'', nac:'CR', seg:false, wageType:'monthly', wage:0, hired:Date.now(), vacTaken:0, status:'Active' });
+  closeSheet(); render(); toast('Hired · CCSS/INS registration pending'); }
+function editPatrono(b){ const p=D[b].patrono; openSheet(`<h3>Employer identity</h3><div class="sub">What every filing must carry</div>
+  <div class="field"><label>Legal name</label><input id="pRz" value="${esc(p.razonSocial)}"></div>
+  <div class="field"><label>Tax ID (personal/corporate)</label><input id="pCed" value="${esc(p.cedula)}"></div>
+  <div class="field"><label>CCSS employer number</label><input id="pCcss" value="${esc(p.patronalCCSS)}"></div>
+  <div class="field"><label>INS policy (WC)</label><input id="pIns" value="${esc(p.polizaINS)}"></div>
+  <div class="field"><label>CIIU activity</label><input id="pCiiu" value="${esc(p.ciiu)}"></div>
+  <div class="btnrow"><button class="btn solid" onclick="savePatrono('${b}')">Save</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function editWage(b,id){ const w=D[b].team.find(t=>t.id===id); openSheet(`<h3>Wage · ${esc(w.n)}</h3><div class="sub">What you pay this worker — your arrangement. BRASA only computes the statutory charges and renta.</div>
+  <div class="field"><label>Monthly wage (₡)</label><input id="wgIn" type="number" inputmode="numeric" value="${w.wage||''}" placeholder="0"></div>
+  <div class="btnrow"><button class="btn solid" onclick="saveWage('${b}','${id}')">Save</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function saveWage(b,id){ const w=D[b].team.find(t=>t.id===id); w.wageType='monthly'; w.wage=Math.max(0,parseFloat($('wgIn').value)||0); closeSheet(); render(); toast('Wage recorded for '+w.n.split(' ')[0]); }
+function recordLeave(b,id){ const w=D[b].team.find(t=>t.id===id); openSheet(`<h3>Record leave · ${esc(w.n)}</h3><div class="sub">Vacation balance ${vacBalance(w).toFixed(1)} days accrued</div>
+  <div class="field"><label>Days taken</label><input id="lvIn" type="number" step="0.5" min="0" placeholder="0"></div>
+  <div class="btnrow"><button class="btn solid" onclick="saveLeave('${b}','${id}')">Record</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function saveLeave(b,id){ const w=D[b].team.find(t=>t.id===id); const d=Math.max(0,parseFloat($('lvIn').value)||0); w.vacTaken=(w.vacTaken||0)+d; closeSheet(); render(); toast(d+' vacation day(s) recorded'); }
+function savePatrono(b){ const p=D[b].patrono; p.razonSocial=$('pRz').value.trim(); p.cedula=$('pCed').value.trim(); p.patronalCCSS=$('pCcss').value.trim(); p.polizaINS=$('pIns').value.trim(); p.ciiu=$('pCiiu').value.trim();
+  closeSheet(); render(); toast('Employer identity updated'); }
+function prepareFiling(b,e){ const r=ready(b,e); if(!r.ok){toast('Missing: '+r.miss[0]);return;}
+  D[b].filings.push({ id:'f'+Date.now(), e, label:PORTALS[e].label, period:period(), comprobante:'PREP-'+(D[b].filings.length+1), status:'prepared' });
+  try{ window.open(PORTALS[e].url,'_blank'); }catch(_){}
+  render(); toast('Document prepared · opening portal'); }
+function markTransmitted(b,id){ const f=D[b].filings.find(x=>x.id===id); if(f){ f.status='filed'; f.comprobante=f.comprobante.replace('PREP','TR'); } render(); toast('Filing marked as filed'); }
+
+/* ---- document previews ---- */
+function viewDoc(b,e){ const d=D[b], p=d.patrono, L=planilla(b);
+  const phead=`<div class="dh">Employer</div><div style="font-size:13px;margin-bottom:12px">${esc(p.razonSocial)} · ${esc(p.cedula)}${p.patronalCCSS?' · Employer no. '+esc(p.patronalCCSS):''}</div>`;
+  let body='', btn='';
+  if(e==='ccss'){ body=`<div class="doc"><div class="dh">CCSS · Centralized Collection System (SICERE)</div><div class="dt">Monthly payroll</div><div class="dm">Period ${period()} · CRC</div>${phead}
+    <table><thead><tr><th>Worker</th><th>ID</th><th>Social no.</th><th class="r">Wage</th><th class="r">Employee</th><th class="r">Employer</th></tr></thead><tbody>
+    ${L.map(x=>`<tr><td>${esc(x.w.n)}</td><td>${esc(x.w.cedula||'—')}</td><td>${esc(x.w.niss||'—')}</td><td class="r">${fmt(x.base)}</td><td class="r">${fmt(x.employee)}</td><td class="r">${fmt(x.employer)}</td></tr>`).join('')}
+    <tr class="tot"><td colspan="3">Totals</td><td class="r">${fmt(L.reduce((a,x)=>a+x.base,0))}</td><td class="r">${fmt(L.reduce((a,x)=>a+x.employee,0))}</td><td class="r">${fmt(L.reduce((a,x)=>a+x.employer,0))}</td></tr>
+    </tbody></table></div>`;
+    const r=ready(b,'ccss'); btn=`<button class="btn solid" ${r.ok?'':'disabled'} onclick="prepareFiling('${b}','ccss')">Prepare & open portal</button>${!r.ok?`<p class="miss">Missing: ${esc(r.miss.join(', '))}</p>`:''}`; }
+  if(e==='renta'){ const tot=L.reduce((a,x)=>a+x.renta,0); body=`<div class="doc"><div class="dh">Hacienda · TRIBU-CR — Serie 100 (RFT)</div><div class="dt">Income tax withheld (salaries)</div><div class="dm">Period ${period()} · CRC</div>${phead}
+    <table><thead><tr><th>Worker</th><th>ID</th><th class="r">Gross (monthly)</th><th class="r">Renta withheld</th></tr></thead><tbody>
+    ${L.map(x=>`<tr><td>${esc(x.w.n)}</td><td>${esc(x.w.cedula||'—')}</td><td class="r">${fmt(x.base)}</td><td class="r">${fmt(x.renta)}</td></tr>`).join('')}
+    <tr class="tot"><td colspan="3">Total withheld</td><td class="r">${fmt(tot)}</td></tr>
+    </tbody></table></div>${tot===0?'<p class="note" style="margin-top:10px">No income tax withheld — all wages are below the ₡929,000/month threshold. Renta applies automatically above it.</p>':''}`;
+    const r=ready(b,'renta'); btn=`<button class="btn solid" ${r.ok?'':'disabled'} onclick="prepareFiling('${b}','renta')">Prepare & open portal</button>${!r.ok?`<p class="miss">Missing: ${esc(r.miss.join(', '))}</p>`:''}`; }
+  if(e==='ins'){ body=`<div class="doc"><div class="dh">INS · RT-Virtual</div><div class="dt">Workers' Compensation payroll</div><div class="dm">Period ${period()} · Policy ${esc(p.polizaINS)} · CRC</div>${phead}
+    <table><thead><tr><th>Worker</th><th>ID</th><th>Birth date</th><th class="r">Wage</th><th class="r">Premium</th></tr></thead><tbody>
+    ${L.map(x=>`<tr><td>${esc(x.w.n)}</td><td>${esc(x.w.cedula||'—')}</td><td>${esc(x.w.fechaNac||'—')}</td><td class="r">${fmt(x.base)}</td><td class="r">${fmt(x.premium)}</td></tr>`).join('')}
+    <tr class="tot"><td colspan="3">Totals</td><td class="r">${fmt(L.reduce((a,x)=>a+x.base,0))}</td><td class="r">${fmt(L.reduce((a,x)=>a+x.premium,0))}</td></tr>
+    </tbody></table></div>`;
+    const r=ready(b,'ins'); btn=`<button class="btn solid" ${r.ok?'':'disabled'} onclick="prepareFiling('${b}','ins')">Prepare & open portal</button>${!r.ok?`<p class="miss">Missing: ${esc(r.miss.join(', '))}</p>`:''}`; }
+  if(e==='hacienda'){ const R=d.remittance, iva=ivaSummary(b);
+    body=`<div class="doc"><div class="dh">Hacienda · Tiquete Electrónico (v4.4)</div><div class="dt">VAT on composed tiquetes</div><div class="dm">Period ${period()} · CRC · sealing + transmission pending</div>${phead}
+    <table><thead><tr><th>Tiquete</th><th>Client</th><th class="r">Base</th><th class="r">VAT 13%</th><th>Status</th></tr></thead><tbody>
+    ${R.map(r=>`<tr><td class="mono" style="font-size:11px">${esc(r.ref)}</td><td>${esc(r.cliente)}</td><td class="r">${fmt(r.base)}</td><td class="r">${fmt(r.iva)}</td><td>Por firmar</td></tr>`).join('')}
+    <tr class="tot"><td colspan="3">Totals · ${iva.count} tiquetes</td><td class="r">${fmt(iva.calculated)}</td><td></td></tr>
+    </tbody></table></div><p class="note" style="margin-top:12px">These tiquetes are composed to Hacienda v4.4 but not yet sealed with the business's BCCR key or transmitted to TRIBU-CR — that backend step is pending, so they are not yet legally issued.</p>`; btn=''; }
+  openSheet(`<h3>${e==='hacienda'?'Electronic tiquetes':'Document to file'}</h3><div class="sub">${e==='hacienda'?'Hacienda · Tiquete Electrónico v4.4':PORTALS[e].label} · ${period()}</div>${body}
+    <div class="btnrow">${btn}<button class="btn" onclick="closeSheet()">Close</button></div>`); }
+
+/* ============================================================================
+   TILES + HOME
+   ============================================================================ */
+const val=(x,b)=>typeof x==='function'?x(b):x;
+function tileC(b,k,label){ return `<a class="tile" data-route="${b}-${k}"><span class="tl">${label}</span></a>`; }
+function ptileC(b,k,label,photo){ return `<a class="ptile" data-route="${b}-${k}"><img class="ptile-photo" src="${photo}" alt="" onerror="this.remove()"><div class="pt-in"><span class="tl">${label}</span></div></a>`; }
+function vertical(b){ const d=D[b];
+  const tiles=arr=>arr.map(k=>ptileC(b,k,KIND[k].op,KIND[k].photo)).join('\n    ');
+  return `<p class="eyebrow" style="margin:8px 0 14px">Front Office · Professional Services</p>
+  <div class="grid">
+    ${tiles(PRO)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Front Office · Finance &amp; Money</p>
+  <div class="grid">
+    ${tiles(FIN)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Front Office · Faith &amp; Worship</p>
+  <div class="grid">
+    ${tiles(FAITH)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Front Office · Nonprofits &amp; Relief</p>
+  <div class="grid">
+    ${tiles(RELIEF)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Front Office · Membership &amp; Civic</p>
+  <div class="grid">
+    ${tiles(CIVIC)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Front Office · Community Programs</p>
+  <div class="grid">
+    ${tiles(PROG)}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Back Office</p>
+  <div class="grid">
+    ${ptileC(b,'inventory','Supplies', SVC+'service-inventory.jpg')}
+    ${ptileC(b,'suppliers','Suppliers', PHOTOS+'retail-suppliers.jpg')}
+    ${ptileC(b,'returns','Returns & exchanges', PHOTOS+'retail-returns.jpg')}
+    ${ptileC(b,'educacion','Business Education', SVC+'service-education.jpg')}
+  </div>
+  <p class="eyebrow" style="margin:36px 0 14px">Main Office</p>
+  <div class="grid">
+    ${ptileC(b,'dash','Dashboard', PHOTOS+'office-dashboard.jpg')}
+    ${ptileC(b,'facturas','Invoicing', PHOTOS+'office-invoicing.jpg')}
+    ${ptileC(b,'clientes','Clients', PHOTOS+'office-team.jpg')}
+    ${ptileC(b,'equipo','Team', PHOTOS+'office-clients.jpg')}
+    ${ptileC(b,'ganancias','Earnings', PHOTOS+'office-earnings.jpg')}
+    ${ptileC(b,'estado','Government', PHOTOS+'office-government.jpg')}
+  </div>`; }
+function home(){ return `<div class="hero" style="background-image:url('${HERO_IMG}')"><img class="hero-photo" src="${HERO_PHOTO}" alt="" onerror="this.remove()"><div class="hero-in hero-in-split"><div class="hero-copy">
+    <h1 class="cat-title">Human Services</h1>
+  </div>${joinCard()}</div></div>
+  <section class="container page">
+  <div style="height:8px"></div>
+  ${vertical('co')}
+</section>`; }
+
+function head(b,title,line){ const d=D[b]; line='';
+  const HP=Object.assign({'Dashboard':PHOTOS+'office-dashboard.jpg','Invoicing':PHOTOS+'office-invoicing.jpg','Clients':PHOTOS+'office-team.jpg','Team':PHOTOS+'office-clients.jpg','Earnings':PHOTOS+'office-earnings.jpg','Government':PHOTOS+'office-government.jpg','Checkout':SVC+'service-checkout.jpg','Feedback':SVC+'service-feedback.jpg','Stockroom':SVC+'service-inventory.jpg','Supplies':SVC+'service-inventory.jpg','Suppliers':PHOTOS+'retail-suppliers.jpg','Returns & exchanges':PHOTOS+'retail-returns.jpg','Business Education':SVC+'service-education.jpg'}, ...Object.values(KIND).map(K=>({[K.op]:K.photo})));
+  const photo=HP[title]||HERO_PHOTO;
+  return `<div class="hero" style="background-image:url('${HERO_IMG}')"><img class="hero-photo" src="${photo}" alt="" onerror="this.remove()"><div class="hero-in"><a class="back-link" data-route="">&larr; ${d.back}</a><p class="eyebrow">${d.label} · ${d.biz}</p><h1 class="cat-title">${title}</h1>${line?`<p class="cat-line" style="margin-bottom:0">${line}</p>`:''}</div></div><!--HC-->`; }
+
+
+
+/* ============================================================================
+   PRODUCT REGISTRY + BARCODE RESOLUTION
+   Set REGISTRY_API to your R2/Worker base (barcode -> JSON) and LOOKUP_API to a
+   commercial-lookup proxy. Empty = offline mode using the seed registry below.
+   ============================================================================ */
+const REGISTRY_API='https://brasa-registry.richard-bad.workers.dev/';
+const LOOKUP_API='https://brasa-registry.richard-bad.workers.dev/lookup/';
+const REG={};  // no goods boards on this surface yet
+async function resolveBarcode(code){
+  code=(code||'').replace(/\D/g,''); if(!code) return null;
+  // prefer the LIVE registry (has images) over the local seed/cache
+  if(REGISTRY_API){ try{ const r=await fetch(REGISTRY_API+code); if(r.ok){ const d=await r.json(); if(d){ REG[code]=d; return Object.assign({barcode:code},d); } } }catch(e){} }
+  if(REG[code]) return Object.assign({barcode:code},REG[code]);
+  if(LOOKUP_API){ try{ const r=await fetch(LOOKUP_API+code); if(r.ok){ const d=await r.json(); if(d){ REG[code]=d; return Object.assign({barcode:code},d); } } }catch(e){} }
+  return null;
+}
+function addByBarcode(b,kind){ openSheet(`<h3>Add product \u00B7 ${esc(KIND[kind].op)}</h3><div class="sub">Scan or enter the barcode \u2014 we fill the rest</div>
+  <div class="field"><label>Barcode (UPC / EAN)</label><input id="bcIn" inputmode="numeric" placeholder="7441001234567"></div>
+  <div class="btnrow" style="margin:0 0 12px"><button class="btn" onclick="lookupInto('${kind}')">Look up</button></div>
+  <div id="bcPrevWrap" style="display:none;margin:0 0 12px"><img id="bcPrev" alt="" style="max-width:130px;max-height:130px;object-fit:contain;border-radius:10px;background:#fff;border:1px solid #e5ddd0;padding:4px"></div>
+  <input id="bcImg" type="hidden">
+  <div class="field"><label>Product name</label><input id="bcN" placeholder="resolves from barcode\u2026"></div>
+  <div class="field"><label>Brand (optional)</label><input id="bcB"></div>
+  <div class="field"><label>Price (CRC)</label><input id="bcP" inputmode="numeric" placeholder="0"></div>
+  <div class="field"><label>On hand</label><input id="bcQ" inputmode="numeric" placeholder="0"></div>
+  <div class="btnrow"><button class="btn solid" onclick="addStockCommit('${b}','${kind}')">Add to stock</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+async function lookupInto(kind){ const hit=await resolveBarcode($('bcIn').value);
+  if(hit){ $('bcN').value=hit.n||''; $('bcB').value=hit.brand||''; $('bcImg').value=hit.img||'';
+    if(hit.img){ $('bcPrev').src=hit.img; $('bcPrevWrap').style.display='block'; } else { $('bcPrevWrap').style.display='none'; }
+    toast('Found: '+(hit.n||'')); }
+  else { $('bcPrevWrap').style.display='none'; toast('Not in registry \u2014 enter details, it is saved for everyone'); } }
+function addStockCommit(b,kind){ const n=$('bcN').value.trim(); if(!n){toast('Name is required');return;}
+  const code=($('bcIn').value||'').replace(/\D/g,''); const br=$('bcB').value.trim();
+  const p=Math.max(0,parseFloat($('bcP').value)||0), q=Math.max(0,parseInt($('bcQ').value)||0);
+  const img=$('bcImg').value||null;
+  if(code&&!REG[code]) REG[code]={n,brand:br,cat:kind,img};
+  (CATALOG[kind]=CATALOG[kind]||[]).push({s:code||('BRZ-'+Date.now()),n,p,q,r:Math.max(1,Math.ceil(q/4)),img});
+  closeSheet(); render(); toast(n+' added to stock'); }
+function mintSKU(b,kind){ openSheet(`<h3>Local item \u00B7 ${esc(KIND[kind].op)}</h3><div class="sub">No barcode \u2014 BRASA mints an internal SKU</div>
+  <div class="field"><label>Product name</label><input id="lkN" placeholder="e.g. Handmade soap"></div>
+  <div class="field"><label>Price (CRC)</label><input id="lkP" inputmode="numeric" placeholder="0"></div>
+  <div class="field"><label>On hand</label><input id="lkQ" inputmode="numeric" placeholder="0"></div>
+  <div class="btnrow"><button class="btn solid" onclick="mintCommit('${b}','${kind}')">Add to stock</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function mintCommit(b,kind){ const n=$('lkN').value.trim(); if(!n){toast('Name is required');return;}
+  const p=Math.max(0,parseFloat($('lkP').value)||0), q=Math.max(0,parseInt($('lkQ').value)||0);
+  (CATALOG[kind]=CATALOG[kind]||[]).push({s:'BRZ-'+Date.now(),n,p,q,r:Math.max(1,Math.ceil(q/4))});
+  closeSheet(); render(); toast(n+' added (internal SKU)'); }
+function addService(b,kind){ openSheet(`<h3>Add service \u00B7 ${esc(KIND[kind].op)}</h3><div class="sub">A billable service on this board's menu</div>
+  <div class="field"><label>Service name</label><input id="svN" placeholder="e.g. Corte + barba"></div>
+  <div class="field"><label>Price (CRC)</label><input id="svP" inputmode="numeric" placeholder="0"></div>
+  <div class="btnrow"><button class="btn solid" onclick="addServiceCommit('${b}','${kind}')">Add to menu</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function addServiceCommit(b,kind){ const n=$('svN').value.trim(); if(!n){toast('Name is required');return;}
+  const p=Math.max(0,parseFloat($('svP').value)||0);
+  (CATALOG[kind]=CATALOG[kind]||[]).push({s:'SVC-'+Date.now(),n,p});
+  closeSheet(); render(); toast(n+' added to the menu'); }
+
+function stockState(it){ return it.q<=0?'out':(it.q<=it.r?'low':'ok'); }
+function sellItem(b,kind,sku){ const cat=(CATALOG[kind]||[]); const it=cat.find(x=>x.s===sku); if(!it)return;
+  const svc=(KIND[kind]||{}).group==='service';
+  if(!svc){ if(it.q<=0){ toast(it.n+' is out of stock'); return; } it.q--; }
+  const id='s'+Date.now();
+  D[b].jobs.unshift({id, kind, label:it.n, sku, cliente:'Walk-in', fee:it.p, status:'sold', paid:false});
+  render(); toast(it.n+(svc?' \u2192 added \u00B7 charge by SINPE':' \u2192 added to sales \u00B7 collect by SINPE')); }
+
+function pOps(b,kind){ const d=D[b], K=KIND[kind]||KIND.lawyers, jobs=d.jobs.filter(j=>(j.kind||'lawyers')===kind);
+  const svc=K.group==='service';
+  const row=(k,v)=>`<div class="line"><div class="m"><div class="nm">${k}</div><div class="meta">${v}</div></div></div>`;
+  const ctx=`<div class="section"><div class="section-h">This board</div><div class="rows">
+    ${row('Tax activity','CIIU '+K.ciiu+' · '+esc(K.actName))}
+    ${row('VAT treatment',esc(K.vatNote))}
+    ${row('Who pays',esc(K.payer))}
+    ${K.permit?row('Permit','Sector permit / registration required — record status before operating'):''}
+    ${row('Handling',K.flags.map(esc).join(' · '))}
+  </div></div>`;
+  const heading=esc(K.nounP.charAt(0).toUpperCase()+K.nounP.slice(1));
+  const cat=CATALOG[kind]||[];
+  let panel;
+  if(svc){
+    panel=`<div class="section"><div class="section-h">Service menu</div>
+    <div class="btnrow" style="margin:0 0 14px"><button class="btn sm" onclick="addService('${b}','${kind}')">+ Add service</button></div>
+    ${cat.length?`<div class="stats"><div class="stat"><div class="n">${cat.length}</div><div class="l">Services</div></div></div>
+    <div class="rows">${cat.map(i=>`<div class="line"><div class="m"><div class="nm">${esc(i.n)}</div><div class="meta"><span class="mono">${i.s}</span> · billable service</div></div>
+      <span class="v" style="min-width:84px">${fmt(i.p)}</span>
+      <button class="btn solid sm" onclick="sellItem('${b}','${kind}','${i.s}')">Charge</button></div>`).join('')}</div>`
+    :`<div class="rows"><div class="line"><div class="meta">No services on the menu yet</div></div></div>`}
+  </div>`;
+  } else {
+    const low=cat.filter(i=>i.q>0&&i.q<=i.r).length, out=cat.filter(i=>i.q<=0).length;
+    panel=`<div class="section"><div class="section-h">Stock</div>
+    <div class="btnrow" style="margin:0 0 14px"><button class="btn sm" onclick="addByBarcode('${b}','${kind}')">+ Add by barcode</button><button class="btn sm" onclick="mintSKU('${b}','${kind}')">+ Local item</button></div>
+    ${cat.length?`<div class="stats"><div class="stat"><div class="n">${cat.length}</div><div class="l">Products</div></div><div class="stat"><div class="n">${low}</div><div class="l">Low</div></div><div class="stat"><div class="n">${out}</div><div class="l">Out</div></div></div>
+    <div class="rows">${cat.map(i=>{const st=stockState(i);const lbl=st==='out'?'Out':st==='low'?'Low':'In stock';const pc=st==='out'?'accent':st==='low'?'accent':'green';return `<div class="line">${i.img?`<img src="${esc(i.img)}" alt="" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #ece6da;margin-right:12px;flex:0 0 auto" onerror="this.style.display='none'">`:''}<div class="m"><div class="nm">${esc(i.n)}</div><div class="meta"><span class="mono">${i.s}</span> · on hand ${i.q} · reorder at ${i.r} · <span class="pill ${pc}" style="vertical-align:baseline">${lbl}</span></div></div>
+      <span class="v" style="min-width:84px">${fmt(i.p)}</span>
+      <button class="btn solid sm" ${i.q<=0?'disabled':''} onclick="sellItem('${b}','${kind}','${i.s}')">Sell</button></div>`;}).join('')}</div>`
+    :`<div class="rows"><div class="line"><div class="meta">No stock loaded for this board yet</div></div></div>`}
+  </div>`;
+  }
+  return head(b,K.op,``)+
+  `<div class="section"><div class="section-h">${heading}</div>
+  <div class="rows">${jobs.length?jobs.map(j=>`<div class="line"><div class="m"><div class="nm">${esc(j.label)}</div><div class="meta">${ST[j.status]||j.status}${j.payer?' · '+esc(j.payer):''}${j.paid?` · Paid by SINPE · Tiquete <span class="mono">${esc(j.consec||j.remitRef)}</span> · pending signature`:''}</div></div>
+    ${collectable(j)?`<button class="btn solid sm" onclick="collect('${b}','${j.id}')">Collect via SINPE</button>`:`<span class="pill ${j.paid?'green':stPill(j.status)}">${j.paid?'Paid':ST[j.status]}</span>`}
+    <span class="v" style="min-width:78px">${fmt(j.fee)}</span></div>`).join(''):`<div class="line"><div class="meta">No ${esc(K.nounP)} yet</div></div>`}</div></div>`+
+  panel+
+  boardCheckout(b,jobs)+boardFeedback(b,kind); }
+
+const clientSpend=c=>(c.history||[]).reduce((a,h)=>a+h.total,0);
+function accrue(b,job){ let c=D[b].clientes.find(x=>x.n.toLowerCase()===String(job.cliente).toLowerCase());
+  if(!c){ c={id:'c'+Date.now(),n:job.cliente,phone:'',tag:'',points:0,history:[]}; D[b].clientes.unshift(c); }
+  const pts=Math.floor(job.fee/CFG.loyaltyEarnPer); c.points=(c.points||0)+pts; (c.history=c.history||[]).unshift({n:job.n,total:job.fee,ts:job.ts}); return pts; }
+function addClientForm(b){ openSheet(`<h3>New client</h3><div class="sub">Your directory \u2014 your relationship, not the platform's</div>
+  <div class="field"><label>Name</label><input id="clN"></div>
+  <div class="field"><label>Phone</label><input id="clP" inputmode="tel" placeholder="8888-0000"></div>
+  <div class="field"><label>Tag (optional)</label><input id="clT" placeholder="Repeat, business\u2026"></div>
+  <div class="btnrow"><button class="btn solid" onclick="saveClient('${b}')">Save</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function saveClient(b){ const n=$('clN').value.trim(); if(!n){toast('Name is required');return;}
+  D[b].clientes.unshift({id:'c'+Date.now(),n,phone:$('clP').value.trim(),tag:$('clT').value.trim(),points:0,history:[]});
+  closeSheet(); render(); toast('Added to your directory'); }
+function clientDetail(b,id){ const c=D[b].clientes.find(x=>x.id===id); if(!c)return;
+  const h=(c.history||[]).slice(0,12).map(x=>`<div class="kv"><span class="k">#${x.n} \u00B7 ${new Date(x.ts).toLocaleDateString('en-US',{day:'2-digit',month:'short'})}</span><span class="v">${fmt(x.total)}</span></div>`).join('')||'<p class="note">No history yet</p>';
+  openSheet(`<h3>${esc(c.n)}</h3><div class="sub">${esc(c.phone||'no phone')} \u00B7 <span style="color:var(--brasa-green)">${c.points||0} points</span> \u00B7 ${fmt(clientSpend(c))} lifetime</div>
+    <div class="section-h" style="font-size:15px;margin:6px 0 6px">History</div>${h}
+    <div class="btnrow" style="margin-top:14px">${c.phone?`<button class="btn green sm" onclick="waClient('${b}','${id}')">WhatsApp</button>`:''}<button class="btn sm" onclick="editClientForm('${b}','${id}')">Edit</button><button class="btn" onclick="closeSheet()">Close</button></div>`); }
+function editClientForm(b,id){ const c=D[b].clientes.find(x=>x.id===id); openSheet(`<h3>Edit ${esc(c.n)}</h3><div class="sub">Your record \u2014 yours to keep</div>
+  <div class="field"><label>Name</label><input id="clN" value="${esc(c.n)}"></div>
+  <div class="field"><label>Phone</label><input id="clP" value="${esc(c.phone||'')}"></div>
+  <div class="field"><label>Tag</label><input id="clT" value="${esc(c.tag||'')}"></div>
+  <div class="field"><label>Points</label><input id="clPts" type="number" value="${c.points||0}"></div>
+  <div class="btnrow"><button class="btn solid" onclick="saveClientEdit('${b}','${id}')">Save</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function saveClientEdit(b,id){ const c=D[b].clientes.find(x=>x.id===id); c.n=$('clN').value.trim()||c.n; c.phone=$('clP').value.trim(); c.tag=$('clT').value.trim(); c.points=Math.max(0,parseInt($('clPts').value)||0); closeSheet(); render(); toast('Updated'); }
+function waClient(b,id){ const c=D[b].clientes.find(x=>x.id===id); if(!c||!c.phone){toast('No phone on file');return;} const ph=(c.phone||'').replace(/[^0-9]/g,''); const msg=encodeURIComponent('Hello from '+D[b].biz+' \uD83D\uDC4B'); window.open('https://wa.me/'+(ph.length>=8?'506'+ph.slice(-8):ph)+'?text='+msg,'_blank'); }
+function pCRM(b){ const d=D[b];
+  const ptsCirc=d.clientes.reduce((a,c)=>a+(c.points||0),0);
+  return head(b,'Clients','Your directory \u2014 the relationship the platforms keep for themselves is yours here.')+
+  `<div class="stats">
+     <div class="stat"><div class="n">${d.clientes.length}</div><div class="l">Clients</div></div>
+     <div class="stat"><div class="n">${ptsCirc}</div><div class="l">Points circulating</div></div>
+     <div class="stat"><div class="n">${fmt(ptsCirc*CFG.redeemValue)}</div><div class="l">Loyalty liability</div></div>
+   </div>
+   <div class="btnrow" style="margin:-6px 0 18px"><button class="btn solid sm" onclick="addClientForm('${b}')">\uFF0B New client</button></div>
+   <div class="rows">${d.clientes.map(c=>{ const cnt=(c.history||[]).length; return `<div class="line" style="cursor:pointer" onclick="clientDetail('${b}','${c.id}')"><div class="m"><div class="nm">${esc(c.n)}${c.tag?` <span class="pill accent" style="margin-left:6px">${esc(c.tag)}</span>`:''}</div><div class="meta">${esc(c.phone||'no phone')} \u00B7 ${cnt} order(s)</div></div><span class="pill green">${c.points||0} pts</span></div>`; }).join('')}</div>
+  <p class="pull-quote">"They're yours, not the platform's."</p>`; }
+
+function pGan(b){ const d=D[b], P=paidJobs(b);
+  const rows=P.map(j=>{ const iva=j.fee-j.fee/(1+CFG.vat), net=j.fee-iva; return {c:j.cliente,gross:j.fee,iva,net,ref:j.remitRef}; });
+  const tG=rows.reduce((a,r)=>a+r.gross,0), tI=rows.reduce((a,r)=>a+r.iva,0), tN=rows.reduce((a,r)=>a+r.net,0);
+  const L=planilla(b), ccss=L.reduce((a,x)=>a+x.employee+x.employer,0), ins=L.reduce((a,x)=>a+x.premium,0);
+  const third=tG*.25;
+  return head(b,'Earnings',"Paid by SINPE straight to your account. The 13% VAT is the State's; BRASA composes the electronic tiquete that reports it — sealing and transmission to Hacienda are pending.")+
+  `<div class="section"><div class="section-h">Per transaction</div><div class="section-sub">Money settles by SINPE Móvil to your account. BRASA composes the Tiquete Electrónico that reports the 13% VAT (sealing + transmission pending). BRASA takes nothing from the sale.</div>
+    <div class="doc"><table><thead><tr><th>Client</th><th class="r">Gross</th><th class="r">VAT 13%</th><th class="r">Net to you</th></tr></thead><tbody>
+    ${rows.map(r=>`<tr><td>${esc(r.c)}</td><td class="r">${fmt(r.gross)}</td><td class="r">${fmt(r.iva)}</td><td class="r">${fmt(r.net)}</td></tr>`).join('')}
+    <tr class="tot"><td>Totals</td><td class="r">${fmt(tG)}</td><td class="r">${fmt(tI)}</td><td class="r">${fmt(tN)}</td></tr>
+    </tbody></table></div></div>
+  <div class="section"><div class="section-h">Where the money went</div>
+    <div class="kv"><span class="k">VAT on the tiquete (reporting pending)</span><span class="v">${fmt(tI)}</span></div>
+    <div class="kv"><span class="k">Social security · CCSS (you file)</span><span class="v">${fmt(ccss)}</span></div>
+    <div class="kv"><span class="k">Workers' Comp · INS (you file)</span><span class="v">${fmt(ins)}</span></div>
+    <div class="kv"><span class="k"><b style="color:var(--ink)">Net to your account (sales − VAT)</b></span><span class="v">${fmt(tN)}</span></div></div>
+  <p class="pull-quote">A third party takes ${fmt(third)} (25%) out of every sale and gives you no papers.<br>BRASA takes nothing — you keep all of it but the VAT, which is the State's.</p>`; }
+
+function pEquipo(b){ const d=D[b], L=planilla(b), ins=d.team.filter(t=>t.seg).length;
+  const T=L.reduce((a,x)=>({base:a.base+x.base,employee:a.employee+x.employee,renta:a.renta+x.renta,net:a.net+x.net,employer:a.employer+x.employer,premium:a.premium+x.premium,agui:a.agui+x.agui,vac:a.vac+x.vac,cost:a.cost+x.cost}),{base:0,employee:0,renta:0,net:0,employer:0,premium:0,agui:0,vac:0,cost:0});
+  const aguiLiab=subs(b).reduce((a,w)=>a+aguinaldoAccrued(w),0);
+  const vacLiab=subs(b).reduce((a,w)=>a+vacBalance(w)*(monthlyWage(w)/30),0);
+  const issues=hrIssues(b);
+  return head(b,'Team',"You hire your family or other staff. You're the employer — not the labor. Same HR any business runs on.")+
+  `<div class="banner"><div class="bt">You're the employer</div><div class="bs">Your team has CCSS (social security), INS Workers' Compensation, renta withholding, aguinaldo and vacation — the full Costa Rica labor stack. This is what a third party never gave you.</div>
+    <div class="br"><span>Team insured</span><span class="a">${ins}/${d.team.length}</span></div></div>
+  <div class="section"><div class="section-h">Team</div>
+  <div class="rows">${d.team.map(w=>`<div class="line"><div class="m"><div class="nm">${esc(w.n)} ${w.role==='owner'?'<span class="pill" style="margin-left:4px">Employer</span>':''}</div><div class="meta">${esc(w.rel)} · ${esc(w.v)}${w.cedula?' · '+esc(w.cedula):''}${w.role!=='owner'&&w.wage?' · '+fmt(w.wage)+'/mo':''}</div></div>${w.seg?'<span class="pill green">Insured</span>':`<button class="btn green sm" onclick="registerBenefits('${b}','${w.id}')">Register CCSS/INS</button>`}</div>`).join('')}</div>
+  <div class="btnrow"><button class="btn solid sm" onclick="hireForm('${b}')">＋ Hire</button></div></div>
+  <div class="section"><div class="section-h">Payroll — ${period()}</div><div class="section-sub">You decide each wage; BRASA computes the statutory charges, renta and accruals. Same engine as every BRASA business.</div>
+    <div class="doc"><table><thead><tr><th>Worker</th><th class="r">Gross</th><th class="r">CCSS</th><th class="r">Renta</th><th class="r">Net</th><th class="r">Cost</th></tr></thead><tbody>
+    ${L.length?L.map(x=>`<tr><td>${esc(x.w.n.split(' ')[0])}</td><td class="r">${fmt(x.base)}</td><td class="r">−${fmt(x.employee)}</td><td class="r">−${fmt(x.renta)}</td><td class="r">${fmt(x.net)}</td><td class="r">${fmt(x.cost)}</td></tr>`).join(''):'<tr><td colspan="6">No wages set this period</td></tr>'}
+    ${L.length?`<tr class="tot"><td>Total</td><td class="r">${fmt(T.base)}</td><td class="r">−${fmt(T.employee)}</td><td class="r">−${fmt(T.renta)}</td><td class="r">${fmt(T.net)}</td><td class="r">${fmt(T.cost)}</td></tr>`:''}
+    </tbody></table></div>
+    <div class="btnrow">${subs(b).map(w=>`<button class="btn sm" onclick="editWage('${b}','${w.id}')">Set wage · ${esc(w.n.split(' ')[0])}</button>`).join('')}</div></div>
+  <div class="section"><div class="section-h">Employer charges</div><div class="section-sub">On top of wages — the loaded cost of employing your team.</div>
+    <div class="kv"><span class="k">CCSS employer (26.67%)</span><span class="v">${fmt(T.employer)}</span></div>
+    <div class="kv"><span class="k">INS · Workers' Comp (2%)</span><span class="v">${fmt(T.premium)}</span></div>
+    <div class="kv"><span class="k">Aguinaldo provision (1/12)</span><span class="v">${fmt(T.agui)}</span></div>
+    <div class="kv"><span class="k">Vacation provision</span><span class="v">${fmt(T.vac)}</span></div>
+    <div class="kv"><span class="k"><b style="color:var(--ink)">Total loaded cost</b></span><span class="v">${fmt(T.cost)}</span></div></div>
+  <div class="section"><div class="section-h">Accrued liabilities</div><div class="section-sub">What you owe the team over time — tracked, not forgotten.</div>
+    <div class="rows">${subs(b).map(w=>`<div class="line"><div class="m"><div class="nm">${esc(w.n)}</div><div class="meta">Aguinaldo ${fmt(aguinaldoAccrued(w))} · Vacation ${vacBalance(w).toFixed(1)} d</div></div><button class="btn sm" onclick="recordLeave('${b}','${w.id}')">Record leave</button></div>`).join('')}</div>
+    <div class="kv" style="margin-top:8px"><span class="k">Aguinaldo accrued (13th month)</span><span class="v">${fmt(aguiLiab)}</span></div>
+    <div class="kv"><span class="k">Vacation payable</span><span class="v">${fmt(vacLiab)}</span></div></div>
+  <div class="section"><div class="line" style="border-bottom:none;padding-bottom:4px"><div class="m"><div class="section-h">Compliance</div><div class="section-sub" style="margin-bottom:0">Costa Rica labor</div></div><span class="pill ${issues.length?'accent':'green'}">${issues.length||'OK'}</span></div>
+    <div class="rows">${issues.length?issues.map(i=>`<div class="line"><div class="m"><div class="nm">${esc(i[0])}</div><div class="meta">${esc(i[1])}</div></div><span class="pill accent">Action</span></div>`).join(''):'<div class="line"><div class="meta">✓ No pending items</div></div>'}</div></div>`; }
+
+function railRow(b,e,title,sub,lines){ const r=ready(b,e), filed=D[b].filings.filter(f=>f.e===e).slice(-1)[0];
+  return `<div class="section"><div class="line" style="border-bottom:none;padding-bottom:4px"><div class="m"><div class="section-h">${title}</div><div class="section-sub" style="margin-bottom:0">${sub}</div></div>${r.ok?'<span class="pill green">Ready</span>':'<span class="pill accent">Missing data</span>'}</div>
+    ${lines.map(l=>`<div class="kv"><span class="k">${l[0]}</span><span class="v">${l[1]}</span></div>`).join('')}
+    ${!r.ok?`<p class="miss">Missing: ${esc(r.miss.join(', '))}</p>`:''}
+    <div class="btnrow"><button class="btn sm" onclick="viewDoc('${b}','${e}')">View document</button>
+      <button class="btn solid sm" ${r.ok?'':'disabled'} onclick="prepareFiling('${b}','${e}')">Prepare & open portal</button>
+      ${filed?(filed.status==='filed'?`<span class="pill green" style="align-self:center">✓ ${esc(filed.comprobante)}</span>`:`<button class="btn green sm" onclick="markTransmitted('${b}','${filed.id}')">Mark filed</button>`):''}</div></div>`; }
+
+function pEstado(b){ const d=D[b], p=d.patrono, L=planilla(b), iva=ivaSummary(b);
+  const tE=L.reduce((a,x)=>a+x.employee,0), tEm=L.reduce((a,x)=>a+x.employer,0), tPr=L.reduce((a,x)=>a+x.premium,0), tB=L.reduce((a,x)=>a+x.base,0);
+  const rdy=['ccss','hacienda','ins'].filter(e=>ready(b,e).ok).length;
+  return head(b,'Government','BRASA composes the electronic tiquete and prepares the payroll numbers; sealing + VAT transmission to Hacienda are pending, and you file the payroll on the official portals.')+
+  `<div class="banner"><div class="bt">A formal business from day one</div><div class="bs">Every job is paid by SINPE Móvil and composes a Tiquete Electrónico v4.4; sealing + Hacienda transmission are the pending backend step, and your CCSS / INS charges are ready to file.</div>
+    <div class="br"><span>Desks ready</span><span class="a">${rdy}/3</span></div></div>
+  <div class="section"><div class="line" style="border-bottom:none;padding-bottom:6px"><div class="m"><div class="section-h">Employer identity</div></div><button class="btn sm" onclick="editPatrono('${b}')">Edit</button></div>
+    <div class="kv"><span class="k">Legal name</span><span class="v">${esc(p.razonSocial)}</span></div>
+    <div class="kv"><span class="k">Tax ID</span><span class="v mono">${esc(p.cedula||'missing')}</span></div>
+    <div class="kv"><span class="k">CCSS employer no.</span><span class="v mono">${esc(p.patronalCCSS||'missing')}</span></div>
+    <div class="kv"><span class="k">INS policy (WC)</span><span class="v mono">${esc(p.polizaINS||'missing')}</span></div>
+    <div class="kv"><span class="k">CIIU activity</span><span class="v mono">${esc(p.ciiu||'missing')} · ${esc(p.ciiuName)}</span></div></div>
+  <div class="section"><div class="line" style="border-bottom:none;padding-bottom:4px"><div class="m"><div class="section-h">Hacienda — Electronic tiquete</div><div class="section-sub" style="margin-bottom:0">Tiquete Electrónico v4.4 · composed per sale</div></div><span class="pill accent">Por firmar</span></div>
+    <div class="kv"><span class="k">VAT on composed tiquetes</span><span class="v">${fmt(iva.calculated)}</span></div>
+    <div class="kv"><span class="k">Tiquetes composed</span><span class="v">${d.comprobantes.length}</span></div>
+    <div class="kv"><span class="k">VAT rate</span><span class="v">13%</span></div>
+    <p class="note" style="margin-top:8px">On each SINPE sale BRASA composes a Tiquete Electrónico v4.4 as the business, with the 13% VAT split off (the State's money — BRASA never holds it). Sealing with the business's BCCR key and transmission to Hacienda (TRIBU-CR) are the backend step and are not yet done — so these are composed, not yet legally issued.</p>
+    ${d.comprobantes.length?`<div class="rows">${d.comprobantes.slice(-6).reverse().map(c=>`<div class="line" style="cursor:pointer" onclick="openComprobante('${b}','${c.clave}')"><div class="m"><div class="nm">Tiquete ${c.consec.slice(-10).replace(/^0+/,'')}</div><div class="meta mono">${c.clave.slice(0,21)}… · IVA ${fmt(c.totalImpuesto)}</div></div><span class="pill ${c.estado==='aceptado'?'green':'accent'}">${c.estado==='aceptado'?'aceptado (sim)':'pending signature'}</span></div>`).join('')}</div>`:''}
+    <div class="btnrow"><button class="btn sm" onclick="viewDoc('${b}','hacienda')">View tiquetes</button></div></div>
+  ${railRow(b,'ccss','CCSS — SICERE','Monthly payroll',[['Workers on payroll', L.length],['Base wages', fmt(tB)],['Employee contribution', fmt(tE)],['Employer contribution', fmt(tEm)]])}
+  ${railRow(b,'ins','INS — RT-Virtual',"Workers' Compensation",[['Insured workers', L.length],['Reference premium', fmt(tPr)]])}
+  ${railRow(b,'renta','Hacienda — Renta (Serie 100)','Income tax withheld on salaries',[['Workers on payroll', L.length],['Income tax withheld', fmt(L.reduce((a,x)=>a+x.renta,0))]])}
+  <div class="section"><div class="section-h">What makes this a legal business</div>
+    <div class="rows">
+      <div class="line"><div class="m"><div class="nm">Electronic tiquete composed on every sale</div><div class="meta">Tiquete Electrónico v4.4 · per job</div></div><span class="pill green">Active</span></div>
+      <div class="line"><div class="m"><div class="nm">Sealed &amp; transmitted to Hacienda</div><div class="meta">BCCR key + TRIBU-CR · backend</div></div><span class="pill accent">Pending</span></div>
+      <div class="line"><div class="m"><div class="nm">Social security payroll</div><div class="meta">CCSS · SICERE</div></div><span class="pill ${ready(b,'ccss').ok?'green':'accent'}">${ready(b,'ccss').ok?'Active':'Needs data'}</span></div>
+      <div class="line"><div class="m"><div class="nm">Workers' Compensation</div><div class="meta">INS · RT-Virtual</div></div><span class="pill ${ready(b,'ins').ok?'green':'accent'}">${ready(b,'ins').ok?'Active':'Needs data'}</span></div>
+      <div class="line"><div class="m"><div class="nm">Employer identity registered</div><div class="meta">Tax ID · CCSS · INS · CIIU</div></div><span class="pill ${ready(b,'hacienda').ok?'green':'accent'}">${ready(b,'hacienda').ok?'Active':'Needs data'}</span></div>
+    </div>
+    <p class="note">Income tax (renta) and the municipal business license file on the same official portals — BRASA prepares the figures and links you out. Rates are standard Costa Rica values and configurable. The tiquete that reports VAT is composed automatically; sealing + transmission to Hacienda are pending; payroll filings you submit on the portal.</p></div>
+  ${d.filings.length?`<div class="section"><div class="section-h">Payroll filings</div><div class="rows">${d.filings.slice().reverse().map(f=>`<div class="line"><div class="m"><div class="nm">${esc(f.label)}</div><div class="meta">${f.period} · ${esc(f.comprobante)}</div></div><span class="pill ${f.status==='filed'?'green':''}">${f.status==='filed'?'Filed':'Prepared'}</span></div>`).join('')}</div></div>`:''}`; }
+
+/* ---- Main Office: Dashboard + Invoicing ---- */
+function pDash(b){ const d=D[b], P=paidJobs(b), open=d.jobs.filter(j=>!j.paid).length;
+  const net=P.reduce((a,j)=>a+(j.fee/(1+CFG.vat)),0), iva=ivaSummary(b);
+  const L=planilla(b), cost=L.reduce((a,x)=>a+x.cost,0), issues=hrIssues(b);
+  const rdy=['ccss','hacienda','ins'].filter(e=>ready(b,e).ok).length;
+  const porFirmar=d.comprobantes.filter(c=>c.estado!=='aceptado').length;
+  return head(b,'Dashboard',`${d.label} · the whole business in one view.`)+
+  `<div class="stats">
+     <div class="stat"><div class="n">${open}</div><div class="l">Open jobs</div></div>
+     <div class="stat"><div class="n">${fmt(net)}</div><div class="l">Net · period</div></div>
+     <div class="stat"><div class="n">${d.comprobantes.length}</div><div class="l">Tiquetes</div></div>
+     <div class="stat"><div class="n">${rdy}/3</div><div class="l">Desks ready</div></div>
+   </div>
+   <div class="section"><div class="section-h">Money</div>
+     <div class="kv"><span class="k">Net to your account · period</span><span class="v">${fmt(net)}</span></div>
+     <div class="kv"><span class="k">VAT on composed tiquetes · reporting pending</span><span class="v">${fmt(iva.calculated)}</span></div>
+     <div class="kv"><span class="k">Payroll loaded cost · month</span><span class="v">${fmt(cost)}</span></div></div>
+   <div class="section"><div class="section-h">Needs attention</div><div class="rows">
+     ${open?`<div class="line" style="cursor:pointer" onclick="location.hash='#${b}-food'"><div class="m"><div class="nm">${open} job(s) to complete or collect</div><div class="meta">Operations</div></div><span class="pill accent">go</span></div>`:''}
+     ${porFirmar?`<div class="line" style="cursor:pointer" onclick="location.hash='#${b}-facturas'"><div class="m"><div class="nm">${porFirmar} tiquete(s) pending signature</div><div class="meta">Invoicing · sealing + transmission pending</div></div><span class="pill accent">review</span></div>`:''}
+     ${issues.length?`<div class="line" style="cursor:pointer" onclick="location.hash='#${b}-equipo'"><div class="m"><div class="nm">${issues.length} HR item(s)</div><div class="meta">Team</div></div><span class="pill accent">fix</span></div>`:''}
+     ${(!open&&!porFirmar&&!issues.length)?'<div class="line"><div class="meta">✓ All clear</div></div>':''}
+   </div></div>`; }
+
+function pFacturas(b){ const d=D[b], list=d.comprobantes, iva=list.reduce((a,c)=>a+c.totalImpuesto,0), acc=list.filter(c=>c.estado==='aceptado').length;
+  return head(b,'Invoicing',`Every SINPE job composes a Tiquete Electrónico v4.4 — BRASA composes it as the business and reports the VAT. It never touches the money.`)+
+  `<div class="stats"><div class="stat"><div class="n">${list.length}</div><div class="l">Tiquetes</div></div><div class="stat"><div class="n">${acc}</div><div class="l">Aceptados (sim)</div></div><div class="stat"><div class="n">${list.length-acc}</div><div class="l">Por firmar</div></div><div class="stat"><div class="n">${fmt(iva)}</div><div class="l">IVA</div></div></div>
+   <p class="note" style="margin:8px 0 16px">Each tiquete is shown exactly as structured for Hacienda v4.4 — tap to view, including the XML. Sealing with the business's BCCR credential and transmission to TRIBU-CR run in the backend: these are composed, not yet legally issued.</p>
+   ${list.length?`<div class="rows">${list.slice().reverse().map(c=>`<div class="line" style="cursor:pointer" onclick="openComprobante('${b}','${c.clave}')"><div class="m"><div class="nm">Tiquete ${c.consec.slice(-10).replace(/^0+/,'')} · ${fmt(c.totalComprobante)} ${c.estado==='aceptado'?`<span class="pill green" style="margin-left:6px">aceptado (sim)</span>`:'<span class="pill accent" style="margin-left:6px">pending signature</span>'}</div><div class="meta mono">${c.clave.slice(0,21)}… · IVA ${fmt(c.totalImpuesto)} · ${esc(c.cliente||'')}</div></div><span class="v">›</span></div>`).join('')}</div>`:`<p class="note">No tiquetes yet. Collect a job by SINPE and the first one appears here.</p>`}`; }
+
+/* ---- Front of House: Checkout + Feedback ---- */
+function pCheckout(b){ const d=D[b], toCollect=d.jobs.filter(j=>collectable(j)), open=d.jobs.filter(j=>!j.paid&&!collectable(j));
+  return head(b,'Checkout',`Collect by SINPE Móvil — money straight to your account; a Tiquete Electrónico v4.4 is composed on payment.`)+
+  `<div class="section"><div class="section-h">Ready to collect</div>
+   <div class="rows">${toCollect.length?toCollect.map(j=>`<div class="line"><div class="m"><div class="nm">${esc(j.label)}</div><div class="meta">${ST[j.status]} · ${fmt(j.fee)}</div></div><button class="btn solid sm" onclick="collect('${b}','${j.id}')">Collect ${fmt(j.fee)}</button></div>`).join(''):'<div class="line"><div class="meta">Nothing to collect right now</div></div>'}</div></div>
+   ${open.length?`<div class="section"><div class="section-h">In progress</div><div class="rows">${open.map(j=>`<div class="line"><div class="m"><div class="nm">${esc(j.label)}</div><div class="meta">${ST[j.status]}</div></div><span class="pill ${stPill(j.status)}">${ST[j.status]}</span></div>`).join('')}</div></div>`:''}
+   <p class="note">On payment: SINPE to your account · 13% VAT split off · Tiquete v4.4 composed (sealing + transmission pending).</p>`; }
+
+function pFeedback(b){ const d=D[b], fb=d.feedback||[]; const avg=fb.length?(fb.reduce((a,f)=>a+f.stars,0)/fb.length):0;
+  return head(b,'Feedback',`What your customers say. The relationship is yours — so is the feedback.`)+
+  `<div class="stats"><div class="stat"><div class="n">${avg.toFixed(1)}</div><div class="l">Average</div></div><div class="stat"><div class="n">${fb.length}</div><div class="l">Reviews</div></div></div>
+   <div class="rows">${fb.length?fb.map(f=>`<div class="line"><div class="m"><div class="nm">${esc(f.n)} · <span style="color:var(--brasa-green)">${'★'.repeat(f.stars)}${'☆'.repeat(5-f.stars)}</span></div><div class="meta">${esc(f.note)}</div></div></div>`).join(''):'<div class="line"><div class="meta">No feedback yet</div></div>'}</div>`; }
+
+/* ---- Per-store Checkout + Feedback (each tile is its own store) ---- */
+function boardCheckout(b,jobs){ const toC=jobs.filter(j=>collectable(j)), tot=toC.reduce((a,j)=>a+j.fee,0);
+  return `<div class="section"><div class="section-h">Checkout · this store</div>
+   <div class="rows">${toC.length?toC.map(j=>`<div class="line"><div class="m"><div class="nm">${esc(j.label)}</div><div class="meta">${ST[j.status]} · ${fmt(j.fee)}</div></div><button class="btn solid sm" onclick="collect('${b}','${j.id}')">Collect ${fmt(j.fee)}</button></div>`).join(''):'<div class="line"><div class="meta">Nothing to collect right now</div></div>'}</div>
+   ${toC.length?`<p class="note">Total ready: ${fmt(tot)} · SINPE to your account · 13% VAT split off · Tiquete v4.4 composed.</p>`:'<p class="note">Charge from the menu above — it lands here to collect by SINPE.</p>'}</div>`; }
+function boardFeedback(b,kind){ const fb=(D[b].feedback||[]).filter(f=>f.kind===kind); const avg=fb.length?(fb.reduce((a,f)=>a+f.stars,0)/fb.length):0;
+  return `<div class="section"><div class="section-h">Feedback · this store</div>
+   <div class="btnrow" style="margin:0 0 14px"><button class="btn sm" onclick="addFeedbackForm('${b}','${kind}')">+ Add feedback</button></div>
+   <div class="stats"><div class="stat"><div class="n">${fb.length?avg.toFixed(1):'—'}</div><div class="l">Average</div></div><div class="stat"><div class="n">${fb.length}</div><div class="l">Reviews</div></div></div>
+   <div class="rows">${fb.length?fb.map(f=>`<div class="line"><div class="m"><div class="nm">${esc(f.n)} · <span style="color:var(--brasa-green)">${'★'.repeat(f.stars)}${'☆'.repeat(5-f.stars)}</span></div><div class="meta">${esc(f.note)}</div></div></div>`).join(''):'<div class="line"><div class="meta">No feedback yet</div></div>'}</div></div>`; }
+function addFeedbackForm(b,kind){ openSheet(`<h3>Add feedback · ${esc(KIND[kind].op)}</h3><div class="sub">A note from a customer of this store</div>
+  <div class="field"><label>Customer name</label><input id="fbN" placeholder="e.g. Ana Rojas"></div>
+  <div class="field"><label>Stars (1-5)</label><input id="fbS" inputmode="numeric" placeholder="5"></div>
+  <div class="field"><label>Note</label><input id="fbT" placeholder="What did they say?"></div>
+  <div class="btnrow"><button class="btn solid" onclick="addFeedbackCommit('${b}','${kind}')">Save</button><button class="btn" onclick="closeSheet()">Cancel</button></div>`); }
+function addFeedbackCommit(b,kind){ const n=$('fbN').value.trim(); if(!n){toast('Name is required');return;}
+  let s=parseInt($('fbS').value)||5; s=Math.max(1,Math.min(5,s));
+  (D[b].feedback=D[b].feedback||[]).unshift({id:'fb'+Date.now(),n,stars:s,note:$('fbT').value.trim()||'—',kind,ts:Date.now()});
+  closeSheet(); render(); toast('Feedback added'); }
+
+/* ---- Back of House: Business Education ---- */
+function pEducation(b){ return head(b,'Business Education',``)+
+  `<div class="rows">
+     <div class="line"><div class="m"><div class="nm">Register as an employer · CCSS + INS</div><div class="meta">What you need, and the order to do it</div></div><span class="pill">Guide</span></div>
+     <div class="line"><div class="m"><div class="nm">Price your jobs and set your menu</div><div class="meta">Visits, materials and labor — plus the 13% VAT</div></div><span class="pill">Guide</span></div>
+     <div class="line"><div class="m"><div class="nm">Scheduling, routes and crews</div><div class="meta">Keep the calendar full and the no-shows down</div></div><span class="pill">Guide</span></div>
+     <div class="line"><div class="m"><div class="nm">The electronic tiquete, explained</div><div class="meta">What it is, why it protects you, what is still pending</div></div><span class="pill">Guide</span></div>
+     <div class="line"><div class="m"><div class="nm">Keep your customers, not the platform's</div><div class="meta">Build repeat business on your own directory</div></div><span class="pill">Guide</span></div>
+   </div>
+   <p class="note">A starter set from the shared BRASA business library — the same knowledge every BRASA business gets.</p>`; }
+
+function pSuppliers(b){ const sup=[
+   {n:'Distribuidora de Limpieza CR', cat:'Cleaning & janitorial supply', terms:'30 days', lead:'2–4 days'},
+   {n:'AgroJardín del Valle', cat:'Landscape, soil & plants', terms:'Contado / 15 days', lead:'2–3 days'},
+   {n:'Químicos para Piscina S.A.', cat:'Pool & water chemicals', terms:'30 days', lead:'1 week'},
+   {n:'Ferretería Mayorista', cat:'Tools, fasteners & materials', terms:'15 days', lead:'2–3 days'},
+   {n:'Maquinaria y Equipo', cat:'Mowers, pumps, equipment', terms:'Financing', lead:'1–2 weeks'},
+  ];
+  return head(b,'Suppliers','')+
+  `<div class="rows">${sup.map(x=>`<div class="line"><div class="m"><div class="nm">${esc(x.n)}</div><div class="meta">${esc(x.cat)} \u00B7 terms ${esc(x.terms)} \u00B7 lead ${esc(x.lead)}</div></div><span class="pill">Supplier</span></div>`).join('')}</div>
+   <p class="note">Who you reorder from and on what terms. Keeping suppliers and lead times here is how the trucks stay stocked without tying up cash.</p>`; }
+
+function pReturns(b){ const d=D[b]; const sold=d.jobs.filter(j=>j.status==='sold');
+  return head(b,'Returns & exchanges','')+
+  `<div class="rows">${sold.length?sold.map(j=>`<div class="line"><div class="m"><div class="nm">${esc(j.label)}</div><div class="meta">${esc(j.cliente)} \u00B7 ${fmt(j.fee)}${j.paid?' \u00B7 Paid':' \u00B7 Unpaid'}</div></div><button class="btn sm" onclick="toast('Refund / re-do recorded against the original tiquete')">Record refund / re-do</button></div>`).join(''):`<div class="line"><div class="meta">No completed jobs to adjust yet</div></div>`}</div>
+   <p class="note">A refund or re-do is a credit note against the original electronic tiquete \u2014 the job, the adjustment and the record stay tied together. Keep the receipt reference with every one.</p>`; }
+
+function pInventory(b){ const d=D[b], inv=d.inventory||[]; const low=inv.filter(i=>i.qty<=i.reorder).length;
+  return head(b,'Inventory',`Home & yard services bill from visits, labor and materials \u2014 this is the consumables and stock you keep on the truck, not your sellable jobs.`)+
+  `<div class="stats"><div class="stat"><div class="n">${inv.length}</div><div class="l">Items</div></div><div class="stat"><div class="n">${low}</div><div class="l">To reorder</div></div></div>
+   <div class="rows">${inv.map(i=>{ const lowi=i.qty<=i.reorder; return `<div class="line"><div class="m"><div class="nm">${esc(i.n)}</div><div class="meta">On hand ${i.qty} ${esc(i.unit)} \u00B7 reorder at ${i.reorder}</div></div><span class="pill ${lowi?'accent':'green'}">${lowi?'Reorder':'OK'}</span></div>`; }).join('')}</div>
+   <p class="note">Your truck stock \u2014 cleaning supplies, chemicals, materials and fuel. Jobs and rates are listed on each board in the front office.</p>`; }
+
+const PAGES={};
+{ const b='co'; PAGES['co-dash']=()=>pDash(b); PAGES['co-facturas']=()=>pFacturas(b); PAGES['co-checkout']=()=>pCheckout(b); PAGES['co-feedback']=()=>pFeedback(b); PAGES['co-clientes']=()=>pCRM(b); PAGES['co-equipo']=()=>pEquipo(b); PAGES['co-ganancias']=()=>pGan(b); PAGES['co-estado']=()=>pEstado(b); PAGES['co-educacion']=()=>pEducation(b); PAGES['co-inventory']=()=>pInventory(b); PAGES['co-suppliers']=()=>pSuppliers(b); PAGES['co-returns']=()=>pReturns(b); BOARDS.forEach(k=>{ PAGES['co-'+k]=()=>pOps(b,k); }); }
+
+
+/* === BRASA join card (14-day trial -> $99 SINPE) ================= */
+const BRASA_JOIN_API = "https://brasa-signup.richard-bad.workers.dev";
+const JOIN_CODE = "CONTRIB-TEST"; // DEMO. For real launch: "CONTRIB".
+let JOIN = { step:1 };
+function joinCard(){
+  if(JOIN.step===2){
+    return `<div class="hero-join">
+      <p class="hj-eyebrow" style="color:var(--brasa-green)">Trial active</p>
+      <h2 class="hj-title">You\u2019re a citizen</h2>
+      <p class="hj-sub">BRASA ID <b>${esc(JOIN.id)}</b><br>${JOIN.days} days free \u00b7 your $99/year service starts after.</p>
+      <button class="hj-btn dark" onclick="joinActivate()">Start my service now</button>
+      <p id="bj-err" class="hj-err">${JOIN.err||''}</p>
+    </div>`;
+  }
+  if(JOIN.step===3){
+    return `<div class="hero-join">
+      <p class="hj-eyebrow">Pay by SINPE M\u00f3vil</p>
+      <p class="hj-amt">\u20a1 ${JOIN.monto}</p>
+      <p class="hj-sub">Destination <b>${esc(JOIN.destino)}</b><br>Reference <b>${esc(JOIN.ref)}</b><br>BRASA ID <b>${esc(JOIN.id)}</b></p>
+    </div>`;
+  }
+  return `<div class="hero-join">
+    <h2 class="hj-title">Business \u2014 $99/year</h2>
+    <input id="bj-name" class="hj-in" type="text" placeholder="Full Name">
+    <input id="bj-phone" class="hj-in" type="tel" inputmode="tel" placeholder="Phone Number">
+    <input id="bj-dob" class="hj-in" type="text" placeholder="Date of Birth" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+    <button class="hj-btn" onclick="joinStart()">Start my 14-day free trial</button>
+    <p id="bj-err" class="hj-err"></p>
+  </div>`;
+}
+async function joinStart(){
+  const name=($('bj-name').value||'').trim(), phone=($('bj-phone').value||'').trim(), dob=($('bj-dob').value||'').trim();
+  const err=$('bj-err');
+  if(!name||!phone||!dob){ err.textContent='Please fill in name, phone and date of birth.'; return; }
+  err.textContent='Starting\u2026';
+  try{
+    const r=await fetch(BRASA_JOIN_API+'/trial/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,dob})});
+    const d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not start.');
+    JOIN={step:2,id:d.display_id,days:d.days_left}; render();
+  }catch(e){ err.textContent=String(e.message||e); }
+}
+async function joinActivate(){
+  const err=$('bj-err'); if(err) err.textContent='\u2026';
+  try{
+    const r=await fetch(BRASA_JOIN_API+'/trial/activate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:JOIN.id,code:JOIN_CODE})});
+    const d=await r.json();
+    if(!r.ok){ JOIN.err=d.note||d.error||'Not available yet.'; render(); return; }
+    JOIN={step:3,id:JOIN.id,monto:Number(d.crc_amount).toLocaleString('es-CR'),destino:d.instruction.to_sinpe,ref:d.instruction.reference}; render();
+  }catch(e){ if(err) err.textContent=String(e.message||e); }
+}
+/* ================================================================= */
+function render(){ const slug=decodeURIComponent(location.hash.slice(1)); let html=null;
+  if(slug && PAGES[slug]) html=PAGES[slug]();
+  const heroPage = html && html.startsWith('<div class="hero"');
+  $('view').innerHTML = html ? (heroPage ? (html.indexOf('<!--HC-->')>=0 ? html.replace('<!--HC-->','<section class="container page">')+'</section>' : html) : `<section class="container page">${html}</section>`) : home();
+  document.body.classList.toggle('hero-mode', !html || heroPage);
+  heroScroll();
+  if(!slug) window.scrollTo(0,0); }
+function heroScroll(){ const on=()=>document.body.classList.toggle('scrolled',(window.scrollY||0)>10); on(); if(window.__hs)window.removeEventListener('scroll',window.__hs); window.__hs=on; window.addEventListener('scroll',on,{passive:true}); }
+document.addEventListener('click',e=>{ const a=e.target.closest('[data-route]'); if(!a)return;
+  e.preventDefault(); const r=a.getAttribute('data-route'); if(r){location.hash='#'+r;} else {history.replaceState(null,'',location.pathname);render();window.scrollTo(0,0);} });
+window.addEventListener('hashchange',render);
+render();
+
+</script>
+</body>
+</html>
