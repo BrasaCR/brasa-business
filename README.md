@@ -4,11 +4,6 @@ apps, all single-file vanilla JS on Cloudflare Pages (no build step). Every
 vertical hero carries the $99/year business signup card.
 
 
-What's in the surface
-
-FileRoleindex.htmlMain business SPA — verticals & sectors, plus the "Become a citizen" entry (#join)Restaurant.htmlRestaurant vertical app + hero signup cardDelivery.htmlDelivery vertical app + hero signup cardRetail.htmlRetail vertical app + hero signup cardPersonalCare.htmlPersonal Care vertical app + hero signup cardHospitalityEntertainment.htmlHospitality & Entertainment + hero signup cardHomeMaintenance.htmlHome Maintenance + hero signup cardConstruction.htmlConstruction + hero signup cardEarthEnergy.htmlEarth and Energy + hero signup cardHumanServices.htmlHuman Services + hero signup card
-
-
 The citizen signup (what the card does)
 
 A light card sits in each vertical's hero (and index.html has a header
@@ -33,16 +28,6 @@ is treasury policy applied after collection, shown to the citizen for transparen
 
 How the front end connects to the backend
 
-The cards POST to the brasa-signup Worker (which owns identity + the
-non-custodial payment registry on the brasa-govid D1 database):
-
-Base: https://brasa-signup.richard-bad.workers.dev
-
-POST /trial/start     { name, phone, dob }   -> BRASA ID + 14-day clock
-POST /trial/activate  { id, code }           -> $99 SINPE instruction (records intent)
-GET  /trial/status    ?id=BRA-...            -> status + days left
-GET  /trial/ready                            -> is the collecting account in & verified
-
 The collecting account is a row in pay_destinations:
 
 
@@ -58,22 +43,7 @@ Config you actually touch
 
 Near the top of each page's script:
 
-jsconst BRASA_JOIN_API = "https://brasa-signup.richard-bad.workers.dev";
-const JOIN_CODE = "CONTRIB-TEST"; // DEMO. For launch: "CONTRIB".
 
-JOIN_CODE is the only switch between demo and live. It currently lives in each
-of the 9 pages. (Optional refactor: have every page read one shared value so
-launch is a single change instead of nine.)
-
-
-Demo before the bank
-
-Point the test destination at your own SINPE number:
-
-wrangler d1 execute brasa-govid --remote --command="INSERT OR REPLACE INTO pay_destinations (code,rail,country,account,account_ref,dial_code,name,currency,verified,vertical,segment) VALUES ('CONTRIB-TEST','sinpe','CR','<YOUR-SINPE-NUMBER>',NULL,NULL,'BRASA Contribution (TEST)','CRC',1,'citizen','contribution')"
-
-Then any vertical's card → "Start my service now" shows a real ₡ payment screen
-to your number. Nothing touches the live CONTRIB row.
 
 
 Launch (bank day)
@@ -89,13 +59,7 @@ Verify any time: curl https://brasa-signup.richard-bad.workers.dev/trial/ready
 → ready_for_live: true when the number is in.
 
 
-Deploy
 
-Edit the HTML files and push to Cloudflare Pages the way you normally deploy this
-surface. No build step, no dependencies.
-
-
-Invariants — do not break these
 
 
 SINPE only. No Stripe, no Twilio, no processor. BRASA is never in the funds path.
