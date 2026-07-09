@@ -50,5 +50,3 @@ Identity is minted through the shared signup logic in the **`brasa-signup`** Wor
 ---
 
 *BRASA CR — Business, World Wide.*
-
-nup logic, so web and USSD/WhatsApp resolve to one citizen.

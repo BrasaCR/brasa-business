@@ -1,0 +1,40 @@
+<!-- =========================================================================
+     BRASA — Free business signup card (phone + date of birth = BRASA ID)
+     Drop this markup into each vertical hero where the old join card lives,
+     and replace the old signup <script> block with the one at the bottom.
+     ========================================================================= -->
+
+<div class="join-card">
+  <div id="jc-1">
+    <h2 class="jc-title">Free Business Software</h2>
+    <input id="jc-name" class="jc-in" type="text" placeholder="Full Name">
+    <input id="jc-phone" class="jc-in" type="tel" inputmode="tel" placeholder="Phone Number">
+    <input id="jc-dob" class="jc-in" type="text" placeholder="Date of Birth" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+    <button class="jc-btn" onclick="joinStart()">Create my account</button>
+    <p id="jc-err" class="jc-err"></p>
+  </div>
+  <div id="jc-2" style="display:none">
+    <p class="jc-eyebrow" style="color:var(--brasa-green)">Account created</p>
+    <h2 class="jc-title">You&rsquo;re a citizen</h2>
+    <p class="jc-sub">Your BRASA ID is <strong id="jc-bid"></strong>. Your free business software is ready.</p>
+  </div>
+</div>
+
+<!-- ---- Replace the old signup script with exactly this ---- -->
+<script>
+// Free business signup — one step: mint the BRASA ID (phone + date of birth).
+const BRASA_JOIN_API = window.BRASA_JOIN_API || "https://brasa-signup.richard-bad.workers.dev";
+function v(id){ return (document.getElementById(id).value||'').trim(); }
+function jcShow(step){ ['jc-1','jc-2'].forEach(function(id,i){ document.getElementById(id).style.display=(i===step-1)?'block':'none'; }); }
+async function joinStart(){
+  var name=v('jc-name'), phone=v('jc-phone'), dob=v('jc-dob'), err=document.getElementById('jc-err'); err.textContent='';
+  if(!name||!phone||!dob){ err.textContent='Please fill in name, phone and date of birth.'; return; }
+  err.textContent='Creating your account\u2026';
+  try{
+    var r=await fetch(BRASA_JOIN_API+'/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,dob:dob})});
+    var d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not create your account.');
+    document.getElementById('jc-bid').textContent=d.display_id;
+    jcShow(2);
+  }catch(e){ err.textContent=String(e.message||e); }
+}
+</script>

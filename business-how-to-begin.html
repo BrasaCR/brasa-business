@@ -483,8 +483,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .featured-band .featured-grid { margin-top: 0; }
 </style>
 
-  <!-- citizen signup config (shared) -->
-  <script src="brasa-join-config.js"></script>
   <style>
     .lede-text{font-size:1.12rem;line-height:1.75;color:var(--brasa-soft);margin-top:1.25rem}
     .join-card{background:var(--brasa-page);border:1px solid var(--brasa-callout);border-radius:16px;padding:clamp(22px,4vw,30px);box-shadow:0 30px 80px -40px rgba(27,26,23,.4)}
@@ -547,14 +545,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
       <div id="jc-2" style="display:none">
         <p class="jc-eyebrow" style="color:var(--brasa-green)">Account created</p>
         <h2 class="jc-title">You&rsquo;re a citizen</h2>
-        <p class="jc-sub">Your BRASA ID is <strong id="jc-bid"></strong>.</p>
-        <button class="jc-btn dark" onclick="joinActivate()" style="margin-top:16px">Start my service now</button>
-        <p id="jc-err2" class="jc-err"></p>
-      </div>
-      <div id="jc-3" style="display:none">
-        <p class="jc-eyebrow">Pay by SINPE M&oacute;vil</p>
-        <p class="jc-amt">&#8353; <span id="jc-monto"></span></p>
-        <p class="jc-sub">Destination <strong id="jc-destino"></strong><br>Reference <strong id="jc-ref"></strong><br>BRASA ID <strong id="jc-bid2"></strong></p>
+        <p class="jc-sub">Your BRASA ID is <strong id="jc-bid"></strong>. Your free business software is ready.</p>
       </div>
     </div>
   </div>
@@ -585,36 +576,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   window.addEventListener('scroll', s, {passive:true}); s();
 })();
 
-// $99/year business signup — trial -> activate -> SINPE (same Worker as the business pages)
+// Free business signup — one step: mint the BRASA ID (phone + date of birth).
 const BRASA_JOIN_API = window.BRASA_JOIN_API || "https://brasa-signup.richard-bad.workers.dev";
-const JOIN_CODE = window.JOIN_CODE || "CONTRIB-TEST"; // set in brasa-join-config.js; "CONTRIB" at launch
-let JOIN_ID = null;
 function v(id){ return (document.getElementById(id).value||'').trim(); }
-function jcShow(step){ ['jc-1','jc-2','jc-3'].forEach(function(id,i){ document.getElementById(id).style.display=(i===step-1)?'block':'none'; }); }
+function jcShow(step){ ['jc-1','jc-2'].forEach(function(id,i){ document.getElementById(id).style.display=(i===step-1)?'block':'none'; }); }
 async function joinStart(){
   var name=v('jc-name'), phone=v('jc-phone'), dob=v('jc-dob'), err=document.getElementById('jc-err'); err.textContent='';
   if(!name||!phone||!dob){ err.textContent='Please fill in name, phone and date of birth.'; return; }
-  err.textContent='Starting\u2026';
+  err.textContent='Creating your account\u2026';
   try{
-    var r=await fetch(BRASA_JOIN_API+'/trial/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,dob:dob})});
-    var d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not start.');
-    JOIN_ID=d.display_id;
+    var r=await fetch(BRASA_JOIN_API+'/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,dob:dob})});
+    var d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not create your account.');
     document.getElementById('jc-bid').textContent=d.display_id;
-    document.getElementById('jc-days').textContent=d.days_left;
     jcShow(2);
-  }catch(e){ err.textContent=String(e.message||e); }
-}
-async function joinActivate(){
-  var err=document.getElementById('jc-err2'); err.textContent='\u2026';
-  try{
-    var r=await fetch(BRASA_JOIN_API+'/trial/activate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:JOIN_ID,code:JOIN_CODE})});
-    var d=await r.json();
-    if(!r.ok){ err.textContent=d.note||d.error||'Not available yet.'; return; }
-    document.getElementById('jc-monto').textContent=Number(d.crc_amount).toLocaleString('es-CR');
-    document.getElementById('jc-destino').textContent=d.instruction.to_sinpe;
-    document.getElementById('jc-ref').textContent=d.instruction.reference;
-    document.getElementById('jc-bid2').textContent=JOIN_ID;
-    jcShow(3);
   }catch(e){ err.textContent=String(e.message||e); }
 }
 </script>
