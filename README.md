@@ -51,6 +51,4 @@ Identity is minted through the shared signup logic in the **`brasa-signup`** Wor
 
 *BRASA CR — Business, World Wide.*
 
-/1 (96% Switzerland / 4% SINPE). Undivided; no Operating Partner Amendment.
-Every charge → Hacienda tiquete v4.4, issued by the BRASA CR entity (the emisor), not by BRASA the platform.
-Identity is minted only through the shared signup logic, so web and USSD/WhatsApp resolve to one citizen.
+nup logic, so web and USSD/WhatsApp resolve to one citizen.
