@@ -1304,16 +1304,22 @@ async function joinActivate(){
 </style>
 <script>
 (function(){
-  var CDN='https://assets.brasa.world/logos/corps/';
+  var BASES=['https://assets.brasa.world/Photos/logos/','https://assets.brasa.world/logos/corps/'];
   function slug(n){return n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
   document.querySelectorAll('.feature-empty[data-corp]').forEach(function(t){
-    var img=new Image();
-    img.onload=function(){
-      var c=t.querySelector('.feature-content'); if(!c||t.classList.contains('has-logo')) return;
-      img.className='corp-logo'; img.alt=''; img.loading='lazy';
-      c.insertBefore(img,c.firstChild); t.classList.add('has-logo');
-    };
-    img.src=CDN+slug(t.getAttribute('data-corp'))+'.png';
+    var s=slug(t.getAttribute('data-corp')), i=0;
+    function attempt(){
+      if(i>=BASES.length) return;
+      var img=new Image();
+      img.onload=function(){
+        var c=t.querySelector('.feature-content'); if(!c||t.classList.contains('has-logo')) return;
+        img.className='corp-logo'; img.alt=''; img.loading='lazy';
+        c.insertBefore(img,c.firstChild); t.classList.add('has-logo');
+      };
+      img.onerror=function(){ i++; attempt(); };
+      img.src=BASES[i]+s+'.png';
+    }
+    attempt();
   });
 })();
 </script>
