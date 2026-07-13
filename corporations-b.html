@@ -1312,7 +1312,7 @@ async function joinActivate(){
 </style>
 <script>
 (function(){
-  var BASES=['https://assets.brasa.world/Photos/logos/','https://assets.brasa.world/logos/corps/'];
+  var BASES=['https://assets.brasa.world/Photos/','https://assets.brasa.world/Photos/logos/','https://assets.brasa.world/logos/corps/'];
   function slug(n){return n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
   document.querySelectorAll('.feature-empty[data-corp]').forEach(function(t){
     var s=slug(t.getAttribute('data-corp')), i=0;
