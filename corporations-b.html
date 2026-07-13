@@ -1307,8 +1307,11 @@ async function joinActivate(){
 </script>
 
 <style>
-.feature-empty .corp-logo{width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 12px;border-radius:10px;background:#fff;padding:6px;box-shadow:0 1px 4px rgba(27,26,23,.08)}
-.feature-empty.has-logo .feature-content{text-align:center}
+.feature-empty.has-logo, .feature-empty.has-logo:hover{background:#fff}
+.feature-empty.has-logo .feature-content{position:absolute;inset:0;display:flex;flex-direction:column;padding:0;text-align:center}
+.feature-empty .corp-logo{flex:1;min-height:0;width:100%;object-fit:contain;padding:clamp(1.4rem,3.5vw,2.4rem);transition:transform .35s var(--ease)}
+.feature-empty.has-logo:hover .corp-logo{transform:scale(1.04)}
+.feature-empty.has-logo .feature-empty-label{font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.04em;color:var(--brasa-soft);padding:0 .9rem .95rem;line-height:1.25}
 </style>
 <script>
 (function(){
