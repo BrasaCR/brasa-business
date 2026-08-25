@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="BRASA Education Marketplace · Books, technology, supplies and learning resources">
+<meta name="theme-color" content="#1B1A17">
+
+<title>BRASA Education Marketplace — Business, World Wide</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://assets.brasa.world">
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Geist:wght@300..700&display=swap"
+>
+
+<style>
+
+:root {
+  --brasa-black: #1B1A17;
+  --brasa-soft: #6B6862;
+  --brasa-accent: #8C3A1F;
+  --brasa-green: #0D6E5C;
+  --brasa-callout: #F2EDE0;
+  --brasa-page: #FBF9F4;
+  --brasa-cream: #F5F0E5;
+  --brasa-rule: #E5DFD0;
+  --brasa-hover: #6B280F;
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+
+  --max-w: 1480px;
+  --gutter: clamp(1.25rem, 4vw, 2.75rem);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-photo: cubic-bezier(0.16, 0.84, 0.34, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brasa-page);
+  color: var(--brasa-black);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  padding: 1.25rem var(--gutter);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition:
+    background 380ms var(--ease),
+    padding 380ms var(--ease),
+    backdrop-filter 380ms var(--ease);
+}
+
+.site-header.scrolled {
+  background: rgba(251,249,244,.88);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+
+  padding-top: .9rem;
+  padding-bottom: .9rem;
+
+  border-bottom: 1px solid rgba(229,223,208,.5);
+}
+
+.wordmark-img {
+  height: 140px;
+  width: auto;
+  display: block;
+
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,.25));
+
+  transition:
+    height 380ms var(--ease),
+    filter 380ms var(--ease);
+}
+
+.site-header.scrolled .wordmark-img {
+  height: 56px;
+  filter: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.nav a {
+  color: var(--brasa-cream);
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+
+  position: relative;
+}
+
+.site-header.scrolled .nav a {
+  color: var(--brasa-black);
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 1px;
+
+  background: currentColor;
+
+  transition: width 300ms var(--ease);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+
+.hero {
+  position: relative;
+
+  min-height: 72vh;
+  min-height: 72svh;
+
+  display: flex;
+  align-items: flex-end;
+
+  overflow: hidden;
+  background: var(--brasa-black);
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  filter: saturate(.88) contrast(1.04);
+
+  animation: heroBreathe 28s var(--ease-photo) infinite alternate;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(27,26,23,.28) 0%,
+      rgba(27,26,23,.08) 38%,
+      rgba(27,26,23,.72) 100%
+    );
+}
+
+@keyframes heroBreathe {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  color: var(--brasa-cream);
+
+  padding-bottom: clamp(3rem,8vh,5.5rem);
+}
+
+.hero-eyebrow {
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+
+  color: rgba(245,240,229,.72);
+
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 300;
+
+  font-size: clamp(3.25rem,8vw,7rem);
+
+  line-height: .95;
+  letter-spacing: -.025em;
+
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 60,
+    "WONK" 1;
+
+  margin-bottom: 1.25rem;
+}
+
+.hero-tag {
+  max-width: 50ch;
+
+  font-size: clamp(1rem,1.5vw,1.15rem);
+
+  color: rgba(245,240,229,.83);
+}
+
+
+/* ==========================================================
+   MARKETPLACE INTRO
+   ========================================================== */
+
+.market-intro {
+  padding:
+    clamp(4rem,9vh,7rem)
+    var(--gutter)
+    clamp(2rem,5vh,4rem);
+}
+
+.market-intro-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: .75rem;
+  font-weight: 500;
+
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: var(--brasa-accent);
+
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+
+  font-size: clamp(2.25rem,5vw,4rem);
+  font-weight: 350;
+
+  line-height: 1.02;
+  letter-spacing: -.02em;
+
+  max-width: 18ch;
+
+  margin-bottom: 1.25rem;
+}
+
+.intro-copy {
+  max-width: 60ch;
+
+  color: var(--brasa-soft);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+/* ==========================================================
+   SEARCH
+   ========================================================== */
+
+.market-tools {
+  max-width: var(--max-w);
+  margin: 0 auto;
+
+  padding:
+    0
+    var(--gutter)
+    clamp(2rem,5vh,4rem);
+}
+
+.search-wrap {
+  display: flex;
+
+  border-bottom: 1px solid var(--brasa-rule);
+
+  padding-bottom: .75rem;
+}
+
+.market-search {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  font-family: var(--serif);
+  font-size: clamp(1.5rem,3vw,2.2rem);
+  font-weight: 300;
+
+  color: var(--brasa-black);
+}
+
+.market-search::placeholder {
+  color: #AAA59A;
+}
+
+
+/* ==========================================================
+   PRODUCTS
+   ========================================================== */
+
+.marketplace {
+  max-width: var(--max-w);
+  margin: 0 auto;
+
+  padding:
+    0
+    var(--gutter)
+    clamp(5rem,10vh,8rem);
+}
+
+#products {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:
+    clamp(2rem,4vw,4rem)
+    clamp(.75rem,1.5vw,1.25rem);
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-image-wrap {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  background: var(--brasa-callout);
+
+  margin-bottom: 1.25rem;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 1200ms var(--ease-photo);
+
+  filter: saturate(.94) contrast(1.02);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.045);
+}
+
+.product-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--brasa-soft);
+
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+
+.product-info {
+  padding: 0 .2rem;
+}
+
+.product-title {
+  font-family: var(--serif);
+
+  font-size: clamp(1.35rem,2vw,1.7rem);
+
+  font-weight: 350;
+
+  line-height: 1.1;
+  letter-spacing: -.012em;
+
+  margin-bottom: .55rem;
+}
+
+.price {
+  font-size: .95rem;
+  font-weight: 600;
+
+  color: var(--brasa-accent);
+
+  margin-bottom: .8rem;
+}
+
+.description {
+  color: var(--brasa-soft);
+
+  line-height: 1.6;
+
+  margin-bottom: 1.25rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.buy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+
+  padding:
+    .75rem
+    1.2rem;
+
+  border:
+    1px solid
+    rgba(27,26,23,.35);
+
+  border-radius: 999px;
+
+  font-size: .78rem;
+  font-weight: 500;
+
+  letter-spacing: .1em;
+  text-transform: uppercase;
+
+  transition:
+    background 280ms var(--ease),
+    color 280ms var(--ease),
+    border-color 280ms var(--ease);
+}
+
+.buy-button:hover {
+  background: var(--brasa-black);
+  color: var(--brasa-cream);
+
+  border-color: var(--brasa-black);
+}
+
+.buy-button.disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.status {
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  padding: 5rem 1rem;
+
+  font-family: var(--serif);
+  font-size: 1.5rem;
+
+  color: var(--brasa-soft);
+}
+
+
+/* ==========================================================
+   COMMERCE STATEMENT
+   ========================================================== */
+
+.commerce-band {
+  background: var(--brasa-callout);
+
+  padding:
+    clamp(4rem,9vh,7rem)
+    var(--gutter);
+}
+
+.commerce-inner {
+  max-width: 900px;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.commerce-title {
+  font-family: var(--serif);
+
+  font-weight: 300;
+
+  font-size: clamp(2rem,5vw,3.6rem);
+
+  line-height: 1.05;
+
+  margin-bottom: 1rem;
+}
+
+.commerce-copy {
+  color: var(--brasa-soft);
+
+  max-width: 58ch;
+
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.site-footer {
+  background: var(--brasa-black);
+  color: var(--brasa-cream);
+
+  padding:
+    clamp(3rem,7vh,5rem)
+    var(--gutter)
+    2rem;
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  gap: 2.5rem;
+
+  align-items: end;
+}
+
+.footer-mark-img {
+  height: 96px;
+  width: auto;
+
+  display: block;
+
+  margin-bottom: 1.25rem;
+}
+
+.footer-tagline {
+  font-size: .82rem;
+
+  letter-spacing: .04em;
+
+  color: rgba(245,240,229,.65);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+
+  gap: .65rem;
+
+  text-align: right;
+
+  font-size: .82rem;
+  font-weight: 500;
+}
+
+.footer-links a {
+  color: rgba(245,240,229,.78);
+}
+
+.footer-links a:hover {
+  color: var(--brasa-cream);
+}
+
+.footer-bottom {
+  max-width: var(--max-w);
+
+  margin: 3rem auto 0;
+
+  padding-top: 1.5rem;
+
+  border-top:
+    1px solid
+    rgba(245,240,229,.12);
+
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  font-size: .72rem;
+
+  color: rgba(245,240,229,.4);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+  #products {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .nav {
+    gap: 1.2rem;
+  }
+
+  .nav a:nth-child(-n+3) {
+    display: none;
+  }
+
+  .wordmark-img {
+    height: 84px;
+  }
+
+  .site-header.scrolled .wordmark-img {
+    height: 44px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    text-align: left;
+  }
+
+}
+
+@media (max-width: 560px) {
+
+  #products {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 65vh;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     HEADER
+     ====================================================== -->
+
+<header class="site-header" id="header">
+
+  <a
+    href="https://brasa.business/"
+    class="wordmark"
+    aria-label="BRASA CR Business"
+  >
+    <img
+      src="https://assets.brasa.world/Photos/brasa-cr-logo_8.png"
+      class="wordmark-img"
+      alt="BRASA CR"
+    >
+  </a>
+
+
+  <nav class="nav" aria-label="Primary">
+
+    <a href="https://brasa.education/">
+      Education
+    </a>
+
+    <a href="https://brasagovernment.net/">
+      Government
+    </a>
+
+    <a href="https://brasa.business/">
+      Business
+    </a>
+
+    <a href="https://brasa.world/">
+      BRASA
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+
+<section class="hero">
+
+  <div class="hero-photo">
+
+    <img
+      src="https://assets.brasa.world/Photos/retail-hero.jpg"
+      alt=""
+    >
+
+  </div>
+
+
+  <div class="hero-content container">
+
+    <p class="hero-eyebrow">
+      BRASA Business
+    </p>
+
+    <h1 class="hero-title">
+      Marketplace.
+    </h1>
+
+    <p class="hero-tag">
+      Tools, books, technology and resources that help students and teachers learn better.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     INTRO
+     ====================================================== -->
+
+<section class="market-intro">
+
+  <div class="market-intro-inner">
+
+    <p class="eyebrow">
+      Business, World Wide
+    </p>
+
+    <h2 class="section-title">
+      Marketplace for learning.
+    </h2>
+
+    <p class="intro-copy">
+      Discover books, school supplies, technology, science tools, arts resources,
+      teacher materials and inclusive-learning resources selected to support students
+      with different learning needs. Product information, availability and pricing are
+      connected directly to Shopify.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     SEARCH
+     ====================================================== -->
+
+<section class="market-tools">
+
+  <div class="search-wrap">
+
+    <input
+      id="marketSearch"
+      class="market-search"
+      type="search"
+      placeholder="What are you looking for?"
+      aria-label="Search marketplace"
+    >
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PRODUCTS
+     ====================================================== -->
+
+<style>
+.marketplace {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(5rem,10vh,8rem);
+}
+
+.market-filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.75rem, 1.5vw, 1.25rem);
+  margin-bottom: clamp(2.5rem, 5vh, 4rem);
+}
+
+.market-filter {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: var(--brasa-black);
+  color: var(--brasa-cream);
+  text-align: left;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.market-filter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(27,26,23,.05) 0%,
+      rgba(27,26,23,.08) 34%,
+      rgba(27,26,23,.74) 100%
+    );
+  transition: background 500ms var(--ease);
+}
+
+.market-filter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--tile-image);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(.92) contrast(1.03);
+  transition: transform 1400ms var(--ease-photo), filter 500ms var(--ease);
+}
+
+.market-filter:hover::after,
+.market-filter.is-active::after {
+  transform: scale(1.055);
+  filter: saturate(1) contrast(1.05);
+}
+
+.market-filter:hover::before,
+.market-filter.is-active::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(27,26,23,.10) 0%,
+      rgba(27,26,23,.12) 32%,
+      rgba(27,26,23,.84) 100%
+    );
+}
+
+.market-filter-content {
+  position: absolute;
+  left: clamp(1.2rem, 2.2vw, 1.8rem);
+  right: clamp(1.2rem, 2.2vw, 1.8rem);
+  bottom: clamp(1.15rem, 2vw, 1.7rem);
+  z-index: 2;
+}
+
+.market-filter-eyebrow {
+  display: block;
+  margin-bottom: .4rem;
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(245,240,229,.72);
+}
+
+.market-filter-label {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 350;
+  line-height: 1.05;
+  letter-spacing: -.012em;
+  color: var(--brasa-cream);
+}
+
+.market-filter.is-active {
+  outline: 2px solid var(--brasa-accent);
+  outline-offset: -2px;
+}
+
+.category-note {
+  margin: -1.75rem 0 2.5rem;
+  color: var(--brasa-soft);
+  font-size: .78rem;
+  letter-spacing: .02em;
+}
+
+.special-needs-section {
+  margin: 0 0 clamp(3rem, 6vh, 5rem);
+  padding-top: clamp(2.5rem, 5vh, 4rem);
+  border-top: 1px solid var(--brasa-rule);
+}
+
+.special-needs-heading {
+  margin-bottom: 1.5rem;
+}
+
+.special-needs-heading .eyebrow {
+  margin-bottom: .7rem;
+}
+
+.special-needs-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 350;
+  line-height: 1.04;
+  letter-spacing: -.018em;
+  margin-bottom: .75rem;
+}
+
+.special-needs-copy {
+  max-width: 62ch;
+  color: var(--brasa-soft);
+  line-height: 1.65;
+}
+
+.special-needs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.75rem, 1.5vw, 1.25rem);
+}
+
+.special-needs-grid .market-filter {
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 900px) {
+  .special-needs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .special-needs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .market-filter-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .market-filter-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: clamp(1.5rem,3vw,2.5rem) clamp(.75rem,1.4vw,1.15rem);
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--brasa-callout);
+  margin-bottom: 1rem;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.94) contrast(1.02);
+  transition: transform 1200ms var(--ease-photo);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(140,58,31,.10), transparent 34%),
+    var(--brasa-callout);
+}
+
+.product-placeholder-inner {
+  text-align: center;
+  color: var(--brasa-soft);
+}
+
+.product-placeholder-mark {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin: 0 auto .7rem;
+  opacity: .9;
+}
+
+.product-placeholder-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 350;
+}
+
+.product-info {
+  padding: 0 .15rem;
+}
+
+.product-title {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem,1.7vw,1.45rem);
+  font-weight: 350;
+  line-height: 1.08;
+  letter-spacing: -.012em;
+  margin-bottom: .45rem;
+}
+
+.price {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--brasa-accent);
+  margin-bottom: .65rem;
+}
+
+.description {
+  color: var(--brasa-soft);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.buy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .62rem 1rem;
+  border: 1px solid rgba(27,26,23,.28);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  transition:
+    background 250ms var(--ease),
+    color 250ms var(--ease),
+    border-color 250ms var(--ease),
+    transform 250ms var(--ease);
+}
+
+.buy-button:hover {
+  background: var(--brasa-black);
+  color: var(--brasa-cream);
+  border-color: var(--brasa-black);
+  transform: translateY(-1px);
+}
+
+.buy-button.disabled {
+  opacity: .4;
+  pointer-events: none;
+}
+
+.status {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5rem 1rem;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--brasa-soft);
+}
+
+@media (max-width: 1050px) {
+  #products {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  #products {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  #products {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<main class="marketplace">
+
+  <div class="market-filter-row">
+    <button class="market-filter is-active" data-filter="all" style="--tile-image:url('https://assets.brasa.world/Photos/retail-hero.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Marketplace</span>
+        <span class="market-filter-label">All</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="books-learning" style="--tile-image:url('https://assets.brasa.world/Thumbnails/certificate-scroll.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Books & Learning</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="school-supplies" style="--tile-image:url('https://assets.brasa.world/Thumbnails/checklist-steps.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">School Supplies</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="education-technology" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_the-earth-globe-light-bulb-concept_75419221.jpg?w=1600&q=82')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Education Technology</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="stem" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_ai-generated-earth-planet-in-human-hand-on-sunset-background_37814591.jpg?w=1600&q=82')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Science & STEM</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="arts-music" style="--tile-image:url('https://assets.brasa.world/Thumbnails/diamond-coal.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Arts & Music</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="teacher-resources" style="--tile-image:url('https://assets.brasa.world/Thumbnails/career-interview.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Teacher Resources</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="learning-games" style="--tile-image:url('https://assets.brasa.world/Photos/retail-hero.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Learning Games</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="special-education" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_dove-soars-against-a-bright-sun-symbolizing-freedom-hope_57342378.jpg?w=1600&q=82')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Special Education</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="classroom-equipment" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_a-large-white-building-with-glass-doors_69268998.jpg?w=900&q=82')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Classroom Equipment</span>
+      </span>
+    </button>
+    <button class="market-filter" data-filter="student-essentials" style="--tile-image:url('https://assets.brasa.world/Thumbnails/checklist-steps.jpg')">
+      <span class="market-filter-content">
+        <span class="market-filter-eyebrow">Explore</span>
+        <span class="market-filter-label">Student Essentials</span>
+      </span>
+    </button>
+  </div>
+
+  <p class="category-note">
+    Categories follow each Shopify product’s Product type or tags.
+  </p>
+
+  <section class="special-needs-section" aria-labelledby="special-needs-title">
+
+    <div class="special-needs-heading">
+      <p class="eyebrow">Inclusive learning</p>
+      <h2 class="special-needs-title" id="special-needs-title">
+        Special Needs Learning &amp; Teaching
+      </h2>
+      <p class="special-needs-copy">
+        Learning tools and teaching resources for neurodivergent students,
+        differentiated instruction, communication, sensory support and classroom inclusion.
+      </p>
+    </div>
+
+    <div class="special-needs-grid">
+
+      <button class="market-filter" data-filter="autism"
+        style="--tile-image:url('https://assets.brasa.world/Thumbnails/career-interview.jpg')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Learning support</span>
+          <span class="market-filter-label">Autism</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="adhd"
+        style="--tile-image:url('https://assets.brasa.world/Thumbnails/checklist-steps.jpg')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Attention &amp; focus</span>
+          <span class="market-filter-label">ADHD</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="dyslexia"
+        style="--tile-image:url('https://assets.brasa.world/Thumbnails/certificate-scroll.jpg')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Literacy support</span>
+          <span class="market-filter-label">Dyslexia</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="sensory-support"
+        style="--tile-image:url('https://assets.brasa.world/Thumbnails/diamond-coal.jpg')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Regulation</span>
+          <span class="market-filter-label">Sensory Support</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="communication-aac"
+        style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_dove-soars-against-a-bright-sun-symbolizing-freedom-hope_57342378.jpg?w=1600&q=82')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Communication</span>
+          <span class="market-filter-label">AAC &amp; Communication</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="executive-function"
+        style="--tile-image:url('https://assets.brasa.world/Photos/retail-hero.jpg')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Planning &amp; organization</span>
+          <span class="market-filter-label">Executive Function</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="social-emotional"
+        style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_ai-generated-earth-planet-in-human-hand-on-sunset-background_37814591.jpg?w=1600&q=82')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Classroom wellbeing</span>
+          <span class="market-filter-label">Social-Emotional Learning</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="adaptive-learning"
+        style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_the-earth-globe-light-bulb-concept_75419221.jpg?w=1600&q=82')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">Differentiation</span>
+          <span class="market-filter-label">Adaptive Learning</span>
+        </span>
+      </button>
+
+      <button class="market-filter" data-filter="special-needs-teaching"
+        style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_a-large-white-building-with-glass-doors_69268998.jpg?w=900&q=82')">
+        <span class="market-filter-content">
+          <span class="market-filter-eyebrow">For educators</span>
+          <span class="market-filter-label">Special Needs Teaching</span>
+        </span>
+      </button>
+
+    </div>
+
+  </section>
+
+  <div id="status" class="status">
+    Loading marketplace…
+  </div>
+
+  <div id="products"></div>
+
+</main>
+
+
+<!-- ======================================================
+     COMMERCE MESSAGE
+     ====================================================== -->
+
+<section class="commerce-band">
+
+  <div class="commerce-inner">
+
+    <p class="eyebrow">
+      Education first
+    </p>
+
+    <h2 class="commerce-title">
+      Commerce built around learning.
+    </h2>
+
+    <p class="commerce-copy">
+      The BRASA Marketplace begins with products that support students, teachers,
+      families and classrooms. The goal is to make useful learning tools easier to
+      discover through the same BRASA ecosystem that provides education.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div>
+
+      <img
+        src="https://assets.brasa.world/Photos/brasa-cr-logo_8.png"
+        class="footer-mark-img"
+        alt="BRASA CR"
+      >
+
+      <p class="footer-tagline">
+        Business, World Wide. Funded by commerce.
+      </p>
+
+    </div>
+
+
+    <nav
+      class="footer-links"
+      aria-label="Footer"
+    >
+
+      <a href="https://brasa.business/">
+        Business
+      </a>
+
+      <a href="https://brasa.education/">
+        brasa.education
+      </a>
+
+      <a href="https://brasagovernment.net/">
+        Government
+      </a>
+
+      <a href="https://brasa.world/">
+        brasa.world
+      </a>
+
+    </nav>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © BRASA CR · 2026 · Business, World Wide
+    </span>
+
+    <span>
+      Made with care in Costa Rica
+    </span>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+const header =
+  document.getElementById("header");
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   SHOPIFY
+   ========================================================= */
+
+const SHOPIFY_DOMAIN =
+  "0y1hjb-nv.myshopify.com";
+
+const STOREFRONT_TOKEN =
+  "8e684408626eaa45cea0283b9fe4e8e2";
+
+
+const query = `
+{
+  products(first: 50) {
+
+    edges {
+
+      node {
+
+        id
+
+        title
+
+        description
+
+        productType
+
+        tags
+
+        featuredImage {
+          url
+          altText
+        }
+
+        variants(first: 1) {
+
+          edges {
+
+            node {
+
+              id
+
+              availableForSale
+
+              price {
+                amount
+                currencyCode
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+`;
+
+
+let marketplaceProducts = [];
+
+
+async function loadProducts() {
+
+  const status =
+    document.getElementById("status");
+
+  const productsContainer =
+    document.getElementById("products");
+
+
+  try {
+
+    const response =
+      await fetch(
+
+        `https://${SHOPIFY_DOMAIN}/api/2026-07/graphql.json`,
+
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json",
+
+            "X-Shopify-Storefront-Access-Token":
+              STOREFRONT_TOKEN
+
+          },
+
+          body:
+            JSON.stringify({
+              query
+            })
+
+        }
+
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      result.errors ||
+      !result.data
+    ) {
+
+      console.error(
+        result.errors
+      );
+
+      status.textContent =
+        "Unable to load marketplace.";
+
+      return;
+
+    }
+
+
+    marketplaceProducts =
+      result.data.products.edges;
+
+
+    if (
+      !marketplaceProducts.length
+    ) {
+
+      status.textContent =
+        "No products are currently available.";
+
+      return;
+
+    }
+
+
+    status.style.display =
+      "none";
+
+
+    applyMarketplaceFilters();
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    status.textContent =
+      "Could not connect to the marketplace.";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   RENDER PRODUCTS
+   ========================================================= */
+
+function renderProducts(
+  products
+) {
+
+  const productsContainer =
+    document.getElementById("products");
+
+
+  productsContainer.innerHTML =
+    "";
+
+
+  products.forEach(
+    ({ node: product }) => {
+
+
+      const variant =
+        product
+          .variants
+          .edges[0]
+          ?.node;
+
+
+      if (!variant) return;
+
+
+      const variantId =
+        variant
+          .id
+          .split("/")
+          .pop();
+
+
+      const price =
+        new Intl.NumberFormat(
+          "en-US",
+          {
+
+            style:
+              "currency",
+
+            currency:
+              variant
+                .price
+                .currencyCode
+
+          }
+
+        ).format(
+
+          Number(
+            variant
+              .price
+              .amount
+          )
+
+        );
+
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+
+      card.className =
+        "product-card";
+
+
+      const imageMarkup =
+        product.featuredImage
+
+          ? `
+
+            <img
+
+              class="product-image"
+
+              src="${product.featuredImage.url}"
+
+              alt="${
+                product.featuredImage.altText
+                ||
+                product.title
+              }"
+
+              loading="lazy"
+
+            >
+
+          `
+
+          : `
+
+            <div class="product-image-placeholder">
+
+              <div class="product-placeholder-inner">
+
+                <img
+                  src="https://assets.brasa.world/Photos/brasa-cr-logo_8.png"
+                  class="product-placeholder-mark"
+                  alt=""
+                >
+
+                <div class="product-placeholder-name">
+                  ${escapeHTML(product.title)}
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+
+      const actionMarkup =
+        variant.availableForSale
+
+          ? `
+
+            <a
+
+              class="buy-button"
+
+              href="https://${SHOPIFY_DOMAIN}/cart/${variantId}:1"
+
+            >
+              Buy now →
+            </a>
+
+          `
+
+          : `
+
+            <span
+              class="buy-button disabled"
+            >
+              Out of stock
+            </span>
+
+          `;
+
+
+      card.innerHTML = `
+
+        <div
+          class="product-image-wrap"
+        >
+
+          ${imageMarkup}
+
+        </div>
+
+
+        <div
+          class="product-info"
+        >
+
+          <h2
+            class="product-title"
+          >
+            ${escapeHTML(product.title)}
+          </h2>
+
+
+          <div
+            class="price"
+          >
+            ${price}
+          </div>
+
+
+          ${
+            product.description
+
+              ? `
+
+                <p
+                  class="description"
+                >
+                  ${escapeHTML(
+                    product.description
+                  )}
+                </p>
+
+              `
+
+              : ""
+          }
+
+
+          ${actionMarkup}
+
+        </div>
+
+      `;
+
+
+      productsContainer
+        .appendChild(card);
+
+    }
+
+  );
+
+}
+
+
+
+/* =========================================================
+   SEARCH PRODUCTS
+   Search and education-category filtering work together.
+   ========================================================= */
+
+document
+  .getElementById("marketSearch")
+  .addEventListener("input", event => {
+
+    activeSearch =
+      event.target.value
+        .trim()
+        .toLowerCase();
+
+    applyMarketplaceFilters();
+  });
+
+
+
+/* =========================================================
+   SAFE TEXT
+   ========================================================= */
+
+function escapeHTML(text) {
+
+  return String(text)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+
+/* =========================================================
+   FILTERING
+   Shopify Product type or tags can drive each BRASA tile.
+   ========================================================= */
+
+let activeCategory = "all";
+let activeSearch = "";
+
+function normalizeCategory(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const CATEGORY_ALIASES = {
+  "books-learning": [
+    "books-learning",
+    "books-and-learning",
+    "books",
+    "learning"
+  ],
+  "school-supplies": [
+    "school-supplies",
+    "school-supply",
+    "supplies"
+  ],
+  "education-technology": [
+    "education-technology",
+    "educational-technology",
+    "edtech",
+    "technology"
+  ],
+  "stem": [
+    "stem",
+    "science-stem",
+    "science-and-stem",
+    "science"
+  ],
+  "arts-music": [
+    "arts-music",
+    "arts-and-music",
+    "art",
+    "arts",
+    "music"
+  ],
+  "teacher-resources": [
+    "teacher-resources",
+    "teacher-resource",
+    "teachers"
+  ],
+  "learning-games": [
+    "learning-games",
+    "learning-game",
+    "educational-games",
+    "games"
+  ],
+  "special-education": [
+    "special-education",
+    "special-ed"
+  ],
+  "classroom-equipment": [
+    "classroom-equipment",
+    "classroom"
+  ],
+  "student-essentials": [
+    "student-essentials",
+    "student-essential",
+    "essentials"
+  ],
+  "autism": [
+    "autism",
+    "autism-support",
+    "asd"
+  ],
+  "adhd": [
+    "adhd",
+    "attention-deficit-hyperactivity-disorder",
+    "attention-support"
+  ],
+  "dyslexia": [
+    "dyslexia",
+    "reading-support",
+    "literacy-support"
+  ],
+  "sensory-support": [
+    "sensory-support",
+    "sensory",
+    "sensory-regulation"
+  ],
+  "communication-aac": [
+    "communication-aac",
+    "aac",
+    "augmentative-and-alternative-communication",
+    "communication-support"
+  ],
+  "executive-function": [
+    "executive-function",
+    "organization",
+    "planning-support"
+  ],
+  "social-emotional": [
+    "social-emotional",
+    "social-emotional-learning",
+    "sel"
+  ],
+  "adaptive-learning": [
+    "adaptive-learning",
+    "differentiated-instruction",
+    "differentiation"
+  ],
+  "special-needs-teaching": [
+    "special-needs-teaching",
+    "special-education",
+    "inclusive-teaching",
+    "inclusive-education"
+  ]
+};
+
+function productMatchesCategory(product, category) {
+  if (category === "all") return true;
+
+  const aliases = CATEGORY_ALIASES[category] || [category];
+
+  const values = [
+    product.productType,
+    ...(product.tags || [])
+  ]
+    .map(normalizeCategory)
+    .filter(Boolean);
+
+  return aliases.some(alias =>
+    values.includes(normalizeCategory(alias))
+  );
+}
+
+function applyMarketplaceFilters() {
+  const filtered = marketplaceProducts.filter(({ node }) => {
+
+    const categoryMatch =
+      productMatchesCategory(node, activeCategory);
+
+    const searchHaystack = [
+      node.title || "",
+      node.description || "",
+      node.productType || "",
+      ...(node.tags || [])
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    const searchMatch =
+      !activeSearch ||
+      searchHaystack.includes(activeSearch);
+
+    return categoryMatch && searchMatch;
+  });
+
+  renderProducts(filtered);
+
+  const status = document.getElementById("status");
+
+  if (!marketplaceProducts.length) {
+    status.style.display = "block";
+    status.textContent = "No products are currently available.";
+    return;
+  }
+
+  if (!filtered.length) {
+    status.style.display = "block";
+    status.textContent =
+      activeCategory === "all"
+        ? "No products match your search."
+        : "No products are currently listed in this category.";
+  } else {
+    status.style.display = "none";
+  }
+}
+
+document
+  .querySelectorAll(".market-filter")
+  .forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".market-filter")
+        .forEach(item =>
+          item.classList.remove("is-active")
+        );
+
+      button.classList.add("is-active");
+
+      activeCategory = button.dataset.filter || "all";
+
+      applyMarketplaceFilters();
+    });
+
+  });
+
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+loadProducts();
+
+</script>
+
+
+</body>
+</html>
