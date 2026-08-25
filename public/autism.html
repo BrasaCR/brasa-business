@@ -709,6 +709,24 @@ input {
 }
 
 
+
+/* AUTISM MARKETPLACE — visual category navigation */
+.autism-market-heading{margin-bottom:clamp(2rem,5vh,3.5rem)}
+.autism-market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,1.5vw,1.25rem);margin-bottom:clamp(4rem,8vh,6rem)}
+.autism-market-tile{position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;border:0;padding:0;background:var(--brasa-black);color:var(--brasa-cream);text-align:left;cursor:pointer;isolation:isolate}
+.autism-market-tile::after{content:"";position:absolute;inset:0;z-index:0;background-image:var(--tile-image);background-size:cover;background-position:center;filter:saturate(.92) contrast(1.03);transition:transform 1400ms var(--ease-photo),filter 500ms var(--ease)}
+.autism-market-tile::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(27,26,23,.05) 0%,rgba(27,26,23,.08) 34%,rgba(27,26,23,.76) 100%);transition:background 500ms var(--ease)}
+.autism-market-tile:hover::after,.autism-market-tile.is-active::after{transform:scale(1.055);filter:saturate(1) contrast(1.05)}
+.autism-market-tile:hover::before,.autism-market-tile.is-active::before{background:linear-gradient(180deg,rgba(27,26,23,.10) 0%,rgba(27,26,23,.12) 34%,rgba(27,26,23,.86) 100%)}
+.autism-market-tile.is-active{outline:2px solid var(--brasa-accent);outline-offset:-2px}
+.autism-market-content{position:absolute;left:clamp(1.2rem,2.2vw,1.8rem);right:clamp(1.2rem,2.2vw,1.8rem);bottom:clamp(1.15rem,2vw,1.7rem);z-index:2}
+.autism-market-eyebrow{display:block;margin-bottom:.42rem;font-family:var(--sans);font-size:.64rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,229,.72)}
+.autism-market-label{display:block;font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.72rem);font-weight:350;line-height:1.05;color:var(--brasa-cream)}
+.autism-product-heading{margin-bottom:2rem;padding-top:1.5rem;border-top:1px solid var(--brasa-rule)}
+.autism-product-section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:350;line-height:1.05}
+@media(max-width:900px){.autism-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.autism-market-grid{grid-template-columns:1fr}}
+
 /* AUTISM HUB */
 .autism-hub { padding-bottom: clamp(4rem,8vh,7rem); }
 .autism-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(.75rem,1.5vw,1.25rem); }
@@ -983,13 +1001,29 @@ input {
   </div>
 </section>
 
-<section class="autism-products container" id="communication">
-  <p class="eyebrow">Autism marketplace</p>
-  <h2 class="special-needs-title">Communication &amp; AAC</h2>
-  <p class="special-needs-copy">
-    Communication boards, symbol supports, visual choice tools, AAC accessories and related learning resources.
-    AAC selection should be individualized; products here are learning supports, not a substitute for professional assessment.
-  </p>
+<section class="autism-products container" id="marketplace">
+  <div class="autism-market-heading">
+    <p class="eyebrow">Autism marketplace</p>
+    <h2 class="special-needs-title">Choose what you need.</h2>
+  </div>
+
+  <div class="autism-market-grid" aria-label="Autism marketplace categories">
+    <button class="autism-market-tile is-active" data-market-filter="all" style="--tile-image:url('https://assets.brasa.world/Photos/retail-hero.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Autism marketplace</span><span class="autism-market-label">All Resources</span></span></button>
+    <button class="autism-market-tile" data-market-filter="communication" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_dove-soars-against-a-bright-sun-symbolizing-freedom-hope_57342378.jpg?w=1600&q=82')"><span class="autism-market-content"><span class="autism-market-eyebrow">Expression &amp; understanding</span><span class="autism-market-label">Communication &amp; AAC</span></span></button>
+    <button class="autism-market-tile" data-market-filter="sensory" style="--tile-image:url('https://assets.brasa.world/Thumbnails/diamond-coal.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Environment &amp; regulation</span><span class="autism-market-label">Sensory Support</span></span></button>
+    <button class="autism-market-tile" data-market-filter="visual" style="--tile-image:url('https://assets.brasa.world/Thumbnails/checklist-steps.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Predictability &amp; sequence</span><span class="autism-market-label">Visual Supports &amp; Routines</span></span></button>
+    <button class="autism-market-tile" data-market-filter="learning" style="--tile-image:url('https://assets.brasa.world/Thumbnails/certificate-scroll.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Academic access</span><span class="autism-market-label">Learning &amp; Literacy</span></span></button>
+    <button class="autism-market-tile" data-market-filter="independence" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_ai-generated-earth-planet-in-human-hand-on-sunset-background_37814591.jpg?w=1600&q=82')"><span class="autism-market-content"><span class="autism-market-eyebrow">Daily living</span><span class="autism-market-label">Independence &amp; Daily Living</span></span></button>
+    <button class="autism-market-tile" data-market-filter="books" style="--tile-image:url('https://assets.brasa.world/Thumbnails/career-interview.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Learn &amp; understand</span><span class="autism-market-label">Books &amp; Guides</span></span></button>
+    <button class="autism-market-tile" data-market-filter="teacher-family" style="--tile-image:url('https://images.brasa.world/Photos/vecteezy_a-large-white-building-with-glass-doors_69268998.jpg?w=900&q=82')"><span class="autism-market-content"><span class="autism-market-eyebrow">For the people who support learning</span><span class="autism-market-label">Teacher &amp; Family Resources</span></span></button>
+    <button class="autism-market-tile" data-market-filter="community" style="--tile-image:url('https://assets.brasa.world/Photos/retail-hero.jpg')"><span class="autism-market-content"><span class="autism-market-eyebrow">Identity &amp; connection</span><span class="autism-market-label">Community &amp; Awareness</span></span></button>
+  </div>
+
+  <div class="autism-product-heading">
+    <p class="eyebrow" id="autismProductEyebrow">All resources</p>
+    <h3 class="autism-product-section-title" id="autismProductHeading">Autism Marketplace</h3>
+  </div>
+
   <div id="autismProducts" class="autism-product-grid"></div>
   <div id="autismStatus" class="status">Loading autism resources…</div>
 </section>
@@ -1101,60 +1135,107 @@ function esc(s) {
   return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
 
-async function loadAutismProducts() {
-  const box = document.getElementById("autismProducts");
-  const status = document.getElementById("autismStatus");
-  try {
-    const response = await fetch(`https://${SHOPIFY_DOMAIN}/api/2026-07/graphql.json`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN
-      },
-      body: JSON.stringify({query: autismQuery})
+let autismProducts = [];
+let activeAutismFilter = "all";
+
+const AUTISM_FILTERS = {
+  all:{title:"Autism Marketplace",eyebrow:"All resources",aliases:[]},
+  communication:{title:"Communication & AAC",eyebrow:"Expression & understanding",aliases:["aac","communication","speech","symbol","choice board"]},
+  sensory:{title:"Sensory Support",eyebrow:"Environment & regulation",aliases:["sensory","regulation","noise reduction","tactile"]},
+  visual:{title:"Visual Supports & Routines",eyebrow:"Predictability & sequence",aliases:["visual","schedule","routine","timer","first then"]},
+  learning:{title:"Learning & Literacy",eyebrow:"Academic access",aliases:["learning","literacy","reading","writing","math","educational","workbook"]},
+  independence:{title:"Independence & Daily Living",eyebrow:"Daily living",aliases:["independence","daily living","life skills","organization","self advocacy"]},
+  books:{title:"Books & Guides",eyebrow:"Learn & understand",aliases:["book","books","guide","paperback","workbook","print books"]},
+  "teacher-family":{title:"Teacher & Family Resources",eyebrow:"For the people who support learning",aliases:["teacher","family","parent","classroom","educator"]},
+  community:{title:"Community & Awareness",eyebrow:"Identity & connection",aliases:["community","awareness","gift","mug","drinkware","apparel","identity","acceptance"]}
+};
+
+function productSearchText(p){
+  return [p.title||"",p.description||"",p.productType||"",...(p.tags||[])].join(" ").toLowerCase();
+}
+
+function matchesAutismFilter(p,key){
+  if(key==="all") return true;
+  const cfg=AUTISM_FILTERS[key];
+  const hay=productSearchText(p);
+  return cfg.aliases.some(a=>hay.includes(a));
+}
+
+function renderAutismProducts(){
+  const box=document.getElementById("autismProducts");
+  const status=document.getElementById("autismStatus");
+  const heading=document.getElementById("autismProductHeading");
+  const eyebrow=document.getElementById("autismProductEyebrow");
+  const cfg=AUTISM_FILTERS[activeAutismFilter]||AUTISM_FILTERS.all;
+
+  heading.textContent=cfg.title;
+  eyebrow.textContent=cfg.eyebrow;
+  box.innerHTML="";
+
+  const filtered=autismProducts.filter(({node})=>matchesAutismFilter(node,activeAutismFilter));
+
+  if(!filtered.length){
+    status.style.display="block";
+    status.textContent=activeAutismFilter==="all" ? "No products are currently in the Autism collection." : "No products are currently listed in this section.";
+    return;
+  }
+
+  status.style.display="none";
+
+  filtered.forEach(({node:p})=>{
+    const v=p.variants.edges[0]?.node;
+    if(!v) return;
+    const variantId=v.id.split("/").pop();
+    const price=new Intl.NumberFormat("en-US",{style:"currency",currency:v.price.currencyCode}).format(Number(v.price.amount));
+    const el=document.createElement("article");
+    el.className="product-card";
+    el.innerHTML=`
+      <div class="product-image-wrap">
+        ${p.featuredImage ? `<img class="product-image" src="${p.featuredImage.url}" alt="${esc(p.featuredImage.altText||p.title)}">` : `<div class="product-image-placeholder"><div class="product-placeholder-inner"><div class="product-placeholder-name">${esc(p.title)}</div></div></div>`}
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${esc(p.title)}</h3>
+        <div class="price">${price}</div>
+        ${p.description ? `<p class="description">${esc(p.description)}</p>` : ""}
+        ${v.availableForSale ? `<a class="buy-button" href="https://${SHOPIFY_DOMAIN}/cart/${variantId}:1">Buy now →</a>` : `<span class="buy-button disabled">Out of stock</span>`}
+      </div>`;
+    box.appendChild(el);
+  });
+}
+
+async function loadAutismProducts(){
+  const status=document.getElementById("autismStatus");
+  try{
+    const response=await fetch(`https://${SHOPIFY_DOMAIN}/api/2026-07/graphql.json`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","X-Shopify-Storefront-Access-Token":STOREFRONT_TOKEN},
+      body:JSON.stringify({query:autismQuery})
     });
-    const result = await response.json();
-    if (result.errors || !result.data) throw new Error("Shopify response error");
-
-    const collection = result.data.collection;
-
-    if (!collection) {
-      status.textContent = "The Shopify collection 'Autism' could not be found.";
+    const result=await response.json();
+    if(result.errors||!result.data) throw new Error("Shopify response error");
+    const collection=result.data.collection;
+    if(!collection){
+      status.textContent="The Shopify Autism collection could not be found.";
       return;
     }
-
-    const products = collection.products.edges;
-
-    if (!products.length) {
-      status.textContent = "No products are currently in the Autism collection.";
-      return;
-    }
-
-    status.style.display = "none";
-    products.forEach(({node:p}) => {
-      const v = p.variants.edges[0]?.node;
-      if (!v) return;
-      const variantId = v.id.split("/").pop();
-      const price = new Intl.NumberFormat("en-US", {style:"currency", currency:v.price.currencyCode}).format(Number(v.price.amount));
-      const el = document.createElement("article");
-      el.className = "product-card";
-      el.innerHTML = `
-        <div class="product-image-wrap">
-          ${p.featuredImage ? `<img class="product-image" src="${p.featuredImage.url}" alt="${esc(p.featuredImage.altText || p.title)}">` : `<div class="product-image-placeholder"><div class="product-placeholder-inner"><div class="product-placeholder-name">${esc(p.title)}</div></div></div>`}
-        </div>
-        <div class="product-info">
-          <h3 class="product-title">${esc(p.title)}</h3>
-          <div class="price">${price}</div>
-          ${p.description ? `<p class="description">${esc(p.description)}</p>` : ""}
-          ${v.availableForSale ? `<a class="buy-button" href="https://${SHOPIFY_DOMAIN}/cart/${variantId}:1">Buy now →</a>` : `<span class="buy-button disabled">Out of stock</span>`}
-        </div>`;
-      box.appendChild(el);
-    });
-  } catch (e) {
+    autismProducts=collection.products.edges;
+    renderAutismProducts();
+  }catch(e){
     console.error(e);
-    status.textContent = "Could not load autism marketplace products.";
+    status.textContent="Could not load autism marketplace products.";
   }
 }
+
+document.querySelectorAll("[data-market-filter]").forEach(tile=>{
+  tile.addEventListener("click",()=>{
+    document.querySelectorAll("[data-market-filter]").forEach(i=>i.classList.remove("is-active"));
+    tile.classList.add("is-active");
+    activeAutismFilter=tile.dataset.marketFilter||"all";
+    renderAutismProducts();
+    document.getElementById("autismProductHeading").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+
 loadAutismProducts();
 </script>
 
