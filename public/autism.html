@@ -728,6 +728,13 @@ input {
 @media(max-width:560px){.autism-market-grid{grid-template-columns:1fr}}
 
 
+
+.description-empty {
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+}
+
 /* PRODUCT CARD POLISH */
 .autism-product-grid {
   align-items: start;
@@ -1262,8 +1269,37 @@ function productSearchText(p){
   return [p.title||"",p.description||"",p.productType||"",...(p.tags||[])].join(" ").toLowerCase();
 }
 
+const BRASA_PRODUCT_CLASSIFICATION = [
+  {
+    match: ["thinking person's guide to autism"],
+    categories: ["books", "teacher-family"]
+  },
+  {
+    match: ["piece of my heart autism mug"],
+    categories: ["community"]
+  }
+];
+
+function explicitCategoriesForProduct(p) {
+  const title = String(p.title || "").toLowerCase();
+
+  for (const rule of BRASA_PRODUCT_CLASSIFICATION) {
+    if (rule.match.some(term => title.includes(term))) {
+      return rule.categories;
+    }
+  }
+
+  return [];
+}
+
 function matchesAutismFilter(p,key){
   if(key==="all") return true;
+
+  const explicit = explicitCategoriesForProduct(p);
+  if (explicit.length) {
+    return explicit.includes(key);
+  }
+
   const cfg=AUTISM_FILTERS[key];
   const hay=productSearchText(p);
   return cfg.aliases.some(a=>hay.includes(a));
@@ -1284,7 +1320,7 @@ function renderAutismProducts(){
 
   if(!filtered.length){
     status.style.display="block";
-    status.textContent=activeAutismFilter==="all" ? "No products are currently in the Autism collection." : "No products are currently listed in this section.";
+    status.textContent=activeAutismFilter==="all" ? "No products are currently in the Autism collection." : "No products are currently listed in this section yet.";
     return;
   }
 
@@ -1304,7 +1340,7 @@ function renderAutismProducts(){
       <div class="product-info">
         <h3 class="product-title">${esc(p.title)}</h3>
         <div class="price">${price}</div>
-        ${cleanProductDescription(p.description) ? `<p class="description">${esc(cleanProductDescription(p.description))}</p>` : ""}
+        ${cleanProductDescription(p.description) ? `<p class="description">${esc(cleanProductDescription(p.description))}</p>` : `<div class="description description-empty" aria-hidden="true"></div>`}
         ${v.availableForSale ? `<a class="buy-button" href="https://${SHOPIFY_DOMAIN}/cart/${variantId}:1">Buy now →</a>` : `<span class="buy-button disabled">Out of stock</span>`}
       </div>`;
     box.appendChild(el);
