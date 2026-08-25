@@ -727,6 +727,87 @@ input {
 @media(max-width:900px){.autism-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.autism-market-grid{grid-template-columns:1fr}}
 
+
+/* PRODUCT CARD POLISH */
+.autism-product-grid {
+  align-items: start;
+}
+
+.autism-product-grid .product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.autism-product-grid .product-image-wrap {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1rem;
+  background: #F2EDE0;
+}
+
+.autism-product-grid .product-image {
+  object-fit: contain;
+  background: #fff;
+}
+
+.autism-product-grid .product-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 .15rem;
+}
+
+.autism-product-grid .product-title {
+  font-size: clamp(1.2rem,1.7vw,1.5rem);
+  line-height: 1.12;
+  min-height: 3.4em;
+  margin-bottom: .5rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.autism-product-grid .description {
+  min-height: 4.8em;
+  margin-bottom: 1rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.autism-product-grid .buy-button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (min-width: 1100px) {
+  .autism-product-grid {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .autism-product-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .autism-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .autism-product-grid .product-title,
+  .autism-product-grid .description {
+    min-height: 0;
+  }
+}
+
+
 /* AUTISM HUB */
 .autism-hub { padding-bottom: clamp(4rem,8vh,7rem); }
 .autism-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(.75rem,1.5vw,1.25rem); }
