@@ -57,7 +57,7 @@ test("returns a dry-run classification for a signed product webhook", async () =
   assert.equal(result.dryRun, true);
   assert.equal(result.classification.confidence, "high");
   assert.equal(result.joinAutismCollection, true);
-  assert.deepEqual(result.tagsToAdd, ["Sensory Support"]);
+  assert.deepEqual(result.tagsToAdd, ["Sensory Support", "BRASA Education"]);
 });
 
 test("rejects unsigned webhooks", async () => {

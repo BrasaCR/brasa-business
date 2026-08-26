@@ -18,8 +18,9 @@ It is intentionally separate from the static `brasa-business` Worker. No marketp
 The reusable BRASA product specification and vendor overrides live in `src/spec.js`.
 
 - `DEFAULT_PRODUCT_SPEC` defines approved BRASA categories, global exclusion terms, readiness requirements, duplicate prevention, Draft imports, and automatic activation.
-- `DEFAULT_VENDOR_PROFILE` applies the shared BRASA rules to vendors that do not yet have a custom profile.
-- `VENDOR_PROFILES` contains only supplier-specific approved terms, exclusions, and category additions.
+- `DEFAULT_VENDOR_PROFILE` applies the shared BRASA rules and Education marketplace to vendors that do not yet have a custom profile.
+- `VENDOR_PROFILES` contains supplier-specific approved terms, exclusions, category additions, and an Education, Business, or Government marketplace assignment.
+- Approved products receive exactly one marketplace tag. Explicit existing marketplace tags remain authoritative, and BRASA World displays all three marketplaces together.
 
 Keep every Shopify Collective supplier policy set to **Automatic**, **Draft**, and the intended sales channels. Shopify imports the supplier product as Draft; the Worker classifies it and activates it only when both the product specification and duplicate check pass. Borderline, excluded, incomplete, and duplicate products remain Draft.
 

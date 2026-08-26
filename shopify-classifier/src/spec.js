@@ -29,6 +29,7 @@ export const DEFAULT_PRODUCT_SPEC = Object.freeze({
 
 export const DEFAULT_VENDOR_PROFILE = Object.freeze({
   useDefaultBrasaRules: true,
+  marketplace: "BRASA Education",
   additionalApprovedTerms: [],
   additionalExcludedTerms: [],
   additionalCategories: [],
@@ -37,6 +38,7 @@ export const DEFAULT_VENDOR_PROFILE = Object.freeze({
 export const VENDOR_PROFILES = Object.freeze({
   "the fidget games": {
     useDefaultBrasaRules: true,
+    marketplace: "BRASA Education",
     additionalApprovedTerms: [
       "game",
       "games",
@@ -51,6 +53,12 @@ export const VENDOR_PROFILES = Object.freeze({
     additionalCategories: ["Games & Activities"],
   },
 });
+
+export const MARKETPLACE_TAGS = Object.freeze([
+  "BRASA Education",
+  "BRASA Business",
+  "BRASA Government",
+]);
 
 export function getVendorProfile(vendor) {
   const key = String(vendor ?? "").trim().toLowerCase();

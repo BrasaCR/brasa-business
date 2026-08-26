@@ -355,6 +355,14 @@ main { max-width: none; margin: 0; padding: 0; min-height: 0; }
   letter-spacing: 0.02em; color: rgba(245, 240, 229, 0.7);
   margin-top: 0.35rem;
 }
+.feature.feature-marketplace {
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 8;
+  min-height: 260px;
+}
+@media (max-width: 580px) {
+  .feature.feature-marketplace { aspect-ratio: 4 / 3; min-height: 0; }
+}
 
 /* Empty feature — same shape, cream paper, serif label */
 .feature.feature-empty {
@@ -1112,6 +1120,7 @@ a.operate-item:hover{border-color:rgba(140,58,31,.5);background:rgba(140,58,31,.
     <a href="https://brasa.education/" tabindex="0" role="link">Education</a>
     <a href="https://brasagovernment.net/" tabindex="0" role="link">Government</a>
     <a data-route="" tabindex="0" role="link">Business</a>
+    <a href="marketplace.html?market=business" tabindex="0" role="link">Marketplace</a>
     <a href="https://brasa.world/" tabindex="0" role="link">BRASA</a>
     <button class="nav-search" id="searchToggle" aria-label="Open search">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -2502,6 +2511,26 @@ function homeHTML() {
     </section>
 
     ${pillarsHTML}
+
+    <!-- BRASA BUSINESS MARKETPLACE -->
+    <section class="section section--tight" id="marketplace" aria-labelledby="marketplace-h">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">BRASA Marketplace</p>
+          <h2 class="section-h" id="marketplace-h">Products for building and running a business.</h2>
+        </div>
+        <div class="featured-grid reveal">
+          <a class="feature feature-marketplace" href="marketplace.html?market=business" data-href="marketplace.html?market=business" aria-label="Explore the BRASA Business Marketplace">
+            <div class="feature-photo"><img src="https://assets.brasa.world/Photos/retail-hero.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="feature-content">
+              <span class="feature-eyebrow">BRASA Business Marketplace</span>
+              <div class="feature-label">Explore the marketplace</div>
+              <div class="feature-tag">Tools, equipment, services and professional resources</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- WHERE TO BEGIN (free education) -->
     <section class="section" id="where-to-begin" aria-labelledby="wtb-h">

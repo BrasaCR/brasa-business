@@ -74,8 +74,23 @@ test("trusts complete games and bundles from The Fidget Games", () => {
   assert.equal(bundle.confidence, "high");
   assert.equal(game.autoActivate, true);
   assert.equal(bundle.autoActivate, true);
+  assert.equal(game.marketplace, "BRASA Education");
   assert.ok(game.categories.includes("Games & Activities"));
   assert.ok(bundle.categories.includes("Games & Activities"));
+});
+
+test("preserves an explicit marketplace assignment", () => {
+  const result = classifyProduct({
+    title: "Public Works Planning Guide",
+    body_html: "A government classroom learning guide.",
+    product_type: "Books",
+    vendor: "Civic Press",
+    tags: "Books & Learning, BRASA Government",
+    variants: [],
+  });
+
+  assert.equal(result.marketplace, "BRASA Government");
+  assert.equal(result.autoActivate, false);
 });
 
 test("does not trust excluded Fidget Games accessories", () => {

@@ -130,7 +130,7 @@ async function handleWebhook(request, env) {
   const classification = classifyProduct(product);
   const existingTags = parseTags(product.tags);
   const desiredTags = classification.confidence === "high" || classification.confidence === "manual"
-    ? classification.categories
+    ? [...classification.categories, classification.marketplace]
     : classification.confidence === "review"
       ? ["BRASA Review Required"]
       : [];

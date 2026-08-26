@@ -1,4 +1,4 @@
-import { DEFAULT_PRODUCT_SPEC, getVendorProfile } from "./spec.js";
+import { DEFAULT_PRODUCT_SPEC, MARKETPLACE_TAGS, getVendorProfile } from "./spec.js";
 
 export const CATEGORY_TAGS = Object.freeze([
   "Communication & AAC",
@@ -88,6 +88,10 @@ export function classifyProduct(product) {
   ].join(" "));
   const normalizedTitle = normalize(product.title);
   const vendorProfile = getVendorProfile(product.vendor);
+  const existingMarketplace = MARKETPLACE_TAGS.find((marketplace) =>
+    existingTags.some((tag) => tag.toLowerCase() === marketplace.toLowerCase()),
+  );
+  const marketplace = existingMarketplace || vendorProfile.marketplace;
 
   // Existing BRASA category tags are authoritative, matching the marketplace page behavior.
   if (existingCategoryTags.length) {
@@ -96,6 +100,7 @@ export function classifyProduct(product) {
       relevant: true,
       confidence: "manual",
       autoActivate: false,
+      marketplace,
       inventory,
       reasons: ["existing BRASA category tags"],
     };
@@ -112,6 +117,7 @@ export function classifyProduct(product) {
       relevant: false,
       confidence: "none",
       autoActivate: false,
+      marketplace,
       inventory,
       reasons: [`excluded term: ${excludedTerm}`],
     };
@@ -145,6 +151,7 @@ export function classifyProduct(product) {
       && vendorProfile.useDefaultBrasaRules
       && confidence === "high"
       && approvedCategory,
+    marketplace,
     inventory,
     reasons: [...new Set([
       ...(approvedTerm ? [`vendor profile term: ${approvedTerm}`] : []),

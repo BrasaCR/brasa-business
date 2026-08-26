@@ -776,7 +776,7 @@ input {
 
   <div class="hero-content container">
 
-    <p class="hero-eyebrow">
+    <p class="hero-eyebrow" id="marketScopeEyebrow">
       BRASA Business
     </p>
 
@@ -784,7 +784,7 @@ input {
       Marketplace.
     </h1>
 
-    <p class="hero-tag">
+    <p class="hero-tag" id="marketScopeTagline">
       Tools, books, technology and resources that help students and teachers learn better.
     </p>
 
@@ -806,7 +806,7 @@ input {
       Business, World Wide
     </p>
 
-    <h2 class="section-title">
+    <h2 class="section-title" id="marketScopeTitle">
       Marketplace for learning.
     </h2>
 
@@ -1905,6 +1905,21 @@ function escapeHTML(text) {
 let activeCategory = "all";
 let activeSearch = "";
 
+const MARKET_SCOPES = {
+  education: { tag: "brasa-education", eyebrow: "BRASA Education", title: "Marketplace for learning.", tagline: "Tools, books, technology and resources that help students and teachers learn better." },
+  business: { tag: "brasa-business", eyebrow: "BRASA Business", title: "Marketplace for business.", tagline: "Tools, equipment, services and professional resources for building and running a business." },
+  government: { tag: "brasa-government", eyebrow: "BRASA Government", title: "Marketplace for citizens.", tagline: "Country-specific products and resources supporting citizens, infrastructure and public services." },
+  all: { tag: null, eyebrow: "BRASA World", title: "Every BRASA marketplace.", tagline: "Education, business and government products together in one worldwide marketplace." }
+};
+
+const requestedMarket = new URLSearchParams(window.location.search).get("market") || "education";
+const activeMarket = MARKET_SCOPES[requestedMarket] ? requestedMarket : "education";
+const marketScope = MARKET_SCOPES[activeMarket];
+document.getElementById("marketScopeEyebrow").textContent = marketScope.eyebrow;
+document.getElementById("marketScopeTitle").textContent = marketScope.title;
+document.getElementById("marketScopeTagline").textContent = marketScope.tagline;
+document.title = `${marketScope.eyebrow} Marketplace — BRASA`;
+
 function normalizeCategory(value) {
   return String(value || "")
     .trim()
@@ -2035,8 +2050,18 @@ function productMatchesCategory(product, category) {
   );
 }
 
+function productMatchesMarket(product) {
+  if (!marketScope.tag) return true;
+  const tags = (product.tags || []).map(normalizeCategory);
+  const assignedMarkets = ["brasa-education", "brasa-business", "brasa-government"];
+  const hasAssignedMarket = assignedMarkets.some(tag => tags.includes(tag));
+  return tags.includes(marketScope.tag) || (activeMarket === "education" && !hasAssignedMarket);
+}
+
 function applyMarketplaceFilters() {
   const filtered = marketplaceProducts.filter(({ node }) => {
+
+    const marketMatch = productMatchesMarket(node);
 
     const categoryMatch =
       productMatchesCategory(node, activeCategory);
@@ -2054,7 +2079,7 @@ function applyMarketplaceFilters() {
       !activeSearch ||
       searchHaystack.includes(activeSearch);
 
-    return categoryMatch && searchMatch;
+    return marketMatch && categoryMatch && searchMatch;
   });
 
   renderProducts(filtered);
