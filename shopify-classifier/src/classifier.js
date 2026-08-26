@@ -1,3 +1,5 @@
+import { DEFAULT_PRODUCT_SPEC, getVendorProfile } from "./spec.js";
+
 export const CATEGORY_TAGS = Object.freeze([
   "Communication & AAC",
   "Sensory Support",
@@ -45,15 +47,6 @@ const relevancePhrases = [
   "sensory", "fine motor", "social skills", "adaptive living", "special education",
 ];
 
-const approvedSupplierRules = [
-  {
-    vendor: "the fidget games",
-    includeTitle: /\b(game|games|bundle|bingo|trolls)\b|shoresh pop|king komodo|popplers/i,
-    excludeTitle: /card pack|extra .*\bmat(s)?\b|replacement|accessor/i,
-    categories: ["Games & Activities"],
-  },
-];
-
 const normalize = (value) => String(value ?? "")
   .replace(/<[^>]*>/g, " ")
   .replace(/&[a-z0-9#]+;/gi, " ")
@@ -66,6 +59,11 @@ const containsPhrase = (text, phrase) => {
   if (phrase === "aac") return /(^|\s)aac($|\s)/.test(text);
   if (phrase === "slp") return /(^|\s)slp($|\s)/.test(text);
   return text.includes(phrase);
+};
+
+const containsExcludedTerm = (text, term) => {
+  if (term === "extra mat" || term === "extra mats") return /\bextra\b.*\bmats?\b/.test(text);
+  return containsPhrase(text, term);
 };
 
 export function parseTags(tags) {
@@ -89,7 +87,7 @@ export function classifyProduct(product) {
     existingTags.join(" "),
   ].join(" "));
   const normalizedTitle = normalize(product.title);
-  const normalizedVendor = normalize(product.vendor);
+  const vendorProfile = getVendorProfile(product.vendor);
 
   // Existing BRASA category tags are authoritative, matching the marketplace page behavior.
   if (existingCategoryTags.length) {
@@ -103,11 +101,24 @@ export function classifyProduct(product) {
     };
   }
 
-  const approvedSupplier = approvedSupplierRules.find((rule) =>
-    normalizedVendor === rule.vendor
-    && rule.includeTitle.test(normalizedTitle)
-    && !rule.excludeTitle.test(normalizedTitle),
-  );
+  const excludedTerms = [
+    ...DEFAULT_PRODUCT_SPEC.excludedTerms,
+    ...vendorProfile.additionalExcludedTerms,
+  ];
+  const excludedTerm = excludedTerms.find((term) => containsExcludedTerm(normalizedTitle, normalize(term)));
+  if (excludedTerm) {
+    return {
+      categories: [],
+      relevant: false,
+      confidence: "none",
+      autoActivate: false,
+      inventory,
+      reasons: [`excluded term: ${excludedTerm}`],
+    };
+  }
+
+  const approvedTerm = vendorProfile.additionalApprovedTerms
+    .find((term) => containsPhrase(normalizedTitle, normalize(term)));
 
   const matchedRelevance = relevancePhrases.filter((phrase) => containsPhrase(text, phrase));
   const matches = rules.map((rule) => ({
@@ -117,22 +128,26 @@ export function classifyProduct(product) {
 
   const categories = [...new Set([
     ...matches.map((match) => match.tag),
-    ...(approvedSupplier?.categories ?? []),
+    ...(approvedTerm ? vendorProfile.additionalCategories : []),
   ])];
   const strongCategorySignal = matches.some((match) => match.phrases.length >= 2);
-  const relevant = Boolean(approvedSupplier) || (matchedRelevance.length > 0 && categories.length > 0);
-  const confidence = approvedSupplier || (relevant && (matchedRelevance.length >= 2 || strongCategorySignal))
+  const relevant = Boolean(approvedTerm) || (matchedRelevance.length > 0 && categories.length > 0);
+  const confidence = approvedTerm || (relevant && (matchedRelevance.length >= 2 || strongCategorySignal))
     ? "high"
     : relevant ? "review" : "none";
+  const approvedCategory = categories.some((category) => DEFAULT_PRODUCT_SPEC.approvedCategories.includes(category));
 
   return {
     categories,
     relevant,
     confidence,
-    autoActivate: Boolean(approvedSupplier),
+    autoActivate: DEFAULT_PRODUCT_SPEC.autoActivateApproved
+      && vendorProfile.useDefaultBrasaRules
+      && confidence === "high"
+      && approvedCategory,
     inventory,
     reasons: [...new Set([
-      ...(approvedSupplier ? [`approved supplier: ${product.vendor}`] : []),
+      ...(approvedTerm ? [`vendor profile term: ${approvedTerm}`] : []),
       ...matchedRelevance,
       ...matches.flatMap((match) => match.phrases),
     ])],

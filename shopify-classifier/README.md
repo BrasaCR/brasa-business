@@ -11,6 +11,17 @@ It is intentionally separate from the static `brasa-business` Worker. No marketp
 - New high-confidence products receive category tags and Autism collection membership.
 - Borderline products receive `BRASA Review Required` but are not added to the collection.
 - Unrelated products are left unchanged.
+- Automatic activation requires a Draft product with a title, complete description, image, positive price, SKU on every variant, inventory at or above the configured minimum, and no normalized-title/vendor duplicate.
+
+## Product specification and vendor profiles
+
+The reusable BRASA product specification and vendor overrides live in `src/spec.js`.
+
+- `DEFAULT_PRODUCT_SPEC` defines approved BRASA categories, global exclusion terms, readiness requirements, duplicate prevention, Draft imports, and automatic activation.
+- `DEFAULT_VENDOR_PROFILE` applies the shared BRASA rules to vendors that do not yet have a custom profile.
+- `VENDOR_PROFILES` contains only supplier-specific approved terms, exclusions, and category additions.
+
+Keep every Shopify Collective supplier policy set to **Automatic**, **Draft**, and the intended sales channels. Shopify imports the supplier product as Draft; the Worker classifies it and activates it only when both the product specification and duplicate check pass. Borderline, excluded, incomplete, and duplicate products remain Draft.
 
 ## Required Shopify setup
 

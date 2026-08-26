@@ -13,6 +13,7 @@ test("classifies a strong AAC learning resource", () => {
   });
   assert.equal(result.confidence, "high");
   assert.equal(result.inventory, 9);
+  assert.equal(result.autoActivate, true);
   assert.deepEqual(result.categories, ["Communication & AAC", "Books & Learning", "Games & Activities", "Teacher Resources"]);
 });
 
@@ -95,4 +96,39 @@ test("does not trust excluded Fidget Games accessories", () => {
     assert.notEqual(result.confidence, "high", title);
     assert.equal(result.autoActivate, false, title);
   }
+});
+
+test("applies the reusable BRASA rules to an unconfigured vendor", () => {
+  const result = classifyProduct({
+    title: "Sensory Regulation Activity Kit",
+    body_html: "A tactile sensory activity kit for autistic learners and occupational therapy.",
+    product_type: "Educational Toys",
+    vendor: "New Supplier",
+    tags: "",
+    variants: [{ inventory_quantity: 12 }],
+  });
+
+  assert.equal(result.confidence, "high");
+  assert.equal(result.autoActivate, true);
+  assert.deepEqual(result.categories, [
+    "Sensory Support",
+    "Books & Learning",
+    "Games & Activities",
+    "Teacher Resources",
+  ]);
+});
+
+test("global exclusions override otherwise relevant classification", () => {
+  const result = classifyProduct({
+    title: "Sensory Game Replacement Part",
+    body_html: "A sensory activity accessory for autistic learners.",
+    product_type: "Accessory",
+    vendor: "New Supplier",
+    tags: "",
+    variants: [{ inventory_quantity: 12 }],
+  });
+
+  assert.equal(result.confidence, "none");
+  assert.equal(result.autoActivate, false);
+  assert.deepEqual(result.categories, []);
 });

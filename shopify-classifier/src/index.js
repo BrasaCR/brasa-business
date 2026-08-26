@@ -1,4 +1,5 @@
 import { CATEGORY_TAGS, classifyProduct, parseTags } from "./classifier.js";
+import { DEFAULT_PRODUCT_SPEC } from "./spec.js";
 import {
   activateProduct,
   addProductTags,
@@ -65,8 +66,21 @@ export function assessProductReadiness(product) {
     sku: variants.every((variant) => Boolean(String(variant.sku ?? "").trim())),
     inventory: variants.reduce((sum, variant) => sum + Math.max(0, Number(variant.inventory_quantity) || 0), 0) > 0,
   };
-  return { ready: Object.values(checks).every(Boolean), checks };
+  const requiredChecks = {
+    draft: checks.draft,
+    title: checks.title,
+    description: !DEFAULT_PRODUCT_SPEC.requireDescription || checks.description,
+    media: !DEFAULT_PRODUCT_SPEC.requireImage || checks.media,
+    variants: checks.variants,
+    price: !DEFAULT_PRODUCT_SPEC.requirePrice || checks.price,
+    sku: !DEFAULT_PRODUCT_SPEC.requireSku || checks.sku,
+    inventory: classificationInventory(product) >= DEFAULT_PRODUCT_SPEC.minimumInventory,
+  };
+  return { ready: Object.values(requiredChecks).every(Boolean), checks: requiredChecks };
 }
+
+const classificationInventory = (product) => (Array.isArray(product.variants) ? product.variants : [])
+  .reduce((sum, variant) => sum + Math.max(0, Number(variant.inventory_quantity) || 0), 0);
 
 async function findDuplicate(env, productId, product) {
   const comparableTitle = normalizeTitle(product.title);
@@ -134,7 +148,9 @@ async function handleWebhook(request, env) {
     await addProductTags(env, productId, tagsToAdd);
     if (shouldJoinAutismCollection) await addProductToAutismCollection(env, productId);
     if (classification.autoActivate && readiness.ready) {
-      duplicate = await findDuplicate(env, productId, product);
+      duplicate = DEFAULT_PRODUCT_SPEC.preventDuplicates
+        ? await findDuplicate(env, productId, product)
+        : null;
       if (!duplicate) {
         await activateProduct(env, productId);
         activated = true;
