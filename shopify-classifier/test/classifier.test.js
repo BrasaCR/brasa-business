@@ -71,6 +71,8 @@ test("trusts complete games and bundles from The Fidget Games", () => {
 
   assert.equal(game.confidence, "high");
   assert.equal(bundle.confidence, "high");
+  assert.equal(game.autoActivate, true);
+  assert.equal(bundle.autoActivate, true);
   assert.ok(game.categories.includes("Games & Activities"));
   assert.ok(bundle.categories.includes("Games & Activities"));
 });
@@ -91,5 +93,6 @@ test("does not trust excluded Fidget Games accessories", () => {
       variants: [],
     });
     assert.notEqual(result.confidence, "high", title);
+    assert.equal(result.autoActivate, false, title);
   }
 });

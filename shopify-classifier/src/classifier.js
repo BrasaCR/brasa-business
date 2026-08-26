@@ -97,6 +97,7 @@ export function classifyProduct(product) {
       categories: existingCategoryTags,
       relevant: true,
       confidence: "manual",
+      autoActivate: false,
       inventory,
       reasons: ["existing BRASA category tags"],
     };
@@ -128,6 +129,7 @@ export function classifyProduct(product) {
     categories,
     relevant,
     confidence,
+    autoActivate: Boolean(approvedSupplier),
     inventory,
     reasons: [...new Set([
       ...(approvedSupplier ? [`approved supplier: ${product.vendor}`] : []),

@@ -14,6 +14,21 @@ mutation AddProductToAutismCollection($id: ID!, $productIds: [ID!]!) {
   }
 }`;
 
+const PRODUCTS_BY_VENDOR = `#graphql
+query ProductsByVendor($query: String!) {
+  products(first: 100, query: $query) {
+    nodes { id title status vendor }
+  }
+}`;
+
+const PRODUCT_ACTIVATE = `#graphql
+mutation ActivateProduct($product: ProductUpdateInput!) {
+  productUpdate(product: $product) {
+    product { id status }
+    userErrors { field message }
+  }
+}`;
+
 const WEBHOOKS_LIST = `#graphql
 query ProductWebhookSubscriptions {
   webhookSubscriptions(first: 100, topics: [PRODUCTS_CREATE, PRODUCTS_UPDATE]) {
@@ -91,6 +106,25 @@ export async function addProductToAutismCollection(env, productId) {
   if (unexpected.length) {
     throw new Error(`Shopify rejected collection membership: ${JSON.stringify(unexpected)}`);
   }
+}
+
+export async function getProductsByVendor(env, vendor) {
+  const escapedVendor = String(vendor).replace(/["\\]/g, "\\$&");
+  const data = await shopifyGraphql(env, PRODUCTS_BY_VENDOR, {
+    query: `vendor:"${escapedVendor}"`,
+  });
+  return data.products.nodes;
+}
+
+export async function activateProduct(env, productId) {
+  const data = await shopifyGraphql(env, PRODUCT_ACTIVATE, {
+    product: { id: productId, status: "ACTIVE" },
+  });
+  const result = data.productUpdate;
+  if (result.userErrors.length) {
+    throw new Error(`Shopify rejected product activation: ${JSON.stringify(result.userErrors)}`);
+  }
+  return result.product;
 }
 
 export async function registerProductWebhooks(env, callbackUrl) {

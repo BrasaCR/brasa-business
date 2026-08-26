@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import worker, { verifyShopifyHmac } from "../src/index.js";
+import worker, { assessProductReadiness, verifyShopifyHmac } from "../src/index.js";
 
 const secret = "test-secret";
 
@@ -72,6 +72,36 @@ test("rejects unsigned webhooks", async () => {
   assert.equal(response.status, 401);
 });
 
+test("requires complete product data before automatic activation", () => {
+  const ready = assessProductReadiness({
+    status: "draft",
+    title: "ABC BINGO!",
+    body_html: "<p>A complete educational alphabet game for early learners.</p>",
+    images: [{ src: "https://example.com/game.jpg" }],
+    variants: [{ price: "29.99", sku: "ABC-1", inventory_quantity: 10 }],
+  });
+  const incomplete = assessProductReadiness({
+    status: "draft",
+    title: "ABC BINGO!",
+    body_html: "",
+    images: [],
+    variants: [{ price: "0", sku: "", inventory_quantity: 0 }],
+  });
+
+  assert.equal(ready.ready, true);
+  assert.equal(incomplete.ready, false);
+  assert.deepEqual(incomplete.checks, {
+    draft: true,
+    title: true,
+    description: false,
+    media: false,
+    variants: true,
+    price: false,
+    sku: false,
+    inventory: false,
+  });
+});
+
 test("health reports preview as read-only", async () => {
   const response = await worker.fetch(new Request("https://worker.example/health"), env);
   const result = await response.json();
@@ -79,10 +109,10 @@ test("health reports preview as read-only", async () => {
   assert.equal(result.autoWrite, false);
 });
 
-test("health reports production writes enabled only when DRY_RUN is false", async () => {
+test("health reports production writes only when AUTO_WRITE is enabled", async () => {
   const response = await worker.fetch(
     new Request("https://worker.example/health"),
-    { ...env, DRY_RUN: "false" },
+    { ...env, AUTO_WRITE: "true" },
   );
   const result = await response.json();
   assert.equal(response.status, 200);

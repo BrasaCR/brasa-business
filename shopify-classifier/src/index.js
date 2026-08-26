@@ -1,5 +1,11 @@
 import { CATEGORY_TAGS, classifyProduct, parseTags } from "./classifier.js";
-import { addProductTags, addProductToAutismCollection, registerProductWebhooks } from "./shopify.js";
+import {
+  activateProduct,
+  addProductTags,
+  addProductToAutismCollection,
+  getProductsByVendor,
+  registerProductWebhooks,
+} from "./shopify.js";
 
 const json = (body, status = 200) => new Response(JSON.stringify(body), {
   status,
@@ -39,7 +45,44 @@ export async function verifyShopifyHmac(rawBody, receivedHmac, secret) {
 }
 
 const normalizeDomain = (value) => String(value ?? "").trim().toLowerCase();
-const isWriteEnabled = (env) => env.DRY_RUN === "false";
+
+const normalizeTitle = (value) => String(value ?? "")
+  .trim()
+  .toLowerCase()
+  .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "")
+  .replace(/\s+/g, " ");
+
+export function assessProductReadiness(product) {
+  const variants = Array.isArray(product.variants) ? product.variants : [];
+  const description = String(product.body_html ?? "").replace(/<[^>]*>/g, " ").trim();
+  const checks = {
+    draft: String(product.status ?? "").toLowerCase() === "draft",
+    title: Boolean(String(product.title ?? "").trim()),
+    description: description.length >= 20,
+    media: (Array.isArray(product.images) && product.images.length > 0) || Boolean(product.image?.src),
+    variants: variants.length > 0,
+    price: variants.some((variant) => Number(variant.price) > 0),
+    sku: variants.every((variant) => Boolean(String(variant.sku ?? "").trim())),
+    inventory: variants.reduce((sum, variant) => sum + Math.max(0, Number(variant.inventory_quantity) || 0), 0) > 0,
+  };
+  return { ready: Object.values(checks).every(Boolean), checks };
+}
+
+async function findDuplicate(env, productId, product) {
+  const comparableTitle = normalizeTitle(product.title);
+  const products = await getProductsByVendor(env, product.vendor);
+  const matches = products.filter((candidate) =>
+    candidate.id !== productId && normalizeTitle(candidate.title) === comparableTitle,
+  );
+  const active = matches.find((candidate) => candidate.status === "ACTIVE");
+  if (active) return active;
+  const currentNumericId = productId.split("/").pop();
+  return matches.find((candidate) => {
+    const candidateNumericId = candidate.id.split("/").pop();
+    return candidateNumericId.length < currentNumericId.length
+      || (candidateNumericId.length === currentNumericId.length && candidateNumericId < currentNumericId);
+  });
+}
 
 async function handleWebhook(request, env) {
   const missing = required.filter((name) => !env[name]);
@@ -82,11 +125,21 @@ async function handleWebhook(request, env) {
   );
   const shouldJoinAutismCollection = classification.confidence === "high" || classification.confidence === "manual";
   const productId = `gid://shopify/Product/${product.id}`;
-  const writeEnabled = isWriteEnabled(env);
+  const writeEnabled = env.AUTO_WRITE === "true";
+  const readiness = assessProductReadiness(product);
+  let duplicate = null;
+  let activated = false;
 
   if (writeEnabled) {
     await addProductTags(env, productId, tagsToAdd);
     if (shouldJoinAutismCollection) await addProductToAutismCollection(env, productId);
+    if (classification.autoActivate && readiness.ready) {
+      duplicate = await findDuplicate(env, productId, product);
+      if (!duplicate) {
+        await activateProduct(env, productId);
+        activated = true;
+      }
+    }
   }
 
   return json({
@@ -105,6 +158,9 @@ async function handleWebhook(request, env) {
     classification,
     tagsToAdd,
     joinAutismCollection: shouldJoinAutismCollection,
+    readiness,
+    duplicate: duplicate ? { id: duplicate.id, title: duplicate.title, status: duplicate.status } : null,
+    activated,
   });
 }
 
@@ -115,7 +171,7 @@ export default {
       return json({
         ok: true,
         service: "brasa-shopify-product-classifier",
-        autoWrite: isWriteEnabled(env),
+        autoWrite: env.AUTO_WRITE === "true",
       });
     }
     if (request.method === "POST" && url.pathname === "/webhooks/shopify/products") {
