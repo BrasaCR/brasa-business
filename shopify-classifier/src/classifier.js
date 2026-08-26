@@ -45,6 +45,15 @@ const relevancePhrases = [
   "sensory", "fine motor", "social skills", "adaptive living", "special education",
 ];
 
+const approvedSupplierRules = [
+  {
+    vendor: "the fidget games",
+    includeTitle: /\b(game|games|bundle|bingo|trolls)\b|shoresh pop|king komodo|popplers/i,
+    excludeTitle: /card pack|extra .*\bmat(s)?\b|replacement|accessor/i,
+    categories: ["Games & Activities"],
+  },
+];
+
 const normalize = (value) => String(value ?? "")
   .replace(/<[^>]*>/g, " ")
   .replace(/&[a-z0-9#]+;/gi, " ")
@@ -79,6 +88,8 @@ export function classifyProduct(product) {
     product.vendor,
     existingTags.join(" "),
   ].join(" "));
+  const normalizedTitle = normalize(product.title);
+  const normalizedVendor = normalize(product.vendor);
 
   // Existing BRASA category tags are authoritative, matching the marketplace page behavior.
   if (existingCategoryTags.length) {
@@ -91,22 +102,37 @@ export function classifyProduct(product) {
     };
   }
 
+  const approvedSupplier = approvedSupplierRules.find((rule) =>
+    normalizedVendor === rule.vendor
+    && rule.includeTitle.test(normalizedTitle)
+    && !rule.excludeTitle.test(normalizedTitle),
+  );
+
   const matchedRelevance = relevancePhrases.filter((phrase) => containsPhrase(text, phrase));
   const matches = rules.map((rule) => ({
     tag: rule.tag,
     phrases: rule.phrases.filter((phrase) => containsPhrase(text, phrase)),
   })).filter((match) => match.phrases.length);
 
-  const categories = matches.map((match) => match.tag);
+  const categories = [...new Set([
+    ...matches.map((match) => match.tag),
+    ...(approvedSupplier?.categories ?? []),
+  ])];
   const strongCategorySignal = matches.some((match) => match.phrases.length >= 2);
-  const relevant = matchedRelevance.length > 0 && categories.length > 0;
-  const confidence = relevant && (matchedRelevance.length >= 2 || strongCategorySignal) ? "high" : relevant ? "review" : "none";
+  const relevant = Boolean(approvedSupplier) || (matchedRelevance.length > 0 && categories.length > 0);
+  const confidence = approvedSupplier || (relevant && (matchedRelevance.length >= 2 || strongCategorySignal))
+    ? "high"
+    : relevant ? "review" : "none";
 
   return {
     categories,
     relevant,
     confidence,
     inventory,
-    reasons: [...new Set([...matchedRelevance, ...matches.flatMap((match) => match.phrases)])],
+    reasons: [...new Set([
+      ...(approvedSupplier ? [`approved supplier: ${product.vendor}`] : []),
+      ...matchedRelevance,
+      ...matches.flatMap((match) => match.phrases),
+    ])],
   };
 }
