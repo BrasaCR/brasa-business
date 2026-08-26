@@ -1916,8 +1916,8 @@ const MARKET_SCOPES = {
   all: { tag: null, eyebrow: "BRASA World", title: "Every BRASA marketplace.", tagline: "Education, business and government products together in one worldwide marketplace." }
 };
 
-const requestedMarket = new URLSearchParams(window.location.search).get("market") || "education";
-const activeMarket = MARKET_SCOPES[requestedMarket] ? requestedMarket : "education";
+const requestedMarket = new URLSearchParams(window.location.search).get("market") || "business";
+const activeMarket = MARKET_SCOPES[requestedMarket] ? requestedMarket : "business";
 const marketScope = MARKET_SCOPES[activeMarket];
 document.getElementById("marketScopeEyebrow").textContent = marketScope.eyebrow;
 document.getElementById("marketScopeTitle").textContent = marketScope.title;
