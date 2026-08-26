@@ -1902,8 +1902,12 @@ function escapeHTML(text) {
    Shopify Product type or tags can drive each BRASA tile.
    ========================================================= */
 
-let activeCategory = "all";
+let activeCategory = normalizeCategory(new URLSearchParams(window.location.search).get("category")) || "all";
 let activeSearch = "";
+
+document.querySelectorAll(".market-filter").forEach(button => {
+  button.classList.toggle("is-active", button.dataset.filter === activeCategory);
+});
 
 const MARKET_SCOPES = {
   education: { tag: "brasa-education", eyebrow: "BRASA Education", title: "Marketplace for learning.", tagline: "Tools, books, technology and resources that help students and teachers learn better." },
