@@ -1,0 +1,4 @@
+SHOPIFY_CLIENT_ID="replace-with-the-app-client-id"
+SHOPIFY_CLIENT_SECRET="replace-with-the-app-client-secret"
+SHOPIFY_SHOP_DOMAIN="your-store.myshopify.com"
+SHOPIFY_AUTISM_COLLECTION_ID="gid://shopify/Collection/1234567890"

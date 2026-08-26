@@ -1,0 +1,15 @@
+{
+  "name": "brasa-shopify-classifier",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check src/index.js && node --check src/classifier.js && node --check src/shopify.js",
+    "test": "node --test",
+    "dev": "wrangler dev --env preview",
+    "deploy:preview": "wrangler deploy --env preview",
+    "deploy:production": "wrangler deploy --env production"
+  },
+  "devDependencies": {
+    "wrangler": "^4.33.1"
+  }
+}

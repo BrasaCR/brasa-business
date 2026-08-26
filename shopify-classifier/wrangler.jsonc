@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brasa-shopify-product-classifier",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-20",
+  "workers_dev": true,
+  "preview_urls": true,
+  "vars": {
+    "SHOPIFY_API_VERSION": "2026-07",
+    "DRY_RUN": "true"
+  },
+  "env": {
+    "preview": {
+      "name": "brasa-shopify-product-classifier-preview",
+      "workers_dev": true,
+      "preview_urls": true,
+      "vars": {
+        "SHOPIFY_API_VERSION": "2026-07",
+        "DRY_RUN": "true"
+      }
+    },
+    "production": {
+      "name": "brasa-shopify-product-classifier",
+      "workers_dev": true,
+      "preview_urls": false,
+      "vars": {
+        "SHOPIFY_API_VERSION": "2026-07",
+        "DRY_RUN": "false"
+      }
+    }
+  }
+}
