@@ -2037,8 +2037,23 @@ const CATEGORY_ALIASES = {
   ]
 };
 
+const SPECIAL_NEEDS_CATEGORIES = [
+  "autism",
+  "adhd",
+  "dyslexia",
+  "sensory-support",
+  "communication-aac",
+  "executive-function",
+  "social-emotional",
+  "adaptive-learning",
+  "special-needs-teaching"
+];
+
 function productMatchesCategory(product, category) {
   if (category === "all") return true;
+  if (category === "special-needs-all") {
+    return SPECIAL_NEEDS_CATEGORIES.some(item => productMatchesCategory(product, item));
+  }
 
   const aliases = CATEGORY_ALIASES[category] || [category];
 
