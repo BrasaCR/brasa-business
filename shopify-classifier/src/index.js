@@ -39,6 +39,7 @@ export async function verifyShopifyHmac(rawBody, receivedHmac, secret) {
 }
 
 const normalizeDomain = (value) => String(value ?? "").trim().toLowerCase();
+const isWriteEnabled = (env) => env.DRY_RUN === "false";
 
 async function handleWebhook(request, env) {
   const missing = required.filter((name) => !env[name]);
@@ -81,7 +82,7 @@ async function handleWebhook(request, env) {
   );
   const shouldJoinAutismCollection = classification.confidence === "high" || classification.confidence === "manual";
   const productId = `gid://shopify/Product/${product.id}`;
-  const writeEnabled = env.AUTO_WRITE === "true";
+  const writeEnabled = isWriteEnabled(env);
 
   if (writeEnabled) {
     await addProductTags(env, productId, tagsToAdd);
@@ -114,7 +115,7 @@ export default {
       return json({
         ok: true,
         service: "brasa-shopify-product-classifier",
-        autoWrite: env.AUTO_WRITE === "true",
+        autoWrite: isWriteEnabled(env),
       });
     }
     if (request.method === "POST" && url.pathname === "/webhooks/shopify/products") {

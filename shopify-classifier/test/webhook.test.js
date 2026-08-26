@@ -71,3 +71,20 @@ test("rejects unsigned webhooks", async () => {
   }), env);
   assert.equal(response.status, 401);
 });
+
+test("health reports preview as read-only", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/health"), env);
+  const result = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(result.autoWrite, false);
+});
+
+test("health reports production writes enabled only when DRY_RUN is false", async () => {
+  const response = await worker.fetch(
+    new Request("https://worker.example/health"),
+    { ...env, DRY_RUN: "false" },
+  );
+  const result = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(result.autoWrite, true);
+});
