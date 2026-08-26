@@ -355,14 +355,6 @@ main { max-width: none; margin: 0; padding: 0; min-height: 0; }
   letter-spacing: 0.02em; color: rgba(245, 240, 229, 0.7);
   margin-top: 0.35rem;
 }
-.feature.feature-marketplace {
-  grid-column: 1 / -1;
-  aspect-ratio: 21 / 8;
-  min-height: 260px;
-}
-@media (max-width: 580px) {
-  .feature.feature-marketplace { aspect-ratio: 4 / 3; min-height: 0; }
-}
 
 /* Empty feature — same shape, cream paper, serif label */
 .feature.feature-empty {
@@ -2512,26 +2504,6 @@ function homeHTML() {
 
     ${pillarsHTML}
 
-    <!-- BRASA BUSINESS MARKETPLACE -->
-    <section class="section section--tight" id="marketplace" aria-labelledby="marketplace-h">
-      <div class="container">
-        <div class="reveal">
-          <p class="eyebrow">BRASA Marketplace</p>
-          <h2 class="section-h" id="marketplace-h">Products for building and running a business.</h2>
-        </div>
-        <div class="featured-grid reveal">
-          <a class="feature feature-marketplace" href="marketplace.html?market=business" data-href="marketplace.html?market=business" aria-label="Explore the BRASA Business Marketplace">
-            <div class="feature-photo"><img src="https://assets.brasa.world/Photos/retail-hero.jpg" alt="" loading="lazy" decoding="async"></div>
-            <div class="feature-content">
-              <span class="feature-eyebrow">BRASA Business Marketplace</span>
-              <div class="feature-label">Explore the marketplace</div>
-              <div class="feature-tag">Tools, equipment, services and professional resources</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- WHERE TO BEGIN (free education) -->
     <section class="section" id="where-to-begin" aria-labelledby="wtb-h">
       <div class="container">
@@ -2630,20 +2602,20 @@ function homeHTML() {
       </div>
     </section>
 
-    <!-- GATEWAY → The Universal Code -->
-    <section class="section" id="full-catalog" aria-labelledby="gateway-h">
+    <!-- GATEWAY → BRASA Business Marketplace -->
+    <section class="section" id="marketplace" aria-labelledby="marketplace-h">
       <div class="container">
-        <a class="gateway reveal" data-route="math" tabindex="0" role="link" aria-labelledby="gateway-h">
+        <a class="gateway reveal" href="marketplace.html?market=business" data-href="marketplace.html?market=business" aria-labelledby="marketplace-h">
           <div class="gateway-photo">
-            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=2200&q=82&auto=format&fit=crop"
-                 alt="An open library &mdash; every shelf, every language"
+            <img src="https://assets.brasa.world/Photos/retail-hero.jpg"
+                 alt="BRASA Business Marketplace"
                  loading="lazy" width="2200" height="943">
           </div>
           <div class="gateway-content">
-            <span class="gateway-eyebrow">The framework</span>
-            <h2 class="gateway-h" id="gateway-h">Open the Universal Code.</h2>
+            <span class="gateway-eyebrow">BRASA Business</span>
+            <h2 class="gateway-h" id="marketplace-h">Open the Marketplace.</h2>
             <span class="gateway-arrow">
-              Read the math
+              Shop business products
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M3 8h10M9 4l4 4-4 4"/>
               </svg>
