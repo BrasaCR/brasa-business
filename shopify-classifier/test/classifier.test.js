@@ -147,3 +147,34 @@ test("global exclusions override otherwise relevant classification", () => {
   assert.equal(result.autoActivate, false);
   assert.deepEqual(result.categories, []);
 });
+
+test("keeps approved splitShops special-needs books in Draft", () => {
+  const result = classifyProduct({
+    title: "Special Education Tools for Learning Disorders",
+    body_html: "A practical handbook for parents and teachers.",
+    product_type: "Books",
+    vendor: "Books by splitShops",
+    tags: "",
+    variants: [{ inventory_quantity: 10 }],
+  });
+
+  assert.equal(result.confidence, "high");
+  assert.equal(result.marketplace, "BRASA Education");
+  assert.equal(result.autoActivate, false);
+  assert.ok(result.categories.includes("Books & Learning"));
+  assert.ok(result.categories.includes("Teacher Resources"));
+});
+
+test("excludes splitShops nutrition titles", () => {
+  const result = classifyProduct({
+    title: "ADHD Nutrition and Diet Plan",
+    body_html: "A nutrition guide.",
+    product_type: "Books",
+    vendor: "Books by splitShops",
+    tags: "",
+    variants: [{ inventory_quantity: 10 }],
+  });
+
+  assert.equal(result.confidence, "none");
+  assert.equal(result.autoActivate, false);
+});

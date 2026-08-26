@@ -147,7 +147,7 @@ export function classifyProduct(product) {
     categories,
     relevant,
     confidence,
-    autoActivate: DEFAULT_PRODUCT_SPEC.autoActivateApproved
+    autoActivate: (vendorProfile.autoActivateApproved ?? DEFAULT_PRODUCT_SPEC.autoActivateApproved)
       && vendorProfile.useDefaultBrasaRules
       && confidence === "high"
       && approvedCategory,

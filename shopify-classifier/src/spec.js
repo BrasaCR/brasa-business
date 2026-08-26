@@ -52,6 +52,41 @@ export const VENDOR_PROFILES = Object.freeze({
     additionalExcludedTerms: ["card pack", "extra fidget mat", "extra cvc mat"],
     additionalCategories: ["Games & Activities"],
   },
+  "books by splitshops": {
+    useDefaultBrasaRules: true,
+    marketplace: "BRASA Education",
+    autoActivateApproved: false,
+    additionalApprovedTerms: [
+      "special needs",
+      "special education",
+      "learning disabilities",
+      "learning disability",
+      "learning disorders",
+      "learning disorder",
+      "adhd",
+      "dyslexia",
+      "sensory processing",
+      "inclusive education",
+      "inclusive pe",
+      "send children",
+      "executive function",
+      "social emotional learning",
+      "speech therapy",
+      "aac",
+    ],
+    additionalExcludedTerms: [
+      "nutrition",
+      "diet",
+      "cookbook",
+      "medication",
+      "clinical treatment",
+    ],
+    additionalCategories: [
+      "Books & Learning",
+      "Teacher Resources",
+      "Family Resources",
+    ],
+  },
 });
 
 export const MARKETPLACE_TAGS = Object.freeze([
