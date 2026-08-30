@@ -336,3 +336,115 @@ Pasar milik rakyat — bukan milik perusahaan. Beli, jual, dan berdagang dengan 
 
 *BRASA システムの一部 — 教育・統治・事業・公開台帳*
 *世界中の市民の共有財産 — コスタリカより心を込めて · 2026*
+
+# 💼 BRASA — کاروبار
+> منصفانہ تجارت۔ شہریوں کا بازار۔ ہر ایک کے لیے مواقع۔
+
+🌐 **BRASA دنیا کا حصہ:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA کاروبار کے بارے میں
+ایسا بازار جس کی ملکیت شہریوں کو ہے — نہ کسی کمپنی کو۔ خرید و فروخت منصفانہ اصولوں پر۔ یہ تجارت عوامی خدمات اور مفت تعلیم کو مالی امداد فراہم کرتی ہے۔ یہاں کاروبار عوام کی خدمت کرتا ہے — نہ کہ عوام کاروبار کی خدمت کریں۔
+
+## آپ یہاں کیا کر سکتے ہیں
+- 🛒 **BRASA بازار** دیکھیں
+- 🎓 **مفت کاروباری ڈگری** حاصل کریں
+- 🤝 منصفانہ اور شفاف اصولوں پر کاروبار کریں
+- 💡 سمجھیں کہ تجارت کس طرح سب کی خدمات کو دیتی ہے
+
+## BRASA کی اقدار
+- 🤝 **منصفانہ تجارت** — کھلے اصول، حقیقی مساوات
+- 💰 **شہریوں کے لیے مفت** — تجارت معاشرے کی مدد کرتی ہے
+- 📖 **کھلا رجسٹر** — ہر سرگرمی نظر اور تصدیق کے لیے کھلی ہے
+- 🗣️ **7,100 سے زیادہ زبانیں** — کوئی بھی زبان کی رکاوٹ نہیں
+- 📜 **آئین سے تحفظ یافتہ** — آپ کے حقوق ہمیشہ اول
+
+---
+
+*BRASA نظام کا حصہ — تعلیم · حکومت · کاروبار · کھلا رجسٹر*
+*دنیا کے شہریوں کی ملکیت · کوسٹا ریکا میں محبت سے بنایا گیا · 2026*
+
+# 💼 BRASA — Kinh doanh
+> Thương mại công bằng. Thị trường của công dân. Cơ hội cho mọi người.
+
+🌐 **Là một phần của Thế giới BRASA:** [brasa.world](https://brasa.world)
+
+---
+
+## Về Kinh doanh BRASA
+Thị trường thuộc về công dân — không thuộc về tập đoàn. Mua bán theo điều kiện công bằng. Thương mại này tài trợ cho dịch vụ công và giáo dục miễn phí. Tại đây kinh doanh phục vụ nhân dân — chứ không phải ngược lại.
+
+## Bạn có thể làm gì tại đây
+- 🛒 Khám phá **Thị trường BRASA**
+- 🎓 Lấy **Bằng Kinh doanh Miễn phí**
+- 🤝 Giao dịch theo quy tắc công bằng và minh bạch
+- 💡 Hiểu cách thương mại tài trợ cho dịch vụ chung
+
+## Giá trị cốt lõi BRASA
+- 🤝 **Thương mại công bằng** — Quy tắc mở, bình đẳng thực sự
+- 💰 **Miễn phí cho công dân** — Thương mại hỗ trợ cộng đồng
+- 📖 **Sổ Mở** — Toàn bộ hoạt động đều công khai và có thể kiểm tra
+- 🗣️ **Hơn 7.100 ngôn ngữ** — Không rào cản ngôn ngữ
+- 📜 **Được Hiến pháp bảo vệ** — Quyền của bạn luôn được ưu tiên
+
+---
+
+*Là một phần Hệ thống BRASA — Giáo dục · Chính phủ · Kinh doanh · Sổ Mở*
+*Thuộc về công dân toàn cầu · Được tạo tác với tình yêu tại Costa Rica · 2026*
+
+# 💼 BRASA — İş Dünyası
+> Adil Ticaret. Halkın Pazarı. Herkes için Fırsat.
+
+🌐 **BRASA Dünya'nın bir parçası:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA İş Dünyası Hakkında
+Halkın malı olan pazar — şirketlerin değil. Adil koşullarda alışveriş edin. Bu ticaret, kamu hizmetlerini ve ücretsiz eğitimi finanse eder. Burada iş dünyası halka hizmet eder — tersi değil.
+
+## Burada Neler Yapabilirsiniz
+- 🛒 **BRASA Pazarı'nı** keşfedin
+- 🎓 **Ücretsiz İşletme Diploması** alın
+- 🤝 Adil ve şeffaf kurallar çerçevesinde ticaret yapın
+- 💡 Ticaretin hizmetleri nasıl finanse ettiğini anlayın
+
+## BRASA Değerleri
+- 🤝 **Adil Ticaret** — Açık kurallar, gerçek eşitlik
+- 💰 **Vatandaşlar için ücretsiz** — Ticaret toplumu destekler
+- 📖 **Açık Defter** — Tüm faaliyetler görünür ve doğrulanabilir
+- 🗣️ **7.100'den Fazla Dil** — Dil engeli yok
+- 📜 **Anayasa ile güvence altında** — Haklarınız her zaman öncelikli
+
+---
+
+*BRASA Sisteminin bir parçası — Eğitim · Yönetim · İş Dünyası · Açık Defter*
+*Dünya Vatandaşlarının Mülkiyeti · Kosta Rika'da Sevgiyle Üretilmiştir · 2026*
+
+# 💼 BRASA — 기업
+> 공정한 거래. 시민의 시장. 모두에게 기회를.
+
+🌐 **BRASA 세계의 일부:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA 기업에 관하여
+시민의 소유인 시장 — 기업의 것이 아닙니다. 공정한 조건 아래 거래하세요. 이 상거래가 공공 서비스와 무료 교육을 지원합니다. 여기서는 기업이 시민을 위해 존재합니다 — 그 반대가 아닙니다.
+
+## 여기서 할 수 있는 일
+- 🛒 **BRASA 시장**을 둘러보세요
+- 🎓 **무료 경영 학위**를 취득하세요
+- 🤝 공정하고 투명한 규칙 아래서 거래하세요
+- 💡 상거래가 어떻게 공공 서비스를 지원하는지 이해하세요
+
+## BRASA의 가치
+- 🤝 **공정한 거래** — 공개된 규칙, 진정한 평등
+- 💰 **시민에게 무료** — 상거래가 공동체를 지원
+- 📖 **공개 장부** — 모든 활동이 공개되고 검증 가능
+- 🗣️ **7,100개 이상의 언어** — 언어 장벽 없음
+- 📜 **헌법으로 보호** — 당신의 권리가 항상 우선
+
+---
+
+*BRASA 시스템의 일부 — 교육 · 정부 · 기업 · 공개 장부*
+*전 세계 시민의 공유 재산 — 코스타리카에서 정성껏 제작 · 2026*
