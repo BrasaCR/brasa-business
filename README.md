@@ -448,3 +448,111 @@ Halkın malı olan pazar — şirketlerin değil. Adil koşullarda alışveriş 
 
 *BRASA 시스템의 일부 — 교육 · 정부 · 기업 · 공개 장부*
 *전 세계 시민의 공유 재산 — 코스타리카에서 정성껏 제작 · 2026*
+
+# 💼 BRASA — व्यवसाय
+> न्याय्य व्यापार. नागरिकांची बाजारपेठ. प्रत्येकासाठी संधी.
+
+🌐 **BRASA विश्वाचा भाग:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA व्यवसायाबद्दल
+नागरिकांच्या मालकीची बाजारपेठ — कोणत्याही कंपनीची नाही. न्याय्य नियमांनुसार खरेदी-विक्री. या व्यापारातून सार्वजनिक सेवा आणि विनामूल्य शिक्षण निधी मिळतो. येथे व्यवसाय समाजाची सेवा करतो — समाज व्यवसायाची नाही.
+
+## येथे तुम्ही काय करू शकता
+- 🛒 **BRASA बाजारपेठ** पहा
+- 🎓 **विनामूल्य व्यावसायिक पदवी** मिळवा
+- 🤝 न्याय्य आणि पारदर्शक नियमांनुसार व्यवहार करा
+- 💡 समजा की व्यापार सर्वांच्या सेवा कशा पुरवतो
+
+## BRASA मूल्ये
+- 🤝 **न्याय्य व्यापार** — खुले नियम, खरी समानता
+- 💰 **नागरिकांसाठी विनामूल्य** — व्यापार समाजाची मदत करतो
+- 📖 **खुली नोंदणी** — प्रत्येक व्यवहार पाहण्याजोगा आणि तपासण्याजोगा
+- 🗣️ **७,१०० हून अधिक भाषा** — भाषेचा अडथळा नाही
+- 📜 **संविधानाद्वारे संरक्षित** — तुमचे हक्क नेहमी प्रथम
+
+---
+*BRASA प्रणालीचा भाग — शिक्षण · सरकार · व्यवसाय · खुली नोंदणी*
+*जगातील नागरिकांच्या मालकीचे · कोस्टा रिका येथे प्रेमाने तयार केले · २०२६*
+
+# 💼 BRASA — Biashara
+> Biashara ya haki. Soko la raia. Fursa kwa kila mtu.
+
+🌐 **Sehemu ya BRASA Ulimwengu:** [brasa.world](https://brasa.world)
+
+---
+
+## Kuhusu Biashara ya BRASA
+Soko linalomilikiwa na raia — sio la kampuni kubwa. Kununua na kuuza kwa masharti ya haki. Mapato yanayotoka hapa yanasaidia kulipia huduma za umma na elimu bila malipo. Hapa biashara inahudumia watu — sio watu wahudumie biashara.
+
+## Unachoweza Kufanya Hapa
+- 🛒 Tazama **Soko la BRASA**
+- 🎓 Pata **Stashahada ya Biashara BILA MALIPO**
+- 🤝 Fanya biashara kwa kanuni za haki na uwazi
+- 💡 Elewa jinsi biashara inavyosaidia huduma za kila mtu
+
+## Maadili ya BRASA
+- 🤝 **Biashara ya haki** — Kanuni wazi, usawa wa kweli
+- 💰 **BILA MALIPO kwa raia** — Biashara inasaidia jamii
+- 📖 **Rejesta ya wazi** — Kila shughuli iko wazi na inaweza kuchunguzwa
+- 🗣️ **Zaidi ya lugha 7,100** — Hakuna kizuizi cha lugha
+- 📜 **Inalindwa na Kanuni ya Msingi** — Haki zako kwanza kila wakati
+
+---
+*Sehemu ya Mfumo wa BRASA — Elimu · Serikali · Biashara · Rejesta ya Wazi*
+*Inamilikiwa na raia wa ulimwengu — Imetengenezwa kwa upendo huko Kosta Rika · 2026*
+
+# 💼 BRASA — Kasuwanci
+> Kasuwanci na adalci. Kasuwar ɗan ƙasa. Dama ga kowa.
+
+🌐 **Wuri daga Tsarin BRASA:** [brasa.world](https://brasa.world)
+
+---
+
+> Game da Kasuwanci na BRASA
+Kasuwa mallakar ɗan ƙasa — ba na kamfani ba. Saye da siyar bisa daidaito. Kuɗin da ake samu ana taimaka wa ilimi da ayyukan jama'a da shi. A nan kasuwanci yana yiwa jama'a hidima — ba jama'a za su yiwa kasuwanci hidima ba.
+
+> Abinda za ka iya yi a nan
+- 🛒 Duba **Kasuwar BRASA**
+- 🎓 Samu **Takardar Ilimi ta Kasuwanci Kyau**
+- 🤝 Yi kasuwanci bisa adalci da buɗaɗɗen tsari
+- 💡 Fahimta yadda kasuwanci ke tallafawa ayyukan jama'a
+
+> Dabi'un BRASA
+- 🤝 **Kasuwanci na adalci** — Doka a fili, daidaito na gaske
+- 💰 **Kyau ga kowane ɗan ƙasa** — Kasuwanci ke tallafawa jama'a
+- 📖 **Rijista a Buɗe** — Kowane aiki a fili, ana iya tantancewa
+- 🗣️ **Fiye da Yare 7,100** — Babu shingen yare
+- 📜 **Kundin Tsari ke kiyaye** — Haƙƙoƙinka a gaba ko da yaushe
+
+---
+*Wuri daga Tsarin BRASA — Ilimi · Mulki · Kasuwanci · Rijista a Buɗe*
+*Na ɗan ƙasa na duniya — Anyi da ƙauna a Costa Rica · 2026*
+
+# 💼 BRASA — کسب‌وکار
+> تجارت منصفانه. بازار مردمی. فرصت برای همگان.
+
+🌐 **بخشی از جهان BRASA:** [brasa.world](https://brasa.world)
+
+---
+
+## درباره کسب‌وکار BRASA
+بازار متعلق به مردم — نه شرکت‌ها. خرید و فروش با قوانین منصفانه. درآمد این بازار هزینه خدمات عمومی و آموزش رایگان را تأمین می‌کند. اینجا کسب‌وکار به مردم خدمت می‌کند — نه مردم به کسب‌وکار.
+
+## در اینجا چه می‌توانید بکنید
+- 🛒 **بازار BRASA** را ببینید
+- 🎓 **مدرک رایگان کسب‌وکار** دریافت کنید
+- 🤝 طبق قوانین منصفانه و شفاف معامله کنید
+- 💡 بفهمید که تجارت چگونه خدمات عمومی را پشتیبانی می‌کند
+
+## ارزش‌های BRASA
+- 🤝 **تجارت منصفانه** — قوانین آشکار، برابری واقعی
+- 💰 **رایگان برای مردم** — تجارت از جامعه حمایت می‌کند
+- 📖 **دفتر کل باز** — همه معاملات قابل مشاهده و بررسی
+- 🗣️ **بیش از ۷٬۱۰۰ زبان** — هیچ مانع زبانی نیست
+- 📜 **محفوظ با قانون اساسی** — حقوق شما همیشه اول است
+
+---
+*بخشی از سیستم BRASA — آموزش · حکومت · کسب‌وکار · دفتر کل باز*
+*متعلق به شهروندان جهان — ساخته شده با محبت در کاستاریکا · ۲۰۲۶*
