@@ -1,3 +1,6 @@
+🌍 Read in: English · Español · Français · Deutsch · Português · 中文 · हिन्दी · العربية · বাংলা · Русский · 日本語 · 한국어 · Italiano · …
+
+
 <link rel="alternate" hreflang="en" href="https://brasa.world/readme-en" />
 <link rel="alternate" hreflang="es" href="https://brasa.world/readme-es" />
 <link rel="alternate" hreflang="fr" href="https://brasa.world/readme-fr" />
