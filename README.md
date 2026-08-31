@@ -961,3 +961,111 @@ Pasar duweke warga negara — dudu duweke perusahaan gedhe. Tuku lan adol mituru
 ---
 *Bagean saka Sistem BRASA — Pendhidhikan · Pamrentahan · Bisnis · Buku Besar Terbuka*
 *Duweni dening Warga Donya — Dibangun kanthi tresna ing Kosta Rika · 2026*
+
+# 💼 BRASA — व्यापार
+> न्यायसङ्गत वाणिज्य। नागरिक बजार। सबैका लागि अवसर।
+
+🌐 **BRASA विश्वको एक अंश:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA व्यापारका बारेमा
+नागरिकहरूको स्वामित्वमा रहेको बजार — ठूला कम्पनीहरूको होइन। न्यायसङ्गत नियमहरूअन्तर्गत किनबेच। आम्दानी सार्वजनिक सेवाहरू र निःशुल्क शिक्षामा खर्च हुन्छ। यहाँ व्यापारले समाजको सेवा गर्दछ — समाजले व्यापारको होइन।
+
+## तपाईंले यहाँ के गर्न सक्नुहुन्छ
+- 🛒 **BRASA नागरिक बजार अन्वेषण गर्नुहोस्**
+- 🎓 **निःशुल्क व्यापार डिग्री प्राप्त गर्नुहोस्**
+- 🤝 न्यायसङ्गत र पारदर्शी नियमहरूअन्तर्गत व्यापार गर्नुहोस्
+- 💡 व्यापारले कसरी सबैका लागि सेवाहरूलाई समर्थन गर्दछ बुझ्नुहोस्
+
+## BRASA मूल्यहरू
+- 🤝 **न्यायसङ्गत वाणिज्य** — स्पष्ट नियम, वास्तविक समानता
+- 💰 **नागरिकका लागि निःशुल्क** — व्यापारले समुदायलाई समर्थन गर्दछ
+- 📖 **खुला खाता** — प्रत्येक कारोबार सार्वजनिक र प्रमाणित गर्न सकिने
+- 🗣️ **7,100 भन्दा बढी भाषाहरू** — भाषिक अवरोध छैन
+- 📜 **संविधानद्वारा संरक्षित** — नागरिकहरूका अधिकारहरू सदैव प्रथम
+
+---
+*BRASA प्रणालीको एक अंश — शिक्षा · सरकार · व्यापार · खुला खाता*
+*विश्वका नागरिकहरूको स्वामित्वमा · कोस्टा रिकामा मायाले निर्माण गरिएको · 2026*
+
+# 💼 BRASA — Afaceri
+> Comerț Echitabil. Piața Cetățenilor. Oportunități Pentru Toți.
+
+🌐 **Parte din BRASA Lume:** [brasa.world](https://brasa.world)
+
+---
+
+## Despre Afacerile BRASA
+O piață deținută de cetățeni — Nu de companii mari. Cumpără și vinde cu reguli corecte. Veniturile susțin serviciile publice și educația gratuită. Aici, afacerile servesc societății — Nu societatea servește afacerilor.
+
+## Ce Poți Face Aici
+- 🛒 **Explorează Piața Cetățenilor BRASA**
+- 🎓 **Obține o Diplomă în Afaceri Gratuită**
+- 🤝 Desfășoară comerț cu reguli corecte și transparente
+- 💡 Înțelege cum susține comerțul serviciile pentru toți
+
+## Valorile BRASA
+- 🤝 **Comerț Echitabil** — Reguli clare, egalitate autentică
+- 💰 **Gratuit pentru Cetățeni** — Afacerile susțin comunitatea
+- 📖 **Registru Deschis** — Fiecare tranzacție este publică și verificabilă
+- 🗣️ **Peste 7.100 de Limbi** — Fără bariere lingvistice
+- 📜 **Protejat de Constituție** — Drepturile cetățenilor sunt întotdeauna pe primul loc
+
+---
+*Parte din Sistemul BRASA — Educație · Guvern · Afaceri · Registru Deschis*
+*Proprietatea Cetățenilor Lumii — Creat cu iubire în Costa Rica · 2026*
+
+# 💼 BRASA — Negosyo
+> Makiangayon nga Pamaligya. Merkado sa Lungsuranon. Kahigayonan alang sa Tanan.
+
+🌐 **Bahin sa BRASA Kalibutan:** [brasa.world](https://brasa.world)
+
+---
+
+## Bahin sa Negosyo sa BRASA
+Usa ka merkado nga gipanag-iya sa mga lungsuranon — Dili sa dagkong kompanya. Pagpalit ug pagbaligya uban ang makiangayon nga lagda. Ang kita gigamit alang sa mga serbisyo publiko ug libreng edukasyon. Dinhi, ang negosyo nag-alagad sa Katilingban — Dili ang Katilingban nag-alagad sa Negosyo.
+
+## Unsay Mahimo Nimo Dinhi
+- 🛒 **Susihon ang Merkado sa Lungsuranon sa BRASA**
+- 🎓 **Pagkuha og Libreng Diploma sa Negosyo**
+- 🤝 Pagnegosyo uban ang makiangayon ug transparente nga lagda
+- 💡 Sabuta kon sa unsang paagi gisuportahan sa negosyo ang mga serbisyo alang sa tanan
+
+## Ang Mga Bili sa BRASA
+- 🤝 **Makiangayon nga Pamaligya** — Tin-aw nga lagda, tinuod nga pagkakaparehas
+- 💰 **Libre alang sa Lungsuranon** — Ang negosyo nagsuporta sa Katilingban
+- 📖 **Bukas nga Libro** — Matag transaksyon bukas sa publiko ug mapamatud-an
+- 🗣️ **Labaw sa 7,100 ka Pinulongan** — Walay babag sa pinulongan
+- 📜 **Gipanalipdan subay sa Konstitusyon** — Ang katungod sa Katawhan kanunay nga nag-una
+
+---
+*Bahin sa Sistema sa BRASA — Edukasyon · Gobyerno · Negosyo · Bukas nga Libro*
+*Gipanag-iya sa mga Lungsuranon sa Kalibutan — Gihimo uban ang Gugma sa Costa Rica · 2026*
+
+# 💼 BRASA — ව්‍යාපාර
+> සාධාරණ වෙළඳාම. පුරවැසියන්ගේ වෙළඳපොළ. සෑම දෙනාටම අවස්ථා.
+
+🌐 **BRASA ලෝකයේ කොටසකි:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA ව්‍යාපාර ගැන
+පුරවැසියන්ට අයත් වෙළඳපොළකි — විශාල සමාගම්වලට නොවේ. සාධාරණ නීති යටතේ මිලට ගැනීමට හා විකිණීමට. ලැබෙන ආදායම මහජන සේවා සහ නොමිලේ අධ්‍යාපනය සඳහා යොදා ගැනේ. මෙහි ව්‍යාපාර සමාජයට සේවය කරයි — සමාජය ව්‍යාපාරයට සේවය කරන්නේ නොවේ.
+
+## ඔබට මෙහි කළ හැකි දේ
+- 🛒 **BRASA පුරවැසියන්ගේ වෙළඳපොළ ගවේෂණය කරන්න**
+- 🎓 **නොමිලේ ව්‍යාපාරික ඩිප්ලෝමාවක් ලබාගන්න**
+- 🤝 සාධාරණ හා විනිවිදභාවයෙන් යුතු නීති යටතේ වෙළඳාමේ යෙදෙන්න
+- 💡 වෙළඳාම මගින් සෑම දෙනාටම සේවා සපයන්නේ කෙසේදැයි තේරුම් ගන්න
+
+## BRASA හි අගයන්
+- 🤝 **සාධාරණ වෙළඳාම** — පැහැදිලි නීති, සැබෑ සමානත්වය
+- 💰 **පුරවැසියන්ට නොමිලේ** — ව්‍යාපාර සමාජය පෝෂණය කරයි
+- 📖 **විවෘත ලේඛනාගාරය** — සෑම ගනුදෙනුවක්ම මහජනතාවට විවෘත හා සත්‍යාපනය කළ හැකිය
+- 🗣️ **භාෂා 7,100කට වඩා** — භාෂා බාධක නැත
+- 📜 **ආණ්ඩුක්‍රම ව්‍යවස්ථාවෙන් ආරක්ෂා වී ඇත** — පුරවැසියන්ගේ අයිතිවාසිකම් සැමවිටම ප්‍රථමයි
+
+---
+*BRASA පද්ධතියේ කොටසකි — අධ්‍යාපනය · රජය · ව්‍යාපාර · විවෘත ලේඛනාගාරය*
+*ලෝක පුරවැසියන්ගේ හිමිකාරීත්වය · කොස්ටා රිකාවේ ආදරයෙන් නිර්මාණය කරන ලදී · 2026*
