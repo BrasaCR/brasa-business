@@ -1069,3 +1069,111 @@ Usa ka merkado nga gipanag-iya sa mga lungsuranon — Dili sa dagkong kompanya. 
 ---
 *BRASA පද්ධතියේ කොටසකි — අධ්‍යාපනය · රජය · ව්‍යාපාර · විවෘත ලේඛනාගාරය*
 *ලෝක පුරවැසියන්ගේ හිමිකාරීත්වය · කොස්ටා රිකාවේ ආදරයෙන් නිර්මාණය කරන ලදී · 2026*
+
+# 💼 BRASA — ពាណិជ្ជកម្ម
+> ពាណិជ្ជកម្មដោយយុត្តិធម៌។ ផ្សារប្រជាជន។ ឱកាសសម្រាប់ទាំងអស់គ្នា។
+
+🌐 **ផ្នែកមួយនៃ BRASA ពិភពលោក៖** [brasa.world](https://brasa.world)
+
+---
+
+## អំពីពាណិជ្ជកម្មរបស់ BRASA
+ផ្សារដែលជាកម្មសិទ្ធិរបស់ពលរដ្ឋ — មិនមែនរបស់ក្រុមហ៊ុនធំៗ។ ទិញ និងលក់តាមច្បាប់សមរម្យ។ ប្រាក់ចំណូលប្រើសម្រាប់សេវាសាធារណៈ និងការអប់រំឥតគិតថ្លៃ។ នៅទីនេះ ពាណិជ្ជកម្មបម្រើសហគមន៍ — មិនមែនសហគមន៍បម្រើពាណិជ្ជកម្ម។
+
+## អ្វីដែលអ្នកអាចធ្វើបាន
+- 🛒 **ស្វែងយល់ពីផ្សារប្រជាជនរបស់ BRASA**
+- 🎓 **ទទួលបានសញ្ញាបត្រពាណិជ្ជកម្មដោយឥតគិតថ្លៃ**
+- 🤝 ធ្វើពាណិជ្ជកម្មតាមច្បាប់សមរម្យ និងតម្លាភាព
+- 💡 យល់ពីរបៀបដែលពាណិជ្ជកម្មគាំទ្រសេវាសម្រាប់ទាំងអស់គ្នា
+
+## តម្លៃរបស់ BRASA
+- 🤝 **ពាណិជ្ជកម្មដោយយុត្តិធម៌** — ច្បាប់ច្បាស់លាស់ សមភាពពិតប្រាកដ
+- 💰 ឥតគិតថ្លៃសម្រាប់ពលរដ្ឋ — ពាណិជ្ជកម្មគាំទ្រសហគមន៍
+- 📖 **សៀវភៅបើកចំហ** — រាល់ប្រតិបត្តិការទាំងអស់ជាសាធារណៈ និងអាចផ្ទៀងផ្ទាត់បាន
+- 🗣️ **ភាសាជាង ៧,១០០** — គ្មានឧបសគ្គភាសា
+- 📜 **ការពារដោយរដ្ឋធម្មនុញ្ញ** — សិទ្ធិរបស់ប្រជាជនមកមុនគេជានិច្ច
+
+---
+*ផ្នែកមួយនៃប្រព័ន្ធ BRASA — ការអប់រំ · រដ្ឋាភិបាល · ពាណិជ្ជកម្ម · សៀវភៅបើកចំហ*
+*ជាកម្មសិទ្ធិរបស់ពលរដ្ឋពិភពលោក — បង្កើតឡើងដោយក្តីស្រឡាញ់នៅកូស្តារីកា · ២០២៦*
+
+# 💼 BRASA — Biznes
+> Ədalətli Ticarət. Xalq Bazarı. Hamı üçün İmkan.
+
+🌐 **BRASA Dünyanın bir hissəsidir:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA Biznes Haqqında
+Vətəndaşların mülkiyyətində olan bazar — Böyük şirkətlərin deyil. Ədalətli qaydalarla alış-veriş. Gəlirlər ictimai xidmətlərə və pulsuz təhsilə yönəldilir. Burada biznes cəmiyyətə xidmət edir — Cəmiyyət biznesə xidmət etmir.
+
+## Nə Edə Bilərsiniz
+- 🛒 **BRASA Xalq Bazarını Kəşf Edin**
+- 🎓 **Pulsuz Biznes Diplomunu əldə edin**
+- 🤝 Ədalətli və şəffaf qaydalarla ticarət edin
+- 💡 Ticarətin hamı üçün xidmətləri necə dəstəklədiyini anlayın
+
+## BRASA Dəyərləri
+- 🤝 **Ədalətli Ticarət** — Aydın qaydalar, həqiqi bərabərlik
+- 💰 Vətəndaşlar üçün pulsuz — Biznes cəmiyyəti dəstəkləyir
+- 📖 **Açıq Mühasibat Kitabı** — Hər əməliyyat ictimai və yoxlanıla biləndir
+- 🗣️ **7.100-dən çox Dil** — Dil maneəsi yoxdur
+- 📜 **Konstitusiya ilə Qorunur** — Xalq hüququ həmişə birinci yerdədir
+
+---
+*BRASA Sisteminin bir hissəsidir — Təhsil · Hökumət · Biznes · Açıq Mühasibat Kitabı*
+*Dünya Vətəndaşlarının Mülkiyyətindədir — Kosta Rikada sevgiylə qurulmuşdur · 2026*
+
+# 💼 BRASA — بازرگانی
+> بازرگانی دادپەروەرانە. بازاڕی خەڵک. دەرفەت بۆ هەمووان.
+
+🌐 **بەشێک لە BRASA جیهان:** [brasa.world](https://brasa.world)
+
+---
+
+## دەربارەی بازرگانیی BRASA
+بازاڕی خاوەندارێتی هاووڵاتییان — نەک کۆمپانیا گەورەکان. کڕین و فرۆشتن بە یاسای دادپەروەرانە. قازانج بەکاردێت بۆ خزمەتگوزارییە گشتییەکان و پەروەردەی بێبەرامەن. لێرەدا بازرگانی خزمەت بە کۆمەڵگە دەکات — نەک کۆمەڵگە خزمەت بە بازرگانی بکات.
+
+## چی دەتوانیت بکەیت
+- 🛒 **بازاڕی خەڵکی BRASA بکە بە دوایدا**
+- 🎓 **بڕوانامەی بازرگانی بێبەرامەن وەربگرە**
+- 🤝 بازرگانی بکە بە یاسای دادپەروەرانە و ڕوون
+- 💡 تێبگە چۆن بازرگانی پشتگیری خزمەتگوزارییەکان دەکات بۆ هەمووان
+
+## بەهاکانی BRASA
+- 🤝 **بازرگانی دادپەروەرانە** — یاسای ڕوون، یەکسانییەکی ڕاستی
+- 💰 بێبەرامە بۆ هاووڵاتییان — بازرگانی پشتگیری کۆمەڵگە دەکات
+- 📖 **پەرستەرەی کراوە** — هەر ئاڵوگۆڕەک گشتییە و تاقیکراوە
+- 🗣️ **زیاتر لە ٧,١٠٠ زمان** — بەربەستی زمان نییە
+- 📜 **پارێزراو بە دەستوور** — مافی خەڵک هەمیشە لەپێشەوە
+
+---
+*بەشێک لە سیستەمی BRASA — پەروەردە · حکوومەت · بازرگانی · پەرستەرەی کراوە*
+*خاوەندارێتی هاووڵاتییانی جیهان — بە خۆشەویستی لە کۆستا ڕیکا دروستکراوە · ٢٠٢٦*
+
+# 💼 BRASA — Amabhizinisi
+> Ukuhwebelana Ngobulungiswa. Imakethe yeSakhamuzi. Amathuba Awo Wonke Umuntu.
+
+🌐 **Ingxenye ye-BRASA Umhlaba:** [brasa.world](https://brasa.world)
+
+---
+
+## Mayelana Namabhizinisi e-BRASA
+Imakethe engabeyesakhamuzi — Hhayi eyezinkampani ezinkulu. Thenga futhi Uthengise ngemithetho elungileyo. Imali engenayo isetshenziselwa izinsiza zomphakathi kanye nemfundo yamahhala. Lapha, ibhizinisi lisebenzela umphakathi — Hhayi ukuthi umphakathi usebenzela ibhizinisi.
+
+## Ongakwenza Lapha
+- 🛒 **Hlola Imakethe yeSakhamuzi ye-BRASA**
+- 🎓 **Thola Idiploma Yebhizinisi Mahhala**
+- 🤮 Hwebelana ngemithetho elungileyo nesobala
+- 💡 Qonda ukuthi ibhizinisi liwasekelisa kanjani izinsiza zawo wonke umuntu
+
+## Izimiso ze-BRASA
+- 🤝 **Ukuhwebelana Ngobulungiswa** — Imithetho esobala, ukulingana ngokweqiniso
+- 💰 **Imahhala eSakhamuzini** — Ibhizinisi liwasekelisa umphakathi
+- 📖 **Incwadi Evulekile** — Konke ukuthengiselana kusobala emphakathini futhi kuyaqinisekiswa
+- 🗣️ **Izilimi Ezingaphezu kwezi-7,100** — Akukho sivimbelo solimi
+- 📜 **Ivikelwe nguMthethosisekelo** — Amalungelo esakhamuzi ahlala eza kuqala
+
+---
+*Ingxenye yeSistemu ye-BRASA — Imfundo · Uhulumeni · Amabhizinisi · Incwadi Evulekile*
+*IngabeyeSakhamuzi Somhlaba Wonke — Yakhiwe ngothando eKosta Rika · 2026*
