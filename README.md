@@ -1,3 +1,12 @@
+<link rel="alternate" hreflang="en" href="https://brasa.world/readme-en" />
+<link rel="alternate" hreflang="es" href="https://brasa.world/readme-es" />
+<link rel="alternate" hreflang="fr" href="https://brasa.world/readme-fr" />
+<link rel="alternate" hreflang="zh-CN" href="https://brasa.world/readme-zh" />
+<link rel="alternate" hreflang="hi" href="https://brasa.world/readme-hi" />
+<link rel="alternate" hreflang="ar" href="https://brasa.world/readme-ar" />
+<link rel="alternate" hreflang="x-default" href="https://brasa.world/readme-en" />
+
+
 # 💼 BRASA — Business
 > Fair commerce. Citizen marketplace. Opportunity for all.
 
