@@ -1366,3 +1366,57 @@ Fuqarolar mulkidagi bozor — Yirik kompaniyalar mulki emas. Adolatli qoidalar a
 ---
 *BRASA Tizimining bir qismi — Ta'lim · Davlat · Biznes · Ochiq Kitob*
 *Butun Dunyo Fuqarolari Mulki — Kosta-Rikada mehr bilan yaratilgan · 2026*
+
+# 💼 BRASA — Näringsliv
+> Rättvis Handel. Medborgarnas Marknad. Möjlighet för Alla.
+
+🌐 **Del av BRASA Värld:** [brasa.world](https://brasa.world)
+
+---
+
+## Om BRASA Näringsliv
+En marknad som ägs av medborgarna — inte av stora företag. Köp och sälj enligt rättvisa regler. Intäkterna går till offentliga tjänster och gratis utbildning. Här tjänar näringslivet samhället — inte att samhället tjänar näringslivet.
+
+## Vad Du Kan Göra
+- 🛒 **Utforska BRASAs Medborgarmarknad**
+- 🎓 **Ta en Gratis Företagsexamen**
+- 🤮 Handla enligt rättvisa och öppna regler
+- 💡 Förstå hur handel stöder tjänster för alla
+
+## BRASAs Värderingar
+- 🤝 **Rättvis Handel** — Tydliga regler, verklig jämlikhet
+- 💰 Gratis för Medborgarna — Näringslivet stöder samhället
+- 📖 **Öppen Bok** — Varje transaktion är offentlig och granskbar
+- 🗣️ **Över 7 100 Språk** — Inga språkbarriärer
+- 📜 **Skyddat av Grundlagen** — Medborgarnas rättigheter alltid först
+
+---
+*Del av BRASA-systemet — Utbildning · Styrelse · Näringsliv · Öppen Bok*
+*Ägs av Världens Medborgare — Byggt med kärlek på Costa Rica · 2026*
+
+# 💼 BRASA — Komès
+> Komès Jis. Mache Sitwayen. Opòtinite pou Tout Moun.
+
+🌐 **Pati nan BRASA Monn:** [brasa.world](https://brasa.world)
+
+---
+
+## Konsènan Komès BRASA
+Yon mache sitwayen posede — Se pa gwo konpayi. Achte ak vann daprè règ ki jis. Lajan yo ranse a ale nan sèvis piblik ak edikasyon gratis. Isit la komès sèvi kominote a — Se pa kominote a ki sèvi komès.
+
+## Kisa Ou Ka Fè
+- 🛒 **Eksplore Mache Sitwayen BRASA a**
+- 🎓 **Jwenn Diplòm Komès Gratis**
+- 🤮 Fè komès daprè règ jis ak transparan
+- 💡 Konprann kòman komès ede sipòte sèvis pou tout moun
+
+## Valè BRASA yo
+- 🤝 **Komès Jis** — Règ klè, vrèman egal pou tout moun
+- 💰 Gratis pou Sitwayen yo — Komès ede sipòte kominote a
+- 📖 **Liv Ouvè** — Chak tranzaksyon piblik epi ou ka tcheke l
+- 🗣️ **Plis pase 7 100 Lang** — Pa gen baryè lang
+- 📜 **Pwoteje pa Konstitisyon** — Dwa sitwayen yo toujou anvan tout lòt bagay
+
+---
+*Pati nan Sistèm BRASA a — Edikasyon · Gouvenman · Komès · Liv Ouvè*
+*Se Sitwayen Monn Ki Posede Li — Konstwi ak Lanmou nan Kosta Rika · 2026*
