@@ -1177,3 +1177,192 @@ Imakethe engabeyesakhamuzi — Hhayi eyezinkampani ezinkulu. Thenga futhi Utheng
 ---
 *Ingxenye yeSistemu ye-BRASA — Imfundo · Uhulumeni · Amabhizinisi · Incwadi Evulekile*
 *IngabeyeSakhamuzi Somhlaba Wonke — Yakhiwe ngothando eKosta Rika · 2026*
+
+# 💼 BRASA — Poslovanje
+> Pravedna Trgovina. Građansko Tržište. Prilika za Sve.
+
+🌐 **Deo BRASA Sveta:** [brasa.world](https://brasa.world)
+
+---
+
+## O Poslovanju BRASA
+Tržište u vlasništvu građana — Ne velikih kompanija. Kupujte i prodajte po pravednim pravilima. Prihodi se koriste za javne usluge i besplatno obrazovanje. Ovde poslovanje služi zajednici — Ne da zajednica služi poslovanju.
+
+## Šta Možete Učiniti
+- 🛒 **Istražite Građansko Tržište BRASA**
+- 🎓 **Steknite Besplatnu Diplomu iz Poslovanja**
+- 🤮 Trgujte po pravednim i transparentnim pravilima
+- 💡 Razumite kako trgovina podržava usluge za sve
+
+## Vrednosti BRASA
+- 🤝 **Pravedna Trgovina** — Jasna pravila, istinska jednakost
+- 💰 Besplatno za Građane — Poslovanje podržava zajednicu
+- 📖 **Otvorena Knjiga** — Svaka transakcija je javna i proverljiva
+- 🗣️ **Više od 7.100 Jezika** — Bez jezičkih barijera
+- 📜 **Zaštićeno Ustavom** — Prava građana uvek na prvom mestu
+
+---
+*Deo Sistema BRASA — Obrazovanje · Država · Poslovanje · Otvorena Knjiga*
+*U vlasništvu Građana Sveta — Izgrađeno s ljubavlju u Kostarici · 2026*
+
+# 💼 BRASA — Бизнес
+> Справедлива Търговия. Граждански Пазар. Възможност за Всички.
+
+🌐 **Част от BRASA Свят:** [brasa.world](https://brasa.world)
+
+---
+
+## За Бизнеса на BRASA
+Пазар, собственост на гражданите — Не на големи компании. Купувайте и продавайте по справедливи правила. Приходите се използват за публични услуги и безплатно образование. Тук бизнесът служи на обществото — Не обществото да служи на бизнеса.
+
+## Какво Можете Да Правите
+- 🛒 **Разгледайте Гражданския Пазар на BRASA**
+- 🎓 **Получете Безплатна Диплома по Бизнес**
+- 🤮 Търгувайте по справедливи и прозрачни правила
+- 💡 Разберете как търговията подкрепя услугите за всички
+
+## Ценностите на BRASA
+- 🤝 **Справедлива Търговия** — Ясни правила, истинско равенство
+- 💰 Безплатно за Гражданите — Бизнесът подкрепя обществото
+- 📖 **Отворена Книга** — Всяка транзакция е публична и проверима
+- 🗣️ **Над 7.100 Езика** — Без езикови бариери
+- 📜 **Защитено от Конституцията** — Правата на народа винаги са на първо място
+
+---
+*Част от Системата на BRASA — Образование · Държава · Бизнес · Отворена Книга*
+*Собственост на Гражданите на Света — Изградено с любов в Коста Рика · 2026*
+
+# 💼 BRASA — Næringsliv
+> Rettferdig Handel. Borgermarked. Mulighet for Alle.
+
+🌐 **Del av BRASA Verden:** [brasa.world](https://brasa.world)
+
+---
+
+## Om BRASA Næringsliv
+Et marked eiet av borgerne — Ikke av store selskaper. Kjøp og selg etter rettferdige regler. Inntekter går til offentlige tjenester og gratis utdanning. Her tjener næringslivet samfunnet — Ikke at samfunnet tjener næringslivet.
+
+## Hva Du Kan Gjøre
+- 🛒 **Utforsk BRASAs Borgermarked**
+- 🎓 **Få et Gratis Bedriftsdiplom**
+- 🤮 Handle etter rettferdige og gjennomsiktige regler
+- 💡 Forstå hvordan handel støtter tjenester for alle
+
+## BRASAs Verdier
+- 🤝 **Rettferdig Handel** — Tydelige regler, ekte likeverd
+- 💰 Gratis for Borgerne — Næringslivet støtter samfunnet
+- 📖 **Åpen Bok** — Enhver transaksjon er offentlig og kontrollerbar
+- 🗣️ **Over 7.100 Språk** — Ingen språklige barrierer
+- 📜 **Beskyttet av Grunnloven** — Folks rettigheter alltid først
+
+---
+*Del av Systemet BRASA — Utdanning · Styresett · Næringsliv · Åpen Bok*
+*Eiet av Verdens Borgere — Bygget med kjærlighet på Costa Rica · 2026*
+
+# 💼 BRASA — Erhvervsliv
+> Retfærdig Handel. Borgermarked. Mulighed for Alle.
+
+🌐 **Del af BRASA Verden:** [brasa.world](https://brasa.world)
+
+---
+
+## Om BRASA Erhvervsliv
+Et marked ejet af borgerne — Ikke af store selskaber. Køb og sælg efter retfærdige regler. Indtægter går til offentlige tjenester og gratis uddannelse. Her tjener erhvervslivet samfundet — Ikke at samfundet tjener erhvervslivet.
+
+## Hvad Du Kan Gøre
+- 🛒 **Udforsk BRASAs Borgermarked**
+- 🎓 **Få et Gratis Erhvervsdiplom**
+- 🤮 Handel efter retfærdige og gennemsigtige regler
+- 💡 Forstå hvordan handel støtter tjenester for alle
+
+## BRASAs Værdier
+- 🤝 **Retfærdig Handel** — Tydelige regler, ægte lighed
+- 💰 Gratis for Borgerne — Erhvervslivet støtter samfundet
+- 📖 **Åben Bog** — Enhver transaktion er offentlig og verificerbar
+- 🗣️ **Over 7.100 Sprog** — Ingen sproglige barrierer
+- 📜 **Beskyttet af Grundloven** — Borgernes rettigheder altid først
+
+---
+*Del af Systemet BRASA — Uddannelse · Styre · Erhvervsliv · Åben Bog*
+*Ejet af Verdens Borgere — Bygget med kærlighed på Costa Rica · 2026*
+
+# 💼 BRASA — Liiketoiminta
+> Oikeudenmukaista Kauppaa. Kansalaisten Markkinat. Mahdollisuus Kaikille.
+
+🌐 **Osa BRASA Maailmaa:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASAn Liiketoiminnasta
+Markkinat, jotka ovat kansalaisten omistuksessa — Ei suurten yritysten. Osta ja myy oikeudenmukaisin säännöin. Tulot käytetään julkisiin palveluihin ja maksuttomaan koulutukseen. Täällä liiketoiminta palvelee yhteiskuntaa — Ei sitä, että yhteiskunta palvelee liiketoimintaa.
+
+## Mitä Voit Tehdä
+- 🛒 **Tutustu BRASAn Kansalaisten Markkinoihin**
+- 🎓 **Suorita Maksuton Liiketoiminnan Tutkinto**
+- 🤮 Käy kauppaa oikeudenmukaisin ja läpinäkyvin säännöin
+- 💡 Ymmärrä miten kauppa tukee palveluita kaikille
+
+## BRASAn Arvot
+- 🤝 **Oikeudenmukaista Kauppaa** — Selkeät säännöt, todellinen tasa-arvo
+- 💰 Maksuton Kansalaiselle — Liiketoiminta tukee yhteiskuntaa
+- 📖 **Avoin Kirja** — Jokainen tapahtuma on julkinen ja todennettavissa
+- 🗣️ **Yli 7.100 Kieltä** — Ei kielimuuria
+- 📜 **Perustuslain Suojaus** — Kansalaisten oikeudet aina etusijalla
+
+---
+*Osa BRASA Järjestelmää — Koulutus · Hallinto · Liiketoiminta · Avoin Kirja*
+*Maailman Kansalaisten Omistuksessa — Rakennettu rakkaudella Costa Ricassa · 2026*
+
+# 💼 BRASA — ንግድ
+> ፍትሐዊ ንግድ። የዜጎች ገበያ። ለሁሉም ዕድል።
+
+🌐 **የBRASA ዓለም አንድ ክፍል፦** [brasa.world](https://brasa.world)
+
+---
+
+## ስለ BRASA ንግድ
+በዜጎች ባለቤትነት የተያዘ ገበያ — በትላልቅ ኩባንያዎች አይደለም። በፍትሐዊ ሕግ ይግዙና ይሽጡ። ገቢው ለሕዝብ አገልግሎትና ለነፃ ትምህርት ይውላል። እዚህ ንግድ ማኅበረሰብን ያገለግላል — ማኅበረሰብ ንግድን የሚያገለግልበት አይደለም።
+
+## ምን ማድረግ እንደሚችሉ
+- 🛒 **የBRASAን የዜጎች ገበያ ይመርምሩ**
+- 🎓 **ነፃ የንግድ ዲፕሎማ ይውሰዱ**
+- 🤮 በፍትሐዊና ግልጽ ሕግ ንግድ ያካሂዱ
+- 💡 ንግድ አገልግሎቶችን ለሁሉም እንዴት እንደሚደግፍ ይረዱ
+
+## የBRASA እሴቶች
+- 🤝 **ፍትሐዊ ንግድ** — ግልጽ ሕጎች፣ እውነተኛ እኩልነት
+- 💰 ለዜጎች ነፃ — ንግድ ማኅበረሰብን ይደግፋል
+- 📖 **የተከፈተ መጽሐፍ** — እያንዳንዱ ግብይት ለሕዝብ ግልጽና ሊጣራ የሚችል ነው
+- 🗣️ **ከ7,100 በላይ ቋንቋዎች** — የቋንቋ እንቅፋት የለም
+- 📜 **በሕገ መንግሥት የተጠበቀ** — የዜጎች መብት ሁልጊዜ ይቀድማል
+
+---
+*የBRASA ሥርዓት አንድ ክፍል፡ ትምህርት · መንግሥት · ንግድ · የተከፈተ መጽሐፍ*
+*በዓለም ዜጎች ባለቤትነት — በኮስታ ሪካ በፍቅር የተሠራ · 2026*
+
+# 💼 BRASA — Biznes
+> Adolatli Savdo. Fuqarolik Bozori. Barcha Uchun Imkoniyat.
+
+🌐 **BRASA Jahonning bir qismi:** [brasa.world](https://brasa.world)
+
+---
+
+## BRASA Biznes Haqida
+Fuqarolar mulkidagi bozor — Yirik kompaniyalar mulki emas. Adolatli qoidalar asosida sotib oling va soting. Daromad davlat xizmatlari va bepul ta'limga yo'naltiriladi. Bu yerda biznes jamiyatga xizmat qiladi — Jamiyat biznesga xizmat qiladigan tuzum emas.
+
+## Nima Qila Olasiz
+- 🛒 **BRASA Fuqarolik Bozorini O'rganing**
+- 🎓 **Bepul Biznes Diplomiga ega bo'ling**
+- 🤮 Adolatli va oshkora qoidalar asosida savdo qiling
+- 💡 Savdo xizmatlarni barcha uchun qanday qo'llab-quvvatlashini tushuning
+
+## BRASA Qadriyatlari
+- 🤝 **Adolatli Savdo** — Aniq qoidalar, haqiqiy tenglik
+- 💰 Fuqarolar uchun bepul — Biznes jamiyatni qo'llab-quvvatlaydi
+- 📖 **Ochiq Kitob** — Har bir bitim ommaviy va tekshirilishi mumkin
+- 🗣️ **7.100 dan ortiq tillar** — Til to'sig'i yo'q
+- 📜 **Konstitutsiya bilan Himoyalangan** — Fuqarolar huquqi doimo birinchi o'rinda
+
+---
+*BRASA Tizimining bir qismi — Ta'lim · Davlat · Biznes · Ochiq Kitob*
+*Butun Dunyo Fuqarolari Mulki — Kosta-Rikada mehr bilan yaratilgan · 2026*
