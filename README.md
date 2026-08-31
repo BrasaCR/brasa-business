@@ -772,3 +772,57 @@ Rynek należący do obywateli — nie do wielkich korporacji. Kupuj i sprzedawaj
 ---
 *BRASAစနစ်၏အစိတ်အပိုင်း — ပညာရေး · အစိုးရ · စီးပွားရေး · ပွင့်လင်းမှတ်တမ်း*
 *ကမ္ဘာ့နိုင်ငံသားများပိုင် · ကော်စတာရီကာတွင်မေတ္တာဖြင့်တည်ဆောက်သည် · 2026*
+
+# 💼 BRASA — Bedrijfsleven
+> Eerlijke Handel. Burgerlijke Marktplaats. Kansen voor Iedereen.
+
+🌐 **Onderdeel van BRASA Wereld:** [brasa.world](https://brasa.world)
+
+---
+
+## Over BRASA Bedrijfsleven
+Een marktplaats van en voor burgers — niet van grote bedrijven. Kopen en verkopen met eerlijke regels. De opbrengsten ondersteunen openbare diensten en gratis onderwijs. Hier dient zakenleven de samenleving — niet de samenleving het zakenleven.
+
+## Wat U Hier Kunt Doen
+- 🛒 **Verken de BRASA Marktplaats**
+- 🎓 **Behaal een Gratis Bedrijfsdiploma**
+- 🤝 Doe zaken met eerlijke en transparante regels
+- 💡 Begrijp hoe handel diensten voor iedereen ondersteunt
+
+## BRASA Waarden
+- 🤝 **Eerlijke Handel** — Duidelijke regels, echte gelijkheid
+- 💰 **Gratis voor Burgers** — Bedrijven ondersteunen de gemeenschap
+- 📖 **Open Grootboek** — Elke transactie is openbaar en verifieerbaar
+- 🗣️ **Meer dan 7.100 Talen** — Geen taalbarrière
+- 📜 **Beschermd door de Grondwet** — Uw rechten staan altijd voorop
+
+---
+*Onderdeel van het BRASA Systeem — Onderwijs · Overheid · Bedrijfsleven · Open Grootboek*
+*Eigendom van Wereldburgers — Met liefde gebouwd in Costa Rica · 2026*
+
+# 💼 BRASA — 商業
+> 公平交易。公民市集。人人皆有機會。
+
+🌐 **BRASA 世界之一部分：** [brasa.world](https://brasa.world)
+
+---
+
+## 關於 BRASA 商業
+屬於公民的公開市集 — 不屬於大企業。依公平規則進行買賣。交易收入回饋做公共服務與免費教育。在這裡，商業服務社會 — 而非社會服務商業。
+
+## 您可以在這裡做什麼
+- 🛒 **探索 BRASA 公民市集**
+- 🎓 **免費取得商業學位**
+- 🤝 依公開透明的公平規則進行交易
+- 💡 瞭解商業如何支持公共服務
+
+## BRASA 的價值
+- 🤝 **公平交易** — 規則公開 · 真正平等
+- 💰 **對公民免費** — 商業回饋社群
+- 📖 **公開帳本** — 每筆交易公開 · 人人可查驗
+- 🗣️ **7,100+ 種語言** — 沒有語言隔閡
+- 📜 **受憲法保障** — 人民權利永遠優先
+
+---
+*BRASA 體系之一部分 — 教育 · 政府 · 商業 · 公開帳本*
+*全世界公民共同擁有 · 2026 年於哥斯大黎加用心打造*
