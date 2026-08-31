@@ -853,3 +853,111 @@ Een marktplaats van en voor burgers — niet van grote bedrijven. Kopen en verko
 ---
 *BRASA அமைப்பின் ஒரு பகுதி — கல்வி · அரசு · வணிகம் · திறந்த கணக்கு*
 *உலகக் குடிமக்களுக்கு சொந்தமானது — கோஸ்டா ரிக்காவில் அன்புடன் உருவாக்கப்பட்டது · 2026*
+
+# 💼 BRASA — Bisnis
+> Perdagangan yang Adil. Pasar Rakyat. Peluang untuk Semua.
+
+🌐 **Bagian dari BRASA Dunia:** [brasa.world](https://brasa.world)
+
+---
+
+## Tentang Bisnis BRASA
+Pasar milik warga negara — bukan milik perusahaan besar. Jual beli dengan aturan yang adil. Pendapatan digunakan untuk layanan publik dan pendidikan gratis. Di sini, bisnis melayani masyarakat — bukan masyarakat melayani bisnis.
+
+## Yang Bisa Anda Lakukan
+- 🛒 **Jelajahi Pasar Rakyat BRASA**
+- 🎓 **Raih Gelar Bisnis Gratis**
+- 🤝 Berdagang dengan aturan yang adil dan transparan
+- 💡 Pahami bagaimana perdagangan mendukung layanan untuk semua
+
+## Nilai-Nilai BRASA
+- 🤝 **Perdagangan yang Adil** — Aturan jelas, kesetaraan nyata
+- 💰 **Gratis bagi Warga Negara** — Bisnis mendukung masyarakat
+- 📖 **Buku Besar Terbuka** — Setiap transaksi terbuka dan dapat diverifikasi
+- 🗣️ **7.100+ Bahasa** — Tanpa hambatan bahasa
+- 📜 **Dilindungi Konstitusi** — Hak rakyat selalu diutamakan
+
+---
+*Bagian dari Sistem BRASA — Pendidikan · Pemerintahan · Bisnis · Buku Besar Terbuka*
+*Milik Warga Dunia — Dibangun dengan kasih di Kosta Rika · 2026*
+
+# 💼 BRASA — Biashara
+> Biashara ya Haki. Soko la Raia. Fursa kwa Kila Mtu.
+
+🌐 **Sehemu ya BRASA Ulimwengu:** [brasa.world](https://brasa.world)
+
+---
+
+## Kuhusu Biashara ya BRASA
+Soko linalomilikiwa na raia — Sio la makampuni makubwa. Inunue na uzae kwa kanuni za haki. Mapato yanatumika kwa huduma za umma na elimu bure. Hapa, biashara inahudumia jamii — Sio jamii inayohudumia biashara.
+
+## Unachoweza Kufanya
+- 🛒 **Gundua Soko la Raia la BRASA**
+- 🎓 **Pata Shahada ya Biashara Bure**
+- 🤝 Fanya biashara kwa kanuni za haki na uwazi
+- 💡 Elewa jinsi biashara inavyosaidia huduma za kila mtu
+
+## Thamani za BRASA
+- 🤝 **Biashara ya Haki** — Kanuni wazi, usawa wa kweli
+- 💰 **Bure kwa Raia** — Biashara inasaidia jamii
+- 📖 **Kitabu Wazi** — Kila muamala wazi na unaweza kuchunguzwa
+- 🗣️ **Lugha Zaidi ya 7,100** — Bila kizuizi cha lugha
+- 📜 **Inalindwa na Katiba** — Haki za raia daima kwanza
+
+---
+*Sehemu ya Mfumo wa BRASA — Elimu · Serikali · Biashara · Kitabu Wazi*
+*Inamilikiwa na Raia wa Ulimwengu — Imeundwa kwa upendo huko Kosta Rika · 2026*
+
+# 💼 BRASA — سوداګري
+> منصفانه سوداګري. د وګړو بازار. هر چا ته فرصت.
+
+🌐 **د BRASA نړۍ یوه برخه:** [brasa.world](https://brasa.world)
+
+---
+
+## د BRASA د سوداګرۍ په اړه
+د وګړو ملکیت بازار — نه د لویو شرکتونو. د منصفانه قوانینو لاندې پېرودل او پلورل. عاید عامه خدمتونو او ویاړ زده کړې ته ځي. دلته سوداګري ټولنې ته خدمت کوي — نه ټولنه سوداګرۍ ته.
+
+## څه کولی شئ
+- 🛒 **د BRASA د وګړو بازار وپلټئ**
+- 🎓 **د سوداګرۍ ویاړ ډیپلوم ترلاسه کړئ**
+- 🤝 د روښانه او منصفانه قوانینو لاندې سوداګري وکړئ
+- 💡 پوه شئ چې سوداګري څنګه هر چا ته خدمتونه ملاتړ کوي
+
+## د BRASA ارزښتونه
+- 🤝 **منصفانه سوداګري** — واضح قوانین، ریښتیني برابري
+- 💰 وګړو ته ویاړ — سوداګري ټولنه ملاتړ کوي
+- 📖 **پرانیستی کتاب** — هره معامله عامه او د تایید وړ ده
+- 🗣️ **د 7,100 څخه زیاتې ژبې** — د ژبې خنډ نشته
+- 📜 **د اساسي قانون لخوا خوندي شوي** — د وګړو حقونه تل لومړی دي
+
+---
+*د BRASA سیسټم یوه برخه — زده کړه · حکومت · سوداګري · پرانیستی کتاب*
+*د نړۍ د وګړو ملکیت — په کوسټا ریکا کې په مینه جوړ شوی · 2026*
+
+# 💼 BRASA — Bisnis
+> Perdagangan Adil. Pasar Rakyat. Kesempatan kanggo Kabeh.
+
+🌐 **Bagean saka BRASA Jagad Donya:** [brasa.world](https://brasa.world)
+
+---
+
+## Babagan Bisnis BRASA
+Pasar duweke warga negara — dudu duweke perusahaan gedhe. Tuku lan adol miturut aturan sing adil. Pendapatan dienggo kanggo layanan umum lan pendhidhikan gratis. Ing kene, bisnis ngladeni masyarakat — dudu masyarakat ngladeni bisnis.
+
+## Sampeyan Bisa Nindakake Apa
+- 🛒 **Jelajahi Pasar Rakyat BRASA**
+- 🎓 **Entuk Gelar Bisnis Gratis**
+- 🤝 Bisnis miturut aturan sing adil lan transparan
+- 💡 Mangerteni kepiye cara perdagangan mbantu layanan kanggo kabeh
+
+## Nilai-Nilai BRASA
+- 🤝 **Perdagangan Adil** — Aturan cetha, kesetaraan bener
+- 💰 Gratis kanggo Warga Negara — Bisnis ndhukung masyarakat
+- 📖 **Buku Besar Terbuka** — Saben transaksi umum lan bisa diverifikasi
+- 🗣️ **Luwih saka 7.100 Basa** — Tanpa alangan basa
+- 📜 **Dilindungi Konstitusi** — Hak rakyat tansah diutamakake
+
+---
+*Bagean saka Sistem BRASA — Pendhidhikan · Pamrentahan · Bisnis · Buku Besar Terbuka*
+*Duweni dening Warga Donya — Dibangun kanthi tresna ing Kosta Rika · 2026*
