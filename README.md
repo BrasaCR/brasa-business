@@ -556,3 +556,111 @@ Kasuwa mallakar ɗan ƙasa — ba na kamfani ba. Saye da siyar bisa daidaito. Ku
 ---
 *بخشی از سیستم BRASA — آموزش · حکومت · کسب‌وکار · دفتر کل باز*
 *متعلق به شهروندان جهان — ساخته شده با محبت در کاستاریکا · ۲۰۲۶*
+
+# 💼 బ్రాసా — వ్యాపారం
+> న్యాయమైన వాణిజ్యం. పౌరుల మార్కెట్. అందరికీ అవకాశం.
+
+🌐 **బ్రాసా ప్రపంచంలో భాగం:** [brasa.world](https://brasa.world)
+
+---
+
+## బ్రాసా వ్యాపారం గురించి
+పౌరుల స్వంత మార్కెట్ — ఏ కంపెనీకీ చెందినది కాదు. న్యాయమైన నియమాల ప్రకారం కొనుగోలు-విక్రయం. ఇక్కడ వచ్చే ఆదాయం ప్రజా సేవలు మరియు ఉచిత విద్యకు వెళ్తుంది. ఇక్కడ వ్యాపారం సమాజానికి సేవ చేస్తుంది — సమాజం వ్యాపారానికి కాదు.
+
+## మీరు ఇక్కడ ఏమి చేయవచ్చు
+- 🛒 **బ్రాసా మార్కెట్‌ను చూడండి**
+- 🎓 **ఉచిత వ్యాపార డిగ్రీ పొందండి**
+- 🤝 న్యాయమైన మరియు పారదర్శక నియమాల ప్రకారం వ్యాపారం చేయండి
+- 💡 వ్యాపారం ద్వారా ప్రజా సేవలు ఎలా అందుతాయో అర్థం చేసుకోండి
+
+## బ్రాసా విలువలు
+- 🤝 **న్యాయమైన వాణిజ్యం** — స్పష్ట నియమాలు, నిజమైన సమతుల్యత
+- 💰 **పౌరులకు ఉచితం** — వ్యాపారం సమాజానికి తోడ్పడుతుంది
+- 📖 **బహిరంగ నమోదు** — ప్రతి లావాదేవీ బహిరంగం మరియు పరిశీలనకు అందుబాటులో
+- 🗣️ **7,100 కంటే ఎక్కువ భాషలు** — భాష అడ్డంకి లేదు
+- 📜 **రాజ్యాంగ రక్షణ** — మీ హక్కులు ఎప్పుడూ మొదటి స్థానం
+
+---
+*బ్రాసా వ్యవస్థలో భాగం — విద్యా · ప్రభుత్వం · వ్యాపారం · బహిరంగ నమోదు*
+*ప్రపంచ పౌరుల స్వంత ఆస్తి · కోస్టా రికాలో ప్రేమతో రూపొందించబడింది · 2026*
+
+# 💼 BRASA — Commercio
+> Commercio equo. Mercato dei Cittadini. Opportunità per tutti.
+
+🌐 **Parte di BRASA Mondo:** [brasa.world](https://brasa.world)
+
+---
+
+## Il Commercio in BRASA
+Un mercato di proprietà dei cittadini — non delle grandi aziende. Compra e vendi con regole eque. I ricavi finanziano servizi pubblici e istruzione gratuita. Qui il commercio serve la società — non la società al commercio.
+
+## Cosa puoi fare qui
+- 🛒 Esplora il **Mercato BRASA**
+- 🎓 Ottieni una **Laurea Commerciale GRATUITA**
+- 🤝 Opera con regole eque e trasparenti
+- 💡 Comprendi come il commercio sostiene i servizi per tutti
+
+## I valori di BRASA
+- 🤝 **Commercio equo** — Regole chiare, vera uguaglianza
+- 💰 **Gratuito per i cittadini** — Il commercio sostiene la comunità
+- 📖 **Registro aperto** — Ogni transazione è visibile e verificabile
+- 🗣️ **Più di 7.100 lingue** — Nessuna barriera linguistica
+- 📜 **Protetto dalla Costituzione** — I tuoi diritti vengono prima di tutto
+
+---
+*Parte del Sistema BRASA — Istruzione · Governo · Commercio · Registro Aperto*
+*Di proprietà dei cittadini del mondo — Creato con amore in Costa Rica · 2026*
+
+# 💼 બ્રાસા — વેપાર
+> ન્યાયી વેપાર. નાગરિકોનું બજાર. સૌ માટે તક.
+
+🌐 **બ્રાસા વિશ્વનો ભાગ:** [brasa.world](https://brasa.world)
+
+---
+
+## બ્રાસા વેપાર વિશે
+નાગરિકોની માલિકીનું બજાર — કોઈ કંપનીનું નહીં. ન્યાયી નિયમો અનુસાર ખરીદો અને વેચો. અહીંથી મળતી આવક જનતા સેવા અને નિઃશુલ્ક શિક્ષણમાં વપરાય છે. અહીં વેપાર સમાજની સેવા કરે છે — સમાજ વેપારની સેવા નહીં.
+
+## તમે અહીં શું કરી શકો
+- 🛒 **બ્રાસા બજાર જુઓ**
+- 🎓 **નિઃશુલ્ક વેપાર ડિગ્રી મેળવો**
+- 🤝 ન્યાયી અને પારદર્શક નિયમો અનુસાર વ્યવહાર કરો
+- 💡 સમજો કે વેપાર જનતા સેવા કેવી રીતે ચલાવે છે
+
+## બ્રાસાનાં મૂલ્યો
+- 🤝 **ન્યાયી વેપાર** — સ્પષ્ટ નિયમો, સાચી સમાનતા
+- 💰 **નાગરિકો માટે નિઃશુલ્ક** — વેપાર સમાજને મદદ કરે છે
+- 📖 **ખુલ્લું નોંધણીપત્રક** — પ્રત્યેક વ્યવહાર જાહેર અને ચકાસવા યોગ્ય
+- 🗣️ **7,100 થી વધુ ભાષાઓ** — ભાષા કોઈ અવરોધ નહીં
+- 📜 **બંધારણ દ્વારા સુરક્ષિત** — તમારા અધિકારો હંમેશા પ્રથમ
+
+---
+*બ્રાસા પ્રણાલીનો ભાગ — શિક્ષણ · સરકાર · વેપાર · ખુલ્લું નોંધણીપત્રક*
+*વિશ્વના નાગરિકોની માલિકીમાં — કોસ્ટા રિકામાં પ્રેમથી બનાવેલ · 2026*
+
+# 💼 BRASA — Handel
+> Sprawiedliwy Handel. Rynek Obywateli. Szanse dla Wszystkich.
+
+🌐 **Część BRASA Świat:** [brasa.world](https://brasa.world)
+
+---
+
+## Handel w BRASA
+Rynek należący do obywateli — nie do wielkich korporacji. Kupuj i sprzedawaj według sprawiedliwych reguł. Dochody finansują usługi publiczne i bezpłatną edukację. Tutaj handel służy społeczeństwu — a nie społeczeństwo handlowi.
+
+## Co możesz tu zrobić
+- 🛒 Przeglądaj **Rynek BRASA**
+- 🎓 Uzyskaj **Dyplom Handlowy ZA DARMO**
+- 🤝 Działaj według sprawiedliwych i przejrzystych zasad
+- 💡 Zrozum jak handel wspiera usługi dla wszystkich
+
+## Wartości BRASA
+- 🤝 **Sprawiedliwy Handel** — Jasne reguły, prawdziwa równość
+- 💰 **Bezpłatne dla obywateli** — Handel wspiera społeczność
+- 📖 **Otwarty Rejestr** — Każda transakcja publiczna i weryfikowalna
+- 🗣️ **Ponad 7 100 języków** — Brak barier językowych
+- 📜 **Chronione przez Konstytucję** — Twoje prawa zawsze na pierwszym miejscu
+
+---
+*Część Systemu BRASA — Edukacja · Rząd · Handel · Otwarty Rejestr*
+*Własność Obywateli Świata — Stworzone z Miłością w Kostaryce · 2026*
