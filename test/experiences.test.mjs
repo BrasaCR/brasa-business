@@ -5,7 +5,7 @@ import { businessExperience } from '../src/experiences.js';
 
 test('builds a bounded multilingual experience from an existing pathway', () => {
   const english = businessExperience('retail', 'en').data, spanish = businessExperience('retail', 'es-CR').data;
-  assert.equal(english.pathwayUrl, '/Retail.html'); assert.equal(english.steps.length, 4); assert.equal(spanish.locale, 'es'); assert.notEqual(spanish.steps[0].title, english.steps[0].title); assert.match(spanish.disclaimer, /no promete/);
+  assert.equal(english.pathwayUrl, '/Retail.html'); assert.equal(english.providerPath, '/api/v1/experiences/retail/providers'); assert.equal(english.steps.length, 4); assert.equal(spanish.locale, 'es'); assert.notEqual(spanish.steps[0].title, english.steps[0].title); assert.match(spanish.disclaimer, /no promete/);
   for (const item of [english, spanish]) { const serialized = JSON.stringify(item); for (const field of ['govId', 'learnerId', 'progress', 'eligibility']) assert.equal(new RegExp(`"${field}"\\s*:`).test(serialized), false); }
 });
 test('rejects invalid or unknown experiences and locales', () => {

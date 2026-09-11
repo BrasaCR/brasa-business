@@ -26,5 +26,5 @@ export function businessExperience(id, requestedLocale = 'en') {
   if (!/^[a-z]{2,3}(?:-[A-Za-z0-9]+)*$/.test(requestedLocale)) return { error: 'invalid_locale', status: 400 };
   const pathway = OPPORTUNITIES.find((item) => item.id === id); if (!pathway) return { error: 'experience_not_found', status: 404 };
   const locale = requestedLocale.toLowerCase().startsWith('es') ? 'es' : 'en', copy = COPY[locale];
-  return { data: { schemaVersion: 1, id: pathway.id, type: 'business-experience', title: pathway.title, locale, requestedLocale, pathwayUrl: pathway.url, capabilities: pathway.capabilities, countryCodes: pathway.countryCodes, offlineEligible: true, disclaimer: copy.disclaimer, steps: copy.steps.map(([stepId, title, description, url], index) => ({ id: stepId, position: index + 1, title, description, url })) } };
+  return { data: { schemaVersion: 1, id: pathway.id, type: 'business-experience', title: pathway.title, locale, requestedLocale, pathwayUrl: pathway.url, providerPath: `/api/v1/experiences/${encodeURIComponent(pathway.id)}/providers`, capabilities: pathway.capabilities, countryCodes: pathway.countryCodes, offlineEligible: true, disclaimer: copy.disclaimer, steps: copy.steps.map(([stepId, title, description, url], index) => ({ id: stepId, position: index + 1, title, description, url })) } };
 }

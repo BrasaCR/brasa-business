@@ -8,7 +8,7 @@ export const OPPORTUNITIES = [
   ['earth-energy','Earth & Energy','/EarthEnergy.html',['sustainability','energy','environment']],
   ['delivery','Delivery','/Delivery.html',['logistics','navigation','customer-service']],
   ['construction','Construction','/Construction.html',['construction','safety','project-coordination']]
-].map(([id,title,url,capabilities]) => ({ schemaVersion: 1, id, type: 'business-pathway', title, url, capabilities, countryCodes: ['*'], status: 'active' }));
+].map(([id,title,url,capabilities]) => ({ schemaVersion: 1, id, type: 'business-pathway', title, url, experienceUrl: `/experience.html?id=${encodeURIComponent(id)}`, capabilities, countryCodes: ['*'], status: 'active' }));
 
 export function queryOpportunities(searchParams) {
   const capability = (searchParams.get('capability') || '').trim().toLowerCase();
