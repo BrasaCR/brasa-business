@@ -8,8 +8,8 @@ const styles = await readFile(new URL('../public/experience.css', import.meta.ur
 const serviceWorker = await readFile(new URL('../public/business-sw.js', import.meta.url), 'utf8');
 
 test('business experience is multilingual, responsive, and directly usable', () => {
-  assert.match(html, /<main id="app"/); assert.match(html, /business\.webmanifest/);
-  assert.match(script, /Verified providers/); assert.match(script, /Proveedores verificados/); assert.match(script, /countryCode/);
+  assert.match(html, /<main id="app"/); assert.match(html, /business\.webmanifest/); assert.match(html, /experience-learning\.css/);
+  assert.match(script, /Learn before you begin/); assert.match(script, /Aprenda antes de comenzar/); assert.match(script, /Connect with verified providers/); assert.match(script, /countryCode/);
   assert.match(styles, /@media\(max-width:800px\)/); assert.match(styles, /font:1rem/);
 });
 
