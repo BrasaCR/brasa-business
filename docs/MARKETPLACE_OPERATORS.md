@@ -56,4 +56,15 @@ Emergency revocation requires the two configured owners. One owner initiates a r
 
 This tool currently targets the explicitly named staging databases only. It has no production mode. The `readiness` command always reports phishing-resistant authentication as incomplete because the one-time invitation flow is not phishing-resistant. Configuring a retention period and two emergency owners records governance intent but does not override that production blocker. Production activation requires identity-bound approval actors, phishing-resistant authentication, approved retention enforcement, and two documented emergency revocation owners.
 
+### Staging demonstration providers
+
+Exercise the public discovery experience without creating fictional real-world claims:
+
+```text
+npm run seed:providers:staging -- apply
+npm run seed:providers:staging -- cleanup
+```
+
+The seed is pinned in code to `brasa-business-marketplace-staging`. It creates four fixed `staging-demo-*` records for Costa Rica, labels every name and provenance field as demonstration data, uses reserved `example.invalid` URLs, expires records after seven days, and writes provider audit events. Reapplying refreshes only those fixed records. Cleanup deletes dependent reports and audit events before deleting those exact IDs; it does not use prefixes, wildcards, or status-wide deletion. Demonstration links are never clickable in the public experience.
+
 BRASA Identity now contains an optional Cloudflare Access verification boundary. Business forwards the Access assertion only during session exchange; Identity verifies its signature, issuer, audience, expiry, and stable subject, then permanently binds that subject to the invited operator ID. Staging keeps this boundary disabled until a dedicated Access application and independently reviewed phishing-resistant policy are configured. The application does not infer phishing resistance from generic MFA.
