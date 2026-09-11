@@ -9,5 +9,16 @@
     "run_worker_first": ["/api/*", "/health"]
   },
   "observability": { "enabled": true, "logs": { "head_sampling_rate": 1 }, "traces": { "enabled": true, "head_sampling_rate": 0.05 } },
-  "env": { "staging": { "name": "brasa-business-staging", "workers_dev": true } }
+  "env": {
+    "staging": {
+      "name": "brasa-business-staging",
+      "workers_dev": true,
+      "d1_databases": [{
+        "binding": "PROVIDERS_DB",
+        "database_name": "brasa-business-marketplace-staging",
+        "database_id": "5fdc0082-ccb0-47cb-a3a9-a3d25875bbd4",
+        "migrations_dir": "migrations"
+      }]
+    }
+  }
 }
