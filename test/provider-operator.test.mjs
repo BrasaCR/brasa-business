@@ -15,8 +15,12 @@ test('operator authorization fails closed without exposing the secret', async ()
 });
 
 test('creates only pending provider records with provenance and audit evidence', async () => {
-  const db = database(), response = await createOperatorProvider(new Request('https://brasa.business/api/operator/v1/providers', { method: 'POST', body: JSON.stringify({ id: 'provider-1', name: 'Example provider', category: 'retail', description: 'An operator-reviewed staging record.', capabilities: ['sales'], countryCode: 'CR', websiteUrl: 'https://example.invalid/provider', provenanceUrl: 'https://example.invalid/source', sourceLabel: 'Public source', reason: 'Initial source review' }) }), env(db));
+  const db = database(), response = await createOperatorProvider(new Request('https://brasa.business/api/operator/v1/providers', { method: 'POST', body: JSON.stringify({ id: 'provider-1', name: 'Example provider', category: 'retail', description: 'An operator-reviewed staging record.', capabilities: ['sales'], countryCode: 'CR', websiteUrl: 'https://example.invalid/provider', provenanceUrl: 'https://example.invalid/source', sourceLabel: 'Public source', reason: 'Initial source review', approvals: { authority: true, provenance: true, expiry: true, consentLegalBasis: true, responsibleReviewer: true } }) }), env(db));
   assert.equal(response.status, 201); assert.equal((await response.json()).data.status, 'pending'); assert.equal(db.batches.length, 1); assert.match(db.batches[0][0].sql, /'pending'/); assert.match(db.batches[0][1].sql, /provider_audit_events/);
+});
+
+test('rejects drafts without every first-provider approval', async () => {
+  const response = await createOperatorProvider(new Request('https://brasa.business/api/operator/v1/providers', { method: 'POST', body: JSON.stringify({ id: 'provider-1', approvals: { authority: true } }) }), env()); assert.equal(response.status, 400);
 });
 
 test('verification requires a bounded future expiry and renewal requires verified state', async () => {

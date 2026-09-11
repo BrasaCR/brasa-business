@@ -8,6 +8,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/health') return json({ ok: true, service: 'brasa-business', version: 1 });
+    if (url.pathname === '/operator-marketplace.html' || url.pathname === '/operator-marketplace') return Response.redirect(new URL('/operator/marketplace', request.url), 302);
+    if (url.pathname === '/operator/marketplace') {
+      const asset = await env.ASSETS.fetch(new Request(new URL('/operator-marketplace', request.url), request));
+      const response = new Response(asset.body, asset); response.headers.set('cache-control', 'no-store'); response.headers.set('x-content-type-options', 'nosniff'); response.headers.set('referrer-policy', 'no-referrer'); response.headers.set('content-security-policy', "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"); return response;
+    }
     if (url.pathname.startsWith('/api/operator/v1/')) {
       const unauthorized = await authorizeOperator(request, env); if (unauthorized) return unauthorized;
       if (!env.PROVIDERS_DB) return apiResponse({ error: 'provider_registry_unavailable' }, 503, { 'cache-control': 'no-store' });
