@@ -1,1 +1,1 @@
-{"name":"@brasa/business","private":true,"type":"module","scripts":{"test":"node --test test/*.test.mjs"}}
+{"name":"@brasa/business","private":true,"type":"module","scripts":{"test":"node --test test/*.test.mjs"},"devDependencies":{"wrangler":"4.131.1"}}
