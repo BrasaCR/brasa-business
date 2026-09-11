@@ -12,7 +12,7 @@ test('operator console requires every first-provider approval and has accessible
 });
 
 test('operator credential stays in memory and remote content is rendered as text', () => {
-  assert.doesNotMatch(script, /localStorage|sessionStorage|document\.cookie|innerHTML|insertAdjacentHTML/); assert.match(script, /credentials:'omit'/); assert.match(script, /textContent/);
+  assert.doesNotMatch(script, /localStorage|sessionStorage|document\.cookie|innerHTML|insertAdjacentHTML/); assert.match(script, /credentials:'omit'/); assert.match(script, /textContent/); assert.match(script, /session\/exchange/); assert.match(script, /session\/logout/);
 });
 
 test('console document receives no-store and restrictive browser policy', async () => {

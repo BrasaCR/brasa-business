@@ -1,17 +1,16 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { authorizeOperator, createOperatorProvider, actOnProvider, resolveOperatorReport } from '../src/provider-operator.js';
+import { authenticateOperator, createOperatorProvider, actOnProvider, resolveOperatorReport } from '../src/provider-operator.js';
 
 function database({ provider = { id: 'provider-1', status: 'pending' }, report = { providerId: 'provider-1' } } = {}) {
   const batches = [];
   return { batches, prepare(sql) { return { bind(...values) { return { sql, values, first: async () => sql.includes('provider_reports') ? report : provider, all: async () => ({ results: [] }), run: async () => ({ success: true }) }; } }; }, async batch(statements) { batches.push(statements); return statements.map(() => ({ success: true })); } };
 }
-const env = (db = database()) => ({ PROVIDERS_DB: db, MARKETPLACE_OPERATOR_KEY: 'correct-secret-value' });
+const env = (db = database()) => ({ PROVIDERS_DB: db, IDENTITY:{fetch:async()=>new Response(JSON.stringify({display_id:'BRA-OPERATOR-1001'}),{status:200})} });
 
-test('operator authorization fails closed without exposing the secret', async () => {
-  const missing = await authorizeOperator(new Request('https://brasa.business/api/operator/v1/providers'), env()); assert.equal(missing.status, 401);
-  const wrong = await authorizeOperator(new Request('https://brasa.business/api/operator/v1/providers', { headers: { authorization: 'Bearer wrong-secret-value' } }), env()); assert.equal(wrong.status, 401); assert.equal(JSON.stringify(await wrong.json()).includes('correct-secret-value'), false);
-  assert.equal(await authorizeOperator(new Request('https://brasa.business/api/operator/v1/providers', { headers: { authorization: 'Bearer correct-secret-value' } }), env()), null);
+test('operator authorization requires Identity plus an active named member', async () => {
+  const missing = await authenticateOperator(new Request('https://brasa.business/api/operator/v1/providers'), env()); assert.equal(missing.response.status, 401);
+  const DB=database();DB.prepare=()=>({bind:()=>({first:async()=>({displayId:'BRA-OPERATOR-1001',name:'Staging reviewer',role:'reviewer'})})});const access=await authenticateOperator(new Request('https://brasa.business/api/operator/v1/providers',{headers:{authorization:'Bearer '+ 'a'.repeat(64)}}),env(DB));assert.equal(access.operator.role,'reviewer');assert.equal(access.operator.name,'Staging reviewer');
 });
 
 test('creates only pending provider records with provenance and audit evidence', async () => {

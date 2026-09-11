@@ -4,19 +4,13 @@ const json = (value, status = 200) => new Response(JSON.stringify(value), { stat
 const validId = (value) => /^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$/.test(value);
 const validUrl = (value) => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
 
-async function sameSecret(candidate, expected) {
-  if (!candidate || !expected) return false;
-  const encoder = new TextEncoder();
-  const [left, right] = await Promise.all([crypto.subtle.digest('SHA-256', encoder.encode(candidate)), crypto.subtle.digest('SHA-256', encoder.encode(expected))]);
-  const a = new Uint8Array(left), b = new Uint8Array(right); let difference = a.length ^ b.length;
-  for (let index = 0; index < a.length; index += 1) difference |= a[index] ^ (b[index] || 0);
-  return difference === 0;
-}
-
-export async function authorizeOperator(request, env) {
-  const header = request.headers.get('authorization') || '';
-  if (!header.startsWith('Bearer ') || !(await sameSecret(header.slice(7).trim(), env.MARKETPLACE_OPERATOR_KEY))) return json({ error: 'operator_unauthorized' }, 401);
-  return null;
+export async function authenticateOperator(request, env) {
+  const authorization=request.headers.get('authorization')||'';
+  if(!env.IDENTITY||!authorization.startsWith('Bearer '))return{response:json({error:'operator_unauthorized'},401)};
+  const identity=await env.IDENTITY.fetch(new Request('https://brasa-identity/api/business/operator/introspect',{headers:{authorization}}));
+  if(!identity.ok)return{response:json({error:'operator_unauthorized'},401)};
+  const profile=await identity.json(),operator=await env.PROVIDERS_DB.prepare("SELECT display_id AS displayId,name,role FROM marketplace_operators WHERE display_id=? AND status='active'").bind(profile.display_id).first();
+  return operator?{operator}:{response:json({error:'operator_unauthorized'},401)};
 }
 
 async function boundedJson(request) {

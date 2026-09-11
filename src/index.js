@@ -1,7 +1,7 @@
 import { queryOpportunities } from './opportunities.js';
 import { businessExperience } from './experiences.js';
 import { listProviders, reportProvider } from './providers.js';
-import { authorizeOperator, listOperatorProviders, createOperatorProvider, actOnProvider, listOperatorReports, resolveOperatorReport } from './provider-operator.js';
+import { authenticateOperator, listOperatorProviders, createOperatorProvider, actOnProvider, listOperatorReports, resolveOperatorReport } from './provider-operator.js';
 const json = (value, status = 200, extra = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json; charset=utf-8', ...extra } });
 const apiResponse = (value, status = 200, extra = {}) => json(value, status, { 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', ...extra });
 export default {
@@ -14,15 +14,27 @@ export default {
       const response = new Response(asset.body, asset); response.headers.set('cache-control', 'no-store'); response.headers.set('x-content-type-options', 'nosniff'); response.headers.set('referrer-policy', 'no-referrer'); response.headers.set('content-security-policy', "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"); return response;
     }
     if (url.pathname.startsWith('/api/operator/v1/')) {
-      const unauthorized = await authorizeOperator(request, env); if (unauthorized) return unauthorized;
       if (!env.PROVIDERS_DB) return apiResponse({ error: 'provider_registry_unavailable' }, 503, { 'cache-control': 'no-store' });
+      if (url.pathname === '/api/operator/v1/session/exchange') {
+        if(request.method!=='POST')return apiResponse({error:'method_not_allowed'},405,{allow:'POST'});
+        if(!env.IDENTITY)return apiResponse({error:'identity_service_unavailable'},503,{'cache-control':'no-store'});
+        return env.IDENTITY.fetch(new Request('https://brasa-identity/api/business/operator/exchange',{method:'POST',headers:{'content-type':'application/json'},body:request.body}));
+      }
+      if (url.pathname === '/api/operator/v1/session/logout') {
+        if(request.method!=='POST')return apiResponse({error:'method_not_allowed'},405,{allow:'POST'});
+        return env.IDENTITY.fetch(new Request('https://brasa-identity/api/business/operator/logout',{method:'POST',headers:{authorization:request.headers.get('authorization')||''}}));
+      }
+      const access=await authenticateOperator(request,env);if(access.response)return access.response;const role=access.operator.role;
+      if(url.pathname==='/api/operator/v1/session/me'&&request.method==='GET')return apiResponse({data:access.operator},200,{'cache-control':'no-store'});
       if (url.pathname === '/api/operator/v1/providers') {
         if (request.method === 'GET') return listOperatorProviders(request, env);
-        if (request.method === 'POST') return createOperatorProvider(request, env);
+        if (request.method === 'POST' && ['verifier','administrator'].includes(role)) return createOperatorProvider(request, env);
+        if (request.method === 'POST') return apiResponse({error:'operator_role_required'},403,{'cache-control':'no-store'});
         return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, POST' });
       }
       if (url.pathname === '/api/operator/v1/reports' && request.method === 'GET') return listOperatorReports(request, env);
-      const providerAction = url.pathname.match(/^\/api\/operator\/v1\/providers\/([^/]+)\/actions$/); if (providerAction && request.method === 'POST') return actOnProvider(request, env, decodeURIComponent(providerAction[1]));
+      const providerAction = url.pathname.match(/^\/api\/operator\/v1\/providers\/([^/]+)\/actions$/); if (providerAction && request.method === 'POST' && ['verifier','administrator'].includes(role)) return actOnProvider(request, env, decodeURIComponent(providerAction[1]));
+      if(providerAction&&request.method==='POST')return apiResponse({error:'operator_role_required'},403,{'cache-control':'no-store'});
       const reportResolution = url.pathname.match(/^\/api\/operator\/v1\/reports\/([^/]+)\/resolve$/); if (reportResolution && request.method === 'POST') return resolveOperatorReport(request, env, decodeURIComponent(reportResolution[1]));
       return apiResponse({ error: 'operator_route_not_found' }, 404, { 'cache-control': 'no-store' });
     }

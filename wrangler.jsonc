@@ -18,7 +18,8 @@
         "database_name": "brasa-business-marketplace-staging",
         "database_id": "5fdc0082-ccb0-47cb-a3a9-a3d25875bbd4",
         "migrations_dir": "migrations"
-      }]
+      }],
+      "services": [{ "binding": "IDENTITY", "service": "brasa-identity-staging" }]
     }
   }
 }
