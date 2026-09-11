@@ -20,10 +20,59 @@ export function publicKeyFingerprint(publicKey) {
   return `SHA256:${createHash('sha256').update(der).digest('base64url')}`;
 }
 
-export function createSignedBundle(evidence, privateKey) {
-  const digest = evidenceDigest(evidence), publicKey = createPublicKey(privateKey);
+export function bundleDigest(bundle) {
+  return createHash('sha256').update(canonicalJson(bundle)).digest('hex');
+}
+
+function rotationPayload(from, to, createdAt, reason) {
+  if (!reason || reason.trim().length < 8 || reason.trim().length > 240) throw new Error('Rotation reason must be 8-240 characters.');
+  return { format: 'brasa-audit-key-rotation/v1', from, to, createdAt, reason: reason.trim() };
+}
+
+export function createRotationAuthorization(previousPrivateKey, nextPublicKey, createdAt, reason) {
+  const payload = rotationPayload(publicKeyFingerprint(createPublicKey(previousPrivateKey)), publicKeyFingerprint(nextPublicKey), createdAt, reason);
+  return { ...payload, signatureAlgorithm: 'Ed25519', signature: sign(null, Buffer.from(canonicalJson(payload)), previousPrivateKey).toString('base64url') };
+}
+
+export function verifyRotationAuthorization(rotation, previousPublicKey, nextPublicKey) {
+  if (!rotation || rotation.signatureAlgorithm !== 'Ed25519') throw new Error('Missing key-rotation authorization.');
+  const { signatureAlgorithm: _algorithm, signature, ...payload } = rotation;
+  const expected = rotationPayload(publicKeyFingerprint(previousPublicKey), publicKeyFingerprint(nextPublicKey), rotation.createdAt, rotation.reason);
+  if (canonicalJson(payload) !== canonicalJson(expected)) throw new Error('Key-rotation authorization does not match the signing keys.');
+  if (!verify(null, Buffer.from(canonicalJson(payload)), previousPublicKey, Buffer.from(signature, 'base64url'))) throw new Error('Key-rotation authorization is invalid.');
+  return true;
+}
+
+export function createContinuity(previousBundle, previousPublicKey, nextPublicKey, rotation) {
+  verifyBundleSignature(previousBundle, previousPublicKey);
+  const previousFingerprint = publicKeyFingerprint(previousPublicKey), nextFingerprint = publicKeyFingerprint(nextPublicKey);
+  if (previousFingerprint !== nextFingerprint) verifyRotationAuthorization(rotation, previousPublicKey, nextPublicKey);
+  else if (rotation) throw new Error('A rotation authorization is not allowed when the signing key is unchanged.');
   return {
-    ...evidence,
+    sequence: (previousBundle.continuity?.sequence || 1) + 1,
+    previousBundleDigest: bundleDigest(previousBundle),
+    previousEvidenceDigest: previousBundle.integrity.digest,
+    previousKeyFingerprint: previousBundle.integrity.publicKeyFingerprint,
+    ...(rotation ? { rotation } : {})
+  };
+}
+
+
+function verifyBundleSignature(bundle, publicKey) {
+  const { integrity, ...signedEvidence } = bundle || {};
+  if (!integrity || integrity.digestAlgorithm !== 'SHA-256' || integrity.signatureAlgorithm !== 'Ed25519' || !/^[a-f0-9]{64}$/.test(integrity.digest || '')) throw new Error('Invalid evidence integrity metadata.');
+  if (publicKeyFingerprint(publicKey) !== integrity.publicKeyFingerprint) throw new Error('Evidence signing key mismatch.');
+  const digest = evidenceDigest(signedEvidence);
+  if (digest !== integrity.digest) throw new Error('Evidence digest mismatch.');
+  if (!verify(null, Buffer.from(digest, 'hex'), publicKey, Buffer.from(integrity.signature, 'base64url'))) throw new Error('Evidence signature is invalid.');
+  return digest;
+}
+
+export function createSignedBundle(evidence, privateKey, continuity) {
+  const signedEvidence = continuity ? { ...evidence, continuity } : evidence;
+  const digest = evidenceDigest(signedEvidence), publicKey = createPublicKey(privateKey);
+  return {
+    ...signedEvidence,
     integrity: {
       digestAlgorithm: 'SHA-256', digest,
       signatureAlgorithm: 'Ed25519',
@@ -33,13 +82,17 @@ export function createSignedBundle(evidence, privateKey) {
   };
 }
 
-export function verifySignedBundle(bundle, publicKey) {
-  const { integrity, ...evidence } = bundle || {};
-  if (!integrity || integrity.digestAlgorithm !== 'SHA-256' || integrity.signatureAlgorithm !== 'Ed25519' || !/^[a-f0-9]{64}$/.test(integrity.digest || '')) throw new Error('Invalid evidence integrity metadata.');
-  const digest = evidenceDigest(evidence);
-  if (digest !== integrity.digest) throw new Error('Evidence digest mismatch.');
-  if (publicKeyFingerprint(publicKey) !== integrity.publicKeyFingerprint) throw new Error('Evidence signing key mismatch.');
-  if (!verify(null, Buffer.from(digest, 'hex'), publicKey, Buffer.from(integrity.signature, 'base64url'))) throw new Error('Evidence signature is invalid.');
+export function verifySignedBundle(bundle, publicKey, previousBundle, previousPublicKey) {
+  const { integrity, continuity, ...evidence } = bundle || {};
+  const digest = verifyBundleSignature(bundle, publicKey);
+  if (continuity) {
+    if (!previousBundle || !previousPublicKey) throw new Error('Previous bundle and public key are required for continuity verification.');
+    verifyBundleSignature(previousBundle, previousPublicKey);
+    if (continuity.previousBundleDigest !== bundleDigest(previousBundle) || continuity.previousEvidenceDigest !== previousBundle.integrity.digest || continuity.previousKeyFingerprint !== previousBundle.integrity.publicKeyFingerprint) throw new Error('Evidence continuity link is invalid.');
+    if (continuity.sequence !== (previousBundle.continuity?.sequence || 1) + 1) throw new Error('Evidence continuity sequence is invalid.');
+    if (publicKeyFingerprint(publicKey) !== publicKeyFingerprint(previousPublicKey)) verifyRotationAuthorization(continuity.rotation, previousPublicKey, publicKey);
+    else if (continuity.rotation) throw new Error('Unexpected key-rotation authorization.');
+  }
   return { valid: true, digest, publicKeyFingerprint: integrity.publicKeyFingerprint, records: Object.values(evidence.sections || {}).reduce((count, rows) => count + rows.length, 0) };
 }
 
@@ -62,6 +115,13 @@ function argument(args, name) {
   return value;
 }
 
+
+function optionalArgument(args, name) {
+  const index = args.indexOf(`--${name}`), value = index >= 0 ? args[index + 1] : '';
+  if (index >= 0 && (!value || value.startsWith('--'))) throw new Error(`--${name} requires a value.`);
+  return value;
+}
+
 function writeExclusive(path, contents) {
   const target = resolve(path);
   if (existsSync(target)) throw new Error(`Refusing to overwrite existing evidence: ${target}`);
@@ -76,12 +136,29 @@ export function main(args = process.argv.slice(2)) {
   const [command] = args;
   if (command === 'export') {
     const output = argument(args, 'output'), privateKey = readFileSync(resolve(argument(args, 'private-key')), 'utf8');
-    const bundle = createSignedBundle(collectEvidence(), privateKey), target = writeExclusive(output, `${JSON.stringify(bundle, null, 2)}\n`);
+    const previousPath = optionalArgument(args, 'previous-bundle');
+    let continuity;
+    if (previousPath) {
+      const previousBundle = JSON.parse(readFileSync(resolve(previousPath), 'utf8'));
+      const previousPublicKey = readFileSync(resolve(argument(args, 'previous-public-key')), 'utf8');
+      const nextPublicKey = createPublicKey(privateKey);
+      let rotation;
+      if (publicKeyFingerprint(previousPublicKey) !== publicKeyFingerprint(nextPublicKey)) {
+        const previousPrivateKey = readFileSync(resolve(argument(args, 'previous-private-key')), 'utf8');
+        rotation = createRotationAuthorization(previousPrivateKey, nextPublicKey, new Date().toISOString(), argument(args, 'rotation-reason'));
+      }
+      continuity = createContinuity(previousBundle, previousPublicKey, nextPublicKey, rotation);
+    }
+    const bundle = createSignedBundle(collectEvidence(), privateKey, continuity), target = writeExclusive(output, `${JSON.stringify(bundle, null, 2)}\n`);
     process.stdout.write(`${JSON.stringify({ status: 'exported', path: target, digest: bundle.integrity.digest, publicKeyFingerprint: bundle.integrity.publicKeyFingerprint })}\n`);
   } else if (command === 'verify') {
     const bundle = JSON.parse(readFileSync(resolve(argument(args, 'bundle')), 'utf8')), publicKey = readFileSync(resolve(argument(args, 'public-key')), 'utf8');
-    process.stdout.write(`${JSON.stringify({ status: 'verified', ...verifySignedBundle(bundle, publicKey) })}\n`);
-  } else throw new Error('Use: export --output FILE --private-key FILE, or verify --bundle FILE --public-key FILE.');
+    const previousPath = optionalArgument(args, 'previous-bundle');
+    const previousBundle = previousPath ? JSON.parse(readFileSync(resolve(previousPath), 'utf8')) : undefined;
+    const previousPublicPath = optionalArgument(args, 'previous-public-key');
+    const previousPublicKey = previousPublicPath ? readFileSync(resolve(previousPublicPath), 'utf8') : undefined;
+    process.stdout.write(`${JSON.stringify({ status: 'verified', ...verifySignedBundle(bundle, publicKey, previousBundle, previousPublicKey) })}\n`);
+  } else throw new Error('Use export or verify. Add --previous-bundle and --previous-public-key for continuity; key changes also require --previous-private-key and --rotation-reason.');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
