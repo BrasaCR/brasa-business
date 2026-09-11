@@ -8,5 +8,6 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*", "/health"]
   },
-  "observability": { "enabled": true, "logs": { "head_sampling_rate": 1 }, "traces": { "enabled": true, "head_sampling_rate": 0.05 } }
+  "observability": { "enabled": true, "logs": { "head_sampling_rate": 1 }, "traces": { "enabled": true, "head_sampling_rate": 0.05 } },
+  "env": { "staging": { "name": "brasa-business-staging", "workers_dev": true } }
 }

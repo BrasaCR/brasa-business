@@ -11,5 +11,5 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci --ignore-scripts
       - run: npm test
-      - run: npx wrangler deploy --dry-run --outdir .worker-dry-run
+      - run: npm run package:staging
       - run: npm audit --audit-level=high
