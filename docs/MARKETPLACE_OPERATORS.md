@@ -39,6 +39,17 @@ The export contains seven explicitly ordered governance sections, including the 
 
 For every later export, link it to the immediately preceding bundle. With an unchanged signing key, add `--previous-bundle PREVIOUS.json --previous-public-key CURRENT-PUBLIC.pem` to `export` and `verify`. For a key change, export also requires `--previous-private-key OLD-PRIVATE.pem --rotation-reason "Scheduled custodian rotation"`; verification uses the new public key plus the preceding bundle and old public key. The resulting continuity record includes a monotonically increasing sequence, the preceding bundle and evidence digests, and the preceding fingerprint. A key change additionally contains an authorization signed by the established old key. Archive every bundle and public key: verification proves the immediate link, while the archive preserves the full chain.
 
+#### Compromised signing key
+
+Do not use ordinary rotation when the established signing key may be compromised. Freeze evidence exports, preserve the last independently verified bundle, open an incident record, and remove access to the suspected key. Two previously designated recovery custodians must then authorize a successor trust root with distinct offline Ed25519 keys:
+
+```text
+npm run audit:evidence -- recover-root --output RECOVERED.json --private-key SUCCESSOR-PRIVATE.pem --last-trusted-bundle LAST-TRUSTED.json --compromised-public-key COMPROMISED-PUBLIC.pem --recovery-private-key-a CUSTODIAN-A-PRIVATE.pem --recovery-private-key-b CUSTODIAN-B-PRIVATE.pem --incident INC-YYYY-NNNN --recovery-reason "Compromised signing key formally retired"
+npm run audit:evidence -- verify-recovery --bundle RECOVERED.json --public-key SUCCESSOR-PUBLIC.pem --last-trusted-bundle LAST-TRUSTED.json --compromised-public-key COMPROMISED-PUBLIC.pem --recovery-public-key-a CUSTODIAN-A-PUBLIC.pem --recovery-public-key-b CUSTODIAN-B-PUBLIC.pem
+```
+
+The recovery authorization binds the incident ID, last trusted bundle and evidence digests, compromised fingerprint, successor fingerprint, timestamp, and reason. Both custodians sign the same canonical declaration. The recovered bundle starts a new trust root signed by the successor key; retain it alongside the terminated chain rather than presenting the two as uninterrupted. Publish the incident ID, successor fingerprint, and recovery-custodian fingerprints through an independently controlled channel. After verification, destroy or quarantine all usable copies of the compromised key according to the incident policy. Never place signing or recovery private keys in the repository, Cloudflare Worker variables, logs, tickets, or chat.
+
 Suspension is fail-closed: Business blocks the operator first, then Identity revokes every active session and removes unused invitations. Resuming access never restores old credentials; issue a fresh invitation afterward.
 
 Emergency revocation requires the two configured owners. One owner initiates a request for a non-owner operator; the other must confirm within 15 minutes. Confirmation suspends Business authorization first and then revokes Identity credentials. Both decisions receive separate immutable events. Emergency owners cannot revoke themselves through this workflow because that would defeat two-person control; use the documented Cloudflare break-glass procedure for a compromised owner.

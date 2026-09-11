@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { generateKeyPairSync } from 'node:crypto';
 import test from 'node:test';
-import { canonicalJson, collectEvidence, createContinuity, createRotationAuthorization, createSignedBundle, evidenceDigest, verifySignedBundle } from '../scripts/audit-evidence.mjs';
+import { canonicalJson, collectEvidence, createContinuity, createRecoveredRoot, createRecoveryAuthorization, createRotationAuthorization, createSignedBundle, evidenceDigest, verifyRecoveredRoot, verifySignedBundle } from '../scripts/audit-evidence.mjs';
 
 test('canonical JSON and evidence digests do not depend on object key order', () => {
   assert.equal(canonicalJson({ z: 1, a: { y: 2, x: 3 } }), '{"a":{"x":3,"y":2},"z":1}');
@@ -47,4 +47,20 @@ test('requires the established key to authorize signing-key rotation', () => {
   const unauthorized = generateKeyPairSync('ed25519');
   const badRotation = createRotationAuthorization(unauthorized.privateKey, next.publicKey, '2026-09-11T12:00:00.000Z', 'Unauthorized custodian replacement');
   assert.throws(() => createContinuity(first, previous.publicKey, next.publicKey, badRotation), /does not match|invalid/);
+});
+
+test('requires two independent custodians to authorize a recovered trust root', () => {
+  const compromised = generateKeyPairSync('ed25519'), successor = generateKeyPairSync('ed25519');
+  const custodianA = generateKeyPairSync('ed25519'), custodianB = generateKeyPairSync('ed25519');
+  const lastTrusted = createSignedBundle({ format: 'brasa-audit-evidence/v1', sections: {} }, compromised.privateKey);
+  const recovery = createRecoveryAuthorization(lastTrusted, compromised.publicKey, successor.publicKey, [custodianA.privateKey, custodianB.privateKey], '2026-09-11T12:00:00.000Z', 'INC-2026-0042', 'Compromised signing key formally retired');
+  const recoveredRoot = createRecoveredRoot({ format: 'brasa-audit-evidence/v1', sections: {} }, successor.privateKey, recovery);
+  const result = verifyRecoveredRoot(recoveredRoot, successor.publicKey, lastTrusted, compromised.publicKey, [custodianA.publicKey, custodianB.publicKey]);
+  assert.equal(result.valid, true);
+  assert.equal(result.incidentId, 'INC-2026-0042');
+  assert.throws(() => createRecoveryAuthorization(lastTrusted, compromised.publicKey, successor.publicKey, [custodianA.privateKey, custodianA.privateKey], '2026-09-11T12:00:00.000Z', 'INC-2026-0042', 'Compromised signing key formally retired'), /distinct keys/);
+  const outsider = generateKeyPairSync('ed25519');
+  assert.throws(() => verifyRecoveredRoot(recoveredRoot, successor.publicKey, lastTrusted, compromised.publicKey, [custodianA.publicKey, outsider.publicKey]), /invalid|does not match/);
+  const wrongBoundary = createSignedBundle({ format: 'brasa-audit-evidence/v1', createdAt: '2026-09-11T11:59:59.000Z', sections: {} }, compromised.privateKey);
+  assert.throws(() => verifyRecoveredRoot(recoveredRoot, successor.publicKey, wrongBoundary, compromised.publicKey, [custodianA.publicKey, custodianB.publicKey]), /does not match/);
 });

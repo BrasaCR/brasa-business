@@ -43,6 +43,60 @@ export function verifyRotationAuthorization(rotation, previousPublicKey, nextPub
   return true;
 }
 
+function recoveryPayload(lastTrustedBundle, compromisedPublicKey, successorPublicKey, createdAt, incidentId, reason) {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{5,63}$/.test(incidentId || '')) throw new Error('Incident ID must be 6-64 safe characters.');
+  if (!reason || reason.trim().length < 12 || reason.trim().length > 240) throw new Error('Recovery reason must be 12-240 characters.');
+  verifyBundleSignature(lastTrustedBundle, compromisedPublicKey);
+  const compromisedFingerprint = publicKeyFingerprint(compromisedPublicKey);
+  if (lastTrustedBundle?.integrity?.publicKeyFingerprint !== compromisedFingerprint) throw new Error('Last trusted bundle does not match the compromised key.');
+  return {
+    format: 'brasa-audit-recovery/v1', incidentId, createdAt, reason: reason.trim(),
+    compromisedKeyFingerprint: compromisedFingerprint,
+    successorKeyFingerprint: publicKeyFingerprint(successorPublicKey),
+    lastTrustedBundleDigest: bundleDigest(lastTrustedBundle),
+    lastTrustedEvidenceDigest: lastTrustedBundle.integrity.digest
+  };
+}
+
+export function createRecoveryAuthorization(lastTrustedBundle, compromisedPublicKey, successorPublicKey, recoveryPrivateKeys, createdAt, incidentId, reason) {
+  if (!Array.isArray(recoveryPrivateKeys) || recoveryPrivateKeys.length !== 2) throw new Error('Exactly two recovery custodians are required.');
+  const payload = recoveryPayload(lastTrustedBundle, compromisedPublicKey, successorPublicKey, createdAt, incidentId, reason);
+  const approvals = recoveryPrivateKeys.map(privateKey => ({
+    publicKeyFingerprint: publicKeyFingerprint(createPublicKey(privateKey)),
+    signatureAlgorithm: 'Ed25519',
+    signature: sign(null, Buffer.from(canonicalJson(payload)), privateKey).toString('base64url')
+  })).sort((a, b) => a.publicKeyFingerprint.localeCompare(b.publicKeyFingerprint));
+  if (approvals[0].publicKeyFingerprint === approvals[1].publicKeyFingerprint) throw new Error('Recovery custodians must use distinct keys.');
+  return { ...payload, approvals };
+}
+
+export function verifyRecoveryAuthorization(recovery, lastTrustedBundle, compromisedPublicKey, successorPublicKey, recoveryPublicKeys) {
+  if (!recovery || !Array.isArray(recovery.approvals) || recovery.approvals.length !== 2 || !Array.isArray(recoveryPublicKeys) || recoveryPublicKeys.length !== 2) throw new Error('Exactly two recovery approvals and public keys are required.');
+  const { approvals, ...payload } = recovery;
+  const expected = recoveryPayload(lastTrustedBundle, compromisedPublicKey, successorPublicKey, recovery.createdAt, recovery.incidentId, recovery.reason);
+  if (canonicalJson(payload) !== canonicalJson(expected)) throw new Error('Recovery authorization does not match the trusted evidence boundary.');
+  const keys = new Map(recoveryPublicKeys.map(key => [publicKeyFingerprint(key), key]));
+  if (keys.size !== 2) throw new Error('Recovery custodian keys must be distinct.');
+  for (const approval of approvals) {
+    const key = keys.get(approval.publicKeyFingerprint);
+    if (!key || approval.signatureAlgorithm !== 'Ed25519' || !verify(null, Buffer.from(canonicalJson(payload)), key, Buffer.from(approval.signature, 'base64url'))) throw new Error('Recovery approval is invalid.');
+    keys.delete(approval.publicKeyFingerprint);
+  }
+  if (keys.size !== 0) throw new Error('Recovery approval set does not match the custodians.');
+  return true;
+}
+
+export function createRecoveredRoot(evidence, successorPrivateKey, recovery) {
+  if (!recovery) throw new Error('Recovery authorization is required.');
+  return createSignedBundle({ ...evidence, recovery }, successorPrivateKey);
+}
+
+export function verifyRecoveredRoot(bundle, successorPublicKey, lastTrustedBundle, compromisedPublicKey, recoveryPublicKeys) {
+  verifySignedBundle(bundle, successorPublicKey);
+  verifyRecoveryAuthorization(bundle.recovery, lastTrustedBundle, compromisedPublicKey, successorPublicKey, recoveryPublicKeys);
+  return { valid: true, incidentId: bundle.recovery.incidentId, successorKeyFingerprint: bundle.recovery.successorKeyFingerprint };
+}
+
 export function createContinuity(previousBundle, previousPublicKey, nextPublicKey, rotation) {
   verifyBundleSignature(previousBundle, previousPublicKey);
   const previousFingerprint = publicKeyFingerprint(previousPublicKey), nextFingerprint = publicKeyFingerprint(nextPublicKey);
@@ -158,7 +212,24 @@ export function main(args = process.argv.slice(2)) {
     const previousPublicPath = optionalArgument(args, 'previous-public-key');
     const previousPublicKey = previousPublicPath ? readFileSync(resolve(previousPublicPath), 'utf8') : undefined;
     process.stdout.write(`${JSON.stringify({ status: 'verified', ...verifySignedBundle(bundle, publicKey, previousBundle, previousPublicKey) })}\n`);
-  } else throw new Error('Use export or verify. Add --previous-bundle and --previous-public-key for continuity; key changes also require --previous-private-key and --rotation-reason.');
+  } else if (command === 'recover-root') {
+    const successorPrivateKey = readFileSync(resolve(argument(args, 'private-key')), 'utf8');
+    const successorPublicKey = createPublicKey(successorPrivateKey);
+    const lastTrustedBundle = JSON.parse(readFileSync(resolve(argument(args, 'last-trusted-bundle')), 'utf8'));
+    const compromisedPublicKey = readFileSync(resolve(argument(args, 'compromised-public-key')), 'utf8');
+    const recoveryPrivateKeys = ['recovery-private-key-a', 'recovery-private-key-b'].map(name => readFileSync(resolve(argument(args, name)), 'utf8'));
+    const recovery = createRecoveryAuthorization(lastTrustedBundle, compromisedPublicKey, successorPublicKey, recoveryPrivateKeys, new Date().toISOString(), argument(args, 'incident'), argument(args, 'recovery-reason'));
+    const bundle = createRecoveredRoot(collectEvidence(), successorPrivateKey, recovery);
+    const target = writeExclusive(argument(args, 'output'), `${JSON.stringify(bundle, null, 2)}\n`);
+    process.stdout.write(`${JSON.stringify({ status: 'recovered-root-exported', path: target, incidentId: recovery.incidentId, digest: bundle.integrity.digest, publicKeyFingerprint: bundle.integrity.publicKeyFingerprint })}\n`);
+  } else if (command === 'verify-recovery') {
+    const bundle = JSON.parse(readFileSync(resolve(argument(args, 'bundle')), 'utf8'));
+    const successorPublicKey = readFileSync(resolve(argument(args, 'public-key')), 'utf8');
+    const lastTrustedBundle = JSON.parse(readFileSync(resolve(argument(args, 'last-trusted-bundle')), 'utf8'));
+    const compromisedPublicKey = readFileSync(resolve(argument(args, 'compromised-public-key')), 'utf8');
+    const recoveryPublicKeys = ['recovery-public-key-a', 'recovery-public-key-b'].map(name => readFileSync(resolve(argument(args, name)), 'utf8'));
+    process.stdout.write(`${JSON.stringify({ status: 'recovery-verified', ...verifyRecoveredRoot(bundle, successorPublicKey, lastTrustedBundle, compromisedPublicKey, recoveryPublicKeys) })}\n`);
+  } else throw new Error('Use export, verify, recover-root, or verify-recovery. Recovery requires two distinct offline custodian keys.');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
