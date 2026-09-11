@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { enforceAuditRetention } from '../src/audit-retention.js';
 
-function database(retentionDays, changes = [2, 3, 4]) {
+function database(retentionDays, changes = [2, 3, 4, 5]) {
   const statements = [], batches = [];
   return {
     statements, batches,
@@ -22,9 +22,9 @@ test('does nothing when no retention policy is approved', async () => {
 
 test('deletes only audit events older than the approved cutoff', async () => {
   const db = database(365), result = await enforceAuditRetention({ PROVIDERS_DB: db }, Date.parse('2026-09-11T00:00:00Z'));
-  assert.equal(result.status, 'applied'); assert.equal(result.cutoff, '2025-09-11T00:00:00.000Z'); assert.equal(result.deleted, 9);
-  assert.equal(db.batches[0].length, 3);
-  for (const statement of db.batches[0]) { assert.match(statement.sql, /^DELETE FROM .*_audit_events WHERE created_at < \?$/); assert.deepEqual(statement.values, [result.cutoff]); }
+  assert.equal(result.status, 'applied'); assert.equal(result.cutoff, '2025-09-11T00:00:00.000Z'); assert.equal(result.deleted, 14);
+  assert.equal(db.batches[0].length, 4);
+  for (const statement of db.batches[0]) { assert.match(statement.sql, /^DELETE FROM .*_(?:audit|revocation)_events WHERE created_at < \?$/); assert.deepEqual(statement.values, [result.cutoff]); }
 });
 
 test('fails closed for an invalid retention policy', async () => {

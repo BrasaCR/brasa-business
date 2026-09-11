@@ -16,6 +16,8 @@ npm run operator -- request-admin BRA-OPERATOR-AB12CD34 --requested-by BRA-OPERA
 npm run operator -- approve-admin REQUEST-UUID --approved-by BRA-OPERATOR-CD34EF56 --reason "Independent approval completed"
 npm run operator -- configure-governance --retention-days 730 --primary BRA-OPERATOR-AB12CD34 --backup BRA-OPERATOR-CD34EF56 --actor BRA-OPERATOR-AB12CD34 --reason "Annual security policy review"
 npm run operator -- readiness
+npm run operator -- emergency-start BRA-OPERATOR-EF56GH78 --actor BRA-OPERATOR-AB12CD34 --reason "Suspected credential compromise"
+npm run operator -- emergency-confirm REQUEST-UUID --actor BRA-OPERATOR-CD34EF56 --reason "Independent incident confirmation"
 ```
 
 Roles are intentionally narrow: reviewers inspect queues and resolve reports; verifiers can also create and change provider records; administrators currently have the same application permissions as verifiers and exist for future administrative separation. Direct administrator creation and promotion are blocked. An active verifier must request their own elevation, and a different active verifier or administrator must approve the expiring request within 24 hours.
@@ -25,6 +27,8 @@ The invitation plaintext is shown once. Share it only through an approved secure
 The staging Worker enforces the approved audit-retention period every day at 03:17 UTC. If no policy is configured, it performs no deletion. A malformed or sub-minimum policy fails closed without deleting anything. When configured, only provider, operator, and security audit events strictly older than the calculated 365–2555 day cutoff are removed; operational logs contain only the aggregate deletion count and cutoff.
 
 Suspension is fail-closed: Business blocks the operator first, then Identity revokes every active session and removes unused invitations. Resuming access never restores old credentials; issue a fresh invitation afterward.
+
+Emergency revocation requires the two configured owners. One owner initiates a request for a non-owner operator; the other must confirm within 15 minutes. Confirmation suspends Business authorization first and then revokes Identity credentials. Both decisions receive separate immutable events. Emergency owners cannot revoke themselves through this workflow because that would defeat two-person control; use the documented Cloudflare break-glass procedure for a compromised owner.
 
 This tool currently targets the explicitly named staging databases only. It has no production mode. The `readiness` command always reports phishing-resistant authentication as incomplete because the one-time invitation flow is not phishing-resistant. Configuring a retention period and two emergency owners records governance intent but does not override that production blocker. Production activation requires identity-bound approval actors, phishing-resistant authentication, approved retention enforcement, and two documented emergency revocation owners.
 

@@ -89,6 +89,12 @@ function operatorRows(execute, displayId) {
   return execute(BUSINESS_DB, `SELECT display_id,name,role,status,created_at,updated_at FROM marketplace_operators WHERE display_id=${sqlText(displayId)} LIMIT 1`);
 }
 
+function emergencyOwners(execute) {
+  const policy = execute(BUSINESS_DB, 'SELECT emergency_primary_display_id AS primaryId,emergency_backup_display_id AS backupId FROM marketplace_security_governance WHERE id=1')[0] || {};
+  if (!policy.primaryId || !policy.backupId || policy.primaryId === policy.backupId) throw new Error('Two distinct emergency owners must be configured.');
+  return policy;
+}
+
 export function createOperatorAdmin({ execute = createD1Executor(), now = () => new Date() } = {}) {
   const requireOperator = displayId => {
     const rows = operatorRows(execute, displayId);
@@ -184,6 +190,37 @@ export function createOperatorAdmin({ execute = createD1Executor(), now = () => 
       const owners = policy.emergency_primary_display_id && policy.emergency_backup_display_id ? execute(BUSINESS_DB, `SELECT count(*) AS count FROM marketplace_operators WHERE display_id IN (${sqlText(policy.emergency_primary_display_id)},${sqlText(policy.emergency_backup_display_id)}) AND status='active'`)[0]?.count === 2 : false;
       const checks = { dualApprovalForAdministrator: true, auditRetentionPolicy: Number(policy.audit_retention_days) >= 365, auditRetentionAutomaticallyEnforced: true, twoActiveEmergencyOwners: owners, phishingResistantAuthentication: false };
       return { environment: 'staging', productionReady: Object.values(checks).every(Boolean), checks, reviewedAt: policy.reviewed_at || null };
+    },
+    emergencyStart({ displayId, actor, reason }) {
+      displayId = validateDisplayId(displayId); actor = validateDisplayId(actor); reason = validateReason(reason);
+      const target = requireOperator(displayId), owners = emergencyOwners(execute);
+      if (![owners.primaryId, owners.backupId].includes(actor)) throw new Error('Initiator must be a configured emergency owner.');
+      requireOperator(actor);
+      if ([owners.primaryId, owners.backupId].includes(displayId)) throw new Error('Emergency owners require the documented Cloudflare break-glass procedure.');
+      if (target.status !== 'active') throw new Error('Target operator is not active.');
+      const existing = execute(BUSINESS_DB, `SELECT id FROM marketplace_emergency_revocations WHERE target_display_id=${sqlText(displayId)} AND status='pending' AND expires_at>datetime('now') LIMIT 1`);
+      if (existing.length) throw new Error('An active emergency revocation already exists for this operator.');
+      const requestId = randomUUID(), expiresAt = new Date(now().getTime() + 15 * 60_000).toISOString();
+      execute(BUSINESS_DB, `INSERT INTO marketplace_emergency_revocations(id,target_display_id,initiated_by,reason,expires_at) VALUES (${sqlText(requestId)},${sqlText(displayId)},${sqlText(actor)},${sqlText(reason)},${sqlText(expiresAt)}); INSERT INTO marketplace_emergency_revocation_events(id,request_id,target_display_id,action,actor_display_id,reason) VALUES (${sqlText(randomUUID())},${sqlText(requestId)},${sqlText(displayId)},'initiated',${sqlText(actor)},${sqlText(reason)})`);
+      return { requestId, displayId, status: 'pending', expiresAt, next: 'The other emergency owner must confirm within 15 minutes.' };
+    },
+    emergencyConfirm({ requestId, actor, reason }) {
+      if (!/^[0-9a-f-]{36}$/i.test(String(requestId || ''))) throw new Error('A valid request ID is required.');
+      actor = validateDisplayId(actor); reason = validateReason(reason);
+      const owners = emergencyOwners(execute); requireOperator(actor);
+      if (![owners.primaryId, owners.backupId].includes(actor)) throw new Error('Confirmer must be a configured emergency owner.');
+      const rows = execute(BUSINESS_DB, `SELECT id,target_display_id AS targetId,initiated_by AS initiatedBy,status,expires_at AS expiresAt FROM marketplace_emergency_revocations WHERE id=${sqlText(requestId)} LIMIT 1`);
+      if (rows.length !== 1) throw new Error('Emergency revocation was not found.');
+      const request = rows[0];
+      if (request.status !== 'pending' || Date.parse(request.expiresAt) <= now().getTime()) throw new Error('Emergency revocation is no longer active.');
+      if (request.initiatedBy === actor) throw new Error('The confirmer must be different from the initiator.');
+      const expectedOther = request.initiatedBy === owners.primaryId ? owners.backupId : owners.primaryId;
+      if (actor !== expectedOther) throw new Error('Confirmation must come from the other configured emergency owner.');
+      const target = requireOperator(request.targetId);
+      if (target.status !== 'active') throw new Error('Target operator is not active.');
+      execute(BUSINESS_DB, `UPDATE marketplace_operators SET status='suspended',updated_at=datetime('now') WHERE display_id=${sqlText(request.targetId)} AND status='active'; UPDATE marketplace_emergency_revocations SET status='executed',confirmed_by=${sqlText(actor)},confirmation_reason=${sqlText(reason)},executed_at=datetime('now') WHERE id=${sqlText(requestId)} AND status='pending'; ${auditSql(request.targetId, 'suspend', reason, { emergencyRequestId: requestId })}; INSERT INTO marketplace_emergency_revocation_events(id,request_id,target_display_id,action,actor_display_id,reason) VALUES (${sqlText(randomUUID())},${sqlText(requestId)},${sqlText(request.targetId)},'executed',${sqlText(actor)},${sqlText(reason)})`);
+      execute(IDENTITY_DB, `UPDATE business_operator_sessions SET revoked_at=datetime('now') WHERE display_id=${sqlText(request.targetId)} AND revoked_at IS NULL; DELETE FROM business_operator_invitations WHERE display_id=${sqlText(request.targetId)} AND consumed_at IS NULL`);
+      return { requestId, displayId: request.targetId, status: 'suspended', confirmedBy: actor, credentials: 'Active sessions revoked and unused invitations removed.' };
     }
   };
 }
@@ -202,7 +239,9 @@ export async function main(args = process.argv.slice(2), admin = createOperatorA
   else if (command === 'approve-admin') result = admin.approveAdmin({ requestId: positional(args), approvedBy: option(args, 'approved-by'), reason: option(args, 'reason') });
   else if (command === 'configure-governance') result = admin.configureGovernance({ retentionDays: option(args, 'retention-days'), primary: option(args, 'primary'), backup: option(args, 'backup'), actor: option(args, 'actor'), reason: option(args, 'reason') });
   else if (command === 'readiness') result = admin.readiness();
-  else throw new Error('Use: create, invite, list, audit, role, suspend, resume, request-admin, approve-admin, configure-governance, or readiness.');
+  else if (command === 'emergency-start') result = admin.emergencyStart({ displayId: positional(args), actor: option(args, 'actor'), reason: option(args, 'reason') });
+  else if (command === 'emergency-confirm') result = admin.emergencyConfirm({ requestId: positional(args), actor: option(args, 'actor'), reason: option(args, 'reason') });
+  else throw new Error('Use: create, invite, list, audit, role, suspend, resume, request-admin, approve-admin, configure-governance, readiness, emergency-start, or emergency-confirm.');
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
 

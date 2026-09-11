@@ -21,6 +21,10 @@ try {
   admin.configureGovernance({ retentionDays: 730, primary: displayId, backup: backup.displayId, actor: displayId, reason: 'Verify security governance configuration' });
   const readiness = admin.readiness();
   if (readiness.productionReady || !readiness.checks.dualApprovalForAdministrator || !readiness.checks.auditRetentionPolicy || !readiness.checks.twoActiveEmergencyOwners || readiness.checks.phishingResistantAuthentication) throw new Error('Production readiness gate did not fail closed.');
+  const emergency = admin.emergencyStart({ displayId: approver.displayId, actor: displayId, reason: 'Verify emergency revocation initiation' });
+  admin.emergencyConfirm({ requestId: emergency.requestId, actor: backup.displayId, reason: 'Verify independent emergency confirmation' });
+  const emergencyTarget = admin.list().find(item => item.display_id === approver.displayId);
+  if (emergencyTarget?.status !== 'suspended') throw new Error('Emergency target remained active.');
   admin.suspend({ displayId, reason: 'Verify fail-closed suspension' });
 
   const blocked = admin.list().find(item => item.display_id === displayId);
@@ -33,11 +37,11 @@ try {
   for (const action of ['create', 'invite', 'role_change', 'suspend', 'resume']) if (!actions.includes(action)) throw new Error(`Missing ${action} audit event.`);
   if (JSON.stringify(admin.audit({ displayId })).includes(invited.invitation)) throw new Error('Audit trail contained a plaintext invitation.');
 
-  process.stdout.write(`${JSON.stringify({ workflow: 'operator-security-governance', actions: actions.length, dualApproval: true, productionGate: 'blocked-as-designed', credentialsRevoked: true, status: 'passed' })}\n`);
+  process.stdout.write(`${JSON.stringify({ workflow: 'operator-security-governance', actions: actions.length, dualApproval: true, twoOwnerEmergencyRevocation: true, productionGate: 'blocked-as-designed', credentialsRevoked: true, status: 'passed' })}\n`);
 } finally {
   if (displayIds.length) {
     const ids = displayIds.map(sqlText).join(',');
     execute('brasa-identity-staging', `DELETE FROM business_operator_sessions WHERE display_id IN (${ids}); DELETE FROM business_operator_invitations WHERE display_id IN (${ids})`);
-    execute('brasa-business-marketplace-staging', `DELETE FROM marketplace_security_audit_events WHERE actor_display_id IN (${ids}) OR subject_id IN (${ids}); DELETE FROM marketplace_admin_role_requests WHERE target_display_id IN (${ids}) OR requested_by IN (${ids}) OR approved_by IN (${ids}); UPDATE marketplace_security_governance SET audit_retention_days=NULL,emergency_primary_display_id=NULL,emergency_backup_display_id=NULL,policy_reason=NULL,reviewed_at=NULL,updated_at=datetime('now') WHERE id=1; DELETE FROM marketplace_operator_audit_events WHERE display_id IN (${ids}); DELETE FROM marketplace_operators WHERE display_id IN (${ids})`);
+    execute('brasa-business-marketplace-staging', `DELETE FROM marketplace_emergency_revocation_events WHERE target_display_id IN (${ids}) OR actor_display_id IN (${ids}); DELETE FROM marketplace_emergency_revocations WHERE target_display_id IN (${ids}) OR initiated_by IN (${ids}) OR confirmed_by IN (${ids}); DELETE FROM marketplace_security_audit_events WHERE actor_display_id IN (${ids}) OR subject_id IN (${ids}); DELETE FROM marketplace_admin_role_requests WHERE target_display_id IN (${ids}) OR requested_by IN (${ids}) OR approved_by IN (${ids}); UPDATE marketplace_security_governance SET audit_retention_days=NULL,emergency_primary_display_id=NULL,emergency_backup_display_id=NULL,policy_reason=NULL,reviewed_at=NULL,updated_at=datetime('now') WHERE id=1; DELETE FROM marketplace_operator_audit_events WHERE display_id IN (${ids}); DELETE FROM marketplace_operators WHERE display_id IN (${ids})`);
   }
 }

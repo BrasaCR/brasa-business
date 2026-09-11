@@ -13,7 +13,8 @@ export async function enforceAuditRetention(env, scheduledTime = Date.now()) {
   const results = await env.PROVIDERS_DB.batch([
     env.PROVIDERS_DB.prepare('DELETE FROM provider_audit_events WHERE created_at < ?').bind(cutoff),
     env.PROVIDERS_DB.prepare('DELETE FROM marketplace_operator_audit_events WHERE created_at < ?').bind(cutoff),
-    env.PROVIDERS_DB.prepare('DELETE FROM marketplace_security_audit_events WHERE created_at < ?').bind(cutoff)
+    env.PROVIDERS_DB.prepare('DELETE FROM marketplace_security_audit_events WHERE created_at < ?').bind(cutoff),
+    env.PROVIDERS_DB.prepare('DELETE FROM marketplace_emergency_revocation_events WHERE created_at < ?').bind(cutoff)
   ]);
   const deleted = results.reduce((total, result) => total + Number(result.meta?.changes || 0), 0);
   return { status: 'applied', retentionDays, cutoff, deleted };
