@@ -5,6 +5,7 @@ import { authenticateOperator, listOperatorProviders, createOperatorProvider, ac
 import { enforceAuditRetention } from './audit-retention.js';
 import { listExperienceProviders } from './experience-providers.js';
 import { listExperienceLearning } from './learning.js';
+import { listExperiencePreparation } from './preparation.js';
 const json = (value, status = 200, extra = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json; charset=utf-8', ...extra } });
 const apiResponse = (value, status = 200, extra = {}) => json(value, status, { 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', ...extra });
 export default {
@@ -59,6 +60,12 @@ export default {
       if (!['GET','HEAD'].includes(request.method)) return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, HEAD' });
       let id; try { id = decodeURIComponent(experienceLearning[1]); } catch { return apiResponse({ error: 'invalid_experience_id' }, 400, { 'cache-control': 'no-store' }); }
       try { const response = await listExperienceLearning(request, env, id); return request.method === 'HEAD' ? new Response(null, response) : response; } catch (error) { console.error(JSON.stringify({ event: 'experience_learning_error', message: error instanceof Error ? error.message : 'unknown' })); return apiResponse({ error: 'education_service_unavailable' }, 503, { 'cache-control': 'no-store' }); }
+    }
+    const experiencePreparation = url.pathname.match(/^\/api\/v1\/experiences\/([^/]+)\/preparation$/);
+    if (experiencePreparation) {
+      if (!['GET','HEAD'].includes(request.method)) return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, HEAD' });
+      let id; try { id = decodeURIComponent(experiencePreparation[1]); } catch { return apiResponse({ error: 'invalid_experience_id' }, 400, { 'cache-control': 'no-store' }); }
+      try { const response = await listExperiencePreparation(request, env, id); return request.method === 'HEAD' ? new Response(null, response) : response; } catch (error) { console.error(JSON.stringify({ event: 'experience_government_service_error', message: error instanceof Error ? error.message : 'unknown' })); return apiResponse({ error: 'government_service_unavailable' }, 503, { 'cache-control': 'no-store' }); }
     }
     if (url.pathname.startsWith('/api/v1/experiences/')) {
       if (!['GET','HEAD'].includes(request.method)) return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, HEAD' });

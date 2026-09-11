@@ -23,7 +23,8 @@
       "vars": { "EDUCATION_PUBLIC_ORIGIN": "https://brasa-education-staging.richard-bad.workers.dev" },
       "services": [
         { "binding": "IDENTITY", "service": "brasa-identity-staging" },
-        { "binding": "EDUCATION", "service": "brasa-education-staging" }
+        { "binding": "EDUCATION", "service": "brasa-education-staging" },
+        { "binding": "GOVERNMENT", "service": "brasa-government-staging" }
       ]
     }
   }
