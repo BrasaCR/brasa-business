@@ -2,6 +2,7 @@ import { queryOpportunities } from './opportunities.js';
 import { businessExperience } from './experiences.js';
 import { listProviders, reportProvider } from './providers.js';
 import { authenticateOperator, listOperatorProviders, createOperatorProvider, actOnProvider, listOperatorReports, resolveOperatorReport } from './provider-operator.js';
+import { enforceAuditRetention } from './audit-retention.js';
 const json = (value, status = 200, extra = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json; charset=utf-8', ...extra } });
 const apiResponse = (value, status = 200, extra = {}) => json(value, status, { 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', ...extra });
 export default {
@@ -64,5 +65,14 @@ export default {
       try { return await reportProvider(request, env, providerId); } catch (error) { console.error(JSON.stringify({ event: 'provider_report_error', message: error instanceof Error ? error.message : 'unknown' })); return apiResponse({ error: 'provider_report_unavailable' }, 503, { 'cache-control': 'no-store' }); }
     }
     return env.ASSETS.fetch(request);
+  },
+  async scheduled(controller, env) {
+    try {
+      const result = await enforceAuditRetention(env, controller.scheduledTime);
+      console.log(JSON.stringify({ event: 'marketplace_audit_retention', ...result }));
+    } catch (error) {
+      console.error(JSON.stringify({ event: 'marketplace_audit_retention_failed', message: error instanceof Error ? error.message : 'unknown' }));
+      throw error;
+    }
   }
 };

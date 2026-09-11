@@ -13,6 +13,7 @@
     "staging": {
       "name": "brasa-business-staging",
       "workers_dev": true,
+      "triggers": { "crons": ["17 3 * * *"] },
       "d1_databases": [{
         "binding": "PROVIDERS_DB",
         "database_name": "brasa-business-marketplace-staging",

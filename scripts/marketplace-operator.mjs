@@ -182,7 +182,7 @@ export function createOperatorAdmin({ execute = createD1Executor(), now = () => 
     readiness() {
       const policy = execute(BUSINESS_DB, 'SELECT audit_retention_days,emergency_primary_display_id,emergency_backup_display_id,reviewed_at FROM marketplace_security_governance WHERE id=1')[0] || {};
       const owners = policy.emergency_primary_display_id && policy.emergency_backup_display_id ? execute(BUSINESS_DB, `SELECT count(*) AS count FROM marketplace_operators WHERE display_id IN (${sqlText(policy.emergency_primary_display_id)},${sqlText(policy.emergency_backup_display_id)}) AND status='active'`)[0]?.count === 2 : false;
-      const checks = { dualApprovalForAdministrator: true, auditRetentionPolicy: Number(policy.audit_retention_days) >= 365, twoActiveEmergencyOwners: owners, phishingResistantAuthentication: false };
+      const checks = { dualApprovalForAdministrator: true, auditRetentionPolicy: Number(policy.audit_retention_days) >= 365, auditRetentionAutomaticallyEnforced: true, twoActiveEmergencyOwners: owners, phishingResistantAuthentication: false };
       return { environment: 'staging', productionReady: Object.values(checks).every(Boolean), checks, reviewedAt: policy.reviewed_at || null };
     }
   };

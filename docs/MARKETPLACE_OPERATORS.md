@@ -22,6 +22,8 @@ Roles are intentionally narrow: reviewers inspect queues and resolve reports; ve
 
 The invitation plaintext is shown once. Share it only through an approved secure channel. Identity stores its SHA-256 digest and the invitation expires after 10 minutes by default (configurable from 5 to 60 minutes). Exchanging it creates a 15-minute browser-memory session.
 
+The staging Worker enforces the approved audit-retention period every day at 03:17 UTC. If no policy is configured, it performs no deletion. A malformed or sub-minimum policy fails closed without deleting anything. When configured, only provider, operator, and security audit events strictly older than the calculated 365–2555 day cutoff are removed; operational logs contain only the aggregate deletion count and cutoff.
+
 Suspension is fail-closed: Business blocks the operator first, then Identity revokes every active session and removes unused invitations. Resuming access never restores old credentials; issue a fresh invitation afterward.
 
 This tool currently targets the explicitly named staging databases only. It has no production mode. The `readiness` command always reports phishing-resistant authentication as incomplete because the one-time invitation flow is not phishing-resistant. Configuring a retention period and two emergency owners records governance intent but does not override that production blocker. Production activation requires identity-bound approval actors, phishing-resistant authentication, approved retention enforcement, and two documented emergency revocation owners.
