@@ -19,3 +19,10 @@ test('console document receives no-store and restrictive browser policy', async 
   const response = await worker.fetch(new Request('https://brasa.business/operator/marketplace'), { ASSETS: { fetch: async () => new Response(html, { headers: { 'content-type': 'text/html' } }) } });
   assert.equal(response.status, 200); assert.equal(response.headers.get('cache-control'), 'no-store'); assert.match(response.headers.get('content-security-policy'), /frame-ancestors 'none'/); assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
 });
+
+test('session exchange forwards the Cloudflare Access assertion only to Identity', async () => {
+  let forwarded;
+  const response = await worker.fetch(new Request('https://brasa.business/api/operator/v1/session/exchange', { method: 'POST', headers: { 'cf-access-jwt-assertion': 'signed.access.assertion' }, body: '{}' }), { PROVIDERS_DB: {}, IDENTITY: { fetch: async request => { forwarded = request.headers.get('cf-access-jwt-assertion'); return new Response('{}', { status: 401 }); } } });
+  assert.equal(response.status, 401);
+  assert.equal(forwarded, 'signed.access.assertion');
+});

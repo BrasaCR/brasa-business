@@ -18,7 +18,7 @@ export default {
       if (url.pathname === '/api/operator/v1/session/exchange') {
         if(request.method!=='POST')return apiResponse({error:'method_not_allowed'},405,{allow:'POST'});
         if(!env.IDENTITY)return apiResponse({error:'identity_service_unavailable'},503,{'cache-control':'no-store'});
-        return env.IDENTITY.fetch(new Request('https://brasa-identity/api/business/operator/exchange',{method:'POST',headers:{'content-type':'application/json'},body:request.body}));
+        return env.IDENTITY.fetch(new Request('https://brasa-identity/api/business/operator/exchange',{method:'POST',headers:{'content-type':'application/json','cf-access-jwt-assertion':request.headers.get('cf-access-jwt-assertion')||''},body:request.body,duplex:'half'}));
       }
       if (url.pathname === '/api/operator/v1/session/logout') {
         if(request.method!=='POST')return apiResponse({error:'method_not_allowed'},405,{allow:'POST'});
