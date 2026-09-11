@@ -1,12 +1,26 @@
 import { queryOpportunities } from './opportunities.js';
 import { businessExperience } from './experiences.js';
 import { listProviders, reportProvider } from './providers.js';
+import { authorizeOperator, listOperatorProviders, createOperatorProvider, actOnProvider, listOperatorReports, resolveOperatorReport } from './provider-operator.js';
 const json = (value, status = 200, extra = {}) => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json; charset=utf-8', ...extra } });
 const apiResponse = (value, status = 200, extra = {}) => json(value, status, { 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', ...extra });
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/health') return json({ ok: true, service: 'brasa-business', version: 1 });
+    if (url.pathname.startsWith('/api/operator/v1/')) {
+      const unauthorized = await authorizeOperator(request, env); if (unauthorized) return unauthorized;
+      if (!env.PROVIDERS_DB) return apiResponse({ error: 'provider_registry_unavailable' }, 503, { 'cache-control': 'no-store' });
+      if (url.pathname === '/api/operator/v1/providers') {
+        if (request.method === 'GET') return listOperatorProviders(request, env);
+        if (request.method === 'POST') return createOperatorProvider(request, env);
+        return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, POST' });
+      }
+      if (url.pathname === '/api/operator/v1/reports' && request.method === 'GET') return listOperatorReports(request, env);
+      const providerAction = url.pathname.match(/^\/api\/operator\/v1\/providers\/([^/]+)\/actions$/); if (providerAction && request.method === 'POST') return actOnProvider(request, env, decodeURIComponent(providerAction[1]));
+      const reportResolution = url.pathname.match(/^\/api\/operator\/v1\/reports\/([^/]+)\/resolve$/); if (reportResolution && request.method === 'POST') return resolveOperatorReport(request, env, decodeURIComponent(reportResolution[1]));
+      return apiResponse({ error: 'operator_route_not_found' }, 404, { 'cache-control': 'no-store' });
+    }
     if (url.pathname === '/api/v1/opportunities') {
       if (!['GET','HEAD'].includes(request.method)) return apiResponse({ error: 'method_not_allowed' }, 405, { allow: 'GET, HEAD' });
       const result = queryOpportunities(url.searchParams);

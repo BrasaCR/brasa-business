@@ -12,6 +12,12 @@ These records are pathways into business categories, not job listings, endorseme
 
 The staging registry starts empty. No real provider is published until its authority, provenance, expiry, consent/legal basis, and responsible reviewer are established. The database is staging-only and separate from learner, identity, school, credential, government, and analytics stores.
 
+### Operator workflow
+
+Marketplace governance uses `/api/operator/v1/*` routes protected by a staging secret stored through Cloudflare, never in source or Worker configuration. Operators can create pending records, list records by review state, verify or renew with a future expiry of no more than 366 days, suspend, expire, or reject them, list open reports, and resolve reports. Creating a record never publishes it; its initial expiry is the creation time so it also fails the public expiry boundary independently of status. Renewal is allowed only for an already verified record.
+
+Every state decision writes a separate audit event containing the provider, action, bounded reason, and time. Audit records deliberately omit bearer secrets, operator identity, IP address, device information, reporter identity, and report narrative. Production must replace the shared staging operator credential with named, strongly authenticated roles and an approved retention policy before this workflow can be activated there.
+
 `GET /api/v1/experiences/{pathwayId}?locale=en` turns an existing category into a four-step public action experience: understand, choose, begin, and review earning considerations. English and Spanish presentation are supported, with safe English fallback for other valid locales. Responses are offline-eligible and link only to existing BRASA Business pages. They contain no inferred profile, progress record, application, credential, eligibility determination, job listing, customer lead, or income projection.
 
 Staging uses the separately named `brasa-business-staging` Worker. Its manual GitHub workflow requires a protected staging environment, tests and packages before deployment, and smoke-tests the staged health and opportunity endpoints. No production deployment command is included.
