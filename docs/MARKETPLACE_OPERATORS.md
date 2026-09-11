@@ -26,6 +26,17 @@ The invitation plaintext is shown once. Share it only through an approved secure
 
 The staging Worker enforces the approved audit-retention period every day at 03:17 UTC. If no policy is configured, it performs no deletion. A malformed or sub-minimum policy fails closed without deleting anything. When configured, only provider, operator, and security audit events strictly older than the calculated 365–2555 day cutoff are removed; operational logs contain only the aggregate deletion count and cutoff.
 
+### Signed audit evidence
+
+Audit evidence remains local-only. Export it with an offline Ed25519 signing key, then verify the archived bundle with the corresponding public key:
+
+```text
+npm run audit:evidence -- export --output PATH-OUTSIDE-THE-REPOSITORY/audit.json --private-key PATH-TO-OFFLINE-PRIVATE-KEY
+npm run audit:evidence -- verify --bundle PATH-OUTSIDE-THE-REPOSITORY/audit.json --public-key PATH-TO-PUBLIC-KEY
+```
+
+The export contains seven explicitly ordered governance sections, including the current policy snapshot, plus a canonical SHA-256 digest, an Ed25519 signature, and the public-key fingerprint. It refuses to overwrite an existing bundle. The private key and JWT/session credentials are never included. Store the private key outside the repository with access restricted to the designated evidence custodian; distribute and independently archive the public-key fingerprint. Without an independently retained public key or fingerprint, the bundle is only self-consistent and should not be described as tamper-evident.
+
 Suspension is fail-closed: Business blocks the operator first, then Identity revokes every active session and removes unused invitations. Resuming access never restores old credentials; issue a fresh invitation afterward.
 
 Emergency revocation requires the two configured owners. One owner initiates a request for a non-owner operator; the other must confirm within 15 minutes. Confirmation suspends Business authorization first and then revokes Identity credentials. Both decisions receive separate immutable events. Emergency owners cannot revoke themselves through this workflow because that would defeat two-person control; use the documented Cloudflare break-glass procedure for a compromised owner.
