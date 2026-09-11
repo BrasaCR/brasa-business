@@ -12,12 +12,16 @@ npm run operator -- audit BRA-OPERATOR-AB12CD34
 npm run operator -- role BRA-OPERATOR-AB12CD34 --role verifier --reason "Verification training complete"
 npm run operator -- suspend BRA-OPERATOR-AB12CD34 --reason "Access review"
 npm run operator -- resume BRA-OPERATOR-AB12CD34 --reason "Access review complete"
+npm run operator -- request-admin BRA-OPERATOR-AB12CD34 --requested-by BRA-OPERATOR-AB12CD34 --reason "Administrative responsibilities assigned"
+npm run operator -- approve-admin REQUEST-UUID --approved-by BRA-OPERATOR-CD34EF56 --reason "Independent approval completed"
+npm run operator -- configure-governance --retention-days 730 --primary BRA-OPERATOR-AB12CD34 --backup BRA-OPERATOR-CD34EF56 --actor BRA-OPERATOR-AB12CD34 --reason "Annual security policy review"
+npm run operator -- readiness
 ```
 
-Roles are intentionally narrow: reviewers inspect queues and resolve reports; verifiers can also create and change provider records; administrators currently have the same application permissions as verifiers and exist for future administrative separation.
+Roles are intentionally narrow: reviewers inspect queues and resolve reports; verifiers can also create and change provider records; administrators currently have the same application permissions as verifiers and exist for future administrative separation. Direct administrator creation and promotion are blocked. An active verifier must request their own elevation, and a different active verifier or administrator must approve the expiring request within 24 hours.
 
 The invitation plaintext is shown once. Share it only through an approved secure channel. Identity stores its SHA-256 digest and the invitation expires after 10 minutes by default (configurable from 5 to 60 minutes). Exchanging it creates a 15-minute browser-memory session.
 
 Suspension is fail-closed: Business blocks the operator first, then Identity revokes every active session and removes unused invitations. Resuming access never restores old credentials; issue a fresh invitation afterward.
 
-This tool currently targets the explicitly named staging databases only. It has no production mode. Before production activation, require phishing-resistant authentication, dual approval for administrator grants, an approved audit-retention policy, and a documented emergency revocation owner.
+This tool currently targets the explicitly named staging databases only. It has no production mode. The `readiness` command always reports phishing-resistant authentication as incomplete because the one-time invitation flow is not phishing-resistant. Configuring a retention period and two emergency owners records governance intent but does not override that production blocker. Production activation requires identity-bound approval actors, phishing-resistant authentication, approved retention enforcement, and two documented emergency revocation owners.

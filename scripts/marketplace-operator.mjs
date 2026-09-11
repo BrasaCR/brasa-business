@@ -41,6 +41,12 @@ export function validateMinutes(value = '10') {
   return minutes;
 }
 
+export function validateRetentionDays(value) {
+  const days = Number(value);
+  if (!Number.isInteger(days) || days < 365 || days > 2555) throw new Error('Audit retention must be 365–2555 days.');
+  return days;
+}
+
 export function createInvitation() {
   const plaintext = randomBytes(48).toString('base64url');
   return { plaintext, digest: createHash('sha256').update(plaintext).digest('hex') };
@@ -75,6 +81,10 @@ function auditSql(displayId, action, reason, details = {}) {
   return `INSERT INTO marketplace_operator_audit_events(id,display_id,action,reason,details_json) VALUES (${sqlText(randomUUID())},${sqlText(displayId)},${sqlText(action)},${sqlText(reason)},${sqlText(JSON.stringify(details))})`;
 }
 
+function securityAuditSql(action, subjectId, actorDisplayId, reason, details = {}) {
+  return `INSERT INTO marketplace_security_audit_events(id,action,subject_id,actor_display_id,reason,details_json) VALUES (${sqlText(randomUUID())},${sqlText(action)},${sqlText(subjectId)},${sqlText(actorDisplayId)},${sqlText(reason)},${sqlText(JSON.stringify(details))})`;
+}
+
 function operatorRows(execute, displayId) {
   return execute(BUSINESS_DB, `SELECT display_id,name,role,status,created_at,updated_at FROM marketplace_operators WHERE display_id=${sqlText(displayId)} LIMIT 1`);
 }
@@ -90,6 +100,7 @@ export function createOperatorAdmin({ execute = createD1Executor(), now = () => 
     create({ name, role, reason }) {
       const displayId = createDisplayId();
       name = validateName(name); role = validateRole(role); reason = validateReason(reason);
+      if (role === 'administrator') throw new Error('Administrator access requires request-admin followed by approve-admin.');
       execute(BUSINESS_DB, `INSERT INTO marketplace_operators(display_id,name,role,status) VALUES (${sqlText(displayId)},${sqlText(name)},${sqlText(role)},'active'); ${auditSql(displayId, 'create', reason, { role })}`);
       return { displayId, name, role, status: 'active', next: `Issue a one-time invitation with: npm run operator -- invite ${displayId} --reason "..."` };
     },
@@ -112,6 +123,7 @@ export function createOperatorAdmin({ execute = createD1Executor(), now = () => 
     },
     role({ displayId, role, reason }) {
       displayId = validateDisplayId(displayId); role = validateRole(role); reason = validateReason(reason);
+      if (role === 'administrator') throw new Error('Administrator access requires request-admin followed by approve-admin.');
       const current = requireOperator(displayId);
       if (current.role === role) throw new Error(`Operator already has the ${role} role.`);
       execute(BUSINESS_DB, `UPDATE marketplace_operators SET role=${sqlText(role)},updated_at=datetime('now') WHERE display_id=${sqlText(displayId)}; ${auditSql(displayId, 'role_change', reason, { from: current.role, to: role })}`);
@@ -131,6 +143,47 @@ export function createOperatorAdmin({ execute = createD1Executor(), now = () => 
       if (current.status === 'active') throw new Error('Operator is already active.');
       execute(BUSINESS_DB, `UPDATE marketplace_operators SET status='active',updated_at=datetime('now') WHERE display_id=${sqlText(displayId)}; ${auditSql(displayId, 'resume', reason)}`);
       return { displayId, status: 'active', next: 'Issue a fresh one-time invitation; previous credentials remain invalid.' };
+    },
+    requestAdmin({ displayId, requestedBy, reason }) {
+      displayId = validateDisplayId(displayId); requestedBy = validateDisplayId(requestedBy); reason = validateReason(reason);
+      if (displayId !== requestedBy) throw new Error('The target operator must initiate their own administrator request.');
+      const target = requireOperator(displayId);
+      if (!['verifier','administrator'].includes(target.role)) throw new Error('Only an active verifier can request administrator access.');
+      if (target.role === 'administrator') throw new Error('Operator is already an administrator.');
+      const existing = execute(BUSINESS_DB, `SELECT id FROM marketplace_admin_role_requests WHERE target_display_id=${sqlText(displayId)} AND status='pending' AND expires_at>datetime('now') LIMIT 1`);
+      if (existing.length) throw new Error('An active administrator request already exists.');
+      const requestId = randomUUID(), expiresAt = new Date(now().getTime() + 24 * 60 * 60_000).toISOString();
+      execute(BUSINESS_DB, `INSERT INTO marketplace_admin_role_requests(id,target_display_id,requested_by,reason,expires_at) VALUES (${sqlText(requestId)},${sqlText(displayId)},${sqlText(requestedBy)},${sqlText(reason)},${sqlText(expiresAt)}); ${securityAuditSql('admin_requested', requestId, requestedBy, reason, { targetDisplayId: displayId, expiresAt })}`);
+      return { requestId, displayId, status: 'pending', expiresAt, next: 'A different active verifier or administrator must approve this request.' };
+    },
+    approveAdmin({ requestId, approvedBy, reason }) {
+      if (!/^[0-9a-f-]{36}$/i.test(String(requestId || ''))) throw new Error('A valid request ID is required.');
+      approvedBy = validateDisplayId(approvedBy); reason = validateReason(reason);
+      const approver = requireOperator(approvedBy);
+      if (!['verifier','administrator'].includes(approver.role)) throw new Error('Approver must be an active verifier or administrator.');
+      const requests = execute(BUSINESS_DB, `SELECT id,target_display_id,requested_by,status,expires_at FROM marketplace_admin_role_requests WHERE id=${sqlText(requestId)} LIMIT 1`);
+      if (requests.length !== 1) throw new Error('Administrator request was not found.');
+      const request = requests[0];
+      if (request.status !== 'pending' || Date.parse(request.expires_at) <= now().getTime()) throw new Error('Administrator request is no longer active.');
+      if (request.requested_by === approvedBy) throw new Error('The approver must be different from the requester.');
+      requireOperator(request.target_display_id);
+      execute(BUSINESS_DB, `UPDATE marketplace_admin_role_requests SET status='applied',approved_by=${sqlText(approvedBy)},approved_at=datetime('now') WHERE id=${sqlText(requestId)} AND status='pending'; UPDATE marketplace_operators SET role='administrator',updated_at=datetime('now') WHERE display_id=${sqlText(request.target_display_id)} AND status='active'; ${auditSql(request.target_display_id, 'role_change', reason, { from: 'verifier', to: 'administrator', requestId })}; ${securityAuditSql('admin_approved', requestId, approvedBy, reason, { targetDisplayId: request.target_display_id })}`);
+      return { requestId, displayId: request.target_display_id, role: 'administrator', approvedBy };
+    },
+    configureGovernance({ retentionDays, primary, backup, actor, reason }) {
+      retentionDays = validateRetentionDays(retentionDays); primary = validateDisplayId(primary); backup = validateDisplayId(backup); actor = validateDisplayId(actor); reason = validateReason(reason);
+      if (primary === backup) throw new Error('Primary and backup emergency owners must be different.');
+      requireOperator(primary); requireOperator(backup);
+      const policyActor = requireOperator(actor);
+      if (policyActor.role !== 'administrator') throw new Error('Only an active administrator can configure security governance.');
+      execute(BUSINESS_DB, `UPDATE marketplace_security_governance SET audit_retention_days=${retentionDays},emergency_primary_display_id=${sqlText(primary)},emergency_backup_display_id=${sqlText(backup)},policy_reason=${sqlText(reason)},reviewed_at=datetime('now'),updated_at=datetime('now') WHERE id=1; ${securityAuditSql('governance_updated', 'marketplace-security-governance', actor, reason, { retentionDays, primary, backup })}`);
+      return { auditRetentionDays: retentionDays, emergencyOwners: { primary, backup }, phishingResistantAuthentication: false };
+    },
+    readiness() {
+      const policy = execute(BUSINESS_DB, 'SELECT audit_retention_days,emergency_primary_display_id,emergency_backup_display_id,reviewed_at FROM marketplace_security_governance WHERE id=1')[0] || {};
+      const owners = policy.emergency_primary_display_id && policy.emergency_backup_display_id ? execute(BUSINESS_DB, `SELECT count(*) AS count FROM marketplace_operators WHERE display_id IN (${sqlText(policy.emergency_primary_display_id)},${sqlText(policy.emergency_backup_display_id)}) AND status='active'`)[0]?.count === 2 : false;
+      const checks = { dualApprovalForAdministrator: true, auditRetentionPolicy: Number(policy.audit_retention_days) >= 365, twoActiveEmergencyOwners: owners, phishingResistantAuthentication: false };
+      return { environment: 'staging', productionReady: Object.values(checks).every(Boolean), checks, reviewedAt: policy.reviewed_at || null };
     }
   };
 }
@@ -145,7 +198,11 @@ export async function main(args = process.argv.slice(2), admin = createOperatorA
   else if (command === 'role') result = admin.role({ displayId: positional(args), role: option(args, 'role'), reason: option(args, 'reason') });
   else if (command === 'suspend') result = admin.suspend({ displayId: positional(args), reason: option(args, 'reason') });
   else if (command === 'resume') result = admin.resume({ displayId: positional(args), reason: option(args, 'reason') });
-  else throw new Error('Use: create, invite, list, audit, role, suspend, or resume.');
+  else if (command === 'request-admin') result = admin.requestAdmin({ displayId: positional(args), requestedBy: option(args, 'requested-by'), reason: option(args, 'reason') });
+  else if (command === 'approve-admin') result = admin.approveAdmin({ requestId: positional(args), approvedBy: option(args, 'approved-by'), reason: option(args, 'reason') });
+  else if (command === 'configure-governance') result = admin.configureGovernance({ retentionDays: option(args, 'retention-days'), primary: option(args, 'primary'), backup: option(args, 'backup'), actor: option(args, 'actor'), reason: option(args, 'reason') });
+  else if (command === 'readiness') result = admin.readiness();
+  else throw new Error('Use: create, invite, list, audit, role, suspend, resume, request-admin, approve-admin, configure-governance, or readiness.');
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
 

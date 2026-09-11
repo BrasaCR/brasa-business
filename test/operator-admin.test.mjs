@@ -1,15 +1,43 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createInvitation, createOperatorAdmin, sqlText, validateDisplayId, validateMinutes, validateReason, validateRole } from '../scripts/marketplace-operator.mjs';
+import { createInvitation, createOperatorAdmin, sqlText, validateDisplayId, validateMinutes, validateReason, validateRetentionDays, validateRole } from '../scripts/marketplace-operator.mjs';
 
 test('validates the bounded operator administration inputs', () => {
   assert.equal(validateDisplayId('bra-operator-ab12cd34'), 'BRA-OPERATOR-AB12CD34');
   assert.equal(validateRole('verifier'), 'verifier');
   assert.equal(validateReason('Reviewed by operations'), 'Reviewed by operations');
   assert.equal(validateMinutes('15'), 15);
+  assert.equal(validateRetentionDays('730'), 730);
   assert.throws(() => validateRole('owner'));
   assert.throws(() => validateMinutes('61'));
+  assert.throws(() => validateRetentionDays('364'));
   assert.throws(() => validateReason('no'));
+});
+
+test('blocks direct administrator grants', () => {
+  const admin = createOperatorAdmin({ execute: () => [] });
+  assert.throws(() => admin.create({ name: 'Test operator', role: 'administrator', reason: 'Direct grant attempt' }), /requires request-admin/);
+});
+
+test('requires a different second operator to approve administrator access', () => {
+  const calls = [], operators = {
+    'BRA-OPERATOR-AAA11111': { display_id: 'BRA-OPERATOR-AAA11111', name: 'Target', role: 'verifier', status: 'active' },
+    'BRA-OPERATOR-BBB22222': { display_id: 'BRA-OPERATOR-BBB22222', name: 'Approver', role: 'verifier', status: 'active' }
+  };
+  const execute = (database, command) => {
+    calls.push({ database, command });
+    if (command.startsWith('SELECT display_id')) return [operators[command.match(/'BRA-OPERATOR-[A-Z0-9]+'/)?.[0]?.slice(1, -1)]].filter(Boolean);
+    if (command.startsWith('SELECT id FROM marketplace_admin')) return [];
+    if (command.startsWith('SELECT id,target_display_id')) return [{ id: '11111111-1111-4111-8111-111111111111', target_display_id: 'BRA-OPERATOR-AAA11111', requested_by: 'BRA-OPERATOR-AAA11111', status: 'pending', expires_at: '2026-09-12T12:00:00.000Z' }];
+    return [];
+  };
+  const admin = createOperatorAdmin({ execute, now: () => new Date('2026-09-11T12:00:00Z') });
+  const request = admin.requestAdmin({ displayId: 'BRA-OPERATOR-AAA11111', requestedBy: 'BRA-OPERATOR-AAA11111', reason: 'Administrative responsibility' });
+  assert.equal(request.status, 'pending');
+  assert.throws(() => admin.approveAdmin({ requestId: '11111111-1111-4111-8111-111111111111', approvedBy: 'BRA-OPERATOR-AAA11111', reason: 'Self approval' }), /different/);
+  const approved = admin.approveAdmin({ requestId: '11111111-1111-4111-8111-111111111111', approvedBy: 'BRA-OPERATOR-BBB22222', reason: 'Independent approval' });
+  assert.equal(approved.role, 'administrator');
+  assert.match(calls.at(-1).command, /role='administrator'/);
 });
 
 test('creates opaque invitations and stores a distinct SHA-256 digest', () => {
