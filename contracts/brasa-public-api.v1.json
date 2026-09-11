@@ -1,0 +1,10 @@
+{
+  "contractVersion": "1.0.0",
+  "canonicalSource": "brasa-world/contracts/public-api.v1.json",
+  "operationId": "listBusinessPathways",
+  "servicePath": "/api/v1/opportunities",
+  "methods": ["GET", "HEAD"],
+  "requiredRoot": ["data", "meta"],
+  "requiredItem": ["schemaVersion", "id", "type", "title", "url", "capabilities", "countryCodes", "status"],
+  "forbiddenFields": ["govId", "actorId", "studentId", "learnerId", "membership", "progress", "grade", "credential", "eligibility", "political", "activity"]
+}
