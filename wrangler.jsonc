@@ -10,6 +10,17 @@
   },
   "observability": { "enabled": true, "logs": { "head_sampling_rate": 1 }, "traces": { "enabled": true, "head_sampling_rate": 0.05 } },
   "env": {
+    "production": {
+      "name": "brasa-business-powered-production",
+      "workers_dev": true,
+      "triggers": { "crons": ["17 3 * * *"] },
+      "d1_databases": [{ "binding": "PROVIDERS_DB", "database_name": "brasa-business-marketplace-production", "database_id": "61e0e794-30d2-4e52-a891-b9a1b46d3320", "migrations_dir": "migrations" }],
+      "vars": { "EDUCATION_PUBLIC_ORIGIN": "https://brasa-education-powered-production.richard-bad.workers.dev" },
+      "services": [
+        { "binding": "EDUCATION", "service": "brasa-education-powered-production" },
+        { "binding": "GOVERNMENT", "service": "brasa-government-powered-production" }
+      ]
+    },
     "staging": {
       "name": "brasa-business-staging",
       "workers_dev": true,
