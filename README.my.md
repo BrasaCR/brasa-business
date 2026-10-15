@@ -1,0 +1,47 @@
+🌐 Read in: [English](README.md) · [Español](README.es.md) · [Français](README.fr.md) · [Português (Brasil)](README.pt-BR.md) · [Português (Portugal)](README.pt-PT.md) · [Deutsch](README.de.md) · [Italiano](README.it.md) · [Nederlands](README.nl.md) · [Polski](README.pl.md) · [Română](README.ro.md) · [Magyar](README.hu.md) · [Čeština](README.cs.md) · [Slovenčina](README.sk.md) · [Slovenščina](README.sl.md) · [Hrvatski](README.hr.md) · [Bosanski](README.bs.md) · [Српски](README.sr-Cyrl.md) · [Srpski](README.sr-Latn.md) · [Shqip](README.sq.md) · [Català](README.ca.md) · [Euskara](README.eu.md) · [Galego](README.gl.md) · [Svenska](README.sv.md) · [Dansk](README.da.md) · [Norsk](README.no.md) · [Suomi](README.fi.md) · [Íslenska](README.is.md) · [Eesti](README.et.md) · [Latviešu](README.lv.md) · [Lietuvių](README.lt.md) · [Ελληνικά](README.el.md) · [Български](README.bg.md) · [Македонски](README.mk.md) · [Українська](README.uk.md) · [Русский](README.ru.md) · [Беларуская](README.be.md) · [Հայերեն](README.hy.md) · [ქართული](README.ka.md) · [Türkçe](README.tr.md) · [Azərbaycanca](README.az.md) · [Қазақша](README.kk.md) · [Кыргызча](README.ky.md) · [O‘zbekcha](README.uz.md) · [Тоҷикӣ](README.tg.md) · [Türkmençe](README.tk.md) · [العربية](README.ar.md) · [עברית](README.he.md) · [فارسی](README.fa.md) · [اردو](README.ur.md) · [پښتو](README.ps.md) · [Kurdî](README.ku.md) · [हिन्दी](README.hi.md) · [বাংলা](README.bn.md) · [ਪੰਜਾਬੀ](README.pa.md) · [ગુજરાતી](README.gu.md) · [मराठी](README.mr.md) · [नेपाली](README.ne.md) · [தமிழ்](README.ta.md) · [తెలుగు](README.te.md) · [ಕನ್ನಡ](README.kn.md) · [മലയാളം](README.ml.md) · [සිංහල](README.si.md) · [简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Bahasa Indonesia](README.id.md) · [Bahasa Melayu](README.ms.md) · [Tiếng Việt](README.vi.md) · [ไทย](README.th.md) · [ខ្មែរ](README.km.md) · [ລາວ](README.lo.md) · [မြန်မာဘာသာ](README.my.md) · [Монгол](README.mn.md) · [Filipino](README.fil.md) · [Kiswahili](README.sw.md) · [አማርኛ](README.am.md) · [ትግርኛ](README.ti.md) · [Soomaali](README.so.md) · [Hausa](README.ha.md) · [Yorùbá](README.yo.md) · [Igbo](README.ig.md) · [isiZulu](README.zu.md) · [isiXhosa](README.xh.md) · [Afrikaans](README.af.md) · [Ikinyarwanda](README.rw.md) · [Malagasy](README.mg.md) · [Sesotho](README.st.md) · [Kreyòl ayisyen](README.ht.md)
+
+# BRASA စီးပွားရေး
+
+** အခမဲ့စီးပွားရေးဆော့ဖ်ဝဲနှင့် နိုင်ငံသားစျေးကွက်—ကုန်သွယ်မှုတိုင်းအတွက် စီစဉ်ပေးသည်။**
+
+[BRASA လုပ်ငန်းကိုဖွင့်ပါ။](https://brasa.business/) · [BRASA World](https://brasa.world/) · [ပညာရေး](https://brasa.education/) · [အစိုးရ](https://brasagovernment.net/)
+
+BRASA Business သည် နိုင်ငံသားများအား လုပ်ငန်းတစ်ခုစတင်ရန်၊ လည်ပတ်ရန်နှင့် ကြီးထွားရန်အတွက် လက်တွေ့ကျသောကိရိယာများကို ပေးပါသည်။ ပလက်ဖောင်းသည် ပညာရေး၊ အစိုးရဝန်ဆောင်မှုများနှင့် နိုင်ငံသားတစ်ဦးချင်းစီ၏ နိုင်ငံစာမျက်နှာနှင့် ချိတ်ဆက်ထားသည့် အတွေ့အကြုံများကို ထိန်းသိမ်းထားစဉ်တွင် အသက်မွေးဝမ်းကြောင်းနှင့် ကဏ္ဍများစွာကို လွှမ်းခြုံထားသည်။
+
+## နိုင်ငံသားတွေ ဘယ်လိုခံယူလဲ။
+
+- အစမ်းသုံးခြင်း သို့မဟုတ် စာရင်းသွင်းခြင်းမရှိဘဲ အခမဲ့စီးပွားရေးဆော့ဖ်ဝဲ
+- မတူညီသော အသက်မွေးဝမ်းကြောင်းများနှင့် ကဏ္ဍများအတွက် လိုက်လျောညီထွေဖြစ်အောင် ကိရိယာများ
+- မျှဝေထားသော နိုင်ငံသားအထောက်အထားစနစ်မှတဆင့် BRASA ID
+- BRASA သည် ကုန်သည်ရန်ပုံငွေများကို ကိုင်ဆောင်ထားသည့် ဖောက်သည်များကို တိုက်ရိုက်ပေးချေခြင်းထက် တိုက်ရိုက်ငွေပေးချေမှု
+- သင်ယူမှု၊ အများပြည်သူဝန်ဆောင်မှုများနှင့် ပိုမိုကျယ်ပြန့်သော BRASA စျေးကွက်နှင့် ချိတ်ဆက်မှုများ
+
+## လည်ပတ်မူများ
+
+- BRASA သည် စီးပွားရေးဆော့ဖ်ဝဲကို စတင်အသုံးပြုရန် နိုင်ငံသားများအား ကောက်ခံမည်မဟုတ်ပါ။
+- မျှဝေထားသော စာရင်းသွင်းခြင်းဝန်ဆောင်မှုမှတစ်ဆင့် အထောက်အထားကို ဖန်တီးထားသည်။
+- BRASA သည် လုပ်ငန်းတစ်ခုနှင့် ၎င်း၏ဖောက်သည်ကြားတွင် ငွေပေးချေမှုလမ်းကြောင်းတွင် မထိုင်ပါ။
+- နိုင်ငံအလိုက် ငွေပေးချေမှု၊ အခွန်နှင့် ပြေစာတောင်းခံမှုများကို ထုတ်ပြန်ခြင်းမပြုမီ အတည်ပြုရပါမည်။
+
+## ဘာသာစကားဝင်ရောက်ခွင့်
+
+အင်္ဂလိပ်က ထိန်းသိမ်းထားတဲ့ အရင်းအမြစ်ပါ။ ထုတ်ဝေထားသော ဘာသာပြန်တစ်ခုစီသည် ၎င်း၏ကိုယ်ပိုင်ဖိုင်နှင့် အများသူငှာ URL ကို လက်ခံရရှိသောကြောင့် နိုင်ငံသားများသည် အင်္ဂလိပ်တည်းဖြတ်မှုစံနှုန်းကို မပြောင်းလဲဘဲ BRASA ကို ၎င်းတို့၏ဘာသာစကားဖြင့် အသုံးပြုနိုင်သည်။
+
+## လုပ်ငန်းတစ်ခုစတင်ပါ။
+
+အသက်မွေးဝမ်းကျောင်းလုပ်ငန်းများကိုစူးစမ်းလေ့လာရန်နှင့်သင့်အကောင့်ဖန်တီးရန် [brasa.စီးပွားရေး](https://brasa.business/) သို့သွားရောက်ပါ။
+
+## ထိန်းသိမ်းသူမှတ်စုများ
+
+ဆိုက်ကို static HTML နှင့် JavaScript အဖြစ် အသုံးပြုထားသည်။ အထောက်အထား၊ ငွေပေးချေမှု၊ ငွေတောင်းခံလွှာ သို့မဟုတ် နိုင်ငံအလိုက် လိုက်လျောညီထွေဖြစ်စေသော အပြောင်းအလဲများကို မထုတ်ပြန်မီ အတည်ပြုချက် လိုအပ်ပါသည်။
+
+<!-- BRASA-PLATFORM-UPDATE:START -->
+## ယနေ့ BRASA
+
+BRASA သည် ယခုအခါ နိုင်ငံ 198 ခု၏ စာမျက်နှာများကို ပညာရေး၊ အစိုးရနှင့် စီးပွားရေးတို့နှင့် ချိတ်ဆက်ထားသည်။ BRASA Business တွင် အရောင်းနှင့်ပြေစာ၊ CRM၊ ကုန်ပစ္စည်းစာရင်း၊ လူများနှင့်သင်တန်း၊ လစာနှင့်ဘဏ်၊ အချိန်၊ မိသားစုအကူအညီ၊ ဥပဒေ၊ အစိုးရပုံစံများ၊ အစီရင်ခံစာများနှင့် မျှဝေအလုပ်ခွင် စသည့် ချိတ်ဆက်ထားသော ကဏ္ဍ 12 ခုရှိသည်။ ဖွင့်လှစ်စာရင်း၊ လမ်းညွှန်ထားသော အလုပ်စဉ်နှင့် အင်တာနက်မရှိဘဲ ဆက်လက်လုပ်ဆောင်နိုင်မှုလည်း ပါဝင်သည်။
+
+BRASA Financials သည် မှတ်တမ်း 395 ခုမှ ငွေပေးချေမှုစနစ် 385 ခုကို စာရင်းပြုစုထားပြီး စျေးကွက်ဖော်ပြချက် 161 ခုနှင့် ငွေပေးချေမှုအမျိုးအစား 216 ခု ပါဝင်သည်။ မိုဘိုင်းငွေ၊ ချက်ချင်းလွှဲငွေ၊ QR၊ ဒစ်ဂျစ်တယ်ပိုက်ဆံအိတ်၊ ငွေသားကွန်ရက်၊ ငွေလွှဲ၊ open banking၊ ပြည်တွင်းကတ်နှင့် USSD တို့ပါဝင်သည်။
+
+စာရင်းဝင်ခြင်းသည် အသုံးပြုခွင့်ရပြီးဖြစ်သည်ဟု မဆိုလိုပါ။ လိုင်စင်ရဝန်ဆောင်မှုပေးသူများကသာ ငွေကို ရွှေ့ပြောင်းသည်။ နည်းလမ်းတိုင်းသည် နိုင်ငံနှင့်ရင်းမြစ်စစ်ဆေးမှု၊ လိုင်စင်၊ ချိတ်ဆက်မှု၊ စမ်းသပ်မှုနှင့် ထုတ်လုပ်သုံးခွင့် လိုအပ်သည်။
+<!-- BRASA-PLATFORM-UPDATE:END -->
+*BRASA လုပ်ငန်း · စီးပွားရေး၊ ကမ္ဘာအနှံ့။*

@@ -1431,4 +1431,37 @@ Yon mache sitwayen posede — Se pa gwo konpayi. Achte ak vann daprè règ ki ji
 
 ---
 *Pati nan Sistèm BRASA a — Edikasyon · Gouvenman · Komès · Liv Ouvè*
+
+<!-- BRASA-PLATFORM-UPDATE:START -->
+## BRASA Business today: a connected operating system
+
+BRASA Business has grown from a catalog of professions into a governed workspace for running a business. Twelve connected operating areas share identity, permissions, country context, records, evidence, and an append-only audit history.
+
+### Twelve connected business areas
+
+1. Point of sale and receipts
+2. Customer relationships, leads, opportunities, consent, and service cases
+3. Inventory, purchasing, locations, lots, expiration, transfers, and traceability
+4. People, hiring, documents, access, performance, and offboarding
+5. Training, skills, learning paths, evidence, and portable credentials
+6. Payroll preparation, banking references, approvals, payslips, and reconciliation
+7. Time, schedules, attendance, leave, and labor-rule warnings
+8. Private family-support requests and verified country resources
+9. Legal requests, contracts, clauses, signatures, obligations, and controlled documents
+10. Country-matched government forms and official links supplied by BRASA Government
+11. Governed reports, comparisons, forecasts, lineage, and data-quality signals
+12. A shared business workspace with search, workflows, integrations, migration, audit, and offline continuity
+
+The open-ledger accounting spine connects sales, payments, inventory, payroll, expenses, taxes, settlement, and reconciliation without silently rewriting history. Guided review screens, draft-and-resume workflows, confirmation, visible histories, mobile layouts, and recovery controls replace fragile browser prompts for important decisions.
+
+### Accept the methods people already trust
+
+BRASA Financials catalogs 385 distinct payment systems from 395 submitted records, representing 161 country or multi-country market descriptions and 216 payment types. Citizens and merchants can discover mobile money, instant transfers, QR payments, wallets, cash and retail networks, remittance, open banking, domestic card systems, USSD, and other local methods instead of being forced into one global rail.
+
+The directory currently includes 45 systems linked to reviewed official destinations. Catalogued does not mean activated: official-source verification, country eligibility, licensing, provider onboarding, technical integration, settlement testing, and production approval are separate gates. Licensed providers hold and move funds. BRASA creates a governed request, records provider references and settlement evidence, supports receipts and reconciliation, and preserves the result in the open ledger.
+
+### One fact, used with permission
+
+A sale can update stock, customer history, staff attribution, payment evidence, accounting, tax records, and reports. Approved time can prepare payroll. Verified training can update role eligibility. Government requirements remain linked to their authoritative country sources. This governed connection—not a collection of isolated apps—is BRASA's advantage.
+<!-- BRASA-PLATFORM-UPDATE:END -->
 *Se Sitwayen Monn Ki Posede Li — Konstwi ak Lanmou nan Kosta Rika · 2026*
